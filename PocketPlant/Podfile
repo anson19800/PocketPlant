@@ -7,5 +7,7 @@ target 'PocketPlant' do
 
   # Pods for PocketPlant
   pod 'SwiftLint'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 end
