@@ -48,6 +48,7 @@
                                         <state key="normal" backgroundImage="plus" catalog="system"/>
                                         <connections>
                                             <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yev-Fr-SL9"/>
+                                            <segue destination="5ce-AY-Dhb" kind="show" id="eDb-fk-ScE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -140,6 +141,7 @@
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="rt7-Cg-FS0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="LpM-Bc-Hwe"/>
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
@@ -149,7 +151,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="60.9375"/>
+            <point key="canvasLocation" x="939.13043478260875" y="60.9375"/>
+        </scene>
+        <!--NewPlantPage-->
+        <scene sceneID="gh4-fU-HLf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewPlantPage" id="5ce-AY-Dhb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="18k-UY-GuK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="js3-5v-7Ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1450.7246376811595" y="-43.526785714285715"/>
         </scene>
     </scenes>
     <resources>

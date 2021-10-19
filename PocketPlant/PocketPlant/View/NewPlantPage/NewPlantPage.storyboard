@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5ge-vA-DcY">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Plant Page View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="NewPlantPageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67o-y9-cT4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="新增植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVq-g6-5c7">
+                                        <rect key="frame" x="33" y="50" width="102" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="0.12931125600000001" green="0.1663883229" blue="0.13009218040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="GVq-g6-5c7" firstAttribute="leading" secondItem="67o-y9-cT4" secondAttribute="leading" constant="33" id="0N4-j1-Fnk"/>
+                                    <constraint firstAttribute="height" constant="130" id="pVl-dV-jdc"/>
+                                    <constraint firstItem="GVq-g6-5c7" firstAttribute="top" secondItem="67o-y9-cT4" secondAttribute="top" constant="50" id="xge-0g-Vfe"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plant" translatesAutoresizingMaskIntoConstraints="NO" id="0Ta-9R-AQg">
+                                <rect key="frame" x="30" y="160" width="176" height="151"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="NTd-du-8uN"/>
+                                    <constraint firstAttribute="height" constant="151" id="bNc-yP-fMr"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9M-VY-D0u">
+                                <rect key="frame" x="236" y="195" width="148" height="31"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="上傳照片">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZd-U0-vZE">
+                                <rect key="frame" x="236" y="245" width="148" height="31"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="拍照">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-Ca-7Xh">
+                                <rect key="frame" x="0.0" y="361" width="414" height="501"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lZd-U0-vZE" firstAttribute="leading" secondItem="0Ta-9R-AQg" secondAttribute="trailing" constant="30" id="9VU-vm-dhp"/>
+                            <constraint firstItem="67o-y9-cT4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="BeP-8P-rPI"/>
+                            <constraint firstItem="lZd-U0-vZE" firstAttribute="centerY" secondItem="0Ta-9R-AQg" secondAttribute="centerY" constant="25" id="CIP-em-5nI"/>
+                            <constraint firstItem="i9M-VY-D0u" firstAttribute="centerY" secondItem="0Ta-9R-AQg" secondAttribute="centerY" constant="-25" id="Ndq-kk-hjT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lZd-U0-vZE" secondAttribute="trailing" constant="30" id="Xmb-jU-Cxg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8NG-Ca-7Xh" secondAttribute="bottom" id="agg-Zn-F5z"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8NG-Ca-7Xh" secondAttribute="trailing" id="c72-TP-FW7"/>
+                            <constraint firstItem="67o-y9-cT4" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="cVJ-ei-jia"/>
+                            <constraint firstItem="0Ta-9R-AQg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="dgM-PT-dJw"/>
+                            <constraint firstItem="8NG-Ca-7Xh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eP6-MX-kiR"/>
+                            <constraint firstItem="0Ta-9R-AQg" firstAttribute="top" secondItem="67o-y9-cT4" secondAttribute="bottom" constant="30" id="ijV-tV-u25"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i9M-VY-D0u" secondAttribute="trailing" constant="30" id="kfI-Lg-ZXT"/>
+                            <constraint firstItem="8NG-Ca-7Xh" firstAttribute="top" secondItem="0Ta-9R-AQg" secondAttribute="bottom" constant="50" id="u1X-V0-Rxz"/>
+                            <constraint firstItem="67o-y9-cT4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="u7I-v9-UVZ"/>
+                            <constraint firstItem="i9M-VY-D0u" firstAttribute="leading" secondItem="0Ta-9R-AQg" secondAttribute="trailing" constant="30" id="uRB-OL-Npa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3tG-jg-TCQ"/>
+                    <connections>
+                        <outlet property="plantImageView" destination="0Ta-9R-AQg" id="WJS-rY-IQ9"/>
+                        <outlet property="tableView" destination="8NG-Ca-7Xh" id="e6Z-j8-XJ8"/>
+                        <outlet property="takePhotoButton" destination="lZd-U0-vZE" id="U1Z-ay-fRD"/>
+                        <outlet property="uploadImageButton" destination="i9M-VY-D0u" id="4ca-hd-bs8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="116.51785714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jrw-xu-VYb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ge-vA-DcY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aGZ-OL-eEN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="eRb-ti-BQY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KM0-Md-pph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plant" width="5456" height="3632"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -9,7 +9,7 @@ import UIKit
 
 extension UICollectionView {
     
-    func lk_registerCellWithNib(identifier: String, bundle: Bundle?) {
+    func registerCellWithNib(identifier: String, bundle: Bundle?) {
 
         let nib = UINib(nibName: identifier, bundle: bundle)
 

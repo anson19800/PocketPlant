@@ -36,11 +36,11 @@ class HomePageViewController: UIViewController {
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         
-        buttonCollectionView.lk_registerCellWithNib(
+        buttonCollectionView.registerCellWithNib(
             identifier: String(describing: ButtonCollectionViewCell.self),
             bundle: nil)
         
-        plantCollectionView.lk_registerCellWithNib(
+        plantCollectionView.registerCellWithNib(
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
         
@@ -81,7 +81,7 @@ class HomePageViewController: UIViewController {
                           ownerID: 2223,
                           isPublic: true)
         
-        firebaseManager.addArticle(plant: &plant)
+//        firebaseManager.addArticle(plant: &plant)
         
         firebaseManager.getArticle { result in
             
