@@ -471,7 +471,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="aDA-Au-hZs">
-                                <rect key="frame" x="130" y="0.0" width="176" height="35"/>
+                                <rect key="frame" x="129.5" y="0.0" width="176.5" height="35"/>
                             </datePicker>
                         </subviews>
                         <constraints>

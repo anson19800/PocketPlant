@@ -50,7 +50,15 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.isNavigationBarHidden = true
+        
         updatePlants()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func updatePlants() {
@@ -133,6 +141,19 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
         return CGSize(width: width, height: width * 1.8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let plants = self.plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        performSegue(withIdentifier: "showPlantDetail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Detail")
     }
     
 }

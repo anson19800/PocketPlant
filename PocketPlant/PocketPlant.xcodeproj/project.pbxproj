@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */; };
+		CB07EDB8271EE74100406913 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB7271EE74100406913 /* UIView+Extension.swift */; };
+		CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */; };
 		CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC02271C863E001E3C37 /* AppDelegate.swift */; };
 		CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */; };
 		CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */; };
@@ -27,7 +30,6 @@
 		CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */; };
 		CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */; };
 		CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */; };
-		CBF7AC44271E8DCD001E3C37 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC43271E8DCD001E3C37 /* UILabel+Extension.swift */; };
 		CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */; };
 		E633471A87BF914363C32DA1 /* Pods_PocketPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */; };
 /* End PBXBuildFile section */
@@ -36,6 +38,9 @@
 		01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE3D4B79374ED5EF6C29A96 /* Pods-PocketPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant.release.xcconfig"; path = "Target Support Files/Pods-PocketPlant/Pods-PocketPlant.release.xcconfig"; sourceTree = "<group>"; };
 		5FC710C89D7C558D5AEEEB6A /* Pods-PocketPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant.debug.xcconfig"; path = "Target Support Files/Pods-PocketPlant/Pods-PocketPlant.debug.xcconfig"; sourceTree = "<group>"; };
+		CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantDetailPage.storyboard; sourceTree = "<group>"; };
+		CB07EDB7271EE74100406913 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		CBF7ABFF271C863E001E3C37 /* PocketPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7AC02271C863E001E3C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +63,6 @@
 		CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPlantTableViewCell.swift; sourceTree = "<group>"; };
 		CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPlantTableViewCell.xib; sourceTree = "<group>"; };
 		CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		CBF7AC43271E8DCD001E3C37 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +93,14 @@
 				01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB07EDB4271EE5DB00406913 /* PlantDetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */,
+			);
+			path = PlantDetailPage;
 			sourceTree = "<group>";
 		};
 		CBF7ABF6271C863E001E3C37 = {
@@ -139,6 +151,7 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,
 				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
 				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
 				CBF7AC22271D5D11001E3C37 /* HomePage */,
@@ -151,6 +164,7 @@
 			children = (
 				CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */,
 				CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */,
+				CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,7 +194,7 @@
 				CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */,
 				CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */,
 				CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */,
-				CBF7AC43271E8DCD001E3C37 /* UILabel+Extension.swift */,
+				CB07EDB7271EE74100406913 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -271,6 +285,7 @@
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
 				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
+				CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */,
 				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,16 +359,17 @@
 				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
 				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
+				CB07EDB8271EE74100406913 /* UIView+Extension.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
 				CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */,
 				CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */,
+				CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */,
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
-				CBF7AC44271E8DCD001E3C37 /* UILabel+Extension.swift in Sources */,
 				CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
