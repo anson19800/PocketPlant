@@ -8,7 +8,7 @@
 import UIKit
 
 class HomePageViewController: UIViewController {
-
+    
     @IBOutlet weak var plantCollectionView: UICollectionView!
     
     @IBOutlet weak var buttonCollectionView: UICollectionView!
@@ -44,7 +44,18 @@ class HomePageViewController: UIViewController {
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
         
-        firebaseManager.getArticle { result in
+        updatePlants()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updatePlants()
+    }
+    
+    func updatePlants() {
+        
+        firebaseManager.fetchPlants { result in
             
             switch result {
                 
@@ -60,48 +71,11 @@ class HomePageViewController: UIViewController {
             }
         }
     }
-
-    @IBAction func addButton(_ sender: UIButton) {
-        
-        var plant = Plant(id: "0",
-                          name: "小草一號",
-                          category: "可愛艸",
-                          water: 3,
-                          light: 2,
-                          temperature: 50,
-                          humidity: 50,
-                          buyTime: Date().timeIntervalSince1970,
-                          buyPlace: "園藝店",
-                          buyPrice: 450,
-                          description: "勾衣鉤意的",
-                          lastWater: nil,
-                          lastFertilizer: nil,
-                          lastSoil: nil,
-                          favorite: false,
-                          ownerID: 2223,
-                          isPublic: true)
-        
-//        firebaseManager.addArticle(plant: &plant)
-        
-        firebaseManager.getArticle { result in
-            
-            switch result {
-                
-            case .success(let plants):
-                
-                self.plants = plants
-                
-                self.plantCollectionView.reloadData()
-                
-            case .failure(let error):
-                
-                print(error)
-            }
-        }
-    }
+    
 }
 
-extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == buttonCollectionView {
@@ -116,7 +90,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if collectionView == buttonCollectionView {
             
             let cell = buttonCollectionView.dequeueReusableCell(
@@ -147,6 +123,16 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let itemSpace: CGFloat = 10
+        let columCount: CGFloat = 3
+        
+        let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+
+        return CGSize(width: width, height: width * 1.8)
     }
     
 }

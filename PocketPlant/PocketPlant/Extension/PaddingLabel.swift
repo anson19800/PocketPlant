@@ -29,6 +29,13 @@ class PaddingLabel: UILabel {
         
         return textRect.inset(by: invertedInsets)
     }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: textEdgeInsets))

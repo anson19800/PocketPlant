@@ -39,6 +39,8 @@ class NewPlantPageViewController: UIViewController {
         }
     }
     
+    let firebaseManager = FirebaseManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +49,16 @@ class NewPlantPageViewController: UIViewController {
             bundle: nil)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        
+        guard let parentVC = presentingViewController as? HomePageViewController else { return }
+        
+        parentVC.updatePlants()
+        
+    }
+    
 }
 
 extension NewPlantPageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -63,6 +75,19 @@ extension NewPlantPageViewController: UITableViewDelegate, UITableViewDataSource
         
         guard let inputCell = cell as? InputPlantTableViewCell else { return cell }
         
+        inputCell.delegate = self
+        
         return inputCell
+    }
+}
+
+extension NewPlantPageViewController: InputPlantDelegate {
+    
+    func addNewPlant(plant: inout Plant) {
+        
+        firebaseManager.uploadPlant(plant: &plant)
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
 }
