@@ -54,25 +54,46 @@ class NewPlantPageViewController: UIViewController {
     }
     
     @IBAction func uploadImageAction(_ sender: Any) {
+        
         if #available(iOS 14, *) {
+            
             var configuration = PHPickerConfiguration()
+            
             configuration.filter = .images
+            
             let picker = PHPickerViewController(configuration: configuration)
+            
             picker.delegate = self
+            
             present(picker, animated: true, completion: nil)
+            
         } else {
-            // Fallback on earlier versions
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                
+                let imagePicker = UIImagePickerController()
+                
+                imagePicker.allowsEditing = false
+                
+                imagePicker.sourceType = .photoLibrary
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            }
         }
     }
     
     @IBAction func takePhotoAction(_ sender: Any) {
         
-        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
             let imagePicker = UIImagePickerController()
+            
             imagePicker.allowsEditing = false
+            
             imagePicker.sourceType = .camera
+            
             imagePicker.delegate = self
+            
             self.present(imagePicker, animated: true, completion: nil)
         }
         
@@ -129,10 +150,14 @@ extension NewPlantPageViewController: PHPickerViewControllerDelegate {
         
         if let itemProvider = itemProviders.first,
            itemProvider.canLoadObject(ofClass: UIImage.self) {
+            
             itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                
                 DispatchQueue.main.async {
+                    
                     guard let self = self,
                           let image = image as? UIImage else { return }
+                    
                     self.plantImageView.image = image
                 }
             }
