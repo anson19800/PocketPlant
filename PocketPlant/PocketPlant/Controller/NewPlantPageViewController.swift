@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class NewPlantPageViewController: UIViewController {
 
@@ -51,10 +52,30 @@ class NewPlantPageViewController: UIViewController {
             identifier: String(describing: InputPlantTableViewCell.self),
             bundle: nil)
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
+    
+    @IBAction func uploadImageAction(_ sender: Any) {
+        if #available(iOS 14, *) {
+            var configuration = PHPickerConfiguration()
+            configuration.filter = .images
+            let picker = PHPickerViewController(configuration: configuration)
+            picker.delegate = self
+            present(picker, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    @IBAction func takePhotoAction(_ sender: Any) {
         
-        super.viewWillDisappear(animated)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.allowsEditing = false
+            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
     }
     
 }
@@ -96,5 +117,41 @@ extension NewPlantPageViewController: InputPlantDelegate {
                 homePageVC.updateMyPlants()
             }
         }
+    }
+}
+
+@available(iOS 14, *)
+extension NewPlantPageViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        let itemProviders = results.map(\.itemProvider)
+        
+        if let itemProvider = itemProviders.first,
+           itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                DispatchQueue.main.async {
+                    guard let self = self,
+                          let image = image as? UIImage else { return }
+                    self.plantImageView.image = image
+                }
+            }
+        }
+    }
+    
+}
+
+extension NewPlantPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            self.plantImageView.image = image
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
     }
 }
