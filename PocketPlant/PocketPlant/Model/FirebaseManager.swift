@@ -14,7 +14,7 @@ class FirebaseManager {
     
     private let db = Firestore.firestore()
     
-    func uploadPlant(plant: inout Plant) {
+    func uploadPlant(plant: inout Plant, isSuccess: @escaping (Bool) -> Void) {
         
         let plantRef = db.collection("plant")
         
@@ -26,11 +26,11 @@ class FirebaseManager {
             
             try plantRef.document(documentID).setData(from: plant)
             
-            print("Success")
+            isSuccess(true)
             
         } catch {
             
-            print(error)
+            isSuccess(false)
             
         }
     }

@@ -33,8 +33,11 @@ class NewPlantPageViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
+            
             tableView.dataSource = self
         }
     }
@@ -80,12 +83,18 @@ extension NewPlantPageViewController: InputPlantDelegate {
     
     func addNewPlant(plant: inout Plant) {
         
-        firebaseManager.uploadPlant(plant: &plant)
-        
-        guard let parentVC = presentingViewController as? HomePageViewController else { return }
-        
-        parentVC.updatePlants()
-        
-        self.dismiss(animated: true, completion: nil)
+        firebaseManager.uploadPlant(plant: &plant) { isSuccess in
+            
+            if isSuccess {
+                
+                self.dismiss(animated: true, completion: nil)
+                
+                guard let parentNVC = self.presentingViewController as? UINavigationController,
+                      let parentVC = parentNVC.viewControllers.first,
+                      let homePageVC = parentVC as? HomePageViewController else { return }
+                
+                homePageVC.updatePlants()
+            }
+        }
     }
 }
