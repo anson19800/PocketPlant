@@ -52,11 +52,6 @@ class NewPlantPageViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
-        
-        guard let parentVC = presentingViewController as? HomePageViewController else { return }
-        
-        parentVC.updatePlants()
-        
     }
     
 }
@@ -87,7 +82,10 @@ extension NewPlantPageViewController: InputPlantDelegate {
         
         firebaseManager.uploadPlant(plant: &plant)
         
-        self.dismiss(animated: true, completion: nil)
+        guard let parentVC = presentingViewController as? HomePageViewController else { return }
         
+        parentVC.updatePlants()
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -149,11 +149,13 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         let plant = plants[indexPath.row]
         
-        performSegue(withIdentifier: "showPlantDetail", sender: nil)
+        performSegue(withIdentifier: "showPlantDetail", sender: plant)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Detail")
+        guard let destinationVC = segue.destination as? PlantDetailViewController,
+              let plant = sender as? Plant else { return }
+        destinationVC.plant = plant
     }
     
 }

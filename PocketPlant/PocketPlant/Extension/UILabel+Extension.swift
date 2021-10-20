@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIView {
+extension UILabel {
     
     @IBInspectable var lkBorderColor: UIColor? {
         get {
