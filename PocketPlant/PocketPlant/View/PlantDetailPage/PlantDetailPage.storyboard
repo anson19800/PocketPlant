@@ -98,6 +98,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="favoriteButton" destination="HOV-px-egc" id="s6t-7t-eT0"/>
                         <outlet property="plantNameLabel" destination="a2A-3j-PNK" id="dIs-LM-jsT"/>
                         <outlet property="tableView" destination="tAz-ai-juk" id="zAZ-II-fsz"/>
                     </connections>

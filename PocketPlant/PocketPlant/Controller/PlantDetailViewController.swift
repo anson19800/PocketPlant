@@ -18,15 +18,40 @@ class PlantDetailViewController: UIViewController {
     
     var plant: Plant?
     
+    let firebaseManager = FirebaseManager.shared
+    
     @IBOutlet weak var plantNameLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerCellWithNib(identifier: String(describing: PlantDetailTableViewCell.self), bundle: nil)
         guard let plant = plant else { return }
         plantNameLabel.text = plant.name
+        favoriteButton.tintColor = plant.favorite ? .red : .gray
     }
     @IBAction func addToFavorite(_ sender: UIButton) {
+        
+        guard var plant = plant else { return }
+        
+        firebaseManager.switchFavoritePlant(plantID: plant.id) { result in
+            
+            switch result {
+                
+            case .success(_):
+                
+                plant.favorite = !plant.favorite
+                
+                self.plant = plant
+                
+                self.favoriteButton.tintColor = plant.favorite ? .red : .gray
+                
+            case .failure(let error):
+                
+                print(error)
+                
+            }
+        }
     }
 }
 

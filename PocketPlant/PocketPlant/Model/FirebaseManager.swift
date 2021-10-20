@@ -56,4 +56,32 @@ class FirebaseManager {
         }
     }
     
+    func switchFavoritePlant(plantID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        let documentRef = db.collection("plant").document(plantID)
+        
+        documentRef.getDocument { document, error in
+            
+            guard let document = document,
+                  document.exists,
+                  var plant = try? document.data(as: Plant.self) else { return }
+            
+            plant.favorite = !plant.favorite
+            
+            do {
+                
+                try documentRef.setData(from: plant)
+                
+                completion(Result.success(true))
+                
+            } catch {
+                
+                print(error)
+                
+                completion(Result.failure(error))
+            }
+        }
+        
+    }
+    
 }
