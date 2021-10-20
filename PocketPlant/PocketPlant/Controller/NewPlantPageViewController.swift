@@ -93,7 +93,7 @@ extension NewPlantPageViewController: InputPlantDelegate {
                       let parentVC = parentNVC.viewControllers.first,
                       let homePageVC = parentVC as? HomePageViewController else { return }
                 
-                homePageVC.updatePlants()
+                homePageVC.updateMyPlants()
             }
         }
     }

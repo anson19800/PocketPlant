@@ -56,6 +56,29 @@ class FirebaseManager {
         }
     }
     
+    func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
+    
+        db.collection("plant")
+            .whereField("favorite", isEqualTo: true)
+            .getDocuments { snapshot, error in
+            
+            if let error = error {
+                
+                completion(Result.failure(error))
+                
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let plant = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: Plant.self)
+            }
+            
+            completion(Result.success(plant))
+        }
+    }
+    
     func switchFavoritePlant(plantID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         let documentRef = db.collection("plant").document(plantID)
