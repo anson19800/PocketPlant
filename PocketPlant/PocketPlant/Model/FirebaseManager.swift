@@ -5,8 +5,9 @@
 //  Created by 邱瀚平 on 2021/10/18.
 //
 
-import Foundation
+import UIKit
 import FirebaseFirestore
+import FirebaseStorage
 
 class FirebaseManager {
     
@@ -14,24 +15,67 @@ class FirebaseManager {
     
     private let db = Firestore.firestore()
     
-    func uploadPlant(plant: inout Plant, isSuccess: @escaping (Bool) -> Void) {
+    func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
         let plantRef = db.collection("plant")
         
         let documentID = plantRef.document().documentID
         
-        plant.id = documentID
+        var uploadPlant = plant
+        
+        uploadPlant.id = documentID
+        
+        uploadImageToGetURL(image: image) { result in
+            switch result {
+            case .success(let urlString):
                 
-        do {
+                uploadPlant.imageURL = urlString
+                
+                do {
+                    
+                    try plantRef.document(documentID).setData(from: uploadPlant)
+                    
+                    isSuccess(true)
+                    
+                } catch {
+                    
+                    isSuccess(false)
+                    
+                }
+                
+            case .failure(let error):
+                
+                print(error)
+                
+            }
+        }
+                
+        
+    }
+    
+    func uploadImageToGetURL(image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let uniqueString = NSUUID().uuidString
+        
+        let storageRef = Storage.storage().reference().child("plantPhoto").child("\(uniqueString).jpg")
+        
+        let metadata = StorageMetadata()
+        
+        metadata.contentType = "image/jpg"
+        
+        if let uploadData =  image.scale(newWidth: 100).pngData() {
             
-            try plantRef.document(documentID).setData(from: plant)
+            let uploadTask = storageRef.putData(uploadData, metadata: nil)
             
-            isSuccess(true)
-            
-        } catch {
-            
-            isSuccess(false)
-            
+            uploadTask.observe(.success) { snapshot in
+                snapshot.reference.downloadURL { url, error in
+                    guard let url = url else {
+                        return
+                    }
+                    
+                    completion(Result.success(url.absoluteString))
+                }
+            }
         }
     }
     

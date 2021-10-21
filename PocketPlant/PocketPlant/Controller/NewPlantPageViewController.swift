@@ -7,6 +7,7 @@
 
 import UIKit
 import PhotosUI
+import FirebaseStorage
 
 class NewPlantPageViewController: UIViewController {
 
@@ -125,7 +126,9 @@ extension NewPlantPageViewController: InputPlantDelegate {
     
     func addNewPlant(plant: inout Plant) {
         
-        firebaseManager.uploadPlant(plant: &plant) { isSuccess in
+        guard let image = self.plantImageView.image else { return }
+        
+        self.firebaseManager.uploadPlant(plant: &plant, image: image) { isSuccess in
             
             if isSuccess {
                 
@@ -137,8 +140,12 @@ extension NewPlantPageViewController: InputPlantDelegate {
                 
                 homePageVC.updateMyPlants()
             }
+            
         }
+        
     }
+    
+
 }
 
 @available(iOS 14, *)

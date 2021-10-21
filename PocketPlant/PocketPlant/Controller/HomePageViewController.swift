@@ -154,9 +154,10 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             )
             
             guard let plantCell = cell as? PlantCollectionViewCell,
-                  let plants = self.plants else { return cell }
+                  let plants = self.plants,
+                  let imageURL = plants[indexPath.row].imageURL else { return cell }
             
-            plantCell.layoutCell(image: UIImage(named: "plant")!,
+            plantCell.layoutCell(imageURL: imageURL,
                                  name: plants[indexPath.row].name)
             
             return plantCell

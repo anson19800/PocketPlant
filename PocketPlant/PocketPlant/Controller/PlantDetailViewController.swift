@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PlantDetailViewController: UIViewController {
     
@@ -21,14 +22,27 @@ class PlantDetailViewController: UIViewController {
     let firebaseManager = FirebaseManager.shared
     
     @IBOutlet weak var plantNameLabel: UILabel!
+    @IBOutlet weak var plantCategoryLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
+    @IBOutlet weak var plantPhotoImageView: UIImageView!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         tableView.registerCellWithNib(identifier: String(describing: PlantDetailTableViewCell.self), bundle: nil)
-        guard let plant = plant else { return }
+        
+        guard let plant = plant,
+              let imageUrl = plant.imageURL else { return }
+        
         plantNameLabel.text = plant.name
+        
+        plantCategoryLabel.text = plant.category
+        
         favoriteButton.tintColor = plant.favorite ? .red : .gray
+        
+        plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
     }
     @IBAction func addToFavorite(_ sender: UIButton) {
         
