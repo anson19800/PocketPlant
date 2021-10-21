@@ -160,12 +160,45 @@ class HomePageViewController: UIViewController {
         plantCollectionView.deleteItems(at: [indexPath])
     }
     
+    func editPlantAction(indexPath: IndexPath) {
+        
+        guard let plants = plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        performSegue(withIdentifier: "editPlant", sender: plant)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let destinationVC = segue.destination as? PlantDetailViewController,
-              let plant = sender as? Plant else { return }
-        
-        destinationVC.plant = plant
+        switch segue.identifier {
+            
+        case "showPlantDetail":
+            
+            guard let destinationVC = segue.destination as? PlantDetailViewController,
+                  let plant = sender as? Plant else { return }
+            
+            destinationVC.plant = plant
+            
+        case "createPlant":
+            
+            guard let destinationVC = segue.destination as? NewPlantPageViewController else { return }
+            
+            destinationVC.pageMode = .create
+            
+        case "editPlant":
+            
+            guard let destinationNVC = segue.destination as? UINavigationController,
+                  let destinationVC = destinationNVC.viewControllers.first as? NewPlantPageViewController,
+                  let plant = sender as? Plant else { return }
+            
+            destinationVC.pageMode = .edit(editedPlant: plant)
+            
+        default:
+            
+            break
+        }
     }
     
 }
@@ -297,7 +330,15 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             }
             
-            return UIMenu(title: "", children: [deleteAction])
+            let editAction = UIAction(title: "編輯",
+                                      image: nil,
+                                      attributes: .destructive) { _ in
+                
+                self.editPlantAction(indexPath: indexPath)
+                
+            }
+            
+            return UIMenu(title: "", children: [deleteAction, editAction])
         }
         
     }

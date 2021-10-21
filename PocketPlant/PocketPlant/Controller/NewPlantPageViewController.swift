@@ -8,9 +8,19 @@
 import UIKit
 import PhotosUI
 import FirebaseStorage
+import Kingfisher
+
+enum NewPlantPageMode {
+    case edit(editedPlant: Plant)
+    case create
+}
 
 class NewPlantPageViewController: UIViewController {
+    
+    var pageMode: NewPlantPageMode = .create
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var uploadImageButton: UIButton! {
         didSet {
             uploadImageButton.layer.borderWidth = 2
@@ -52,6 +62,39 @@ class NewPlantPageViewController: UIViewController {
         tableView.registerCellWithNib(
             identifier: String(describing: InputPlantTableViewCell.self),
             bundle: nil)
+        
+        switch pageMode {
+        case .edit(let editedPlant):
+            
+            guard let imageURL = editedPlant.imageURL else { return }
+            
+            plantImageView.kf.setImage(with: URL(string: imageURL))
+            
+            titleLabel.text = "編輯植物"
+            
+        case .create:
+            
+            titleLabel.text = "新增植物"
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        switch pageMode {
+        case .edit(let editedPlant):
+            
+            guard let imageURL = editedPlant.imageURL else { return }
+            
+            plantImageView.kf.setImage(with: URL(string: imageURL))
+            
+            titleLabel.text = "編輯植物"
+            
+        case .create:
+            
+            titleLabel.text = "新增植物"
+        }
     }
     
     @IBAction func uploadImageAction(_ sender: Any) {
@@ -118,6 +161,17 @@ extension NewPlantPageViewController: UITableViewDelegate, UITableViewDataSource
         
         inputCell.delegate = self
         
+        switch pageMode {
+            
+        case .edit(editedPlant: let editedPlant):
+            
+            inputCell.layoutCell(plant: editedPlant)
+            
+        case .create:
+            
+            break
+        }
+        
         return inputCell
     }
 }
@@ -128,23 +182,31 @@ extension NewPlantPageViewController: InputPlantDelegate {
         
         guard let image = self.plantImageView.image else { return }
         
-        self.firebaseManager.uploadPlant(plant: &plant, image: image) { isSuccess in
+        switch pageMode {
             
-            if isSuccess {
+        case .create:
+            
+            self.firebaseManager.uploadPlant(plant: &plant, image: image) { isSuccess in
                 
-                self.dismiss(animated: true, completion: nil)
+                if isSuccess {
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    guard let parentNVC = self.presentingViewController as? UINavigationController,
+                          let parentVC = parentNVC.viewControllers.first,
+                          let homePageVC = parentVC as? HomePageViewController else { return }
+                    
+                    homePageVC.updateMyPlants(withAnimation: false)
+                }
                 
-                guard let parentNVC = self.presentingViewController as? UINavigationController,
-                      let parentVC = parentNVC.viewControllers.first,
-                      let homePageVC = parentVC as? HomePageViewController else { return }
-                
-                homePageVC.updateMyPlants(withAnimation: false)
             }
             
+        case .edit:
+            
+            break
+            
         }
-        
     }
-    
 }
 
 @available(iOS 14, *)

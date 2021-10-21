@@ -47,7 +47,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="plus" catalog="system"/>
                                         <connections>
-                                            <segue destination="5ce-AY-Dhb" kind="presentation" id="eDb-fk-ScE"/>
+                                            <segue destination="5ce-AY-Dhb" kind="presentation" identifier="createPlant" id="eDb-fk-ScE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -147,6 +147,7 @@
                         <outlet property="plantCollectionView" destination="iFC-IX-pb8" id="X41-XB-Clo"/>
                         <outlet property="qrcodeButton" destination="QpB-Pp-zi3" id="b5Y-su-yAT"/>
                         <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
+                        <segue destination="5ce-AY-Dhb" kind="presentation" identifier="editPlant" id="TN7-OC-vVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -161,7 +162,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="js3-5v-7Ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360.8695652173915" y="-43.526785714285715"/>
+            <point key="canvasLocation" x="2677" y="-110"/>
         </scene>
         <!--PlantDetailPage-->
         <scene sceneID="6os-Se-7I5">
@@ -171,7 +172,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXg-s3-s9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360" y="145"/>
+            <point key="canvasLocation" x="2780" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="klP-0w-elY">
@@ -192,6 +193,9 @@
             <point key="canvasLocation" x="939.13043478260875" y="60.9375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TN7-OC-vVQ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>

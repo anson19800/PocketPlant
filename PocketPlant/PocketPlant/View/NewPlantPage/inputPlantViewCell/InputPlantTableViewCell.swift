@@ -184,4 +184,83 @@ class InputPlantTableViewCell: UITableViewCell {
         delegate.addNewPlant(plant: &plant)
     }
     
+    func layoutCell(plant: Plant) {
+        nameTextField.text = plant.name
+        categoryTextField.text = plant.category
+        
+        switch plant.water {
+            
+        case 1:
+            
+            waterLevel = .one
+            waterLevel1.tintColor = .blue
+            waterLevel2.tintColor = .gray
+            waterLevel3.tintColor = .gray
+            
+        case 2:
+            
+            waterLevel = .two
+            waterLevel1.tintColor = .blue
+            waterLevel2.tintColor = .blue
+            waterLevel3.tintColor = .gray
+            
+        case 3:
+            
+            waterLevel = .three
+            waterLevel1.tintColor = .blue
+            waterLevel2.tintColor = .blue
+            waterLevel3.tintColor = .blue
+            
+        default:
+            waterLevel = .one
+            waterLevel1.tintColor = .blue
+            waterLevel2.tintColor = .gray
+            waterLevel3.tintColor = .gray
+        }
+        
+        switch plant.light {
+            
+        case 1:
+            
+            lightLevel = .one
+            lightLevel1.tintColor = .orange
+            lightLevel2.tintColor = .gray
+            lightLevel3.tintColor = .gray
+            
+        case 2:
+            
+            lightLevel = .two
+            lightLevel1.tintColor = .orange
+            lightLevel2.tintColor = .orange
+            lightLevel3.tintColor = .gray
+            
+        case 3:
+            
+            lightLevel = .three
+            lightLevel1.tintColor = .orange
+            lightLevel2.tintColor = .orange
+            lightLevel3.tintColor = .orange
+            
+        default:
+            
+            lightLevel = .one
+            lightLevel1.tintColor = .orange
+            lightLevel2.tintColor = .gray
+            lightLevel3.tintColor = .gray
+            
+        }
+        
+        temperature = plant.temperature
+        tempSlider.value = Float(plant.temperature) / 100.0
+        humidity = plant.humidity
+        humiditySlider.value = Float(plant.humidity) / 100.0
+        
+        buyTimePicker.date = Date(timeIntervalSince1970: plant.buyTime)
+        buyPlaceTextField.text = plant.buyPlace
+        buyPriceTextField.text = String(plant.buyPrice)
+        
+        descriptionTextView.text = plant.description
+        
+    }
+    
 }
