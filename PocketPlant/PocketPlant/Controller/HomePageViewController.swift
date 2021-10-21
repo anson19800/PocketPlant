@@ -40,6 +40,7 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         plantCollectionView.delegate = self
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
@@ -144,8 +145,32 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    func deletePlantAction(indexPath: IndexPath) {
+        
+        guard var plants = plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        plants.remove(at: indexPath.row)
+        
+        self.plants = plants
+
+        firebaseManager.deletePlant(plant: plant)
+        
+        plantCollectionView.deleteItems(at: [indexPath])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let destinationVC = segue.destination as? PlantDetailViewController,
+              let plant = sender as? Plant else { return }
+        
+        destinationVC.plant = plant
+    }
+    
 }
 
+// MARK: - CollectionViewDelegate & CollectionViewDataSource
 extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -259,12 +284,22 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        guard let destinationVC = segue.destination as? PlantDetailViewController,
-              let plant = sender as? Plant else { return }
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            
+            let deleteAction = UIAction(title: "刪除",
+                                        image: UIImage(systemName: "trash"),
+                                        attributes: .destructive) { _ in
+                
+                self.deletePlantAction(indexPath: indexPath)
+                
+            }
+            
+            return UIMenu(title: "", children: [deleteAction])
+        }
         
-        destinationVC.plant = plant
     }
     
 }

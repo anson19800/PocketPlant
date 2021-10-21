@@ -150,6 +150,7 @@ extension NewPlantPageViewController: InputPlantDelegate {
 @available(iOS 14, *)
 extension NewPlantPageViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
         picker.dismiss(animated: true, completion: nil)
         
         let itemProviders = results.map(\.itemProvider)
