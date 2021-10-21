@@ -37,13 +37,13 @@ class InputPlantTableViewCell: UITableViewCell {
     @IBOutlet weak var tempLabel: PaddingLabel!
     @IBOutlet weak var humidityLabel: PaddingLabel!
     
-    var temperature: Int = 0 {
+    var temperature: Int = 25 {
         didSet {
             tempLabel.text = "\(temperature)°C"
         }
     }
     
-    var humidity: Int = 0 {
+    var humidity: Int = 25 {
         didSet {
             humidityLabel.text = "\(humidity)%"
         }

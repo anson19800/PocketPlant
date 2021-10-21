@@ -138,14 +138,13 @@ extension NewPlantPageViewController: InputPlantDelegate {
                       let parentVC = parentNVC.viewControllers.first,
                       let homePageVC = parentVC as? HomePageViewController else { return }
                 
-                homePageVC.updateMyPlants()
+                homePageVC.updateMyPlants(withAnimation: false)
             }
             
         }
         
     }
     
-
 }
 
 @available(iOS 14, *)
@@ -158,7 +157,7 @@ extension NewPlantPageViewController: PHPickerViewControllerDelegate {
         if let itemProvider = itemProviders.first,
            itemProvider.canLoadObject(ofClass: UIImage.self) {
             
-            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
                 
                 DispatchQueue.main.async {
                     
