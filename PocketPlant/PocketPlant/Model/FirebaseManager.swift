@@ -13,11 +13,11 @@ class FirebaseManager {
     
     static let shared = FirebaseManager()
     
-    private let db = Firestore.firestore()
+    private let dataBase = Firestore.firestore()
     
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
-        let plantRef = db.collection("plant")
+        let plantRef = dataBase.collection("plant")
         
         let documentID = plantRef.document().documentID
         
@@ -26,10 +26,14 @@ class FirebaseManager {
         uploadPlant.id = documentID
         
         uploadImageToGetURL(image: image) { result in
+            
             switch result {
-            case .success(let urlString):
+                
+            case .success(let (uuid, urlString)):
                 
                 uploadPlant.imageURL = urlString
+                
+                uploadPlant.imageID = uuid
                 
                 do {
                     
@@ -50,10 +54,9 @@ class FirebaseManager {
             }
         }
                 
-        
     }
     
-    func uploadImageToGetURL(image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
+    func uploadImageToGetURL(image: UIImage, completion: @escaping (Result<(uuid: String, url: String), Error>) -> Void) {
         
         let uniqueString = NSUUID().uuidString
         
@@ -68,12 +71,12 @@ class FirebaseManager {
             let uploadTask = storageRef.putData(uploadData, metadata: nil)
             
             uploadTask.observe(.success) { snapshot in
-                snapshot.reference.downloadURL { url, error in
+                snapshot.reference.downloadURL { url, _ in
                     guard let url = url else {
                         return
                     }
                     
-                    completion(Result.success(url.absoluteString))
+                    completion(Result.success((uniqueString, url.absoluteString)))
                 }
             }
         }
@@ -81,7 +84,7 @@ class FirebaseManager {
     
     func fetchPlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
-        db.collection("plant").order(by: "buyTime", descending: true).getDocuments { snapshot, error in
+        dataBase.collection("plant").order(by: "buyTime", descending: true).getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -102,7 +105,7 @@ class FirebaseManager {
     
     func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
-        db.collection("plant")
+        dataBase.collection("plant")
             .whereField("favorite", isEqualTo: true)
             .getDocuments { snapshot, error in
             
@@ -125,7 +128,7 @@ class FirebaseManager {
     
     func switchFavoritePlant(plantID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        let documentRef = db.collection("plant").document(plantID)
+        let documentRef = dataBase.collection("plant").document(plantID)
         
         documentRef.getDocument { document, error in
             

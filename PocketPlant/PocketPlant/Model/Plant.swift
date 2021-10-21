@@ -27,5 +27,6 @@ struct Plant: Identifiable, Codable {
     var favorite: Bool
     let ownerID: Int
     let isPublic: Bool
+    var imageID: String?
     var imageURL: String?
 }
