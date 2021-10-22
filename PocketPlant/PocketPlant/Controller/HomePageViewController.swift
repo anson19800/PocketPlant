@@ -228,6 +228,15 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        
+        guard let dropView = sender.view else { return }
+        
+        let translation = sender.translation(in: view)
+        dropView.center.x += translation.x
+        dropView.center.y += translation.y
+        sender.setTranslation(.zero, in: view)
+    }
 }
 
 // MARK: - CollectionViewDelegate & CollectionViewDataSource

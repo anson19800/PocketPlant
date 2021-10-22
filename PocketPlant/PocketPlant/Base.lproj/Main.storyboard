@@ -117,6 +117,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-jp-GEC">
+                                <rect key="frame" x="300" y="773.5" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HHa-79-Hrb" appends="YES" id="aQz-Si-cQt"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -152,6 +160,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="HHa-79-Hrb">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="eNE-FS-h7I"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1849.2753623188407" y="60.9375"/>
         </scene>
@@ -198,6 +211,7 @@
         <segue reference="TN7-OC-vVQ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="drop.fill" catalog="system" width="101" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
