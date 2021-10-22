@@ -27,6 +27,11 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var headerBackground: UIView! {
+        didSet {
+            headerBackground.layer.cornerRadius = 5
+        }
+    }
     @IBOutlet weak var plantCollectionView: UICollectionView!
     
     @IBOutlet weak var buttonCollectionView: UICollectionView!
@@ -232,13 +237,6 @@ class HomePageViewController: UIViewController {
         
         guard let dropView = sender.view else { return }
         
-        var originalPoint: CGPoint?
-        
-        if sender.state == .began {
-            originalPoint = dropView.center
-            print(originalPoint)
-        }
-        
         let translation = sender.translation(in: view)
         dropView.center.x += translation.x
         dropView.center.y += translation.y
@@ -252,17 +250,15 @@ class HomePageViewController: UIViewController {
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
                let plants = self.plants {
                 let plantName = plants[indexPath.row].name
-                print(plantName)
                 waterAlert(plantName: plantName)
             }
         }
-        
     }
     
     func waterAlert(plantName: String) {
         
-        let controller = UIAlertController(title: "\(plantName)澆水囉",
-                                           message: "還敢對\(plantName)澆水啊!",
+        let controller = UIAlertController(title: "已紀錄",
+                                           message: "對\(plantName)澆水",
                                            preferredStyle: .alert)
         let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
         controller.addAction(okAction)
