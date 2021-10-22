@@ -18,6 +18,10 @@ enum NewPlantPageMode {
 class NewPlantPageViewController: UIViewController {
     
     var pageMode: NewPlantPageMode = .create
+    
+    let imageManager = ImageManager.shared
+    
+    let firebaseManager = FirebaseManager.shared
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -53,8 +57,6 @@ class NewPlantPageViewController: UIViewController {
             tableView.dataSource = self
         }
     }
-    
-    let firebaseManager = FirebaseManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,10 +203,49 @@ extension NewPlantPageViewController: InputPlantDelegate {
                 
             }
             
-        case .edit:
+        case .edit(let editPlant):
             
-            break
+            var newPlant = plant
             
+            newPlant.id = editPlant.id
+            
+            imageManager.deleteImage(imageID: editPlant.imageID!)
+            
+            imageManager.uploadImageToGetURL(image: image) { result in
+                
+                switch result {
+                    
+                case .success((let uuid, let url)):
+                    
+                    newPlant.imageID = uuid
+                    
+                    newPlant.imageURL = url
+                    
+                    self.firebaseManager.updatePlant(plant: newPlant) { result in
+                        
+                        switch result {
+                        case .success:
+                            
+                            self.dismiss(animated: true, completion: nil)
+                            
+                            guard let parentNVC = self.presentingViewController as? UINavigationController,
+                                  let parentVC = parentNVC.viewControllers.first,
+                                  let homePageVC = parentVC as? HomePageViewController else { return }
+                            
+                            homePageVC.updateMyPlants(withAnimation: false)
+                            
+                        case .failure(let error):
+                            
+                            print(error)
+                            
+                        }
+                    }
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
         }
     }
 }
@@ -237,7 +278,8 @@ extension NewPlantPageViewController: PHPickerViewControllerDelegate {
 
 extension NewPlantPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             

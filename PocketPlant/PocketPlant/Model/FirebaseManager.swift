@@ -140,4 +140,28 @@ class FirebaseManager {
         documentRef.delete()
     }
     
+    func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
+        
+        let documentRef = dataBase.collection("plant").document(plant.id)
+        
+        documentRef.getDocument { document, error in
+            guard let document = document,
+                  document.exists else { return }
+            
+            do {
+                
+                try documentRef.setData(from: plant)
+                
+                isSuccess(Result.success(true))
+                
+            } catch {
+                
+                print(error)
+                
+                isSuccess(Result.failure(error))
+                
+            }
+        }
+    }
+    
 }
