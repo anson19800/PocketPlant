@@ -14,6 +14,12 @@ enum HomePageButton: String, CaseIterable {
 
 class HomePageViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.autocapitalizationType = .none
+        }
+    }
+    
     @IBOutlet weak var plantCollectionView: UICollectionView!
     
     @IBOutlet weak var buttonCollectionView: UICollectionView!
@@ -34,6 +40,10 @@ class HomePageViewController: UIViewController {
     
     var plants: [Plant]?
     
+    var searchPlants: [Plant]?
+    
+    var searching: Bool = false
+    
     var isSelectedAt: HomePageButton = .myPlant
     
     @IBOutlet weak var plantCollectionTitle: UILabel!
@@ -45,6 +55,8 @@ class HomePageViewController: UIViewController {
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
+        
+        searchBar.delegate = self
         
         buttonCollectionView.registerCellWithNib(
             identifier: String(describing: ButtonCollectionViewCell.self),
@@ -214,9 +226,19 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
         } else {
             
-            guard let plants = self.plants else { return 0 }
-            
-            return plants.count
+            if searching {
+                
+                guard let searchPlants = self.searchPlants else { return 0 }
+                
+                return searchPlants.count
+                
+            } else {
+                
+                guard let plants = self.plants else { return 0 }
+                
+                return plants.count
+                
+            }
         }
     }
     
@@ -251,14 +273,31 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 for: indexPath
             )
             
-            guard let plantCell = cell as? PlantCollectionViewCell,
-                  let plants = self.plants,
-                  let imageURL = plants[indexPath.row].imageURL else { return cell }
+            guard let plantCell = cell as? PlantCollectionViewCell else { return cell }
             
-            plantCell.layoutCell(imageURL: imageURL,
-                                 name: plants[indexPath.row].name)
-            
-            return plantCell
+            if searching {
+                
+                guard let searchPlants = self.searchPlants,
+                      let imageURL = searchPlants[indexPath.row].imageURL
+                else { return cell }
+                
+                plantCell.layoutCell(imageURL: imageURL,
+                                     name: searchPlants[indexPath.row].name)
+                
+                return plantCell
+                
+            } else {
+                
+                guard let plants = self.plants,
+                      let imageURL = plants[indexPath.row].imageURL
+                else { return cell }
+                
+                plantCell.layoutCell(imageURL: imageURL,
+                                     name: plants[indexPath.row].name)
+                
+                return plantCell
+            }
+           
         }
         
         return UICollectionViewCell()
@@ -309,6 +348,8 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                     
                 }
                 
+                searching = false
+                
                 updateMyFavoritePlants(withAnimation: true)
                 
                 self.isSelectedAt = .myFavorite
@@ -340,7 +381,37 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             return UIMenu(title: "", children: [deleteAction, editAction])
         }
+    }
+}
+
+extension HomePageViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        guard let plants = plants else { return }
+        
+        searchPlants = plants.filter { plant -> Bool in
+            
+            return plant.name.prefix(searchText.count) == searchText
+            
+        }
+        
+        searching = true
+        
+        self.plantCollectionView.performBatchUpdates({
+            let indexSet = IndexSet(integersIn: 0...0)
+            self.plantCollectionView.reloadSections(indexSet)
+        }, completion: nil)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        searching = false
+        
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+    }
 }
