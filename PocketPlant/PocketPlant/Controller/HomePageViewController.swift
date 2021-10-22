@@ -232,10 +232,41 @@ class HomePageViewController: UIViewController {
         
         guard let dropView = sender.view else { return }
         
+        var originalPoint: CGPoint?
+        
+        if sender.state == .began {
+            originalPoint = dropView.center
+            print(originalPoint)
+        }
+        
         let translation = sender.translation(in: view)
         dropView.center.x += translation.x
         dropView.center.y += translation.y
         sender.setTranslation(.zero, in: view)
+        
+        if sender.state == .ended {
+            
+            let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
+            dropView.center = CGPoint(x: 300, y: 770)
+            
+            if let indexPath = plantCollectionView.indexPathForItem(at: point),
+               let plants = self.plants {
+                let plantName = plants[indexPath.row].name
+                print(plantName)
+                waterAlert(plantName: plantName)
+            }
+        }
+        
+    }
+    
+    func waterAlert(plantName: String) {
+        
+        let controller = UIAlertController(title: "\(plantName)澆水囉",
+                                           message: "還敢對\(plantName)澆水啊!",
+                                           preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
     }
 }
 
@@ -445,3 +476,4 @@ extension HomePageViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
 }
+
