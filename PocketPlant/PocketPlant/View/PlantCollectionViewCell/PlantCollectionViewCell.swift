@@ -14,7 +14,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
         didSet {
             plantImageView.layer.cornerRadius = 5
             plantImageView.layer.borderWidth = 1
-            plantImageView.layer.borderColor = UIColor.lightGray.cgColor
+            plantImageView.layer.borderColor = UIColor.hexStringToUIColor(hex: "DFEFDF").cgColor
         }
         
     }
@@ -22,11 +22,6 @@ class PlantCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.layer.cornerRadius = 8
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.hexStringToUIColor(hex: "D9E5D9").cgColor
     }
 
     func layoutCell(imageURL: String, name: String) {

@@ -394,14 +394,13 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             }
             
             let editAction = UIAction(title: "編輯",
-                                      image: nil,
-                                      attributes: .destructive) { _ in
+                                      image: nil) { _ in
                 
                 self.editPlantAction(indexPath: indexPath)
                 
             }
             
-            return UIMenu(title: "", children: [deleteAction, editAction])
+            return UIMenu(title: "", children: [editAction, deleteAction])
         }
     }
 }
