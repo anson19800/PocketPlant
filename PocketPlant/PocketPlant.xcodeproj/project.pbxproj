@@ -22,6 +22,13 @@
 		CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */; };
 		CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC33271D980F001E3C37 /* Plant.swift */; };
 		CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */; };
+		CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */; };
+		CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */; };
+		CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */; };
+		CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */; };
+		CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */; };
+		CBF7AC44271E8DCD001E3C37 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC43271E8DCD001E3C37 /* UILabel+Extension.swift */; };
+		CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */; };
 		E633471A87BF914363C32DA1 /* Pods_PocketPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +53,13 @@
 		CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CBF7AC33271D980F001E3C37 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlantPage.storyboard; sourceTree = "<group>"; };
+		CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlantPageViewController.swift; sourceTree = "<group>"; };
+		CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPlantTableViewCell.swift; sourceTree = "<group>"; };
+		CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPlantTableViewCell.xib; sourceTree = "<group>"; };
+		CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		CBF7AC43271E8DCD001E3C37 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +139,8 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CBF7AC23271D5D26001E3C37 /* Plant */,
+				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
+				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
 				CBF7AC22271D5D11001E3C37 /* HomePage */,
 			);
 			path = View;
@@ -135,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */,
+				CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,22 +164,43 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
-		CBF7AC23271D5D26001E3C37 /* Plant */ = {
+		CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				CBF7AC24271D5D46001E3C37 /* PlantCollectionViewCell.swift */,
 				CBF7AC25271D5D46001E3C37 /* PlantCollectionViewCell.xib */,
 			);
-			path = Plant;
+			path = PlantCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		CBF7AC30271D773B001E3C37 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				CBF7AC2E271D6A77001E3C37 /* UICollectionView+Extension.swift */,
+				CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */,
 				CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */,
+				CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */,
+				CBF7AC43271E8DCD001E3C37 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		CBF7AC37271E71A4001E3C37 /* NewPlantPage */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC3C271E77AD001E3C37 /* inputPlantViewCell */,
+				CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */,
+			);
+			path = NewPlantPage;
+			sourceTree = "<group>";
+		};
+		CBF7AC3C271E77AD001E3C37 /* inputPlantViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */,
+				CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */,
+			);
+			path = inputPlantViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +267,10 @@
 				CBF7AC27271D5D46001E3C37 /* PlantCollectionViewCell.xib in Resources */,
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
 				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
+				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
+				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
 				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,14 +341,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
 				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
+				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
 				CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */,
+				CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */,
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
+				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
+				CBF7AC44271E8DCD001E3C37 /* UILabel+Extension.swift in Sources */,
 				CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

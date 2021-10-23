@@ -14,7 +14,7 @@ class FirebaseManager {
     
     private let db = Firestore.firestore()
     
-    func addArticle(plant: inout Plant) {
+    func uploadPlant(plant: inout Plant) {
         
         let plantRef = db.collection("plant")
         
@@ -35,9 +35,9 @@ class FirebaseManager {
         }
     }
     
-    func getArticle(completion: @escaping (Result<[Plant], Error>) -> Void) {
+    func fetchPlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
-        db.collection("plant").getDocuments { snapshot, error in
+        db.collection("plant").order(by: "buyTime", descending: true).getDocuments { snapshot, error in
             
             if let error = error {
                 

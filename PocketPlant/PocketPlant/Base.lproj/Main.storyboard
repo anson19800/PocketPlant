@@ -47,7 +47,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="plus" catalog="system"/>
                                         <connections>
-                                            <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yev-Fr-SL9"/>
+                                            <segue destination="5ce-AY-Dhb" kind="presentation" id="eDb-fk-ScE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -101,7 +101,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
                                 <rect key="frame" x="35" y="299" width="344" height="563"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -140,6 +140,7 @@
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="rt7-Cg-FS0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="LpM-Bc-Hwe"/>
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
@@ -149,7 +150,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28.985507246376812" y="60.9375"/>
+            <point key="canvasLocation" x="939.13043478260875" y="60.9375"/>
+        </scene>
+        <!--NewPlantPage-->
+        <scene sceneID="gh4-fU-HLf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewPlantPage" id="5ce-AY-Dhb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="18k-UY-GuK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="js3-5v-7Ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1450.7246376811595" y="-43.526785714285715"/>
         </scene>
     </scenes>
     <resources>
