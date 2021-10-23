@@ -58,6 +58,8 @@ class HomePageViewController: UIViewController {
     
     var isSelectedAt: HomePageButton = .myPlant
     
+    @IBOutlet weak var waterImageView: UIImageView!
+    
     @IBOutlet weak var plantCollectionTitle: UILabel!
     
     override func viewDidLoad() {
@@ -79,6 +81,10 @@ class HomePageViewController: UIViewController {
             bundle: nil)
         
         updateMyPlants(withAnimation: false)
+        
+        let viewWidth = view.bounds.width
+        let viewHeight = view.bounds.height
+        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -233,6 +239,28 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        
+        guard let plants = plants else { return }
+        
+        var waterCount = 0
+        plants.forEach({ plant in
+            firebaseManager.updateWater(plantID: plant.id) { isSuccess in
+                if isSuccess {
+                    waterCount += 1
+                    print("\(waterCount) / \(plants.count)")
+                }
+            }
+        })
+        
+        let controller = UIAlertController(title: "一鍵澆水",
+                                           message: "對畫面上所有植物澆水",
+                                           preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+        
+    }
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
         
         guard let dropView = sender.view else { return }
@@ -245,7 +273,15 @@ class HomePageViewController: UIViewController {
         if sender.state == .ended {
             
             let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
-            dropView.center = CGPoint(x: 300, y: 770)
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                let safeX = self.view.bounds.size.width - 50
+                let safeY = self.view.bounds.size.height - 50
+                
+                dropView.center = CGPoint(x: safeX, y: safeY)
+                
+            }, completion: nil)
             
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
                let plants = self.plants {
@@ -253,8 +289,11 @@ class HomePageViewController: UIViewController {
                 let plantID = plants[indexPath.row].id
                 
                 firebaseManager.updateWater(plantID: plantID) { isSuccess in
+                    
                     if isSuccess {
+                        
                         self.waterAlert(plantName: plantName)
+                        
                     } else {
                         // failure action
                     }
@@ -480,4 +519,3 @@ extension HomePageViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
 }
-
