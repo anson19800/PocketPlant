@@ -79,7 +79,7 @@ class HomePageViewController: UIViewController {
         plantCollectionView.registerCellWithNib(
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
-        
+        buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
         updateMyPlants(withAnimation: false)
         
         let viewWidth = view.bounds.width
@@ -356,12 +356,6 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             )
             
             guard let buttonCell = cell as? ButtonCollectionViewCell else { return cell }
-            
-            if indexPath.row == 0 {
-                
-                buttonCell.selectedLayout()
-                
-            }
             
             let title = HomePageButton.allCases[indexPath.row].rawValue
             
