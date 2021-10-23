@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Death Plant View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DeathPlantViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnn-BH-Iqx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="死亡紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6H-UY-SrI">
+                                        <rect key="frame" x="33" y="50" width="101.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" red="0.12931125600000001" green="0.1663883229" blue="0.13009218040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0I-Nf-XTT">
+                                        <rect key="frame" x="349" y="49.5" width="35" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="Cko-Cc-bWN"/>
+                                            <constraint firstAttribute="height" constant="35" id="SBV-mJ-zRH"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="plus" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.6900521033" green="0.87055634260000003" blue="0.7231718842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="0Pm-Wh-4lI"/>
+                                    <constraint firstItem="f6H-UY-SrI" firstAttribute="leading" secondItem="mnn-BH-Iqx" secondAttribute="leading" constant="33" id="Ebv-Xj-ghp"/>
+                                    <constraint firstAttribute="trailing" secondItem="U0I-Nf-XTT" secondAttribute="trailing" constant="30" id="Tut-Ay-ka3"/>
+                                    <constraint firstItem="U0I-Nf-XTT" firstAttribute="centerY" secondItem="f6H-UY-SrI" secondAttribute="centerY" id="j1R-4E-gPG"/>
+                                    <constraint firstItem="f6H-UY-SrI" firstAttribute="top" secondItem="mnn-BH-Iqx" secondAttribute="top" constant="50" id="mEK-I4-98B"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plant" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-45-I7B">
+                                <rect key="frame" x="20" y="180" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Htd-wf-3Y2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="十二之卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVA-N3-h98">
+                                <rect key="frame" x="20" y="400" width="122" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.10.20 - 2021.10.22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24G-88-1Q7">
+                                <rect key="frame" x="20" y="446" width="181" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSY-Gz-k0X" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="517" width="374" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="qxx-vl-n6b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hSY-Gz-k0X" firstAttribute="top" secondItem="24G-88-1Q7" secondAttribute="bottom" constant="50" id="AtM-er-iia"/>
+                            <constraint firstItem="24G-88-1Q7" firstAttribute="top" secondItem="LVA-N3-h98" secondAttribute="bottom" constant="10" id="BJA-wd-OWn"/>
+                            <constraint firstItem="mnn-BH-Iqx" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Eg4-sx-pAC"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Gyh-45-I7B" secondAttribute="trailing" constant="20" id="EuM-Ni-tvl"/>
+                            <constraint firstItem="LVA-N3-h98" firstAttribute="top" secondItem="Gyh-45-I7B" secondAttribute="bottom" constant="20" id="O5V-g4-OIH"/>
+                            <constraint firstItem="mnn-BH-Iqx" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ai5-X0-g6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="mnn-BH-Iqx" secondAttribute="trailing" id="eke-qy-uqD"/>
+                            <constraint firstItem="Gyh-45-I7B" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="iYC-BG-Cj8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hSY-Gz-k0X" secondAttribute="trailing" constant="20" id="kiz-2N-5sC"/>
+                            <constraint firstItem="24G-88-1Q7" firstAttribute="leading" secondItem="LVA-N3-h98" secondAttribute="leading" id="mBf-wc-o3u"/>
+                            <constraint firstItem="Gyh-45-I7B" firstAttribute="top" secondItem="mnn-BH-Iqx" secondAttribute="bottom" constant="50" id="mWk-of-Aeu"/>
+                            <constraint firstItem="hSY-Gz-k0X" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="sFO-b5-90T"/>
+                            <constraint firstItem="LVA-N3-h98" firstAttribute="leading" secondItem="Gyh-45-I7B" secondAttribute="leading" id="tAT-qR-J7j"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lifeTimeLabel" destination="24G-88-1Q7" id="yie-10-9kf"/>
+                        <outlet property="plantImage" destination="Gyh-45-I7B" id="aSu-NN-Rbs"/>
+                        <outlet property="plantNameLabel" destination="LVA-N3-h98" id="l28-5W-kkB"/>
+                        <outlet property="waterBarChart" destination="hSY-Gz-k0X" id="aWZ-wT-tnd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="165"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plant" width="5456" height="3632"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

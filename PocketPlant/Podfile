@@ -15,5 +15,6 @@ target 'PocketPlant' do
   pod 'Kingfisher'
 
   pod 'IQKeyboardManagerSwift'
+  pod 'Charts'
 
 end
