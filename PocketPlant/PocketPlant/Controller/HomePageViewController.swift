@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum HomePageButton: String, CaseIterable {
+    case myPlant = "我的植物"
+    case myFavorite = "最愛植物"
+}
+
 class HomePageViewController: UIViewController {
     
     @IBOutlet weak var plantCollectionView: UICollectionView!
@@ -29,6 +34,8 @@ class HomePageViewController: UIViewController {
     
     var plants: [Plant]?
     
+    @IBOutlet weak var plantCollectionTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         plantCollectionView.delegate = self
@@ -44,16 +51,24 @@ class HomePageViewController: UIViewController {
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
         
-        updatePlants()
+        updateMyPlants()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updatePlants()
+        self.navigationController?.isNavigationBarHidden = true
+        
+        updateMyPlants()
     }
     
-    func updatePlants() {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    func updateMyPlants() {
         
         firebaseManager.fetchPlants { result in
             
@@ -64,6 +79,29 @@ class HomePageViewController: UIViewController {
                 self.plants = plants
                 
                 self.plantCollectionView.reloadData()
+                
+                self.plantCollectionTitle.text = "我的植物"
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
+    func updateMyFavoritePlants() {
+        
+        firebaseManager.fetchFavoritePlants { result in
+            
+            switch result {
+                
+            case .success(let plants):
+                
+                self.plants = plants
+                
+                self.plantCollectionView.reloadData()
+                
+                self.plantCollectionTitle.text = "最愛植物"
                 
             case .failure(let error):
                 
@@ -80,7 +118,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         if collectionView == buttonCollectionView {
             
-            return 4
+            return HomePageButton.allCases.count
             
         } else {
             
@@ -102,7 +140,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             guard let buttonCell = cell as? ButtonCollectionViewCell else { return cell }
             
-            buttonCell.layoutCell(image: UIImage(systemName: "leaf.fill")!, title: "我的植物")
+            let title = HomePageButton.allCases[indexPath.row].rawValue
+            
+            buttonCell.layoutCell(image: UIImage(systemName: "leaf.fill")!, title: title)
             
             return buttonCell
             
@@ -133,6 +173,41 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
         return CGSize(width: width, height: width * 1.8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == plantCollectionView {
+        
+            guard let plants = self.plants else { return }
+        
+            let plant = plants[indexPath.row]
+        
+            performSegue(withIdentifier: "showPlantDetail", sender: plant)
+            
+        } else if collectionView == buttonCollectionView {
+            
+            let buttonType = HomePageButton.allCases[indexPath.row]
+            
+            switch buttonType {
+            case .myPlant:
+                
+                updateMyPlants()
+                
+            case .myFavorite:
+                
+                updateMyFavoritePlants()
+                
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let destinationVC = segue.destination as? PlantDetailViewController,
+              let plant = sender as? Plant else { return }
+        
+        destinationVC.plant = plant
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  UILabel+Extension.swift
+//  UIView+Extension.swift
 //  PocketPlant
 //
 //  Created by 邱瀚平 on 2021/10/19.

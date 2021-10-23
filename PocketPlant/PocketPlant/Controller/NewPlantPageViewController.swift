@@ -11,15 +11,15 @@ class NewPlantPageViewController: UIViewController {
 
     @IBOutlet weak var uploadImageButton: UIButton! {
         didSet {
-            uploadImageButton.layer.borderWidth = 1
-            uploadImageButton.layer.borderColor = UIColor.black.cgColor
+            uploadImageButton.layer.borderWidth = 2
+            uploadImageButton.layer.borderColor = UIColor.lightGray.cgColor
             uploadImageButton.layer.cornerRadius = 20
         }
     }
     @IBOutlet weak var takePhotoButton: UIButton! {
         didSet {
-            takePhotoButton.layer.borderWidth = 1
-            takePhotoButton.layer.borderColor = UIColor.black.cgColor
+            takePhotoButton.layer.borderWidth = 2
+            takePhotoButton.layer.borderColor = UIColor.lightGray.cgColor
             takePhotoButton.layer.cornerRadius = 20
         }
     }
@@ -33,8 +33,11 @@ class NewPlantPageViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
+            
             tableView.dataSource = self
         }
     }
@@ -52,11 +55,6 @@ class NewPlantPageViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
-        
-        guard let parentVC = presentingViewController as? HomePageViewController else { return }
-        
-        parentVC.updatePlants()
-        
     }
     
 }
@@ -85,9 +83,18 @@ extension NewPlantPageViewController: InputPlantDelegate {
     
     func addNewPlant(plant: inout Plant) {
         
-        firebaseManager.uploadPlant(plant: &plant)
-        
-        self.dismiss(animated: true, completion: nil)
-        
+        firebaseManager.uploadPlant(plant: &plant) { isSuccess in
+            
+            if isSuccess {
+                
+                self.dismiss(animated: true, completion: nil)
+                
+                guard let parentNVC = self.presentingViewController as? UINavigationController,
+                      let parentVC = parentNVC.viewControllers.first,
+                      let homePageVC = parentVC as? HomePageViewController else { return }
+                
+                homePageVC.updateMyPlants()
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ struct Plant: Identifiable, Codable {
     let lastWater: TimeInterval?
     let lastFertilizer: TimeInterval?
     let lastSoil: TimeInterval?
-    let favorite: Bool
+    var favorite: Bool
     let ownerID: Int
     let isPublic: Bool
 }

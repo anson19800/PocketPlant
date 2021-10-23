@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d9S-dD-z2i">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -98,7 +98,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
                                 <rect key="frame" x="35" y="299" width="344" height="563"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
@@ -144,13 +144,15 @@
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
+                        <outlet property="plantCollectionTitle" destination="mAh-jK-Wxb" id="JZ0-F4-oxH"/>
                         <outlet property="plantCollectionView" destination="iFC-IX-pb8" id="X41-XB-Clo"/>
                         <outlet property="qrcodeButton" destination="QpB-Pp-zi3" id="b5Y-su-yAT"/>
+                        <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939.13043478260875" y="60.9375"/>
+            <point key="canvasLocation" x="1849.2753623188407" y="60.9375"/>
         </scene>
         <!--NewPlantPage-->
         <scene sceneID="gh4-fU-HLf">
@@ -160,7 +162,35 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="js3-5v-7Ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450.7246376811595" y="-43.526785714285715"/>
+            <point key="canvasLocation" x="2360.8695652173915" y="-43.526785714285715"/>
+        </scene>
+        <!--PlantDetailPage-->
+        <scene sceneID="6os-Se-7I5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlantDetailPage" id="7Nc-8Y-JqE" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HsP-NY-ZH2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXg-s3-s9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2360" y="145"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="klP-0w-elY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d9S-dD-z2i" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FXD-6Z-3As">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="e4E-1I-Le1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vh4-N7-eyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939.13043478260875" y="60.9375"/>
         </scene>
     </scenes>
     <resources>
