@@ -250,7 +250,15 @@ class HomePageViewController: UIViewController {
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
                let plants = self.plants {
                 let plantName = plants[indexPath.row].name
-                waterAlert(plantName: plantName)
+                let plantID = plants[indexPath.row].id
+                
+                firebaseManager.updateWater(plantID: plantID) { isSuccess in
+                    if isSuccess {
+                        self.waterAlert(plantName: plantName)
+                    } else {
+                        // failure action
+                    }
+                }
             }
         }
     }
