@@ -359,7 +359,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             if indexPath.row == 0 {
                 
-                buttonCell.isSelected = true
+                buttonCell.selectedLayout()
                 
             }
             

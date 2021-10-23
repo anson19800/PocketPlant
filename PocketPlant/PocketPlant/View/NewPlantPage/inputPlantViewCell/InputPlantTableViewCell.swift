@@ -13,12 +13,14 @@ protocol InputPlantDelegate: AnyObject {
 }
 
 enum WaterLevel: Int {
+    case zero = 0
     case one = 1
     case two = 2
     case three = 3
 }
 
 enum LightLevel: Int {
+    case zero = 0
     case one = 1
     case two = 2
     case three = 3
@@ -101,23 +103,23 @@ class InputPlantTableViewCell: UITableViewCell {
         case waterLevel1:
             
             waterLevel = .one
-            waterLevel1.tintColor = .blue
+            waterLevel1.tintColor = .cloudBlue
             waterLevel2.tintColor = .gray
             waterLevel3.tintColor = .gray
             
         case waterLevel2:
             
             waterLevel = .two
-            waterLevel1.tintColor = .blue
-            waterLevel2.tintColor = .blue
+            waterLevel1.tintColor = .cloudBlue
+            waterLevel2.tintColor = .cloudBlue
             waterLevel3.tintColor = .gray
             
         case waterLevel3:
             
             waterLevel = .three
-            waterLevel1.tintColor = .blue
-            waterLevel2.tintColor = .blue
-            waterLevel3.tintColor = .blue
+            waterLevel1.tintColor = .cloudBlue
+            waterLevel2.tintColor = .cloudBlue
+            waterLevel3.tintColor = .cloudBlue
             
         case lightLevel1:
             
@@ -141,7 +143,8 @@ class InputPlantTableViewCell: UITableViewCell {
             lightLevel3.tintColor = .orange
             
         default:
-            break
+            waterLevel = .zero
+            lightLevel = .zero
         }
     }
     
@@ -189,7 +192,6 @@ class InputPlantTableViewCell: UITableViewCell {
         categoryTextField.text = plant.category
         
         switch plant.water {
-            
         case 1:
             
             waterLevel = .one
@@ -212,14 +214,10 @@ class InputPlantTableViewCell: UITableViewCell {
             waterLevel3.tintColor = .blue
             
         default:
-            waterLevel = .one
-            waterLevel1.tintColor = .blue
-            waterLevel2.tintColor = .gray
-            waterLevel3.tintColor = .gray
+            waterLevel = .zero
         }
         
         switch plant.light {
-            
         case 1:
             
             lightLevel = .one
@@ -242,12 +240,7 @@ class InputPlantTableViewCell: UITableViewCell {
             lightLevel3.tintColor = .orange
             
         default:
-            
-            lightLevel = .one
-            lightLevel1.tintColor = .orange
-            lightLevel2.tintColor = .gray
-            lightLevel3.tintColor = .gray
-            
+            lightLevel = .zero
         }
         
         temperature = plant.temperature

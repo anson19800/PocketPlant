@@ -63,6 +63,50 @@ class PlantDetailTableViewCell: UITableViewCell {
         buyPlaceLabel.text = plant.buyPlace
         buyTimeLabel.text = butDateString
         buyPriceLabel.text = String(plant.buyPrice)
+        
+        guard let waterLevel = WaterLevel(rawValue: plant.water),
+              let lightLevel = LightLevel(rawValue: plant.light)
+        else { return }
+        setLevelImage(water: waterLevel,
+                      light: lightLevel)
+    }
+    
+    func setLevelImage(water: WaterLevel, light: LightLevel) {
+        
+        switch water {
+        case .zero:
+            waterLabel.text = "不需水份"
+        case .one:
+            waterLabel.text = "少量水份"
+            waterLevel1Image.tintColor = .cloudBlue
+        case .two:
+            waterLabel.text = "適中水份"
+            waterLevel1Image.tintColor = .cloudBlue
+            waterLevel2Image.tintColor = .cloudBlue
+        case .three:
+            waterLabel.text = "大量水份"
+            waterLevel1Image.tintColor = .cloudBlue
+            waterLevel2Image.tintColor = .cloudBlue
+            waterLevel3Image.tintColor = .cloudBlue
+        }
+        
+        switch light {
+        case .zero:
+            lightLabel.text = "不需日照"
+        case .one:
+            lightLabel.text = "少量日照"
+            lightLevel1Image.tintColor = .orange
+        case .two:
+            lightLabel.text = "適中日照"
+            lightLevel1Image.tintColor = .orange
+            lightLevel2Image.tintColor = .orange
+        case .three:
+            lightLabel.text = "大量日照"
+            lightLevel1Image.tintColor = .orange
+            lightLevel1Image.tintColor = .orange
+            lightLevel1Image.tintColor = .orange
+        }
+        
     }
     
 }

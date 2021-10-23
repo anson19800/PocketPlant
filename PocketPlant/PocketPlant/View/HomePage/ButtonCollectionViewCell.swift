@@ -33,6 +33,15 @@ class ButtonCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func selectedLayout() {
+        
+        backgroundColor = UIColor.hexStringToUIColor(hex: "7F927F")
+        
+        iconImage.tintColor = .white
+        
+        titleLabel.textColor = .white
+    }
+    
     func layoutCell(image: UIImage, title: String) {
         
         iconImage.image = image
