@@ -208,9 +208,13 @@ class HomePageViewController: UIViewController {
         
     }
     
-    func deathPlantAction() {
+    func deathPlantAction(indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "deathPlant", sender: nil)
+        guard let plants = plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        performSegue(withIdentifier: "deathPlant", sender: plant)
         
     }
     
@@ -239,6 +243,13 @@ class HomePageViewController: UIViewController {
             
             destinationVC.pageMode = .edit(editedPlant: plant)
             
+        case "deathPlant":
+            
+            guard let destinationVC = segue.destination as? DeathPlantViewController,
+                  let plant = sender as? Plant else { return }
+            
+            destinationVC.plant = plant
+
         default:
             
             break
@@ -485,7 +496,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             let deathAction = UIAction(title: "死亡", image: nil) { _ in
                 
-                self.deathPlantAction()
+                self.deathPlantAction(indexPath: indexPath)
                 
             }
             

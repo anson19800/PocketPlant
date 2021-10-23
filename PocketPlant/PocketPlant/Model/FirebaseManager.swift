@@ -185,6 +185,29 @@ class FirebaseManager {
             isSuccess(false)
             
         }
+    }
+    
+    func fetchWaterRecord(plantID: String, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
+        
+        let waterRef = dataBase.collection("water")
+        
+        waterRef.whereField("plantID", isEqualTo: plantID).getDocuments { snapshot, error in
+            
+            if let error = error {
+                
+                completion(Result.failure(error))
+                
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let waterRecord = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: WaterRecord.self)
+            }
+            
+            completion(Result.success(waterRecord))
+        }
         
     }
     

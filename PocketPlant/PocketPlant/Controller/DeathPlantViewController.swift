@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import Charts
 
 class DeathPlantViewController: UIViewController {
@@ -15,18 +16,37 @@ class DeathPlantViewController: UIViewController {
     @IBOutlet weak var lifeTimeLabel: UILabel!
     @IBOutlet weak var waterBarChart: BarChartView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setChart(dataPoints: months, valuse: unitSold)
-    }
-    
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
     let unitSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
     
-    func setChart(dataPoints: [String], valuse: [Double]) {
+    var plant: Plant?
+    
+    var waterRecord: [WaterRecord]?
+    
+    var waterRecordDict: [String: Int]?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let plant = plant,
+              let imageURL = plant.imageURL else { return }
+
+        plantImage.kf.setImage(with: URL(string: imageURL))
+        plantNameLabel.text = plant.name
+        let today = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy.MM.dd"
+        let todayDate = format.string(from: today)
+        let buyDate = format.string(from: Date(timeIntervalSince1970: plant.buyTime))
+        
+        lifeTimeLabel.text = "\(buyDate) - \(todayDate)"
+        
         waterBarChart.noDataText = "沒有任何澆水紀錄"
+        setChart(dataPoints: months, valuse: unitSold)
+    }
+    
+    func setChart(dataPoints: [String], valuse: [Double]) {
         
         var dataEntries: [BarChartDataEntry] = []
         
