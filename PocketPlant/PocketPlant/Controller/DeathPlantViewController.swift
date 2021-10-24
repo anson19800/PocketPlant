@@ -24,8 +24,6 @@ class DeathPlantViewController: UIViewController {
     
     var waterRecord: [WaterRecord]?
     
-    var waterRecordDict: [String: Int]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +41,9 @@ class DeathPlantViewController: UIViewController {
         lifeTimeLabel.text = "\(buyDate) - \(todayDate)"
         
         waterBarChart.noDataText = "沒有任何澆水紀錄"
-        setChart(dataPoints: months, valuse: unitSold)
+//        setChart(dataPoints: months, valuse: unitSold)
+        let waterRecord = WaterRecord(id: "1", plantID: "2", waterDate: 1634988241.350534)
+        setChart(waterRecords: [waterRecord])
     }
     
     func setChart(dataPoints: [String], valuse: [Double]) {
@@ -57,6 +57,42 @@ class DeathPlantViewController: UIViewController {
         }
         
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
+        
+        let chartData = BarChartData(dataSet: chartDataSet)
+        
+        waterBarChart.data = chartData
+        
+    }
+    
+    func setChart(waterRecords: [WaterRecord]) {
+        
+        var waterRecordDict: [String: Int] = [:]
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        waterRecords.forEach { waterRecord in
+            
+            let waterDate = Date(timeIntervalSince1970: waterRecord.waterDate)
+        
+            let formatter = DateFormatter()
+
+            formatter.dateFormat = "MM"
+            let month = formatter.string(from: waterDate)
+            
+            waterRecordDict[month, default: 0] += 1
+        }
+        
+        let values = Array(waterRecordDict)
+        
+        for index in 0..<values.count {
+            
+            let dataEntry = BarChartDataEntry(x: Double(index),
+                                              y: Double(values[index].value))
+            
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "澆水次數")
         
         let chartData = BarChartData(dataSet: chartDataSet)
         
