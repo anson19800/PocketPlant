@@ -202,6 +202,8 @@ extension NewPlantPageViewController: InputPlantDelegate {
                           let homePageVC = parentVC as? HomePageViewController else { return }
                     
                     homePageVC.updateMyPlants(withAnimation: false)
+                    
+                    homePageVC.buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
                 }
                 
             }
@@ -211,6 +213,8 @@ extension NewPlantPageViewController: InputPlantDelegate {
             var newPlant = plant
             
             newPlant.id = editPlant.id
+            
+            newPlant.favorite = editPlant.favorite
             
             imageManager.deleteImage(imageID: editPlant.imageID!)
             
@@ -236,6 +240,11 @@ extension NewPlantPageViewController: InputPlantDelegate {
                                   let homePageVC = parentVC as? HomePageViewController else { return }
                             
                             homePageVC.updateMyPlants(withAnimation: false)
+                            
+                            homePageVC.buttonCollectionView.selectItem(
+                                at: IndexPath(row: 0, section: 0),
+                                animated: false,
+                                scrollPosition: .top)
                             
                         case .failure(let error):
                             

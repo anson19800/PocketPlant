@@ -84,7 +84,9 @@ class HomePageViewController: UIViewController {
         plantCollectionView.registerCellWithNib(
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
+        
         buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
+        
         updateMyPlants(withAnimation: false)
         
         let viewWidth = view.bounds.width
