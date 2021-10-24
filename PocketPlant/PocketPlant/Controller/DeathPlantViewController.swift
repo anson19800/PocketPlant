@@ -15,14 +15,12 @@ class DeathPlantViewController: UIViewController {
     @IBOutlet weak var plantNameLabel: UILabel!
     @IBOutlet weak var lifeTimeLabel: UILabel!
     @IBOutlet weak var waterBarChart: BarChartView!
-    
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    
-    let unitSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-    
+   
     var plant: Plant?
     
-    var waterRecord: [WaterRecord]?
+    var waterRecords: [WaterRecord]?
+    
+    let firebaseManager = FirebaseManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +28,36 @@ class DeathPlantViewController: UIViewController {
         guard let plant = plant,
               let imageURL = plant.imageURL else { return }
 
+        configurUI(plant, imageURL: imageURL)
+        
+        waterBarChart.noDataText = "沒有任何澆水紀錄"
+        
+        firebaseManager.fetchWaterRecord(plantID: plant.id) { result in
+            switch result {
+
+            case .success(let waterRecords):
+
+                guard waterRecords.count != 0
+                        
+                else {
+                    
+                    self.noDataAlert(plant: plant, type: .water)
+                    
+                    return
+                }
+
+                self.setChart(waterRecords: waterRecords)
+
+            case .failure(_):
+
+                self.noDataAlert(plant: plant, type: .water)
+
+            }
+        }
+    }
+    
+    func configurUI(_ plant: Plant, imageURL: String) {
+        
         plantImage.kf.setImage(with: URL(string: imageURL))
         plantNameLabel.text = plant.name
         let today = Date()
@@ -39,34 +67,20 @@ class DeathPlantViewController: UIViewController {
         let buyDate = format.string(from: Date(timeIntervalSince1970: plant.buyTime))
         
         lifeTimeLabel.text = "\(buyDate) - \(todayDate)"
-        
-        waterBarChart.noDataText = "沒有任何澆水紀錄"
-//        setChart(dataPoints: months, valuse: unitSold)
-        let waterRecord = WaterRecord(id: "1", plantID: "2", waterDate: 1634988241.350534)
-        setChart(waterRecords: [waterRecord])
-    }
-    
-    func setChart(dataPoints: [String], valuse: [Double]) {
-        
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for index in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(index), y: unitSold[index])
-            
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
-        
-        let chartData = BarChartData(dataSet: chartDataSet)
-        
-        waterBarChart.data = chartData
-        
     }
     
     func setChart(waterRecords: [WaterRecord]) {
         
-        var waterRecordDict: [String: Int] = [:]
+        var waterRecordDict: [String: Int] = {
+            
+            var dict: [String: Int] = [:]
+            
+            for index in 1...12 {
+                dict["\(index)月"] = 0
+            }
+            
+            return dict
+        }()
         
         var dataEntries: [BarChartDataEntry] = []
         
@@ -76,7 +90,7 @@ class DeathPlantViewController: UIViewController {
         
             let formatter = DateFormatter()
 
-            formatter.dateFormat = "MM"
+            formatter.dateFormat = "MM月"
             let month = formatter.string(from: waterDate)
             
             waterRecordDict[month, default: 0] += 1
@@ -87,17 +101,50 @@ class DeathPlantViewController: UIViewController {
         for index in 0..<values.count {
             
             let dataEntry = BarChartDataEntry(x: Double(index),
-                                              y: Double(values[index].value))
+                                              y: Double(waterRecordDict["\(index + 1)月"] ?? 0))
             
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "澆水次數")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
         
         let chartData = BarChartData(dataSet: chartDataSet)
         
+        chartData.barWidth = Double(0.5)
+        
         waterBarChart.data = chartData
         
+        let xValues = ["1月", "2月", "3月", "4月", "5月", "6月",
+                       "7月", "8月", "9月", "10月", "11月", "12月"]
+        
+        waterBarChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: xValues)
+        waterBarChart.xAxis.drawGridLinesEnabled = false
+        waterBarChart.xAxis.labelPosition = .bottom
+        waterBarChart.xAxis.granularity = 1
+        waterBarChart.xAxis.labelRotationAngle = -25
+        waterBarChart.xAxis.setLabelCount(12, force: false)
+        
+        waterBarChart.leftAxis.drawGridLinesEnabled = false
+        waterBarChart.leftAxis.granularity = 1.0
+        waterBarChart.leftAxis.axisMinimum = 0.0
+        
+        waterBarChart.legend.enabled = false
+        waterBarChart.extraBottomOffset = 20
+        
+        waterBarChart.animate(xAxisDuration: 0, yAxisDuration: 2)
+        
+        waterBarChart.rightAxis.enabled = false
+            
+    }
+    
+    func noDataAlert(plant: Plant, type: RecordType) {
+        
+        let controller = UIAlertController(title: "沒有紀錄",
+                                           message: "沒有\(plant.name)的\(type.rawValue)紀錄",
+                                           preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
     }
     
 }
