@@ -169,9 +169,12 @@ extension NewPlantPageViewController: UITableViewDelegate, UITableViewDataSource
             
             inputCell.layoutCell(plant: editedPlant)
             
+            inputCell.postButton.setTitle("編輯植物", for: .normal)
+            
         case .create:
             
-            break
+            inputCell.postButton.setTitle("新增植物", for: .normal)
+            
         }
         
         return inputCell

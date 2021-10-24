@@ -482,6 +482,8 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                         contextMenuConfigurationForItemAt indexPath: IndexPath,
                         point: CGPoint) -> UIContextMenuConfiguration? {
         
+        guard collectionView == plantCollectionView else { return nil }
+        
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
             
