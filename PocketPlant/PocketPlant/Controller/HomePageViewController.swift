@@ -65,6 +65,11 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
+        
         plantCollectionView.delegate = self
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
@@ -494,7 +499,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             }
             
-            let deathAction = UIAction(title: "死亡", image: nil) { _ in
+            let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
                 
                 self.deathPlantAction(indexPath: indexPath)
                 

@@ -14,6 +14,7 @@ class DeathPlantViewController: UIViewController {
     @IBOutlet weak var plantImage: UIImageView!
     @IBOutlet weak var plantNameLabel: UILabel!
     @IBOutlet weak var lifeTimeLabel: UILabel!
+    @IBOutlet weak var waterInfoLabel: UILabel!
     @IBOutlet weak var waterBarChart: BarChartView!
    
     var plant: Plant?
@@ -90,7 +91,7 @@ class DeathPlantViewController: UIViewController {
         
             let formatter = DateFormatter()
 
-            formatter.dateFormat = "MM月"
+            formatter.dateFormat = "M月"
             let month = formatter.string(from: waterDate)
             
             waterRecordDict[month, default: 0] += 1
@@ -134,7 +135,7 @@ class DeathPlantViewController: UIViewController {
         waterBarChart.animate(xAxisDuration: 0, yAxisDuration: 2)
         
         waterBarChart.rightAxis.enabled = false
-            
+        waterInfoLabel.text = "澆水紀錄 ｜ 總共澆了\(waterRecords.count)次水"
     }
     
     func noDataAlert(plant: Plant, type: RecordType) {
