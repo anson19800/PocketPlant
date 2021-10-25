@@ -152,7 +152,6 @@ class InputPlantTableViewCell: UITableViewCell {
               let category = categoryTextField.text,
               let buyPlace = buyPlaceTextField.text,
               let buyPriceString = buyPriceTextField.text,
-              let buyPrice = Int(buyPriceString),
               let description = descriptionTextView.text
         else { return }
         
@@ -160,6 +159,7 @@ class InputPlantTableViewCell: UITableViewCell {
         let humidity = self.humidity
         let buyDate = self.buyTimePicker.date
         let buyTime = buyDate.timeIntervalSince1970
+        let buyPrice = Int(buyPriceString) ?? 0
         
         var plant = Plant(id: "0",
                           name: name,
@@ -251,7 +251,6 @@ class InputPlantTableViewCell: UITableViewCell {
         buyPriceTextField.text = String(plant.buyPrice)
         
         descriptionTextView.text = plant.description
-        
     }
     
 }
