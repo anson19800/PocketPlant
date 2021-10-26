@@ -13,6 +13,10 @@
 		CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */; };
 		CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */; };
 		CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */; };
+		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
+		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
+		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
+		CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED92727AB8F005E1448 /* ReminderTableViewCell.xib */; };
 		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
 		CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A49172722CBA50095E5EE /* WaterRecord.swift */; };
 		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
@@ -51,6 +55,10 @@
 		CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDetailTableViewCell.xib; sourceTree = "<group>"; };
 		CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
+		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
+		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		CB8F2ED92727AB8F005E1448 /* ReminderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderTableViewCell.xib; sourceTree = "<group>"; };
 		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CB9A49172722CBA50095E5EE /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +127,24 @@
 			path = PlantDetailPage;
 			sourceTree = "<group>";
 		};
+		CB8F2ED12726B8DB005E1448 /* RemindPage */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F2ED72727AB6F005E1448 /* ReminderCell */,
+				CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */,
+			);
+			path = RemindPage;
+			sourceTree = "<group>";
+		};
+		CB8F2ED72727AB6F005E1448 /* ReminderCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */,
+				CB8F2ED92727AB8F005E1448 /* ReminderTableViewCell.xib */,
+			);
+			path = ReminderCell;
+			sourceTree = "<group>";
+		};
 		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +203,7 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB8F2ED12726B8DB005E1448 /* RemindPage */,
 				CB9A49192724628D0095E5EE /* DeathPlantPage */,
 				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,
 				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
@@ -193,6 +220,7 @@
 				CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */,
 				CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */,
 				CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */,
+				CB8F2ED427279E08005E1448 /* RemindViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,6 +339,8 @@
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
 				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
 				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
+				CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */,
+				CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
 				CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */,
@@ -404,8 +434,10 @@
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
+				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
 				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,
+				CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */,
 				CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -538,7 +570,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -556,7 +588,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
@@ -590,7 +622,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;

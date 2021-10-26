@@ -14,24 +14,35 @@ class PlantDetailViewController: UIViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.registerCellWithNib(
+                identifier: String(describing: PlantDetailTableViewCell.self),
+                bundle: nil)
         }
     }
+    
+    @IBOutlet weak var infoView: UIView! {
+        didSet {
+            infoView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            infoView.layer.cornerRadius = 30
+            infoView.layer.masksToBounds = true
+        }
+    }
+    
+    @IBOutlet weak var plantNameLabel: UILabel!
+    
+    @IBOutlet weak var plantCategoryLabel: UILabel!
+    
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    @IBOutlet weak var plantPhotoImageView: UIImageView!
     
     var plant: Plant?
     
     let firebaseManager = FirebaseManager.shared
     
-    @IBOutlet weak var plantNameLabel: UILabel!
-    @IBOutlet weak var plantCategoryLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
-    
-    @IBOutlet weak var plantPhotoImageView: UIImageView!
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        tableView.registerCellWithNib(identifier: String(describing: PlantDetailTableViewCell.self), bundle: nil)
         
         guard let plant = plant,
               let imageUrl = plant.imageURL else { return }
@@ -68,6 +79,20 @@ class PlantDetailViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func showRemindFloating(_ sender: UIButton) {
+        
+        let storyBoard = UIStoryboard(name: "RemindPage", bundle: nil)
+        
+        guard let remindVC = storyBoard.instantiateViewController(
+            withIdentifier: String(describing: RemindViewController.self)) as? RemindViewController else { return }
+        
+        remindVC.modalTransitionStyle = .crossDissolve
+        remindVC.modalPresentationStyle = .overCurrentContext
+        present(remindVC, animated: true, completion: nil)
+        
+    }
+    
 }
 
 extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource {
