@@ -34,6 +34,8 @@ class RemindViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var sendButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -83,6 +85,11 @@ class RemindViewController: UIViewController {
         default:
             break
         }
+        
+    }
+    @IBAction func setReminder(_ sender: UIButton) {
+        
+        
         
     }
     

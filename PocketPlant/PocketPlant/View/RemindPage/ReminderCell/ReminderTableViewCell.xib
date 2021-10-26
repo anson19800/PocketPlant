@@ -60,6 +60,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dayTextField" destination="4Uc-CQ-B5s" id="GMq-Un-ipZ"/>
+                <outlet property="trailLabel" destination="6ZY-1I-vxd" id="4FS-L3-wAl"/>
                 <outlet property="typeImageView" destination="ev8-Be-Kpo" id="Pg0-bn-09o"/>
                 <outlet property="typelabel" destination="gir-PJ-w5E" id="IQ2-ea-wT0"/>
             </connections>

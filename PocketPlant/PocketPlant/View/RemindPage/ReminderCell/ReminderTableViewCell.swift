@@ -18,10 +18,13 @@ class ReminderTableViewCell: UITableViewCell {
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var typelabel: UILabel!
     @IBOutlet weak var dayTextField: UITextField!
+    @IBOutlet weak var trailLabel: UILabel!
     
     private var imageIsSelectes: Bool = false {
         didSet {
             typeImageView.tintColor = imageIsSelectes ? imageColor : .gray
+            typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .gray
+            trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .gray
         }
     }
     
@@ -54,13 +57,17 @@ class ReminderTableViewCell: UITableViewCell {
         }
         
         typeImageView.tintColor = .gray
-        
+        typelabel.textColor = .gray
+        trailLabel.textColor = .gray
+        dayTextField.isEnabled = false
     }
     @objc private func tapOnImage(_ sender: UITapGestureRecognizer) {
         
         imageIsSelectes = !imageIsSelectes
         
         if imageIsSelectes {
+            
+            dayTextField.isEnabled = true
             
             UIView.animate(withDuration: 0.1, animations: {() -> Void in
                 self.typeImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
@@ -73,6 +80,10 @@ class ReminderTableViewCell: UITableViewCell {
         } else {
             
             typeImageView.shake(count: 3, for: 0.2, withTranslation: 2)
+            
+            dayTextField.text = ""
+            
+            dayTextField.isEnabled = false
             
         }
     }
