@@ -89,8 +89,32 @@ class RemindViewController: UIViewController {
     }
     @IBAction func setReminder(_ sender: UIButton) {
         
+        var dict: [ReminderType: Int] = [:]
         
-        
+        for index in 0..<ReminderType.allCases.count {
+            
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
+                  let remindCell = cell as? ReminderTableViewCell else { return }
+            
+            if remindCell.imageIsSelectes {
+                
+                guard let timesString = remindCell.dayTextField.text,
+                      timesString != "",
+                      let times = Int(timesString)
+                else {
+                    dict[ReminderType.allCases[index]] = 0
+                    continue
+                }
+                
+                dict[ReminderType.allCases[index]] = times
+            
+            } else {
+                
+                dict[ReminderType.allCases[index]] = 0
+                
+            }
+        }
+        print(dict)
     }
     
 }

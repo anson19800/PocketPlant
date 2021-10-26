@@ -20,11 +20,11 @@ class ReminderTableViewCell: UITableViewCell {
     @IBOutlet weak var dayTextField: UITextField!
     @IBOutlet weak var trailLabel: UILabel!
     
-    private var imageIsSelectes: Bool = false {
+    var imageIsSelectes: Bool = false {
         didSet {
-            typeImageView.tintColor = imageIsSelectes ? imageColor : .gray
-            typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .gray
-            trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .gray
+            typeImageView.tintColor = imageIsSelectes ? imageColor : .lightGray
+            typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
+            trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
         }
     }
     
@@ -56,9 +56,9 @@ class ReminderTableViewCell: UITableViewCell {
             imageColor = UIColor.hexStringToUIColor(hex: "BC956F")
         }
         
-        typeImageView.tintColor = .gray
-        typelabel.textColor = .gray
-        trailLabel.textColor = .gray
+        typeImageView.tintColor = .lightGray
+        typelabel.textColor = .lightGray
+        trailLabel.textColor = .lightGray
         dayTextField.isEnabled = false
     }
     @objc private func tapOnImage(_ sender: UITapGestureRecognizer) {
