@@ -19,9 +19,22 @@ class ReminderTableViewCell: UITableViewCell {
     @IBOutlet weak var typelabel: UILabel!
     @IBOutlet weak var dayTextField: UITextField!
     
+    private var imageIsSelectes: Bool = false {
+        didSet {
+            typeImageView.tintColor = imageIsSelectes ? imageColor : .gray
+        }
+    }
+    
+    private var imageColor: UIColor = .gray
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(tapOnImage(_:)))
+        typeImageView.isUserInteractionEnabled = true
+        typeImageView.addGestureRecognizer(tap)
     }
     
     func layoutCell(type: ReminderType) {
@@ -30,14 +43,22 @@ class ReminderTableViewCell: UITableViewCell {
         
         switch type {
         case .water:
-            typeImageView.image = UIImage(systemName: "drop.fill")
+            typeImageView.image = UIImage(systemName: "drop.circle.fill")
+            imageColor = UIColor.cloudBlue
         case .fertilizer:
             typeImageView.image = UIImage(systemName: "leaf.circle.fill")
-            typeImageView.tintColor = UIColor.hexStringToUIColor(hex: "A2CDA2")
+            imageColor = UIColor.hexStringToUIColor(hex: "A2CDA2")
         case .soil:
             typeImageView.image = UIImage(systemName: "globe.asia.australia.fill")
-            typeImageView.tintColor = UIColor.hexStringToUIColor(hex: "BC956F")
+            imageColor = UIColor.hexStringToUIColor(hex: "BC956F")
         }
+        
+        typeImageView.tintColor = .gray
+        
+    }
+    @objc private func tapOnImage(_ sender: UITapGestureRecognizer) {
+        
+        imageIsSelectes = !imageIsSelectes
         
     }
     
