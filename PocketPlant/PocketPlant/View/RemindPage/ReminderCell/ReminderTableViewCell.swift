@@ -39,7 +39,7 @@ class ReminderTableViewCell: UITableViewCell {
     
     func layoutCell(type: ReminderType) {
         
-        typelabel.text = "\(type.rawValue)提醒週期"
+        typelabel.text = "\(type.rawValue)提醒"
         
         switch type {
         case .water:
@@ -60,6 +60,21 @@ class ReminderTableViewCell: UITableViewCell {
         
         imageIsSelectes = !imageIsSelectes
         
+        if imageIsSelectes {
+            
+            UIView.animate(withDuration: 0.1, animations: {() -> Void in
+                self.typeImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            }, completion: {(_ finished: Bool) -> Void in
+                UIView.animate(withDuration: 0.1, animations: {() -> Void in
+                    self.typeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                })
+            })
+
+        } else {
+            
+            typeImageView.shake(count: 3, for: 0.2, withTranslation: 2)
+            
+        }
     }
     
 }
