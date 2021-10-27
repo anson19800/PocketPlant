@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CalendarInfoTableViewCell: UITableViewCell {
 
@@ -19,6 +20,16 @@ class CalendarInfoTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    
-    
+    func layoutCell(imageURL: String?, plantName: String, time: TimeInterval) {
+        
+        if let imageURL = imageURL {
+            
+            plantImageView.kf.setImage(with: URL(string: imageURL))
+        }
+        
+        titleLabel.text = "對\(plantName)澆水"
+        
+        timeLabel.text = String(time)
+        
+    }
 }

@@ -210,7 +210,37 @@ class FirebaseManager {
             
             completion(Result.success(waterRecord))
         }
+    }
+    
+    func fetchWaterRecord(date: Date, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
         
+        let waterRef = dataBase.collection("water")
+        
+        waterRef.getDocuments { snapshot, error in
+            
+            if let error = error {
+                
+                completion(Result.failure(error))
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let waterRecord = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: WaterRecord.self)
+            }
+            
+            let recordDay = waterRecord.compactMap { (record) -> WaterRecord? in
+                let recordDate = Date(timeIntervalSince1970: record.waterDate)
+                if recordDate.hasSame(.day, as: date) {
+                    return record
+                } else {
+                    return nil
+                }
+            }
+            
+            completion(.success(recordDay))
+        }
     }
     
 }

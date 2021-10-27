@@ -281,8 +281,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Si2-w9-bBi">
-                                <rect key="frame" x="20" y="44" width="388" height="361"/>
+                                <rect key="frame" x="20" y="44" width="388" height="361.33333333333331"/>
                                 <color key="tintColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="dateDidPick:" destination="cYL-PY-3Xj" eventType="valueChanged" id="owN-yb-bpu"/>
+                                </connections>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JQD-0Y-b3B">
                                 <rect key="frame" x="0.0" y="405.33333333333326" width="428" height="437.66666666666674"/>

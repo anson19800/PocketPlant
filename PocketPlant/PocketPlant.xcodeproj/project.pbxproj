@@ -23,6 +23,7 @@
 		CB8F2EED2728F6EF005E1448 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */; };
 		CB8F2EF02728FC49005E1448 /* CalendarInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EEE2728FC49005E1448 /* CalendarInfoTableViewCell.swift */; };
 		CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */; };
+		CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF2272921A2005E1448 /* Date+Extension.swift */; };
 		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
 		CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A49172722CBA50095E5EE /* WaterRecord.swift */; };
 		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
@@ -71,6 +72,7 @@
 		CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
 		CB8F2EEE2728FC49005E1448 /* CalendarInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CB8F2EF2272921A2005E1448 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CB9A49172722CBA50095E5EE /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				CB07EDB7271EE74100406913 /* UILabel+Extension.swift */,
 				CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */,
 				CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */,
+				CB8F2EF2272921A2005E1448 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
 				CB8F2EED2728F6EF005E1448 /* CalendarPageViewController.swift in Sources */,
 				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,
+				CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */,
 				CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */,
 				CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */,
 			);

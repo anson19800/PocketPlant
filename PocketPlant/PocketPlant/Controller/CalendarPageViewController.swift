@@ -21,26 +21,52 @@ class CalendarPageViewController: UIViewController {
         }
     }
     
+    private var waterRecords: [WaterRecord]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.locale = Locale(identifier: "zh_Hant_TW")
         calendar.calendar = Calendar(identifier: .republicOfChina)
         
     }
-
+    @IBAction func dateDidPick(_ sender: UIDatePicker) {
+        
+        let date = sender.date
+        
+        FirebaseManager.shared.fetchWaterRecord(date: date) { result in
+            switch result {
+            case .success(let waterRecords):
+                self.waterRecords = waterRecords
+                self.infoTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }
 
 extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        if let records = waterRecords {
+            return records.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = infoTableView.dequeueReusableCell(withIdentifier: String(describing: CalendarInfoTableViewCell.self),
                                                      for: indexPath)
-        guard let calendarCell = cell as? CalendarInfoTableViewCell else { return cell }
+        guard let calendarCell = cell as? CalendarInfoTableViewCell,
+              let records = waterRecords else { return cell }
         
+        let record = records[indexPath.row]
+        
+        calendarCell.layoutCell(imageURL: record.plantImage,
+                                plantName: record.plantName,
+                                time: record.waterDate)
         return calendarCell
     }
 }
