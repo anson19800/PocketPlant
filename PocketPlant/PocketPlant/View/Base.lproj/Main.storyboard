@@ -187,7 +187,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="js3-5v-7Ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4998" y="-573"/>
+            <point key="canvasLocation" x="5090" y="-477"/>
         </scene>
         <!--PlantDetailPage-->
         <scene sceneID="6os-Se-7I5">
@@ -207,7 +207,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTO-l4-Wcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5682.4766355140182" y="-337.5809935205184"/>
+            <point key="canvasLocation" x="5217" y="-139"/>
         </scene>
         <!--探索-->
         <scene sceneID="OSo-WK-Aeu">
@@ -264,7 +264,7 @@
                     <connections>
                         <segue destination="OgS-ub-qNz" kind="relationship" relationship="viewControllers" id="OK6-DJ-OAc"/>
                         <segue destination="cq8-ww-kEA" kind="relationship" relationship="viewControllers" id="3Gb-0Z-g35"/>
-                        <segue destination="cYL-PY-3Xj" kind="relationship" relationship="viewControllers" id="C3D-rK-EhF"/>
+                        <segue destination="xVj-D6-f8D" kind="relationship" relationship="viewControllers" id="C3D-rK-EhF"/>
                         <segue destination="RAh-oC-sao" kind="relationship" relationship="viewControllers" id="O8X-o9-ocb"/>
                     </connections>
                 </tabBarController>
@@ -272,7 +272,7 @@
             </objects>
             <point key="canvasLocation" x="2040" y="-152"/>
         </scene>
-        <!--日曆-->
+        <!--Calendar Page View Controller-->
         <scene sceneID="dtt-WK-zpX">
             <objects>
                 <viewController id="cYL-PY-3Xj" customClass="CalendarPageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
@@ -281,39 +281,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Si2-w9-bBi">
-                                <rect key="frame" x="20" y="44" width="388" height="361.33333333333331"/>
+                                <rect key="frame" x="20" y="87.999999999999972" width="388" height="361.33333333333326"/>
                                 <color key="tintColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="dateDidPick:" destination="cYL-PY-3Xj" eventType="valueChanged" id="owN-yb-bpu"/>
                                 </connections>
                             </datePicker>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JQD-0Y-b3B">
-                                <rect key="frame" x="0.0" y="405.33333333333326" width="428" height="437.66666666666674"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JQD-0Y-b3B">
+                                <rect key="frame" x="20" y="449.33333333333326" width="388" height="393.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h1d-wb-U0g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JQD-0Y-b3B" firstAttribute="leading" secondItem="h1d-wb-U0g" secondAttribute="leading" id="4un-eY-Eze"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="top" secondItem="Si2-w9-bBi" secondAttribute="bottom" id="Pss-KZ-nF0"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" constant="20" id="Vbh-Pw-FJ8"/>
                             <constraint firstItem="Si2-w9-bBi" firstAttribute="top" secondItem="h1d-wb-U0g" secondAttribute="top" id="afc-v7-fsy"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="bottom" secondItem="JQD-0Y-b3B" secondAttribute="bottom" id="gjl-ue-NJO"/>
-                            <constraint firstItem="h1d-wb-U0g" firstAttribute="trailing" secondItem="JQD-0Y-b3B" secondAttribute="trailing" id="jtW-Ma-uSE"/>
+                            <constraint firstItem="JQD-0Y-b3B" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" id="h2K-uw-8jc"/>
+                            <constraint firstItem="JQD-0Y-b3B" firstAttribute="leading" secondItem="Si2-w9-bBi" secondAttribute="leading" id="kk9-sO-zyD"/>
                             <constraint firstItem="Si2-w9-bBi" firstAttribute="leading" secondItem="h1d-wb-U0g" secondAttribute="leading" constant="20" id="mvt-LS-IoC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="日曆" image="calendar" catalog="system" id="3YV-E3-MZT"/>
+                    <navigationItem key="navigationItem" id="YGn-le-L5D"/>
                     <connections>
                         <outlet property="calendar" destination="Si2-w9-bBi" id="RJa-Wa-dS4"/>
                         <outlet property="infoTableView" destination="JQD-0Y-b3B" id="6Wf-A9-YZB"/>
+                        <segue destination="b9S-vk-yrJ" kind="show" identifier="showDetail" id="xMt-Cc-G7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6u-Pg-eRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="807"/>
+            <point key="canvasLocation" x="4007.9439252336447" y="806.695464362851"/>
+        </scene>
+        <!--PlantDetailPage-->
+        <scene sceneID="9cC-zr-yZo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlantDetailPage" id="b9S-vk-yrJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2K6-VS-acs"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7F-Lx-BqB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3560" y="1206"/>
         </scene>
         <!--個人資訊-->
         <scene sceneID="bji-BY-DFu">
@@ -329,7 +340,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="To2-op-sx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4165" y="794"/>
+            <point key="canvasLocation" x="5064.9532710280373" y="793.73650107991364"/>
+        </scene>
+        <!--日曆-->
+        <scene sceneID="Xh5-FC-M6Z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xVj-D6-f8D" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="日曆" image="calendar" catalog="system" id="3YV-E3-MZT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ut-SQ-wpM">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cYL-PY-3Xj" kind="relationship" relationship="rootViewController" id="p6m-fG-87R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L7f-0B-0Lp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3107.9439252336447" y="806.695464362851"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

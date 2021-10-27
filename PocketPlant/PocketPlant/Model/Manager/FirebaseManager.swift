@@ -79,6 +79,18 @@ class FirebaseManager {
         }
     }
     
+    func fetchPlants(plantID: String, completion: @escaping (Result<Plant, Error>) -> Void) {
+    
+        dataBase.collection("plant").document(plantID).getDocument { document, error in
+            guard let document = document,
+                  document.exists,
+                  let plant = try? document.data(as: Plant.self)
+            else { return }
+            
+            completion(Result.success(plant))
+        }
+    }
+    
     func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
         dataBase.collection("plant")

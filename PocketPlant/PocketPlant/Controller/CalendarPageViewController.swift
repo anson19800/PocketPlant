@@ -28,6 +28,16 @@ class CalendarPageViewController: UIViewController {
         calendar.locale = Locale(identifier: "zh_Hant_TW")
         calendar.calendar = Calendar(identifier: .republicOfChina)
         
+        FirebaseManager.shared.fetchWaterRecord(date: Date()) { result in
+            switch result {
+            case .success(let waterRecords):
+                self.waterRecords = waterRecords
+                self.infoTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
     @IBAction func dateDidPick(_ sender: UIDatePicker) {
         
@@ -41,6 +51,17 @@ class CalendarPageViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            
+            guard let plant = sender as? Plant,
+                  let destinationVC = segue.destination as? PlantDetailViewController else { return }
+            
+            destinationVC.plant = plant
+            
         }
     }
     
@@ -68,5 +89,21 @@ extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource
                                 plantName: record.plantName,
                                 time: record.waterDate)
         return calendarCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let waterRecords = waterRecords else { return }
+        
+        let plantID = waterRecords[indexPath.row].plantID
+        
+        FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+            switch result {
+            case .success(let plant):
+                self.performSegue(withIdentifier: "showDetail", sender: plant)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
