@@ -289,6 +289,10 @@ class HomePageViewController: UIViewController {
         
         guard let dropView = sender.view else { return }
         
+        UIView.animate(withDuration: 0.1) {() -> Void in
+            dropView.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }
+        
         let translation = sender.translation(in: view)
         dropView.center.x += translation.x
         dropView.center.y += translation.y
@@ -299,6 +303,8 @@ class HomePageViewController: UIViewController {
             let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
             
             UIView.animate(withDuration: 0.3, animations: {
+                
+                dropView.transform = CGAffineTransform(scaleX: 1, y: 1)
                 
                 let safeX = self.view.bounds.size.width - 50
                 let safeY = self.view.bounds.size.height - 50
@@ -320,6 +326,8 @@ class HomePageViewController: UIViewController {
                         
                     }
                 }
+            } else {
+                dropView.shake()
             }
         }
     }
