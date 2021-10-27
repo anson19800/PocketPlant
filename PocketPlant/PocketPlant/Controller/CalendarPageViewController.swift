@@ -48,7 +48,10 @@ class CalendarPageViewController: UIViewController {
             switch result {
             case .success(let waterRecords):
                 self.waterRecords = waterRecords
-                self.infoTableView.reloadData()
+                self.infoTableView.performBatchUpdates {
+                    let indexSet = IndexSet(integersIn: 0...0)
+                    self.infoTableView.reloadSections(indexSet, with: .left)
+                }
             case .failure(let error):
                 print(error)
             }

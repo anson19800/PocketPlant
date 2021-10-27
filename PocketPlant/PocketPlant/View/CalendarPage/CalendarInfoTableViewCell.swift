@@ -31,6 +31,7 @@ class CalendarInfoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         contentView.layer.cornerRadius = 10
+        contentView.backgroundColor = UIColor.hexStringToUIColor(hex: "DFEFDF")
     }
     
     override func layoutSubviews() {
