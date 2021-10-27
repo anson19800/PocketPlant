@@ -269,7 +269,7 @@ class HomePageViewController: UIViewController {
         
         var waterCount = 0
         plants.forEach({ plant in
-            firebaseManager.updateWater(plantID: plant.id) { isSuccess in
+            firebaseManager.updateWater(plant: plant) { isSuccess in
                 if isSuccess {
                     waterCount += 1
                     print("\(waterCount) / \(plants.count)")
@@ -316,9 +316,8 @@ class HomePageViewController: UIViewController {
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
                let plants = self.plants {
                 let plantName = plants[indexPath.row].name
-                let plantID = plants[indexPath.row].id
                 
-                firebaseManager.updateWater(plantID: plantID) { isSuccess in
+                firebaseManager.updateWater(plant: plants[indexPath.row]) { isSuccess in
                     
                     if isSuccess {
                         
