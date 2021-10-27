@@ -36,6 +36,8 @@ class RemindViewController: UIViewController {
     
     @IBOutlet weak var sendButton: UIButton!
     
+    var plant: Plant?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +46,6 @@ class RemindViewController: UIViewController {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panOnFloatingView(_:)))
         floatingView.isUserInteractionEnabled = true
         floatingView.addGestureRecognizer(pan)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +90,11 @@ class RemindViewController: UIViewController {
     }
     @IBAction func setReminder(_ sender: UIButton) {
         
+        guard var plant = plant else { return }
+        
         var dict: [ReminderType: Int] = [:]
+        
+        var reminds: [Remind] = []
         
         for index in 0..<ReminderType.allCases.count {
             
@@ -107,14 +112,33 @@ class RemindViewController: UIViewController {
                 }
                 
                 dict[ReminderType.allCases[index]] = times
-            
+                
+                let remind = Remind(plantID: plant.id,
+                                    type: ReminderType.allCases[index].rawValue,
+                                    times: times)
+                reminds.append(remind)
+                
             } else {
                 
                 dict[ReminderType.allCases[index]] = 0
                 
             }
         }
-        print(dict)
+        RemindManager.shared.setRemind(plant, remindDict: dict)
+       
+        plant.reminder = reminds
+        
+        FirebaseManager.shared.updatePlant(plant: plant) { result in
+            switch result {
+            case .success(_):
+                UIView.animate(withDuration: 0.3) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
     
 }
@@ -130,9 +154,11 @@ extension RemindViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReminderTableViewCell.self),
                                                  for: indexPath)
         
-        guard let reminderCell = cell as? ReminderTableViewCell else { return cell }
+        guard let reminderCell = cell as? ReminderTableViewCell,
+              let plant = plant else { return cell }
+    
         
-        reminderCell.layoutCell(type: ReminderType.allCases[indexPath.row])
+        reminderCell.layoutCell(type: ReminderType.allCases[indexPath.row], reminds: plant.reminder)
         
         return reminderCell
         

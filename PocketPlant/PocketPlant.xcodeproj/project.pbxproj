@@ -18,6 +18,8 @@
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
 		CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED92727AB8F005E1448 /* ReminderTableViewCell.xib */; };
 		CB8F2EDD2727D5D5005E1448 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */; };
+		CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */; };
+		CB8F2EE227280AD2005E1448 /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EE127280AD2005E1448 /* Remind.swift */; };
 		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
 		CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A49172722CBA50095E5EE /* WaterRecord.swift */; };
 		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
@@ -61,6 +63,8 @@
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		CB8F2ED92727AB8F005E1448 /* ReminderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderTableViewCell.xib; sourceTree = "<group>"; };
 		CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindManager.swift; sourceTree = "<group>"; };
+		CB8F2EE127280AD2005E1448 /* Remind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
 		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CB9A49172722CBA50095E5EE /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +151,16 @@
 			path = ReminderCell;
 			sourceTree = "<group>";
 		};
+		CB8F2EE027280AAC005E1448 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */,
+				CB9A4915272156FA0095E5EE /* ImageManager.swift */,
+				CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,10 +208,10 @@
 		CBF7AC1A271D5B99001E3C37 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB8F2EE027280AAC005E1448 /* Manager */,
 				CBF7AC33271D980F001E3C37 /* Plant.swift */,
-				CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */,
-				CB9A4915272156FA0095E5EE /* ImageManager.swift */,
 				CB9A49172722CBA50095E5EE /* WaterRecord.swift */,
+				CB8F2EE127280AD2005E1448 /* Remind.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -420,8 +434,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */,
 				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
 				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,
+				CB8F2EE227280AD2005E1448 /* Remind.swift in Sources */,
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
 				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
 				CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */,

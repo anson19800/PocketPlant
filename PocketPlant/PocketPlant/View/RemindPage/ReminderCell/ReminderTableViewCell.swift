@@ -25,6 +25,8 @@ class ReminderTableViewCell: UITableViewCell {
             typeImageView.tintColor = imageIsSelectes ? imageColor : .lightGray
             typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
             trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
+            dayTextField.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
+            dayTextField.isEnabled = imageIsSelectes
         }
     }
     
@@ -40,7 +42,7 @@ class ReminderTableViewCell: UITableViewCell {
         typeImageView.addGestureRecognizer(tap)
     }
     
-    func layoutCell(type: ReminderType) {
+    func layoutCell(type: ReminderType, reminds: [Remind]?) {
         
         typelabel.text = "\(type.rawValue)提醒"
         
@@ -56,10 +58,20 @@ class ReminderTableViewCell: UITableViewCell {
             imageColor = UIColor.hexStringToUIColor(hex: "BC956F")
         }
         
-        typeImageView.tintColor = .lightGray
-        typelabel.textColor = .lightGray
-        trailLabel.textColor = .lightGray
-        dayTextField.isEnabled = false
+        typeImageView.tintColor = imageIsSelectes ? imageColor : .lightGray
+        typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
+        trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
+        dayTextField.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
+        dayTextField.isEnabled = imageIsSelectes
+        
+        guard let reminds = reminds else { return }
+
+        reminds.forEach { remind in
+            if type.rawValue == remind.type {
+                dayTextField.text = String(remind.times)
+                self.imageIsSelectes = true
+            }
+        }
     }
     @objc private func tapOnImage(_ sender: UITapGestureRecognizer) {
         
@@ -80,8 +92,6 @@ class ReminderTableViewCell: UITableViewCell {
         } else {
             
             typeImageView.shake(count: 3, for: 0.2, withTranslation: 2)
-            
-            dayTextField.text = ""
             
             dayTextField.isEnabled = false
             

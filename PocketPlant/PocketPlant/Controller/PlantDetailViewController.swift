@@ -89,6 +89,7 @@ class PlantDetailViewController: UIViewController {
         
         remindVC.modalTransitionStyle = .crossDissolve
         remindVC.modalPresentationStyle = .overCurrentContext
+        remindVC.plant = self.plant
         present(remindVC, animated: true, completion: nil)
         
     }
