@@ -161,6 +161,27 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		CB8F2EE32728EE39005E1448 /* CalendarPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CalendarPage;
+			sourceTree = "<group>";
+		};
+		CB8F2EE62728EFB3005E1448 /* DiscoverPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DiscoverPage;
+			sourceTree = "<group>";
+		};
+		CB8F2EE72728EFBF005E1448 /* ProfilePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfilePage;
+			sourceTree = "<group>";
+		};
 		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +217,6 @@
 				CBF7AC1A271D5B99001E3C37 /* Model */,
 				CBF7AC02271C863E001E3C37 /* AppDelegate.swift */,
 				CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */,
-				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 				CBF7AC0B271C8641001E3C37 /* Assets.xcassets */,
 				CBF7AC0D271C8641001E3C37 /* LaunchScreen.storyboard */,
 				CBF7AC10271C8641001E3C37 /* Info.plist */,
@@ -219,6 +239,10 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
+				CB8F2EE72728EFBF005E1448 /* ProfilePage */,
+				CB8F2EE62728EFB3005E1448 /* DiscoverPage */,
+				CB8F2EE32728EE39005E1448 /* CalendarPage */,
 				CB8F2ED12726B8DB005E1448 /* RemindPage */,
 				CB9A49192724628D0095E5EE /* DeathPlantPage */,
 				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,

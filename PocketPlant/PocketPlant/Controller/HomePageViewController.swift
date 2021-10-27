@@ -91,7 +91,7 @@ class HomePageViewController: UIViewController {
         
         let viewWidth = view.bounds.width
         let viewHeight = view.bounds.height
-        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 50)
+        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 130)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -307,7 +307,7 @@ class HomePageViewController: UIViewController {
                 dropView.transform = CGAffineTransform(scaleX: 1, y: 1)
                 
                 let safeX = self.view.bounds.size.width - 50
-                let safeY = self.view.bounds.size.height - 50
+                let safeY = self.view.bounds.size.height - 130
                 
                 dropView.center = CGPoint(x: safeX, y: safeY)
                 
