@@ -27,6 +27,7 @@ class PlantDetailViewController: UIViewController {
             infoView.layer.masksToBounds = true
         }
     }
+    @IBOutlet weak var qrCodeImageView: UIImageView!
     
     @IBOutlet weak var plantNameLabel: UILabel!
     
@@ -94,6 +95,17 @@ class PlantDetailViewController: UIViewController {
         
     }
     
+    @IBAction func tapOnQRCode(_ sender: UITapGestureRecognizer) {
+        
+        guard let plant = plant else {
+            return
+        }
+
+        self.qrCodeImageView.isHidden = false
+        
+        self.qrCodeImageView.generateQRCode(from: "Hi This is my plant: \(plant.id)")
+        
+    }
 }
 
 extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource {

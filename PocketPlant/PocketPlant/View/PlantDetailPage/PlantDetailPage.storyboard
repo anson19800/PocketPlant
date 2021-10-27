@@ -93,12 +93,33 @@
                                     <action selector="showRemindFloating:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ai4-x4-R58"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4qz-J5-Kpz">
+                                <rect key="frame" x="20" y="211.66666666666666" width="30" height="27"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="h1k-yP-Qh5"/>
+                                    <constraint firstAttribute="height" constant="30" id="s0c-aI-NcJ"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="h9w-EZ-1wb" appends="YES" id="mMG-P1-shW"/>
+                                </connections>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5CO-i5-a6c">
+                                <rect key="frame" x="114" y="363" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="LZ4-4M-FlT"/>
+                                    <constraint firstAttribute="height" constant="200" id="WXL-aV-Nls"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4qz-J5-Kpz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="1Vt-KY-qpu"/>
+                            <constraint firstItem="4qz-J5-Kpz" firstAttribute="bottom" secondItem="8V4-kx-pdv" secondAttribute="top" constant="-10" id="BXv-93-URv"/>
                             <constraint firstItem="8V4-kx-pdv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CXl-Yf-Zee"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8V4-kx-pdv" secondAttribute="bottom" id="Fbr-Bp-ow2"/>
+                            <constraint firstItem="5CO-i5-a6c" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="M5v-0X-mR3"/>
                             <constraint firstItem="HOV-px-egc" firstAttribute="leading" secondItem="tOk-Pc-NOS" secondAttribute="trailing" constant="10" id="aHH-Rk-9ve"/>
                             <constraint firstItem="lSb-EK-4jd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ahV-lM-Qbk"/>
                             <constraint firstItem="8V4-kx-pdv" firstAttribute="top" secondItem="lSb-EK-4jd" secondAttribute="bottom" constant="-50" id="fOY-ga-epu"/>
@@ -107,6 +128,7 @@
                             <constraint firstItem="lSb-EK-4jd" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="kwv-76-aRI"/>
                             <constraint firstItem="tOk-Pc-NOS" firstAttribute="centerY" secondItem="HOV-px-egc" secondAttribute="centerY" id="lXP-n9-ofJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HOV-px-egc" secondAttribute="trailing" constant="10" id="mTK-vM-dze"/>
+                            <constraint firstItem="5CO-i5-a6c" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="o2p-D2-8SY"/>
                             <constraint firstItem="HOV-px-egc" firstAttribute="centerY" secondItem="8V4-kx-pdv" secondAttribute="top" id="xUE-he-sZe"/>
                         </constraints>
                     </view>
@@ -116,10 +138,16 @@
                         <outlet property="plantCategoryLabel" destination="gap-FU-4jQ" id="RPW-3L-A26"/>
                         <outlet property="plantNameLabel" destination="a2A-3j-PNK" id="dIs-LM-jsT"/>
                         <outlet property="plantPhotoImageView" destination="lSb-EK-4jd" id="LXa-Fh-rev"/>
+                        <outlet property="qrCodeImageView" destination="5CO-i5-a6c" id="Ab7-11-ckt"/>
                         <outlet property="tableView" destination="tAz-ai-juk" id="zAZ-II-fsz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="h9w-EZ-1wb">
+                    <connections>
+                        <action selector="tapOnQRCode:" destination="Y6W-OH-hqX" id="lUh-JD-WPD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </scene>
@@ -128,6 +156,7 @@
         <image name="clock.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plant" width="5456" height="3632"/>
+        <image name="qrcode" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
