@@ -250,9 +250,33 @@ class FirebaseManager {
                     return nil
                 }
             }
-            
             completion(.success(recordDay))
         }
     }
     
+    func deleteWaterRecord(recordID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let waterRef = dataBase.collection("water").document(recordID)
+        
+        waterRef.delete { error in
+            if let error = error {
+                completion(Result.failure(error))
+            } else {
+                completion(Result.success("Delete Success"))
+            }
+        }
+    }
+    
+    func deleteWaterRecord(plantID: String) {
+        
+        dataBase.collection("water")
+            .whereField("plantID", isEqualTo: plantID).getDocuments { snapshot, error in
+                
+                guard let snapshot = snapshot else { return }
+                
+                snapshot.documents.forEach { snapshot in
+                    snapshot.reference.delete()
+                }
+        }
+    }
 }

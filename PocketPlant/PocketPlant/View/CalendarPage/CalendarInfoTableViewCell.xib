@@ -25,16 +25,23 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="對name澆水" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRj-eN-iwe">
-                        <rect key="frame" x="90" y="24.5" width="244.5" height="21"/>
+                        <rect key="frame" x="90" y="24.5" width="234" height="21"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
                         <color key="textColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFB-T0-enq">
-                        <rect key="frame" x="334.5" y="34" width="19.5" height="22"/>
+                        <rect key="frame" x="324" y="29" width="30" height="30.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="R3p-9m-iDO"/>
+                            <constraint firstAttribute="width" constant="30" id="shm-XD-h3v"/>
+                        </constraints>
                         <color key="tintColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="trash.fill" catalog="system"/>
+                        <state key="normal" backgroundImage="trash.fill" catalog="system"/>
+                        <connections>
+                            <action selector="deleteAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iFU-IB-w0c"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:06" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDu-ZE-1y8">
                         <rect key="frame" x="90" y="50.5" width="37" height="21"/>
@@ -43,7 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.71415682571530903" green="0.83338541666666666" blue="0.73759089101553554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.75986000611231397" green="0.88671875" blue="0.78479375786135197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dFB-T0-enq" secondAttribute="trailing" constant="20" id="0CA-PH-GVh"/>
                     <constraint firstItem="CRj-eN-iwe" firstAttribute="centerY" secondItem="eTL-JF-6ii" secondAttribute="centerY" constant="-10" id="ABB-vU-uYa"/>

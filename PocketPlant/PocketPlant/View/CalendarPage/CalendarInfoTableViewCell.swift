@@ -8,6 +8,10 @@
 import UIKit
 import Kingfisher
 
+protocol CalendarInfoTableViewCellDelegate: AnyObject {
+    func deleteAction(indexPath: IndexPath)
+}
+
 class CalendarInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var plantImageView: UIImageView! {
@@ -18,6 +22,10 @@ class CalendarInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    
+    weak var delegate: CalendarInfoTableViewCellDelegate?
+    
+    var indexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,5 +53,11 @@ class CalendarInfoTableViewCell: UITableViewCell {
             from: Date(timeIntervalSince1970: time))
         timeLabel.text = dayString
         
+    }
+    @IBAction func deleteAction(_ sender: UIButton) {
+        guard let delegate = delegate,
+              let indexPath = self.indexPath else { return }
+
+        delegate.deleteAction(indexPath: indexPath)
     }
 }
