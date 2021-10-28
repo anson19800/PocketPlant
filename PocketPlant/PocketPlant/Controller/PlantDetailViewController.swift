@@ -103,7 +103,7 @@ class PlantDetailViewController: UIViewController {
 
         self.qrCodeImageView.isHidden = false
         
-        self.qrCodeImageView.generateQRCode(from: "Hi This is my plant: \(plant.id)")
+        self.qrCodeImageView.generateQRCode(from: "\(plant.id)")
         
     }
 }

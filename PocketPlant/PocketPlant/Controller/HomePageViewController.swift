@@ -74,7 +74,6 @@ class HomePageViewController: UIViewController {
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
-        
         searchBar.delegate = self
         
         buttonCollectionView.registerCellWithNib(

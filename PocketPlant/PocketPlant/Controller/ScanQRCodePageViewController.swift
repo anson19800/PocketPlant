@@ -56,7 +56,16 @@ class ScanQRCodePageViewController: UIViewController {
             print(error)
             return
         }
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureSession.stopRunning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        captureSession.startRunning()
     }
 }
 
@@ -71,18 +80,47 @@ extension ScanQRCodePageViewController: AVCaptureMetadataOutputObjectsDelegate {
             return
         }
         
-        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        guard let metadataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else { return }
         
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
             
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
-            
-            qrCodeFrameView?.frame = barCodeObject!.bounds
-            
-            if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
+            if let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj) {
+                
+                qrCodeFrameView?.frame = barCodeObject.bounds
+                
+                if metadataObj.stringValue != nil,
+                   let plantID = metadataObj.stringValue {
+                    
+                    FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+                        switch result {
+                        case .success(let plant):
+                            self.showSharePlant(plant: plant)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
             }
         }
     }
     
+    func showSharePlant(plant: Plant) {
+        let storyBoard = UIStoryboard(name: "ScanQRCodePage", bundle: nil)
+        guard let remindVC = storyBoard.instantiateViewController(
+            withIdentifier: String(describing: SharePlantDetailViewController.self))
+                as? SharePlantDetailViewController else { return }
+        remindVC.modalTransitionStyle = .crossDissolve
+        remindVC.modalPresentationStyle = .overCurrentContext
+        remindVC.plant = plant
+        remindVC.delegate = self
+        present(remindVC, animated: true, completion: nil)
+        captureSession.stopRunning()
+    }
+}
+
+extension ScanQRCodePageViewController: SharePlantDetailDelegate {
+    
+    func cancelAction() {
+        captureSession.startRunning()
+    }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="ScanQRCodePageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -23,6 +23,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="64" y="81"/>
+        </scene>
+        <!--Share Plant Detail View Controller-->
+        <scene sceneID="Tj5-IE-d7k">
+            <objects>
+                <viewController storyboardIdentifier="SharePlantDetailViewController" id="Ytd-o4-naD" customClass="SharePlantDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ry1-hD-II4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lid-lb-4f2">
+                                <rect key="frame" x="50" y="194" width="275" height="484"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iS3-AZ-Rfk">
+                                        <rect key="frame" x="37" y="24" width="201" height="265"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="265" id="bYo-t4-JQB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植物名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9e-Xz-hnH">
+                                        <rect key="frame" x="97.666666666666657" y="294" width="80" height="29"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66">
+                                        <rect key="frame" x="122.66666666666666" y="328" width="30" height="21"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3S-Az-XKg">
+                                        <rect key="frame" x="157.66666666666666" y="449" width="60" height="30"/>
+                                        <color key="backgroundColor" red="0.71415682570000005" green="0.83338541669999999" blue="0.73759089099999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="hGZ-iI-t8K"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="取消">
+                                            <color key="baseForegroundColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="Ytd-o4-naD" eventType="touchUpInside" id="ftd-yC-WQz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxp-zT-Fa8">
+                                        <rect key="frame" x="57.666666666666671" y="449" width="60" height="30"/>
+                                        <color key="backgroundColor" red="0.71415682570000005" green="0.83338541669999999" blue="0.73759089099999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="MNx-ce-ukd"/>
+                                            <constraint firstAttribute="height" constant="30" id="jBf-5f-1yY"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="收藏">
+                                            <color key="titleColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.91696220669999995" green="1" blue="0.95157233100000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="V3S-Az-XKg" secondAttribute="bottom" constant="5" id="2nw-ef-GFY"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="centerX" secondItem="iS3-AZ-Rfk" secondAttribute="centerX" constant="50" id="Aff-U6-yEO"/>
+                                    <constraint firstAttribute="bottom" secondItem="bxp-zT-Fa8" secondAttribute="bottom" constant="5" id="Ceo-FC-LXD"/>
+                                    <constraint firstItem="bxp-zT-Fa8" firstAttribute="top" relation="lessThanOrEqual" secondItem="4wH-eh-M66" secondAttribute="bottom" constant="100" id="HEt-Ic-yi8"/>
+                                    <constraint firstItem="bxp-zT-Fa8" firstAttribute="centerX" secondItem="iS3-AZ-Rfk" secondAttribute="centerX" constant="-50" id="WZU-5s-X0h"/>
+                                    <constraint firstItem="4wH-eh-M66" firstAttribute="top" secondItem="s9e-Xz-hnH" secondAttribute="bottom" constant="5" id="XFb-GI-Q1s"/>
+                                    <constraint firstItem="iS3-AZ-Rfk" firstAttribute="top" secondItem="lid-lb-4f2" secondAttribute="top" constant="24" id="b3q-Ys-Z5Q"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="top" secondItem="iS3-AZ-Rfk" secondAttribute="bottom" constant="5" id="flb-vw-3fb"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" id="hgV-5v-Lgn"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="top" secondItem="bxp-zT-Fa8" secondAttribute="top" id="i9r-qt-8MZ"/>
+                                    <constraint firstItem="4wH-eh-M66" firstAttribute="centerX" secondItem="s9e-Xz-hnH" secondAttribute="centerX" id="nGP-FZ-cPO"/>
+                                    <constraint firstItem="iS3-AZ-Rfk" firstAttribute="leading" secondItem="lid-lb-4f2" secondAttribute="leading" constant="37" id="oi4-O1-TwG"/>
+                                    <constraint firstAttribute="trailing" secondItem="iS3-AZ-Rfk" secondAttribute="trailing" constant="37" id="z49-rK-QC8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3iz-yz-omt"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3iz-yz-omt" firstAttribute="bottom" secondItem="lid-lb-4f2" secondAttribute="bottom" constant="100" id="HK2-DR-SDg"/>
+                            <constraint firstItem="lid-lb-4f2" firstAttribute="leading" secondItem="3iz-yz-omt" secondAttribute="leading" constant="50" id="PGs-EN-u7Q"/>
+                            <constraint firstItem="3iz-yz-omt" firstAttribute="trailing" secondItem="lid-lb-4f2" secondAttribute="trailing" constant="50" id="kiD-Ob-7nD"/>
+                            <constraint firstItem="lid-lb-4f2" firstAttribute="top" secondItem="3iz-yz-omt" secondAttribute="top" constant="150" id="oZD-7i-zVO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VUt-FF-m74"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="lid-lb-4f2" id="3cq-AN-RFe"/>
+                        <outlet property="categoryLabel" destination="4wH-eh-M66" id="QUi-58-QNQ"/>
+                        <outlet property="plantImageView" destination="iS3-AZ-Rfk" id="Cns-iJ-zZO"/>
+                        <outlet property="plantNameLabel" destination="s9e-Xz-hnH" id="YlR-jp-lx8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qf2-l2-Vfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060.8695652173915" y="79.6875"/>
         </scene>
     </scenes>
     <resources>
