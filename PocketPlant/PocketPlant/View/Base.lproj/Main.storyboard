@@ -37,6 +37,9 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="qrcode.viewfinder" catalog="system"/>
+                                        <connections>
+                                            <segue destination="cbn-Nb-ixF" kind="show" id="v0Y-BA-KJO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-YK-xjB">
                                         <rect key="frame" x="363" y="49.999999999999986" width="35" height="30.666666666666686"/>
@@ -208,6 +211,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTO-l4-Wcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5217" y="-139"/>
+        </scene>
+        <!--ScanQRCodePage-->
+        <scene sceneID="cRK-Jp-KMC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ScanQRCodePage" id="cbn-Nb-ixF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xFy-sv-yrJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2PA-Pb-xW3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4659" y="-444"/>
         </scene>
         <!--探索-->
         <scene sceneID="OSo-WK-Aeu">

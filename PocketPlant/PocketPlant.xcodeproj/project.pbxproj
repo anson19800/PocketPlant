@@ -25,6 +25,8 @@
 		CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */; };
 		CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF2272921A2005E1448 /* Date+Extension.swift */; };
 		CB8F2EF5272943D8005E1448 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF4272943D8005E1448 /* UIImageView+Extension.swift */; };
+		CB8F2EF8272956CA005E1448 /* ScanQRCodePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */; };
+		CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF9272A74D9005E1448 /* ScanQRCodePageViewController.swift */; };
 		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
 		CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A49172722CBA50095E5EE /* WaterRecord.swift */; };
 		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
@@ -75,6 +77,8 @@
 		CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CB8F2EF2272921A2005E1448 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CB8F2EF4272943D8005E1448 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanQRCodePage.storyboard; sourceTree = "<group>"; };
+		CB8F2EF9272A74D9005E1448 /* ScanQRCodePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodePageViewController.swift; sourceTree = "<group>"; };
 		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CB9A49172722CBA50095E5EE /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,14 @@
 			path = ProfilePage;
 			sourceTree = "<group>";
 		};
+		CB8F2EF62729569A005E1448 /* ScanQRCodePage */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */,
+			);
+			path = ScanQRCodePage;
+			sourceTree = "<group>";
+		};
 		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
+				CB8F2EF62729569A005E1448 /* ScanQRCodePage */,
 				CB8F2EE72728EFBF005E1448 /* ProfilePage */,
 				CB8F2EE62728EFB3005E1448 /* DiscoverPage */,
 				CB8F2EE32728EE39005E1448 /* CalendarPage */,
@@ -274,6 +287,7 @@
 				CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */,
 				CB8F2ED427279E08005E1448 /* RemindViewController.swift */,
 				CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */,
+				CB8F2EF9272A74D9005E1448 /* ScanQRCodePageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -391,6 +405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8F2EF8272956CA005E1448 /* ScanQRCodePage.storyboard in Resources */,
 				CBF7AC27271D5D46001E3C37 /* PlantCollectionViewCell.xib in Resources */,
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
 				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
@@ -494,6 +509,7 @@
 				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
+				CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */,
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
 				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
