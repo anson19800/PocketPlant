@@ -68,6 +68,8 @@ class InputPlantTableViewCell: UITableViewCell {
     @IBOutlet weak var lightLevel2: UIButton!
     @IBOutlet weak var lightLevel3: UIButton!
     
+    @IBOutlet weak var postButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
@@ -150,7 +152,6 @@ class InputPlantTableViewCell: UITableViewCell {
               let category = categoryTextField.text,
               let buyPlace = buyPlaceTextField.text,
               let buyPriceString = buyPriceTextField.text,
-              let buyPrice = Int(buyPriceString),
               let description = descriptionTextView.text
         else { return }
         
@@ -158,6 +159,7 @@ class InputPlantTableViewCell: UITableViewCell {
         let humidity = self.humidity
         let buyDate = self.buyTimePicker.date
         let buyTime = buyDate.timeIntervalSince1970
+        let buyPrice = Int(buyPriceString) ?? 0
         
         var plant = Plant(id: "0",
                           name: name,
@@ -191,23 +193,23 @@ class InputPlantTableViewCell: UITableViewCell {
         case 1:
             
             waterLevel = .one
-            waterLevel1.tintColor = .blue
+            waterLevel1.tintColor = .cloudBlue
             waterLevel2.tintColor = .gray
             waterLevel3.tintColor = .gray
             
         case 2:
             
             waterLevel = .two
-            waterLevel1.tintColor = .blue
-            waterLevel2.tintColor = .blue
+            waterLevel1.tintColor = .cloudBlue
+            waterLevel2.tintColor = .cloudBlue
             waterLevel3.tintColor = .gray
             
         case 3:
             
             waterLevel = .three
-            waterLevel1.tintColor = .blue
-            waterLevel2.tintColor = .blue
-            waterLevel3.tintColor = .blue
+            waterLevel1.tintColor = .cloudBlue
+            waterLevel2.tintColor = .cloudBlue
+            waterLevel3.tintColor = .cloudBlue
             
         default:
             waterLevel = .zero
@@ -249,7 +251,6 @@ class InputPlantTableViewCell: UITableViewCell {
         buyPriceTextField.text = String(plant.buyPrice)
         
         descriptionTextView.text = plant.description
-        
     }
     
 }

@@ -23,7 +23,7 @@
                         <rect key="frame" x="30" y="30" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植物名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLx-mg-6RC" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -56,7 +56,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hHn-Eq-LgC">
-                                <rect key="frame" x="129.5" y="0.0" width="176.5" height="35"/>
+                                <rect key="frame" x="89.5" y="0.0" width="216.5" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -69,7 +69,7 @@
                         <rect key="frame" x="30" y="75" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植物種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-8f-vfX" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -102,7 +102,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fGl-iN-PFD">
-                                <rect key="frame" x="129.5" y="0.0" width="176.5" height="35"/>
+                                <rect key="frame" x="89.5" y="0.0" width="216.5" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -112,10 +112,10 @@
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EFy-7W-8o3">
-                        <rect key="frame" x="30" y="120" width="262.5" height="35"/>
+                        <rect key="frame" x="30" y="120" width="222.5" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="水份需求" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPK-ps-Bnm" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -148,7 +148,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9Y-nz-yqr">
-                                <rect key="frame" x="129.5" y="2" width="31" height="30.5"/>
+                                <rect key="frame" x="89.5" y="2" width="31" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="KrI-Qv-qA3"/>
                                 </constraints>
@@ -162,7 +162,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-a1-Vrb">
-                                <rect key="frame" x="180.5" y="2" width="31" height="30.5"/>
+                                <rect key="frame" x="140.5" y="2" width="31" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="p94-SS-h2v"/>
                                 </constraints>
@@ -176,7 +176,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLb-GS-fd3">
-                                <rect key="frame" x="231.5" y="2" width="31" height="30.5"/>
+                                <rect key="frame" x="191.5" y="2" width="31" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="KFl-JK-n2h"/>
                                 </constraints>
@@ -195,10 +195,10 @@
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="D45-8S-vZl">
-                        <rect key="frame" x="30" y="165" width="262.5" height="35"/>
+                        <rect key="frame" x="30" y="165" width="222.5" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日照需求" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB3-kL-tpt" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -231,7 +231,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNG-V0-3Lg">
-                                <rect key="frame" x="129.5" y="1.5" width="31" height="31.5"/>
+                                <rect key="frame" x="89.5" y="1.5" width="31" height="31.5"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
@@ -242,7 +242,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd0-dB-seC">
-                                <rect key="frame" x="180.5" y="1.5" width="31" height="31.5"/>
+                                <rect key="frame" x="140.5" y="1.5" width="31" height="31.5"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
@@ -253,7 +253,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0L-d6-EG3">
-                                <rect key="frame" x="231.5" y="1.5" width="31" height="31.5"/>
+                                <rect key="frame" x="191.5" y="1.5" width="31" height="31.5"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
@@ -272,7 +272,7 @@
                         <rect key="frame" x="30" y="210" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合適溫度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZO-55-0Hc" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -305,7 +305,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Qh-Z8-mld" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="129.5" y="0.0" width="72" height="35"/>
+                                <rect key="frame" x="89.5" y="0.0" width="72" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -340,7 +340,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="OmL-nQ-Enc">
-                                <rect key="frame" x="219.5" y="0.0" width="88.5" height="36"/>
+                                <rect key="frame" x="179.5" y="0.0" width="128.5" height="36"/>
                                 <color key="tintColor" red="0.25813597440000002" green="0.33305498960000002" blue="0.26039248700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="sliderAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Rs8-Lm-g68"/>
@@ -355,7 +355,7 @@
                         <rect key="frame" x="30" y="255" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合適濕度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVN-wc-JVF" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -388,7 +388,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGW-PL-khF" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="129.5" y="0.0" width="72" height="35"/>
+                                <rect key="frame" x="89.5" y="0.0" width="72" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -423,7 +423,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="4Pd-Ln-nnh">
-                                <rect key="frame" x="219.5" y="0.0" width="88.5" height="36"/>
+                                <rect key="frame" x="179.5" y="0.0" width="128.5" height="36"/>
                                 <color key="tintColor" red="0.25813597440000002" green="0.33305498960000002" blue="0.26039248700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="sliderAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="hq3-Uw-OBe"/>
@@ -438,7 +438,7 @@
                         <rect key="frame" x="30" y="300" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="購買時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekQ-15-iBp" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -471,7 +471,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="aDA-Au-hZs">
-                                <rect key="frame" x="129.5" y="0.0" width="176.5" height="35"/>
+                                <rect key="frame" x="89.5" y="0.0" width="216.5" height="35"/>
                             </datePicker>
                         </subviews>
                         <constraints>
@@ -482,7 +482,7 @@
                         <rect key="frame" x="30" y="345" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="購買地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLS-bi-YrO" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -517,8 +517,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-Fu-XQu">
-                                <rect key="frame" x="129.5" y="0.0" width="176.5" height="35"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-Fu-XQu">
+                                <rect key="frame" x="89.5" y="0.0" width="216.5" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -531,7 +531,7 @@
                         <rect key="frame" x="30" y="390" width="306" height="35"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="購買價格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7H-mo-hdD" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="35"/>
+                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="35"/>
                                 <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -569,8 +569,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xnK-jU-2os">
-                                <rect key="frame" x="129.5" y="0.0" width="176.5" height="35"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="價格" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xnK-jU-2os">
+                                <rect key="frame" x="89.5" y="0.0" width="216.5" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
@@ -697,6 +697,7 @@
                 <outlet property="lightLevel2" destination="fd0-dB-seC" id="Ef9-KH-JWN"/>
                 <outlet property="lightLevel3" destination="A0L-d6-EG3" id="bWT-AX-ELm"/>
                 <outlet property="nameTextField" destination="hHn-Eq-LgC" id="tGG-zJ-1dD"/>
+                <outlet property="postButton" destination="z32-Db-hDG" id="PCf-WJ-DFJ"/>
                 <outlet property="tempLabel" destination="5Qh-Z8-mld" id="OJF-rZ-47f"/>
                 <outlet property="tempSlider" destination="OmL-nQ-Enc" id="GDj-RH-Vxa"/>
                 <outlet property="waterLevel1" destination="c9Y-nz-yqr" id="Bd6-nR-Cnd"/>
@@ -708,40 +709,40 @@
     </objects>
     <designables>
         <designable name="5Qh-Z8-mld">
-            <size key="intrinsicContentSize" width="59.5" height="30.5"/>
+            <size key="intrinsicContentSize" width="39.5" height="20.5"/>
         </designable>
         <designable name="8O9-4K-U2T">
-            <size key="intrinsicContentSize" width="55" height="26.5"/>
+            <size key="intrinsicContentSize" width="35" height="20.5"/>
         </designable>
         <designable name="GB3-kL-tpt">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="KaL-8f-vfX">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="LPK-ps-Bnm">
-            <size key="intrinsicContentSize" width="109.5" height="26.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="ZLS-bi-YrO">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="bZO-55-0Hc">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="ekQ-15-iBp">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="iGW-PL-khF">
-            <size key="intrinsicContentSize" width="55.5" height="30.5"/>
+            <size key="intrinsicContentSize" width="35.5" height="20.5"/>
         </designable>
         <designable name="kLx-mg-6RC">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="lVN-wc-JVF">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
         <designable name="s7H-mo-hdD">
-            <size key="intrinsicContentSize" width="109.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

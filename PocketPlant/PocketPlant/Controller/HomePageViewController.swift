@@ -84,7 +84,9 @@ class HomePageViewController: UIViewController {
         plantCollectionView.registerCellWithNib(
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
+        
         buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
+        
         updateMyPlants(withAnimation: false)
         
         let viewWidth = view.bounds.width
@@ -481,6 +483,8 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView,
                         contextMenuConfigurationForItemAt indexPath: IndexPath,
                         point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard collectionView == plantCollectionView else { return nil }
         
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
