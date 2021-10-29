@@ -164,4 +164,28 @@ class FirebaseManager {
         }
     }
     
+    func updateWater(plantID: String, isSuccess: @escaping (Bool) -> Void) {
+        
+        let waterRef = dataBase.collection("water")
+        
+        let documentID = waterRef.document().documentID
+        
+        let waterRecord = WaterRecord(id: documentID,
+                                      plantID: plantID,
+                                      waterDate: Date().timeIntervalSince1970)
+        
+        do {
+            
+            try waterRef.document(documentID).setData(from: waterRecord)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+            
+        }
+        
+    }
+    
 }

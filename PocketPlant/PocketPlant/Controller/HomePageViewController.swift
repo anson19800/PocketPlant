@@ -27,6 +27,11 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var headerBackground: UIView! {
+        didSet {
+            headerBackground.layer.cornerRadius = 5
+        }
+    }
     @IBOutlet weak var plantCollectionView: UICollectionView!
     
     @IBOutlet weak var buttonCollectionView: UICollectionView!
@@ -53,6 +58,8 @@ class HomePageViewController: UIViewController {
     
     var isSelectedAt: HomePageButton = .myPlant
     
+    @IBOutlet weak var waterImageView: UIImageView!
+    
     @IBOutlet weak var plantCollectionTitle: UILabel!
     
     override func viewDidLoad() {
@@ -74,6 +81,10 @@ class HomePageViewController: UIViewController {
             bundle: nil)
         
         updateMyPlants(withAnimation: false)
+        
+        let viewWidth = view.bounds.width
+        let viewHeight = view.bounds.height
+        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -228,6 +239,78 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    @IBAction func handleTap(_ sender: UITapGestureRecognizer) {
+        
+        guard let plants = plants else { return }
+        
+        var waterCount = 0
+        plants.forEach({ plant in
+            firebaseManager.updateWater(plantID: plant.id) { isSuccess in
+                if isSuccess {
+                    waterCount += 1
+                    print("\(waterCount) / \(plants.count)")
+                }
+            }
+        })
+        
+        let controller = UIAlertController(title: "一鍵澆水",
+                                           message: "對畫面上所有植物澆水",
+                                           preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+        
+    }
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
+        
+        guard let dropView = sender.view else { return }
+        
+        let translation = sender.translation(in: view)
+        dropView.center.x += translation.x
+        dropView.center.y += translation.y
+        sender.setTranslation(.zero, in: view)
+        
+        if sender.state == .ended {
+            
+            let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                let safeX = self.view.bounds.size.width - 50
+                let safeY = self.view.bounds.size.height - 50
+                
+                dropView.center = CGPoint(x: safeX, y: safeY)
+                
+            }, completion: nil)
+            
+            if let indexPath = plantCollectionView.indexPathForItem(at: point),
+               let plants = self.plants {
+                let plantName = plants[indexPath.row].name
+                let plantID = plants[indexPath.row].id
+                
+                firebaseManager.updateWater(plantID: plantID) { isSuccess in
+                    
+                    if isSuccess {
+                        
+                        self.waterAlert(plantName: plantName)
+                        
+                    } else {
+                        // failure action
+                    }
+                }
+            }
+        }
+    }
+    
+    func waterAlert(plantName: String) {
+        
+        let controller = UIAlertController(title: "已紀錄",
+                                           message: "對\(plantName)澆水",
+                                           preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
+        controller.addAction(okAction)
+        present(controller, animated: true, completion: nil)
+    }
 }
 
 // MARK: - CollectionViewDelegate & CollectionViewDataSource
@@ -276,7 +359,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             if indexPath.row == 0 {
                 
-                buttonCell.isSelected = true
+                buttonCell.selectedLayout()
                 
             }
             
@@ -394,14 +477,13 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             }
             
             let editAction = UIAction(title: "編輯",
-                                      image: nil,
-                                      attributes: .destructive) { _ in
+                                      image: nil) { _ in
                 
                 self.editPlantAction(indexPath: indexPath)
                 
             }
             
-            return UIMenu(title: "", children: [deleteAction, editAction])
+            return UIMenu(title: "", children: [editAction, deleteAction])
         }
     }
 }

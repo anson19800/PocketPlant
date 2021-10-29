@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d9S-dD-z2i">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -15,20 +15,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomePageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdc-Vf-YSU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="首頁" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06M-3v-eqW">
-                                        <rect key="frame" x="33" y="50" width="59" height="30"/>
+                                        <rect key="frame" x="33" y="50" width="73" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.12931125602759783" green="0.16638832293333339" blue="0.13009218043732002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpB-Pp-zi3">
-                                        <rect key="frame" x="302" y="48" width="35" height="33.5"/>
+                                        <rect key="frame" x="316" y="49" width="35" height="32.999999999999993"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="Asg-5A-qYw"/>
                                             <constraint firstAttribute="height" constant="35" id="ZNe-de-uiK"/>
@@ -38,7 +38,7 @@
                                         <state key="normal" backgroundImage="qrcode.viewfinder" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-YK-xjB">
-                                        <rect key="frame" x="349" y="49.5" width="35" height="31"/>
+                                        <rect key="frame" x="363" y="49.999999999999986" width="35" height="30.666666666666686"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="nLr-8V-FRT"/>
                                             <constraint firstAttribute="height" constant="35" id="zBF-hl-MZw"/>
@@ -51,7 +51,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.69005210325858801" green="0.87055634259999992" blue="0.72317188420877854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="tdd-YK-xjB" firstAttribute="centerY" secondItem="06M-3v-eqW" secondAttribute="centerY" id="8Qr-FJ-wOM"/>
                                     <constraint firstItem="QpB-Pp-zi3" firstAttribute="centerY" secondItem="tdd-YK-xjB" secondAttribute="centerY" id="Bdc-Xx-MAq"/>
@@ -64,11 +64,11 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
-                                <rect key="frame" x="35" y="105" width="344" height="51"/>
+                                <rect key="frame" x="35" y="105" width="358" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VoJ-oc-igC">
-                                <rect key="frame" x="35" y="176" width="379" height="76"/>
+                                <rect key="frame" x="35" y="176" width="393" height="76"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="fkW-Ee-Fey"/>
@@ -81,7 +81,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="button" id="CQW-43-v4G">
-                                        <rect key="frame" x="0.0" y="1.5" width="76" height="73"/>
+                                        <rect key="frame" x="0.0" y="1.6666666666666667" width="76" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aOI-wd-fyt">
                                             <rect key="frame" x="0.0" y="0.0" width="76" height="73"/>
@@ -98,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
-                                <rect key="frame" x="35" y="299" width="344" height="563"/>
+                                <rect key="frame" x="35" y="299" width="358" height="593"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -117,6 +117,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-jp-GEC">
+                                <rect key="frame" x="340" y="800" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.72295867609999998" green="0.88710906150000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="HHa-79-Hrb" appends="YES" id="aQz-Si-cQt"/>
+                                    <outletCollection property="gestureRecognizers" destination="27u-HF-mpq" appends="YES" id="D4A-Mv-PS3"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -143,15 +153,27 @@
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
+                        <outlet property="headerBackground" destination="jdc-Vf-YSU" id="EOG-UY-WIx"/>
                         <outlet property="plantCollectionTitle" destination="mAh-jK-Wxb" id="JZ0-F4-oxH"/>
                         <outlet property="plantCollectionView" destination="iFC-IX-pb8" id="X41-XB-Clo"/>
                         <outlet property="qrcodeButton" destination="QpB-Pp-zi3" id="b5Y-su-yAT"/>
                         <outlet property="searchBar" destination="oF9-CH-E7h" id="UKf-P4-rf1"/>
+                        <outlet property="waterImageView" destination="Lac-jp-GEC" id="IJh-U3-Nun"/>
                         <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
                         <segue destination="5ce-AY-Dhb" kind="presentation" identifier="editPlant" id="TN7-OC-vVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="HHa-79-Hrb">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="eNE-FS-h7I"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="27u-HF-mpq">
+                    <connections>
+                        <action selector="handleTap:" destination="BYZ-38-t0r" id="7WX-RW-twV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1849.2753623188407" y="60.9375"/>
         </scene>
@@ -181,7 +203,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d9S-dD-z2i" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FXD-6Z-3As">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -198,6 +220,7 @@
         <segue reference="TN7-OC-vVQ"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="drop.fill" catalog="system" width="101" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
