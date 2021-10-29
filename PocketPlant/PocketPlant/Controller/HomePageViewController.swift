@@ -65,6 +65,11 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
+        
         plantCollectionView.delegate = self
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
@@ -79,7 +84,7 @@ class HomePageViewController: UIViewController {
         plantCollectionView.registerCellWithNib(
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
-        
+        buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
         updateMyPlants(withAnimation: false)
         
         let viewWidth = view.bounds.width
@@ -208,6 +213,16 @@ class HomePageViewController: UIViewController {
         
     }
     
+    func deathPlantAction(indexPath: IndexPath) {
+        
+        guard let plants = plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        performSegue(withIdentifier: "deathPlant", sender: plant)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
@@ -233,6 +248,13 @@ class HomePageViewController: UIViewController {
             
             destinationVC.pageMode = .edit(editedPlant: plant)
             
+        case "deathPlant":
+            
+            guard let destinationVC = segue.destination as? DeathPlantViewController,
+                  let plant = sender as? Plant else { return }
+            
+            destinationVC.plant = plant
+
         default:
             
             break
@@ -294,8 +316,6 @@ class HomePageViewController: UIViewController {
                         
                         self.waterAlert(plantName: plantName)
                         
-                    } else {
-                        // failure action
                     }
                 }
             }
@@ -314,7 +334,8 @@ class HomePageViewController: UIViewController {
 }
 
 // MARK: - CollectionViewDelegate & CollectionViewDataSource
-extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource,
+                                  UICollectionViewDelegateFlowLayout {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -357,12 +378,6 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             guard let buttonCell = cell as? ButtonCollectionViewCell else { return cell }
             
-            if indexPath.row == 0 {
-                
-                buttonCell.selectedLayout()
-                
-            }
-            
             let title = HomePageButton.allCases[indexPath.row].rawValue
             
             buttonCell.layoutCell(image: UIImage(systemName: "leaf.fill")!, title: title)
@@ -400,13 +415,13 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 return plantCell
             }
-           
         }
-        
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let itemSpace: CGFloat = 10
         let columCount: CGFloat = 3
@@ -463,7 +478,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func collectionView(_ collectionView: UICollectionView,
+                        contextMenuConfigurationForItemAt indexPath: IndexPath,
+                        point: CGPoint) -> UIContextMenuConfiguration? {
         
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
@@ -476,14 +493,19 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             }
             
-            let editAction = UIAction(title: "編輯",
-                                      image: nil) { _ in
+            let editAction = UIAction(title: "編輯", image: nil) { _ in
                 
                 self.editPlantAction(indexPath: indexPath)
                 
             }
             
-            return UIMenu(title: "", children: [editAction, deleteAction])
+            let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
+                
+                self.deathPlantAction(indexPath: indexPath)
+                
+            }
+            
+            return UIMenu(title: "", children: [editAction, deathAction, deleteAction])
         }
     }
 }

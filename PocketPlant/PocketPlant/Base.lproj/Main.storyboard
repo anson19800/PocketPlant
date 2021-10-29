@@ -161,6 +161,7 @@
                         <outlet property="waterImageView" destination="Lac-jp-GEC" id="IJh-U3-Nun"/>
                         <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
                         <segue destination="5ce-AY-Dhb" kind="presentation" identifier="editPlant" id="TN7-OC-vVQ"/>
+                        <segue destination="CCe-xg-Goc" kind="show" identifier="deathPlant" id="Eu5-20-fqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -197,6 +198,16 @@
             </objects>
             <point key="canvasLocation" x="2780" y="76"/>
         </scene>
+        <!--DeathPlantPage-->
+        <scene sceneID="McW-lZ-DlC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DeathPlantPage" id="CCe-xg-Goc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ifa-8g-haD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTO-l4-Wcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="211"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="klP-0w-elY">
             <objects>
@@ -217,7 +228,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TN7-OC-vVQ"/>
+        <segue reference="eDb-fk-ScE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="drop.fill" catalog="system" width="101" height="128"/>
