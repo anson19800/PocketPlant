@@ -12,6 +12,7 @@
 		CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */; };
 		CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */; };
 		CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */; };
+		CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */; };
 		CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC02271C863E001E3C37 /* AppDelegate.swift */; };
 		CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */; };
 		CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */; };
@@ -45,6 +46,7 @@
 		CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
 		CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDetailTableViewCell.xib; sourceTree = "<group>"; };
+		CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CBF7ABFF271C863E001E3C37 /* PocketPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7AC02271C863E001E3C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */,
 				CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */,
 				CB07EDB7271EE74100406913 /* UILabel+Extension.swift */,
+				CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
+				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
 				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,

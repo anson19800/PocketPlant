@@ -15,15 +15,30 @@ class ButtonCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.cornerRadius = 8
+        self.layer.cornerRadius = 4
         self.layer.masksToBounds = true
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderColor = UIColor.hexStringToUIColor(hex: "7F927F").cgColor
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            
+            backgroundColor = isSelected ? UIColor.hexStringToUIColor(hex: "7F927F") : .white
+            
+            iconImage.tintColor = isSelected ? .white : UIColor.hexStringToUIColor(hex: "7F927F")
+            
+            titleLabel.textColor = isSelected ? .white : UIColor.hexStringToUIColor(hex: "7F927F")
+            
+        }
     }
     
     func layoutCell(image: UIImage, title: String) {
+        
         iconImage.image = image
+        
         titleLabel.text = title
+        
     }
 
 }

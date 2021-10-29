@@ -34,6 +34,8 @@ class HomePageViewController: UIViewController {
     
     var plants: [Plant]?
     
+    var isSelectedAt: HomePageButton = .myPlant
+    
     @IBOutlet weak var plantCollectionTitle: UILabel!
     
     override func viewDidLoad() {
@@ -51,7 +53,7 @@ class HomePageViewController: UIViewController {
             identifier: String(describing: PlantCollectionViewCell.self),
             bundle: nil)
         
-        updateMyPlants()
+        updateMyPlants(withAnimation: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +61,17 @@ class HomePageViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         
-        updateMyPlants()
+        switch isSelectedAt {
+            
+        case .myPlant:
+            
+            updateMyPlants(withAnimation: false)
+            
+        case .myFavorite:
+            
+            updateMyFavoritePlants(withAnimation: false)
+            
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,7 +80,7 @@ class HomePageViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    func updateMyPlants() {
+    func updateMyPlants(withAnimation: Bool) {
         
         firebaseManager.fetchPlants { result in
             
@@ -78,7 +90,18 @@ class HomePageViewController: UIViewController {
                 
                 self.plants = plants
                 
-                self.plantCollectionView.reloadData()
+                if withAnimation {
+                
+                    self.plantCollectionView.performBatchUpdates({
+                        let indexSet = IndexSet(integersIn: 0...0)
+                        self.plantCollectionView.reloadSections(indexSet)
+                    }, completion: nil)
+                    
+                } else {
+                    
+                    self.plantCollectionView.reloadData()
+                    
+                }
                 
                 self.plantCollectionTitle.text = "我的植物"
                 
@@ -89,7 +112,7 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    func updateMyFavoritePlants() {
+    func updateMyFavoritePlants(withAnimation: Bool) {
         
         firebaseManager.fetchFavoritePlants { result in
             
@@ -99,7 +122,18 @@ class HomePageViewController: UIViewController {
                 
                 self.plants = plants
                 
-                self.plantCollectionView.reloadData()
+                if withAnimation {
+                    
+                    self.plantCollectionView.performBatchUpdates({
+                        let indexSet = IndexSet(integersIn: 0...0)
+                        self.plantCollectionView.reloadSections(indexSet)
+                    }, completion: nil)
+                    
+                } else {
+                    
+                    self.plantCollectionView.reloadData()
+                    
+                }
                 
                 self.plantCollectionTitle.text = "最愛植物"
                 
@@ -140,6 +174,12 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             guard let buttonCell = cell as? ButtonCollectionViewCell else { return cell }
             
+            if indexPath.row == 0 {
+                
+                buttonCell.isSelected = true
+                
+            }
+            
             let title = HomePageButton.allCases[indexPath.row].rawValue
             
             buttonCell.layoutCell(image: UIImage(systemName: "leaf.fill")!, title: title)
@@ -154,9 +194,10 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             )
             
             guard let plantCell = cell as? PlantCollectionViewCell,
-                  let plants = self.plants else { return cell }
+                  let plants = self.plants,
+                  let imageURL = plants[indexPath.row].imageURL else { return cell }
             
-            plantCell.layoutCell(image: UIImage(named: "plant")!,
+            plantCell.layoutCell(imageURL: imageURL,
                                  name: plants[indexPath.row].name)
             
             return plantCell
@@ -192,11 +233,27 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             switch buttonType {
             case .myPlant:
                 
-                updateMyPlants()
+                if isSelectedAt == .myPlant {
+                    
+                    break
+                    
+                }
+                
+                updateMyPlants(withAnimation: true)
+                
+                self.isSelectedAt = .myPlant
                 
             case .myFavorite:
                 
-                updateMyFavoritePlants()
+                if isSelectedAt == .myFavorite {
+                    
+                    break
+                    
+                }
+                
+                updateMyFavoritePlants(withAnimation: true)
+                
+                self.isSelectedAt = .myFavorite
                 
             }
         }

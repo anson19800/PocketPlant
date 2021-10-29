@@ -55,8 +55,13 @@ class PlantDetailTableViewCell: UITableViewCell {
             self.humidityProgressView.setProgress(Float(plant.humidity)/100, animated: true)
         }
         
+        let buyDate = Date(timeIntervalSince1970: plant.buyTime)
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let butDateString = dateFormater.string(from: buyDate)
+        
         buyPlaceLabel.text = plant.buyPlace
-        buyTimeLabel.text = String(plant.buyTime)
+        buyTimeLabel.text = butDateString
         buyPriceLabel.text = String(plant.buyPrice)
     }
     

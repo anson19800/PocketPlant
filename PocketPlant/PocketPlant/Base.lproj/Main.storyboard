@@ -63,9 +63,8 @@
                                     <constraint firstItem="06M-3v-eqW" firstAttribute="leading" secondItem="jdc-Vf-YSU" secondAttribute="leading" constant="33" id="rcP-ld-VYS"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
+                            <searchBar userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
                                 <rect key="frame" x="35" y="105" width="344" height="51"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VoJ-oc-igC">

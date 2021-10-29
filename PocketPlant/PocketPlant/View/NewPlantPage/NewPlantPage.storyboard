@@ -55,6 +55,9 @@
                                             <state key="normal" title="拍照">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="takePhotoAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="B0a-gM-PiK"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9M-VY-D0u">
                                             <rect key="frame" x="216" y="54.5" width="178" height="30"/>
@@ -63,6 +66,9 @@
                                             <state key="normal" title="上傳照片">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="uploadImageAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="kfj-gh-Trj"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
