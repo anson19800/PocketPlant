@@ -187,6 +187,10 @@ extension NewPlantPageViewController: InputPlantDelegate {
         
         guard let image = self.plantImageView.image else { return }
         
+        let animationView = loadAnimation(name: "78093-planting", loopMode: .autoReverse)
+        
+        animationView.play()
+        
         switch pageMode {
             
         case .create:
@@ -217,6 +221,10 @@ extension NewPlantPageViewController: InputPlantDelegate {
             newPlant.favorite = editPlant.favorite
             
             imageManager.deleteImage(imageID: editPlant.imageID!)
+            
+            let animationView = loadAnimation(name: "78093-planting", loopMode: .autoReverse)
+            
+            animationView.play()
             
             imageManager.uploadImageToGetURL(image: image) { result in
                 
