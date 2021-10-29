@@ -28,6 +28,18 @@ class SharePlantDetailViewController: UIViewController {
     
     @IBOutlet weak var categoryLabel: UILabel!
     
+    @IBOutlet weak var collectButton: UIButton! {
+        didSet {
+            collectButton.layer.cornerRadius = 5
+        }
+    }
+    
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            cancelButton.layer.cornerRadius = 5
+        }
+    }
+    
     var plant: Plant?
     
     private var animator: UIViewPropertyAnimator!
@@ -93,7 +105,9 @@ class SharePlantDetailViewController: UIViewController {
             break
         }
     }
+    
     @IBAction func cancelAction(_ sender: UIButton) {
+        
         self.dismiss(animated: true, completion: nil)
         guard let delegate = self.delegate else { return }
         delegate.cancelAction()
