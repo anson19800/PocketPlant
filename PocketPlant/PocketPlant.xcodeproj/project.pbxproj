@@ -7,12 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */; };
+		CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB7271EE74100406913 /* UILabel+Extension.swift */; };
+		CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */; };
+		CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */; };
+		CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */; };
+		CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */; };
+		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
+		CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A49172722CBA50095E5EE /* WaterRecord.swift */; };
+		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
+		CB9A491D2724632A0095E5EE /* DeathPlantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */; };
 		CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC02271C863E001E3C37 /* AppDelegate.swift */; };
 		CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */; };
-		CBF7AC07271C863E001E3C37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC06271C863E001E3C37 /* ViewController.swift */; };
+		CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */; };
 		CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC08271C863E001E3C37 /* Main.storyboard */; };
 		CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC0B271C8641001E3C37 /* Assets.xcassets */; };
 		CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC0D271C8641001E3C37 /* LaunchScreen.storyboard */; };
+		CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC24271D5D46001E3C37 /* PlantCollectionViewCell.swift */; };
+		CBF7AC27271D5D46001E3C37 /* PlantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC25271D5D46001E3C37 /* PlantCollectionViewCell.xib */; };
+		CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC28271D6280001E3C37 /* ButtonCollectionViewCell.swift */; };
+		CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC29271D6280001E3C37 /* ButtonCollectionViewCell.xib */; };
+		CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC2C271D65C2001E3C37 /* GoogleService-Info.plist */; };
+		CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC2E271D6A77001E3C37 /* UICollectionView+Extension.swift */; };
+		CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */; };
+		CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC33271D980F001E3C37 /* Plant.swift */; };
+		CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */; };
+		CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */; };
+		CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */; };
+		CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */; };
+		CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */; };
+		CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */; };
+		CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */; };
 		E633471A87BF914363C32DA1 /* Pods_PocketPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,14 +45,39 @@
 		01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE3D4B79374ED5EF6C29A96 /* Pods-PocketPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant.release.xcconfig"; path = "Target Support Files/Pods-PocketPlant/Pods-PocketPlant.release.xcconfig"; sourceTree = "<group>"; };
 		5FC710C89D7C558D5AEEEB6A /* Pods-PocketPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant.debug.xcconfig"; path = "Target Support Files/Pods-PocketPlant/Pods-PocketPlant.debug.xcconfig"; sourceTree = "<group>"; };
+		CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantDetailPage.storyboard; sourceTree = "<group>"; };
+		CB07EDB7271EE74100406913 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
+		CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDetailTableViewCell.xib; sourceTree = "<group>"; };
+		CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		CB9A49172722CBA50095E5EE /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
+		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
+		CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeathPlantPage.storyboard; sourceTree = "<group>"; };
 		CBF7ABFF271C863E001E3C37 /* PocketPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7AC02271C863E001E3C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBF7AC06271C863E001E3C37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		CBF7AC09271C863E001E3C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBF7AC0B271C8641001E3C37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBF7AC0E271C8641001E3C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBF7AC10271C8641001E3C37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBF7AC24271D5D46001E3C37 /* PlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBF7AC25271D5D46001E3C37 /* PlantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantCollectionViewCell.xib; sourceTree = "<group>"; };
+		CBF7AC28271D6280001E3C37 /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		CBF7AC29271D6280001E3C37 /* ButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCollectionViewCell.xib; sourceTree = "<group>"; };
+		CBF7AC2C271D65C2001E3C37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CBF7AC2E271D6A77001E3C37 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CBF7AC33271D980F001E3C37 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlantPage.storyboard; sourceTree = "<group>"; };
+		CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlantPageViewController.swift; sourceTree = "<group>"; };
+		CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPlantTableViewCell.swift; sourceTree = "<group>"; };
+		CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPlantTableViewCell.xib; sourceTree = "<group>"; };
+		CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +109,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CB07EDB4271EE5DB00406913 /* PlantDetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */,
+				CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */,
+				CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */,
+			);
+			path = PlantDetailPage;
+			sourceTree = "<group>";
+		};
+		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */,
+			);
+			path = DeathPlantPage;
+			sourceTree = "<group>";
+		};
 		CBF7ABF6271C863E001E3C37 = {
 			isa = PBXGroup;
 			children = (
@@ -80,15 +148,102 @@
 		CBF7AC01271C863E001E3C37 /* PocketPlant */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7AC30271D773B001E3C37 /* Extension */,
+				CBF7AC1C271D5BA7001E3C37 /* Controller */,
+				CBF7AC1B271D5BA1001E3C37 /* View */,
+				CBF7AC1A271D5B99001E3C37 /* Model */,
 				CBF7AC02271C863E001E3C37 /* AppDelegate.swift */,
 				CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */,
-				CBF7AC06271C863E001E3C37 /* ViewController.swift */,
 				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 				CBF7AC0B271C8641001E3C37 /* Assets.xcassets */,
 				CBF7AC0D271C8641001E3C37 /* LaunchScreen.storyboard */,
 				CBF7AC10271C8641001E3C37 /* Info.plist */,
+				CBF7AC2C271D65C2001E3C37 /* GoogleService-Info.plist */,
 			);
 			path = PocketPlant;
+			sourceTree = "<group>";
+		};
+		CBF7AC1A271D5B99001E3C37 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC33271D980F001E3C37 /* Plant.swift */,
+				CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */,
+				CB9A4915272156FA0095E5EE /* ImageManager.swift */,
+				CB9A49172722CBA50095E5EE /* WaterRecord.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBF7AC1B271D5BA1001E3C37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A49192724628D0095E5EE /* DeathPlantPage */,
+				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,
+				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
+				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
+				CBF7AC22271D5D11001E3C37 /* HomePage */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBF7AC1C271D5BA7001E3C37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */,
+				CBF7AC3A271E7629001E3C37 /* NewPlantPageViewController.swift */,
+				CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */,
+				CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CBF7AC22271D5D11001E3C37 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC28271D6280001E3C37 /* ButtonCollectionViewCell.swift */,
+				CBF7AC29271D6280001E3C37 /* ButtonCollectionViewCell.xib */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC24271D5D46001E3C37 /* PlantCollectionViewCell.swift */,
+				CBF7AC25271D5D46001E3C37 /* PlantCollectionViewCell.xib */,
+			);
+			path = PlantCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		CBF7AC30271D773B001E3C37 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC2E271D6A77001E3C37 /* UICollectionView+Extension.swift */,
+				CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */,
+				CBF7AC31271D77AD001E3C37 /* UIColor+Extension.swift */,
+				CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */,
+				CB07EDB7271EE74100406913 /* UILabel+Extension.swift */,
+				CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CBF7AC37271E71A4001E3C37 /* NewPlantPage */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC3C271E77AD001E3C37 /* inputPlantViewCell */,
+				CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */,
+			);
+			path = NewPlantPage;
+			sourceTree = "<group>";
+		};
+		CBF7AC3C271E77AD001E3C37 /* inputPlantViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBF7AC3D271E8CF0001E3C37 /* InputPlantTableViewCell.swift */,
+				CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */,
+			);
+			path = inputPlantViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +307,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF7AC27271D5D46001E3C37 /* PlantCollectionViewCell.xib in Resources */,
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
+				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
+				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
+				CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */,
+				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
+				CB9A491D2724632A0095E5EE /* DeathPlantPage.storyboard in Resources */,
+				CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */,
+				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,8 +387,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBF7AC07271C863E001E3C37 /* ViewController.swift in Sources */,
+				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
+				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,
+				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
+				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
+				CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */,
+				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
+				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
+				CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */,
+				CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */,
+				CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */,
+				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
+				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
+				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
+				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
+				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
+				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
+				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
+				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,
 				CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,11 +554,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "口袋植物";
+				INFOPLIST_KEY_NSCameraUsageDescription = "取用相機為您的植物拍照";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "取用圖庫選擇您的植物照上傳";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -392,9 +576,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anson.PocketPlant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -409,6 +594,9 @@
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "口袋植物";
+				INFOPLIST_KEY_NSCameraUsageDescription = "取用相機為您的植物拍照";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "取用圖庫選擇您的植物照上傳";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -424,7 +612,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
