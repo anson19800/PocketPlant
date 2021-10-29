@@ -44,6 +44,7 @@ class PlantDetailViewController: UIViewController {
         
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
     }
+    
     @IBAction func addToFavorite(_ sender: UIButton) {
         
         guard var plant = plant else { return }

@@ -40,6 +40,7 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         plantCollectionView.delegate = self
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
@@ -144,8 +145,65 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    func deletePlantAction(indexPath: IndexPath) {
+        
+        guard var plants = plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        plants.remove(at: indexPath.row)
+        
+        self.plants = plants
+
+        firebaseManager.deletePlant(plant: plant)
+        
+        plantCollectionView.deleteItems(at: [indexPath])
+    }
+    
+    func editPlantAction(indexPath: IndexPath) {
+        
+        guard let plants = plants else { return }
+        
+        let plant = plants[indexPath.row]
+        
+        performSegue(withIdentifier: "editPlant", sender: plant)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+            
+        case "showPlantDetail":
+            
+            guard let destinationVC = segue.destination as? PlantDetailViewController,
+                  let plant = sender as? Plant else { return }
+            
+            destinationVC.plant = plant
+            
+        case "createPlant":
+            
+            guard let destinationVC = segue.destination as? NewPlantPageViewController else { return }
+            
+            destinationVC.pageMode = .create
+            
+        case "editPlant":
+            
+            guard let destinationNVC = segue.destination as? UINavigationController,
+                  let destinationVC = destinationNVC.viewControllers.first as? NewPlantPageViewController,
+                  let plant = sender as? Plant else { return }
+            
+            destinationVC.pageMode = .edit(editedPlant: plant)
+            
+        default:
+            
+            break
+        }
+    }
+    
 }
 
+// MARK: - CollectionViewDelegate & CollectionViewDataSource
 extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -259,12 +317,30 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        guard let destinationVC = segue.destination as? PlantDetailViewController,
-              let plant = sender as? Plant else { return }
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            
+            let deleteAction = UIAction(title: "刪除",
+                                        image: UIImage(systemName: "trash"),
+                                        attributes: .destructive) { _ in
+                
+                self.deletePlantAction(indexPath: indexPath)
+                
+            }
+            
+            let editAction = UIAction(title: "編輯",
+                                      image: nil,
+                                      attributes: .destructive) { _ in
+                
+                self.editPlantAction(indexPath: indexPath)
+                
+            }
+            
+            return UIMenu(title: "", children: [deleteAction, editAction])
+        }
         
-        destinationVC.plant = plant
     }
     
 }

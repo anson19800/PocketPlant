@@ -8,9 +8,23 @@
 import UIKit
 import PhotosUI
 import FirebaseStorage
+import Kingfisher
+
+enum NewPlantPageMode {
+    case edit(editedPlant: Plant)
+    case create
+}
 
 class NewPlantPageViewController: UIViewController {
+    
+    var pageMode: NewPlantPageMode = .create
+    
+    let imageManager = ImageManager.shared
+    
+    let firebaseManager = FirebaseManager.shared
 
+    @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var uploadImageButton: UIButton! {
         didSet {
             uploadImageButton.layer.borderWidth = 2
@@ -44,14 +58,45 @@ class NewPlantPageViewController: UIViewController {
         }
     }
     
-    let firebaseManager = FirebaseManager.shared
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerCellWithNib(
             identifier: String(describing: InputPlantTableViewCell.self),
             bundle: nil)
+        
+        switch pageMode {
+        case .edit(let editedPlant):
+            
+            guard let imageURL = editedPlant.imageURL else { return }
+            
+            plantImageView.kf.setImage(with: URL(string: imageURL))
+            
+            titleLabel.text = "編輯植物"
+            
+        case .create:
+            
+            titleLabel.text = "新增植物"
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        switch pageMode {
+        case .edit(let editedPlant):
+            
+            guard let imageURL = editedPlant.imageURL else { return }
+            
+            plantImageView.kf.setImage(with: URL(string: imageURL))
+            
+            titleLabel.text = "編輯植物"
+            
+        case .create:
+            
+            titleLabel.text = "新增植物"
+        }
     }
     
     @IBAction func uploadImageAction(_ sender: Any) {
@@ -118,6 +163,17 @@ extension NewPlantPageViewController: UITableViewDelegate, UITableViewDataSource
         
         inputCell.delegate = self
         
+        switch pageMode {
+            
+        case .edit(editedPlant: let editedPlant):
+            
+            inputCell.layoutCell(plant: editedPlant)
+            
+        case .create:
+            
+            break
+        }
+        
         return inputCell
     }
 }
@@ -128,28 +184,76 @@ extension NewPlantPageViewController: InputPlantDelegate {
         
         guard let image = self.plantImageView.image else { return }
         
-        self.firebaseManager.uploadPlant(plant: &plant, image: image) { isSuccess in
+        switch pageMode {
             
-            if isSuccess {
+        case .create:
+            
+            self.firebaseManager.uploadPlant(plant: &plant, image: image) { isSuccess in
                 
-                self.dismiss(animated: true, completion: nil)
+                if isSuccess {
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    guard let parentNVC = self.presentingViewController as? UINavigationController,
+                          let parentVC = parentNVC.viewControllers.first,
+                          let homePageVC = parentVC as? HomePageViewController else { return }
+                    
+                    homePageVC.updateMyPlants(withAnimation: false)
+                }
                 
-                guard let parentNVC = self.presentingViewController as? UINavigationController,
-                      let parentVC = parentNVC.viewControllers.first,
-                      let homePageVC = parentVC as? HomePageViewController else { return }
-                
-                homePageVC.updateMyPlants(withAnimation: false)
             }
             
+        case .edit(let editPlant):
+            
+            var newPlant = plant
+            
+            newPlant.id = editPlant.id
+            
+            imageManager.deleteImage(imageID: editPlant.imageID!)
+            
+            imageManager.uploadImageToGetURL(image: image) { result in
+                
+                switch result {
+                    
+                case .success((let uuid, let url)):
+                    
+                    newPlant.imageID = uuid
+                    
+                    newPlant.imageURL = url
+                    
+                    self.firebaseManager.updatePlant(plant: newPlant) { result in
+                        
+                        switch result {
+                        case .success:
+                            
+                            self.dismiss(animated: true, completion: nil)
+                            
+                            guard let parentNVC = self.presentingViewController as? UINavigationController,
+                                  let parentVC = parentNVC.viewControllers.first,
+                                  let homePageVC = parentVC as? HomePageViewController else { return }
+                            
+                            homePageVC.updateMyPlants(withAnimation: false)
+                            
+                        case .failure(let error):
+                            
+                            print(error)
+                            
+                        }
+                    }
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
         }
-        
     }
-    
 }
 
 @available(iOS 14, *)
 extension NewPlantPageViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
         picker.dismiss(animated: true, completion: nil)
         
         let itemProviders = results.map(\.itemProvider)
@@ -174,7 +278,8 @@ extension NewPlantPageViewController: PHPickerViewControllerDelegate {
 
 extension NewPlantPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             

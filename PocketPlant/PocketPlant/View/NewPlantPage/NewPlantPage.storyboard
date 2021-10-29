@@ -103,6 +103,7 @@
                         <outlet property="plantImageView" destination="0Ta-9R-AQg" id="WJS-rY-IQ9"/>
                         <outlet property="tableView" destination="8NG-Ca-7Xh" id="e6Z-j8-XJ8"/>
                         <outlet property="takePhotoButton" destination="lZd-U0-vZE" id="U1Z-ay-fRD"/>
+                        <outlet property="titleLabel" destination="GVq-g6-5c7" id="sYI-qJ-Ats"/>
                         <outlet property="uploadImageButton" destination="i9M-VY-D0u" id="4ca-hd-bs8"/>
                     </connections>
                 </viewController>

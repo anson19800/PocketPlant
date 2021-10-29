@@ -15,6 +15,8 @@ class FirebaseManager {
     
     private let dataBase = Firestore.firestore()
     
+    let imageManager = ImageManager.shared
+    
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
         let plantRef = dataBase.collection("plant")
@@ -25,7 +27,7 @@ class FirebaseManager {
         
         uploadPlant.id = documentID
         
-        uploadImageToGetURL(image: image) { result in
+        imageManager.uploadImageToGetURL(image: image) { result in
             
             switch result {
                 
@@ -54,32 +56,6 @@ class FirebaseManager {
             }
         }
                 
-    }
-    
-    func uploadImageToGetURL(image: UIImage, completion: @escaping (Result<(uuid: String, url: String), Error>) -> Void) {
-        
-        let uniqueString = NSUUID().uuidString
-        
-        let storageRef = Storage.storage().reference().child("plantPhoto").child("\(uniqueString).jpg")
-        
-        let metadata = StorageMetadata()
-        
-        metadata.contentType = "image/jpg"
-        
-        if let uploadData =  image.scale(newWidth: 100).pngData() {
-            
-            let uploadTask = storageRef.putData(uploadData, metadata: nil)
-            
-            uploadTask.observe(.success) { snapshot in
-                snapshot.reference.downloadURL { url, _ in
-                    guard let url = url else {
-                        return
-                    }
-                    
-                    completion(Result.success((uniqueString, url.absoluteString)))
-                }
-            }
-        }
     }
     
     func fetchPlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
@@ -151,7 +127,41 @@ class FirebaseManager {
                 completion(Result.failure(error))
             }
         }
+    }
+    
+    func deletePlant(plant: Plant) {
         
+        let documentRef = dataBase.collection("plant").document(plant.id)
+        
+        guard let imageID = plant.imageID else { return }
+        
+        imageManager.deleteImage(imageID: imageID)
+        
+        documentRef.delete()
+    }
+    
+    func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
+        
+        let documentRef = dataBase.collection("plant").document(plant.id)
+        
+        documentRef.getDocument { document, error in
+            guard let document = document,
+                  document.exists else { return }
+            
+            do {
+                
+                try documentRef.setData(from: plant)
+                
+                isSuccess(Result.success(true))
+                
+            } catch {
+                
+                print(error)
+                
+                isSuccess(Result.failure(error))
+                
+            }
+        }
     }
     
 }
