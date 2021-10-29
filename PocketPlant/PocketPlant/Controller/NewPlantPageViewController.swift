@@ -22,6 +22,8 @@ class NewPlantPageViewController: UIViewController {
     let imageManager = ImageManager.shared
     
     let firebaseManager = FirebaseManager.shared
+    
+    var parentVC: UIViewController?
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -49,11 +51,8 @@ class NewPlantPageViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView! {
-        
         didSet {
-            
             tableView.delegate = self
-            
             tableView.dataSource = self
         }
     }
@@ -199,15 +198,15 @@ extension NewPlantPageViewController: InputPlantDelegate {
                 
                 if isSuccess {
                     
-                    self.dismiss(animated: true, completion: nil)
-                    
-                    guard let parentNVC = self.presentingViewController as? UINavigationController,
-                          let parentVC = parentNVC.viewControllers.first,
+                    guard let parentVC = self.parentVC,
                           let homePageVC = parentVC as? HomePageViewController else { return }
                     
-                    homePageVC.updateMyPlants(withAnimation: false)
+                    homePageVC.updateMyPlants(withAnimation: true)
+
+                    homePageVC.buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
+                                                               animated: false, scrollPosition: .top)
                     
-                    homePageVC.buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
+                    self.dismiss(animated: true, completion: nil)
                 }
                 
             }
@@ -241,18 +240,17 @@ extension NewPlantPageViewController: InputPlantDelegate {
                         switch result {
                         case .success:
                             
-                            self.dismiss(animated: true, completion: nil)
-                            
-                            guard let parentNVC = self.presentingViewController as? UINavigationController,
-                                  let parentVC = parentNVC.viewControllers.first,
+                            guard let parentVC = self.parentVC,
                                   let homePageVC = parentVC as? HomePageViewController else { return }
                             
-                            homePageVC.updateMyPlants(withAnimation: false)
+                            homePageVC.updateMyPlants(withAnimation: true)
                             
                             homePageVC.buttonCollectionView.selectItem(
                                 at: IndexPath(row: 0, section: 0),
                                 animated: false,
                                 scrollPosition: .top)
+                            
+                            self.dismiss(animated: true, completion: nil)
                             
                         case .failure(let error):
                             

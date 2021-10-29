@@ -27,6 +27,7 @@ class RemindViewController: UIViewController {
                                           bundle: nil)
         }
     }
+    
     @IBOutlet weak var indicatorView: UIView! {
         didSet {
             indicatorView.layer.cornerRadius = indicatorView.bounds.height / 2
@@ -86,8 +87,8 @@ class RemindViewController: UIViewController {
         default:
             break
         }
-        
     }
+    
     @IBAction func setReminder(_ sender: UIButton) {
         
         guard var plant = plant else { return }
@@ -129,18 +130,21 @@ class RemindViewController: UIViewController {
         plant.reminder = reminds
         
         FirebaseManager.shared.updatePlant(plant: plant) { result in
+            
             switch result {
+                
             case .success(_):
+                
                 UIView.animate(withDuration: 0.3) {
+                    
                     self.dismiss(animated: true, completion: nil)
+                    
                 }
             case .failure(let error):
                 print(error)
             }
         }
-        
     }
-    
 }
 
 extension RemindViewController: UITableViewDelegate, UITableViewDataSource {
@@ -157,11 +161,8 @@ extension RemindViewController: UITableViewDelegate, UITableViewDataSource {
         guard let reminderCell = cell as? ReminderTableViewCell,
               let plant = plant else { return cell }
     
-        
         reminderCell.layoutCell(type: ReminderType.allCases[indexPath.row], reminds: plant.reminder)
         
         return reminderCell
-        
     }
-    
 }
