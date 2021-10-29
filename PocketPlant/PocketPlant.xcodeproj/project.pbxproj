@@ -16,6 +16,7 @@
 		CB2241D3272BA3A000BAEE90 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */; };
 		CB2241D5272BA52500BAEE90 /* 78093-planting.json in Resources */ = {isa = PBXBuildFile; fileRef = CB2241D4272BA52500BAEE90 /* 78093-planting.json */; };
 		CB2241DA272BC41F00BAEE90 /* LottieWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241D9272BC41F00BAEE90 /* LottieWrapper.swift */; };
+		CB2241DC272BEABF00BAEE90 /* ShowQRCodePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		CB2241D4272BA52500BAEE90 /* 78093-planting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "78093-planting.json"; sourceTree = "<group>"; };
 		CB2241D9272BC41F00BAEE90 /* LottieWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWrapper.swift; sourceTree = "<group>"; };
+		CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQRCodePageViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				CB8F2EFB272A9568005E1448 /* SharePlantDetailViewController.swift */,
 				CB8F2EFD272B9EF9005E1448 /* DiscoverViewController.swift */,
 				CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */,
+				CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2241DC272BEABF00BAEE90 /* ShowQRCodePageViewController.swift in Sources */,
 				CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */,
 				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
 				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,

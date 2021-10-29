@@ -27,7 +27,6 @@ class PlantDetailViewController: UIViewController {
             infoView.layer.masksToBounds = true
         }
     }
-    @IBOutlet weak var qrCodeImageView: UIImageView!
     
     @IBOutlet weak var plantNameLabel: UILabel!
     
@@ -55,6 +54,16 @@ class PlantDetailViewController: UIViewController {
         favoriteButton.tintColor = plant.favorite ? .red : .gray
         
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func addToFavorite(_ sender: UIButton) {
@@ -101,10 +110,18 @@ class PlantDetailViewController: UIViewController {
             return
         }
 
-        self.qrCodeImageView.isHidden = false
+        let qrcodePage = storyboard?.instantiateViewController(
+            withIdentifier: String(describing: ShowQRCodePageViewController.self))
         
-        self.qrCodeImageView.generateQRCode(from: "\(plant.id)")
+        guard let qrcodePageVC = qrcodePage as? ShowQRCodePageViewController else { return }
         
+        qrcodePageVC.modalTransitionStyle = .crossDissolve
+        
+        qrcodePageVC.modalPresentationStyle = .overCurrentContext
+        
+        qrcodePageVC.plantID = plant.id
+        
+        present(qrcodePageVC, animated: true, completion: nil)
     }
 }
 
