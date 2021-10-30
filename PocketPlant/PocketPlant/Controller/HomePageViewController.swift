@@ -10,6 +10,7 @@ import UIKit
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
     case myFavorite = "最愛植物"
+    case gardeningShop = "園藝店"
 }
 
 class HomePageViewController: UIViewController {
@@ -99,6 +100,12 @@ class HomePageViewController: UIViewController {
         case .myFavorite:
             
             updateMyFavoritePlants(withAnimation: false)
+            
+        case .gardeningShop:
+            
+            buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
+                                            animated: false,
+                                            scrollPosition: .top)
             
         }
     }
@@ -253,6 +260,10 @@ class HomePageViewController: UIViewController {
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
+            
+        case "showShop":
+            
+            break
 
         default:
             
@@ -454,6 +465,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             let buttonType = HomePageButton.allCases[indexPath.row]
             
             switch buttonType {
+                
             case .myPlant:
                 
                 if isSelectedAt == .myPlant {
@@ -480,6 +492,13 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 self.isSelectedAt = .myFavorite
                 
+            case .gardeningShop:
+                
+                self.isSelectedAt = .gardeningShop
+                
+                searching = false
+                
+                performSegue(withIdentifier: "shopList", sender: nil)
             }
         }
     }

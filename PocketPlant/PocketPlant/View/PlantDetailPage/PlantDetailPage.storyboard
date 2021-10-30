@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plant" translatesAutoresizingMaskIntoConstraints="NO" id="lSb-EK-4jd">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="350"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="DQ9-7E-gRH"/>
+                                    <constraint firstAttribute="height" constant="350" id="DQ9-7E-gRH"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8V4-kx-pdv">
-                                <rect key="frame" x="0.0" y="250" width="428" height="642"/>
+                                <rect key="frame" x="0.0" y="300" width="428" height="592"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tAz-ai-juk">
-                                        <rect key="frame" x="0.0" y="83.666666666666686" width="428" height="558.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="98.666666666666714" width="428" height="493.33333333333326"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plantName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2A-3j-PNK">
@@ -37,7 +37,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gap-FU-4jQ">
-                                        <rect key="frame" x="20" y="57.666666666666686" width="67.666666666666671" height="21"/>
+                                        <rect key="frame" x="20" y="57.666666666666686" width="67.333333333333329" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                 <constraints>
                                     <constraint firstItem="gap-FU-4jQ" firstAttribute="leading" secondItem="a2A-3j-PNK" secondAttribute="leading" id="TN4-Q4-yIH"/>
                                     <constraint firstItem="a2A-3j-PNK" firstAttribute="leading" secondItem="8V4-kx-pdv" secondAttribute="leading" constant="20" id="Xnm-co-yHb"/>
-                                    <constraint firstItem="tAz-ai-juk" firstAttribute="top" secondItem="gap-FU-4jQ" secondAttribute="bottom" constant="5" id="YFi-wF-siP"/>
+                                    <constraint firstItem="tAz-ai-juk" firstAttribute="top" secondItem="gap-FU-4jQ" secondAttribute="bottom" constant="20" id="YFi-wF-siP"/>
                                     <constraint firstAttribute="trailing" secondItem="tAz-ai-juk" secondAttribute="trailing" id="apC-0X-3dl"/>
                                     <constraint firstItem="a2A-3j-PNK" firstAttribute="top" secondItem="8V4-kx-pdv" secondAttribute="top" constant="20" id="hri-kx-f8g"/>
                                     <constraint firstItem="gap-FU-4jQ" firstAttribute="top" secondItem="a2A-3j-PNK" secondAttribute="bottom" constant="5" id="i6X-ET-2RG"/>
@@ -64,7 +64,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOV-px-egc">
-                                <rect key="frame" x="368" y="226" width="50" height="48.666666666666671"/>
+                                <rect key="frame" x="368" y="276" width="50" height="48.666666666666686"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8xT-kO-pb6"/>
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOk-Pc-NOS">
-                                <rect key="frame" x="308" y="226" width="50" height="48.666666666666671"/>
+                                <rect key="frame" x="308" y="276" width="50" height="48.666666666666686"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Vf7-tq-yF1"/>
@@ -94,7 +94,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4qz-J5-Kpz">
-                                <rect key="frame" x="20" y="211.66666666666666" width="30" height="27"/>
+                                <rect key="frame" x="20" y="261.66666666666669" width="30" height="27.000000000000028"/>
                                 <color key="tintColor" red="0.48271767469999999" green="0.73289326990000003" blue="0.46978409139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>

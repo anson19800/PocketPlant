@@ -24,8 +24,8 @@
                             <constraint firstAttribute="height" constant="20" id="Ztv-AT-vaU"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ7-am-SHI">
-                        <rect key="frame" x="16" y="48" width="49" height="25.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的植物" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZ7-am-SHI">
+                        <rect key="frame" x="18" y="48" width="45" height="25.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.49803921569999998" green="0.57254901960000004" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -34,10 +34,9 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="UZ7-am-SHI" secondAttribute="trailing" constant="16" id="A3o-4p-bDE"/>
                 <constraint firstItem="UZ7-am-SHI" firstAttribute="top" secondItem="XdP-R6-waR" secondAttribute="bottom" constant="13" id="CIZ-iG-5xc"/>
-                <constraint firstItem="UZ7-am-SHI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="NMR-2j-jt5"/>
                 <constraint firstItem="XdP-R6-waR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="inb-PB-DFF"/>
+                <constraint firstItem="UZ7-am-SHI" firstAttribute="centerX" secondItem="XdP-R6-waR" secondAttribute="centerX" id="iuV-Tk-f06"/>
                 <constraint firstAttribute="bottom" secondItem="UZ7-am-SHI" secondAttribute="bottom" constant="8.5" id="nVr-pI-8P7"/>
                 <constraint firstAttribute="trailing" secondItem="XdP-R6-waR" secondAttribute="trailing" constant="30" id="r89-69-dUx"/>
                 <constraint firstItem="XdP-R6-waR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="vvj-yW-Xef"/>

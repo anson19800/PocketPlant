@@ -17,6 +17,10 @@
 		CB2241D5272BA52500BAEE90 /* 78093-planting.json in Resources */ = {isa = PBXBuildFile; fileRef = CB2241D4272BA52500BAEE90 /* 78093-planting.json */; };
 		CB2241DA272BC41F00BAEE90 /* LottieWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241D9272BC41F00BAEE90 /* LottieWrapper.swift */; };
 		CB2241DC272BEABF00BAEE90 /* ShowQRCodePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */; };
+		CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241DE272D353A00BAEE90 /* GardeningShopTableViewCell.swift */; };
+		CB2241E1272D353A00BAEE90 /* GardeningShopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241DF272D353A00BAEE90 /* GardeningShopTableViewCell.xib */; };
+		CB2241E3272D369900BAEE90 /* GardeningShopPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2241E2272D369900BAEE90 /* GardeningShopPage.storyboard */; };
+		CB2241E5272D379500BAEE90 /* GardeningShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241E4272D379500BAEE90 /* GardeningShopViewController.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -76,6 +80,10 @@
 		CB2241D4272BA52500BAEE90 /* 78093-planting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "78093-planting.json"; sourceTree = "<group>"; };
 		CB2241D9272BC41F00BAEE90 /* LottieWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieWrapper.swift; sourceTree = "<group>"; };
 		CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQRCodePageViewController.swift; sourceTree = "<group>"; };
+		CB2241DE272D353A00BAEE90 /* GardeningShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardeningShopTableViewCell.swift; sourceTree = "<group>"; };
+		CB2241DF272D353A00BAEE90 /* GardeningShopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GardeningShopTableViewCell.xib; sourceTree = "<group>"; };
+		CB2241E2272D369900BAEE90 /* GardeningShopPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GardeningShopPage.storyboard; sourceTree = "<group>"; };
+		CB2241E4272D379500BAEE90 /* GardeningShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardeningShopViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +175,15 @@
 				CB2241D9272BC41F00BAEE90 /* LottieWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		CB2241DD272D2C7A00BAEE90 /* GardeningShop */ = {
+			isa = PBXGroup;
+			children = (
+				CB2241DE272D353A00BAEE90 /* GardeningShopTableViewCell.swift */,
+				CB2241DF272D353A00BAEE90 /* GardeningShopTableViewCell.xib */,
+			);
+			path = GardeningShop;
 			sourceTree = "<group>";
 		};
 		CB8F2ED12726B8DB005E1448 /* RemindPage */ = {
@@ -296,6 +313,7 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB2241DD272D2C7A00BAEE90 /* GardeningShop */,
 				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 				CB8F2EF62729569A005E1448 /* ScanQRCodePage */,
 				CB8F2EE72728EFBF005E1448 /* ProfilePage */,
@@ -307,6 +325,7 @@
 				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
 				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
 				CBF7AC22271D5D11001E3C37 /* HomePage */,
+				CB2241E2272D369900BAEE90 /* GardeningShopPage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +344,7 @@
 				CB8F2EFD272B9EF9005E1448 /* DiscoverViewController.swift */,
 				CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */,
 				CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */,
+				CB2241E4272D379500BAEE90 /* GardeningShopViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -449,6 +469,7 @@
 				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
 				CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */,
 				CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */,
+				CB2241E3272D369900BAEE90 /* GardeningShopPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */,
 				CB2241D5272BA52500BAEE90 /* 78093-planting.json in Resources */,
@@ -459,6 +480,7 @@
 				CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */,
 				CB8F2F01272BA0C0005E1448 /* 16957-comming-soon.json in Resources */,
 				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
+				CB2241E1272D353A00BAEE90 /* GardeningShopTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +553,7 @@
 				CB2241DC272BEABF00BAEE90 /* ShowQRCodePageViewController.swift in Sources */,
 				CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */,
 				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
+				CB2241E5272D379500BAEE90 /* GardeningShopViewController.swift in Sources */,
 				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,
 				CB2241DA272BC41F00BAEE90 /* LottieWrapper.swift in Sources */,
 				CB8F2EF02728FC49005E1448 /* CalendarInfoTableViewCell.swift in Sources */,
@@ -538,6 +561,7 @@
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
 				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
 				CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */,
+				CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
 				CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */,
