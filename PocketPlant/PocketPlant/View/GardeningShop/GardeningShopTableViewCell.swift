@@ -18,10 +18,14 @@ class GardeningShopTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func layoutCell(imageURL: String, title: String, address: String) {
+    func layoutCell(gardeningShop: GardeningShop) {
         
-        shopImage.kf.setImage(with: URL(string: imageURL))
-        shopTitle.text = title
-        addressLabel.text = address
+        if let images = gardeningShop.images,
+           let firstImage = images.first {
+            shopImage.kf.setImage(with: URL(string: firstImage))
+        }
+        
+        shopTitle.text = gardeningShop.name
+        addressLabel.text = gardeningShop.address
     }
 }

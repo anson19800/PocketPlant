@@ -89,7 +89,9 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
+        
+        tabBarController?.tabBar.isHidden = false
         
         switch isSelectedAt {
             
@@ -490,13 +492,15 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 updateMyFavoritePlants(withAnimation: true)
                 
-                self.isSelectedAt = .myFavorite
+                isSelectedAt = .myFavorite
                 
             case .gardeningShop:
                 
-                self.isSelectedAt = .gardeningShop
+                isSelectedAt = .gardeningShop
                 
                 searching = false
+                
+                tabBarController?.tabBar.isHidden = true
                 
                 performSegue(withIdentifier: "shopList", sender: nil)
             }

@@ -20,8 +20,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHq-7n-QCF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="園藝店清單" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-FD-3eI">
-                                        <rect key="frame" x="33" y="50" width="127" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="園藝店收藏清單" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROf-FD-3eI">
+                                        <rect key="frame" x="33" y="50" width="177.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.12931125600000001" green="0.1663883229" blue="0.13009218040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -70,12 +70,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="95.758928571428569"/>
+            <point key="canvasLocation" x="1952.1739130434785" y="95.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Shop Detail View Controller-->
         <scene sceneID="6XW-uB-pBM">
             <objects>
-                <viewController storyboardIdentifier="detail" id="2d0-2G-fyX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="2d0-2G-fyX" customClass="ShopDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7fE-kS-hBg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,10 +139,16 @@
                             <constraint firstItem="0vW-Ai-Mqe" firstAttribute="top" secondItem="7fE-kS-hBg" secondAttribute="top" id="tbc-WY-JiS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="k81-ag-55q" id="RcE-LJ-Rv7"/>
+                        <outlet property="backgroundView" destination="H8a-hN-XHQ" id="g8E-uu-Apl"/>
+                        <outlet property="mapView" destination="0vW-Ai-Mqe" id="bPg-Tk-fnM"/>
+                        <outlet property="shopTitle" destination="fUH-i5-LVj" id="T5o-3r-SGB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZx-lJ-td8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897.1014492753625" y="95.758928571428569"/>
+            <point key="canvasLocation" x="2807.2463768115945" y="95.758928571428569"/>
         </scene>
     </scenes>
     <resources>
