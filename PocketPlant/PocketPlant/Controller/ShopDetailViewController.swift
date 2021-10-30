@@ -29,8 +29,21 @@ class ShopDetailViewController: UIViewController {
         if let shop = shop {
             shopTitle.text = shop.name
             addressLabel.text = shop.address
+            
+            let geoCoder = CLGeocoder()
+            geoCoder.geocodeAddressString(shop.address) { placemarks, _ in
+                
+                let annotation = MKPointAnnotation()
+                if let location = placemarks?.first?.location {
+                    annotation.coordinate = location.coordinate
+                    self.mapView.addAnnotation(annotation)
+                    
+                    let region = MKCoordinateRegion(center: annotation.coordinate,
+                                                    latitudinalMeters: 500,
+                                                    longitudinalMeters: 500)
+                    self.mapView.setRegion(region, animated: false)
+                }
+            }
         }
     }
-    */
-
 }
