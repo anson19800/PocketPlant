@@ -35,15 +35,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lid-lb-4f2">
                                 <rect key="frame" x="50" y="194" width="275" height="484"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iS3-AZ-Rfk">
-                                        <rect key="frame" x="37" y="24" width="201" height="265"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JmQ-eN-rMw">
+                                        <rect key="frame" x="37.666666666666686" y="24" width="200" height="200"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iS3-AZ-Rfk">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="265" id="bYo-t4-JQB"/>
+                                            <constraint firstItem="iS3-AZ-Rfk" firstAttribute="top" secondItem="JmQ-eN-rMw" secondAttribute="top" id="4Q5-uh-0RQ"/>
+                                            <constraint firstAttribute="width" constant="200" id="R6e-hQ-Ifv"/>
+                                            <constraint firstItem="iS3-AZ-Rfk" firstAttribute="leading" secondItem="JmQ-eN-rMw" secondAttribute="leading" id="atK-L6-bob"/>
+                                            <constraint firstAttribute="trailing" secondItem="iS3-AZ-Rfk" secondAttribute="trailing" id="b8J-5S-5wF"/>
+                                            <constraint firstAttribute="bottom" secondItem="iS3-AZ-Rfk" secondAttribute="bottom" id="dyt-sq-thV"/>
+                                            <constraint firstAttribute="width" secondItem="JmQ-eN-rMw" secondAttribute="height" multiplier="1:1" id="f7f-qv-Zs9"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植物名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9e-Xz-hnH">
-                                        <rect key="frame" x="37" y="294" width="80" height="28"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                        <rect key="frame" x="37.666666666666671" y="229" width="100.00000000000001" height="35"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -73,27 +84,81 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66">
-                                        <rect key="frame" x="37" y="324" width="30" height="21"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
+                                        <rect key="frame" x="37.666666666666671" y="266" width="22" height="15.666666666666686"/>
+                                        <color key="backgroundColor" red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lkBorderColor">
+                                                <color key="value" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sot-9N-qqE" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
+                                        <rect key="frame" x="37.666666666666686" y="291.66666666666669" width="200" height="21"/>
+                                        <color key="backgroundColor" red="0.91696220669999995" green="1" blue="0.95157233100000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="centerX" secondItem="iS3-AZ-Rfk" secondAttribute="centerX" constant="50" id="Aff-U6-yEO"/>
+                                    <constraint firstItem="bxp-zT-Fa8" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" constant="-50" id="1pS-JK-YL4"/>
+                                    <constraint firstItem="sot-9N-qqE" firstAttribute="top" secondItem="4wH-eh-M66" secondAttribute="bottom" constant="10" id="4Ta-e6-lRr"/>
                                     <constraint firstAttribute="bottom" secondItem="bxp-zT-Fa8" secondAttribute="bottom" constant="10" id="Ceo-FC-LXD"/>
-                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="leading" secondItem="iS3-AZ-Rfk" secondAttribute="leading" id="IQZ-gb-PYF"/>
+                                    <constraint firstItem="sot-9N-qqE" firstAttribute="leading" secondItem="s9e-Xz-hnH" secondAttribute="leading" id="Gdc-Bi-vuB"/>
+                                    <constraint firstItem="JmQ-eN-rMw" firstAttribute="top" secondItem="lid-lb-4f2" secondAttribute="top" constant="24" id="JBV-gG-s4U"/>
+                                    <constraint firstItem="sot-9N-qqE" firstAttribute="trailing" secondItem="iS3-AZ-Rfk" secondAttribute="trailing" id="MTw-sh-66i"/>
                                     <constraint firstItem="4wH-eh-M66" firstAttribute="top" secondItem="s9e-Xz-hnH" secondAttribute="bottom" constant="2" id="NRh-U5-ras"/>
-                                    <constraint firstItem="bxp-zT-Fa8" firstAttribute="centerX" secondItem="iS3-AZ-Rfk" secondAttribute="centerX" constant="-50" id="WZU-5s-X0h"/>
-                                    <constraint firstItem="iS3-AZ-Rfk" firstAttribute="top" secondItem="lid-lb-4f2" secondAttribute="top" constant="24" id="b3q-Ys-Z5Q"/>
-                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="top" secondItem="iS3-AZ-Rfk" secondAttribute="bottom" constant="5" id="flb-vw-3fb"/>
+                                    <constraint firstItem="JmQ-eN-rMw" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" id="UpF-x3-Rci"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" constant="50" id="ZFx-VK-GQi"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="top" secondItem="JmQ-eN-rMw" secondAttribute="bottom" constant="5" id="esO-nI-Xt6"/>
                                     <constraint firstItem="V3S-Az-XKg" firstAttribute="top" secondItem="bxp-zT-Fa8" secondAttribute="top" id="i9r-qt-8MZ"/>
-                                    <constraint firstItem="iS3-AZ-Rfk" firstAttribute="leading" secondItem="lid-lb-4f2" secondAttribute="leading" constant="37" id="oi4-O1-TwG"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sot-9N-qqE" secondAttribute="bottom" constant="20" id="jPC-9P-4Nb"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="leading" secondItem="iS3-AZ-Rfk" secondAttribute="leading" id="nT3-mz-ZY8"/>
                                     <constraint firstItem="V3S-Az-XKg" firstAttribute="bottom" secondItem="bxp-zT-Fa8" secondAttribute="bottom" id="wFU-kI-bZk"/>
                                     <constraint firstItem="4wH-eh-M66" firstAttribute="leading" secondItem="s9e-Xz-hnH" secondAttribute="leading" id="wgy-xU-7gk"/>
-                                    <constraint firstAttribute="trailing" secondItem="iS3-AZ-Rfk" secondAttribute="trailing" constant="37" id="z49-rK-QC8"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -112,13 +177,15 @@
                         <outlet property="cancelButton" destination="V3S-Az-XKg" id="mOT-cc-3lq"/>
                         <outlet property="categoryLabel" destination="4wH-eh-M66" id="QUi-58-QNQ"/>
                         <outlet property="collectButton" destination="bxp-zT-Fa8" id="j7q-dQ-N0X"/>
+                        <outlet property="descriptionLabel" destination="sot-9N-qqE" id="wFM-lf-x4f"/>
+                        <outlet property="imageContainer" destination="JmQ-eN-rMw" id="Am7-RA-Nvs"/>
                         <outlet property="plantImageView" destination="iS3-AZ-Rfk" id="Cns-iJ-zZO"/>
                         <outlet property="plantNameLabel" destination="s9e-Xz-hnH" id="YlR-jp-lx8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qf2-l2-Vfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060.8695652173915" y="79.6875"/>
+            <point key="canvasLocation" x="1060" y="79.064039408867004"/>
         </scene>
     </scenes>
     <resources>

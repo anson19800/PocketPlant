@@ -16,17 +16,34 @@ class SharePlantDetailViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
-            backgroundView.layer.cornerRadius = 10
+            backgroundView.layer.cornerRadius = 1
         }
     }
     @IBOutlet weak var plantImageView: UIImageView! {
         didSet {
-            plantImageView.layer.cornerRadius = 10
+            plantImageView.applyshadowWithCorner(
+                containerView: imageContainer,
+                cornerRadious: 0,
+                opacity: 0.3)
         }
     }
+    
+    @IBOutlet weak var imageContainer: UIView!
+    
     @IBOutlet weak var plantNameLabel: UILabel!
     
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel! {
+        didSet {
+            categoryLabel.layer.cornerRadius = 10
+            categoryLabel.layer.masksToBounds = true
+        }
+    }
+    
+    @IBOutlet weak var descriptionLabel: PaddingLabel! {
+        didSet {
+            descriptionLabel.layer.masksToBounds = true
+        }
+    }
     
     @IBOutlet weak var collectButton: UIButton! {
         didSet {
@@ -60,7 +77,12 @@ class SharePlantDetailViewController: UIViewController {
         
         plantImageView.kf.setImage(with: URL(string: imageURL))
         plantNameLabel.text = plant.name
-        categoryLabel.text = plant.category
+        if plant.category == "" {
+            categoryLabel.text = "未分類"
+        } else {
+            categoryLabel.text = plant.category
+        }
+        descriptionLabel.text = plant.description
     }
     
     override func viewWillAppear(_ animated: Bool) {

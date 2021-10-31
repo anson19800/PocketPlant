@@ -95,14 +95,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAh-jK-Wxb">
-                                <rect key="frame" x="35" y="268" width="70" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
-                                <rect key="frame" x="35" y="299" width="358" height="544"/>
+                                <rect key="frame" x="35" y="272" width="358" height="571"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -139,12 +133,9 @@
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="top" secondItem="06M-3v-eqW" secondAttribute="bottom" constant="25" id="6fM-Db-m0F"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Dsf-G1-Lhx"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="EZ5-UU-E4B"/>
-                            <constraint firstItem="mAh-jK-Wxb" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="16" id="Fzv-gb-oLN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mAh-jK-Wxb" secondAttribute="trailing" symbolic="YES" id="GeS-fg-9QM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VoJ-oc-igC" secondAttribute="trailing" id="Jhl-AX-cNP"/>
-                            <constraint firstItem="mAh-jK-Wxb" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Oyf-9h-SI5"/>
+                            <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="20" id="RvC-Ke-p1d"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TET-yt-ZRc"/>
-                            <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="mAh-jK-Wxb" secondAttribute="bottom" constant="10" id="Y4H-hD-HSt"/>
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="top" secondItem="oF9-CH-E7h" secondAttribute="bottom" constant="20" id="ZLO-YV-eId"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZyC-l0-P9K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdc-Vf-YSU" secondAttribute="trailing" id="hZL-jP-hJK"/>
@@ -158,7 +149,6 @@
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
                         <outlet property="headerBackground" destination="jdc-Vf-YSU" id="EOG-UY-WIx"/>
-                        <outlet property="plantCollectionTitle" destination="mAh-jK-Wxb" id="JZ0-F4-oxH"/>
                         <outlet property="plantCollectionView" destination="iFC-IX-pb8" id="X41-XB-Clo"/>
                         <outlet property="qrcodeButton" destination="QpB-Pp-zi3" id="b5Y-su-yAT"/>
                         <outlet property="searchBar" destination="oF9-CH-E7h" id="UKf-P4-rf1"/>
@@ -292,7 +282,7 @@
                     <tabBarItem key="tabBarItem" title="探索" id="WqW-Do-deb">
                         <imageReference key="image" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
                             <hierarchicalColors>
-                                <color red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
@@ -310,7 +300,7 @@
                     <tabBarItem key="tabBarItem" title="首頁" id="ftW-8A-WjL">
                         <imageReference key="image" image="house.fill" catalog="system" renderingMode="hierarchical-single">
                             <hierarchicalColors>
-                                <color red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
@@ -367,7 +357,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Si2-w9-bBi">
-                                <rect key="frame" x="20" y="87.999999999999972" width="388" height="361.33333333333326"/>
+                                <rect key="frame" x="20" y="30" width="388" height="419.33333333333331"/>
                                 <color key="tintColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="dateDidPick:" destination="cYL-PY-3Xj" eventType="valueChanged" id="owN-yb-bpu"/>
@@ -384,7 +374,7 @@
                         <constraints>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="top" secondItem="Si2-w9-bBi" secondAttribute="bottom" id="Pss-KZ-nF0"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" constant="20" id="Vbh-Pw-FJ8"/>
-                            <constraint firstItem="Si2-w9-bBi" firstAttribute="top" secondItem="h1d-wb-U0g" secondAttribute="top" id="afc-v7-fsy"/>
+                            <constraint firstItem="Si2-w9-bBi" firstAttribute="top" secondItem="7iF-Ub-Ypz" secondAttribute="top" constant="30" id="afc-v7-fsy"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="bottom" secondItem="JQD-0Y-b3B" secondAttribute="bottom" id="gjl-ue-NJO"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" id="h2K-uw-8jc"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="leading" secondItem="Si2-w9-bBi" secondAttribute="leading" id="kk9-sO-zyD"/>
@@ -482,7 +472,7 @@
                     <tabBarItem key="tabBarItem" title="個人資訊" id="bmX-Ra-4aG">
                         <imageReference key="image" image="person.fill" catalog="system" renderingMode="hierarchical-single">
                             <hierarchicalColors>
-                                <color red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
@@ -500,7 +490,7 @@
                     <tabBarItem key="tabBarItem" title="日曆" id="3YV-E3-MZT">
                         <imageReference key="image" image="calendar" catalog="system" renderingMode="hierarchical-single">
                             <hierarchicalColors>
-                                <color red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
@@ -522,7 +512,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eDb-fk-ScE"/>
+        <segue reference="TN7-OC-vVQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

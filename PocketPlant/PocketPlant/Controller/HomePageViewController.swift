@@ -54,8 +54,6 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var waterImageView: UIImageView!
     
-    @IBOutlet weak var plantCollectionTitle: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -152,8 +150,6 @@ class HomePageViewController: UIViewController {
                     
                 }
                 
-                self.plantCollectionTitle.text = "我的植物"
-                
             case .failure(let error):
                 
                 print(error)
@@ -183,8 +179,6 @@ class HomePageViewController: UIViewController {
                     self.plantCollectionView.reloadData()
                     
                 }
-                
-                self.plantCollectionTitle.text = "最愛植物"
                 
             case .failure(let error):
                 
@@ -448,9 +442,16 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let itemSpace: CGFloat = 10
         let columCount: CGFloat = 3
         
-        let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let plantWidth = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        
+        let buttonWidth = floor((buttonCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
-        return CGSize(width: width, height: width * 1.2)
+        if collectionView == plantCollectionView {
+            return CGSize(width: plantWidth, height: plantWidth * 1.2)
+        } else {
+            return CGSize(width: buttonWidth, height: buttonWidth)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

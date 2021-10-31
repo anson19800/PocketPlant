@@ -34,20 +34,31 @@
                                     <constraint firstItem="f6H-UY-SrI" firstAttribute="top" secondItem="mnn-BH-Iqx" secondAttribute="top" constant="70" id="mEK-I4-98B"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plant" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-45-I7B">
-                                <rect key="frame" x="20" y="180" width="374" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGl-Pb-iR1">
+                                <rect key="frame" x="107" y="180" width="200" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plant" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-45-I7B">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Htd-wf-3Y2"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gyh-45-I7B" secondAttribute="trailing" id="FCw-U4-YHT"/>
+                                    <constraint firstAttribute="width" constant="200" id="Rtp-hT-BNd"/>
+                                    <constraint firstItem="Gyh-45-I7B" firstAttribute="top" secondItem="ZGl-Pb-iR1" secondAttribute="top" id="WIV-ge-u4J"/>
+                                    <constraint firstAttribute="width" secondItem="ZGl-Pb-iR1" secondAttribute="height" multiplier="1:1" id="bCt-sf-vbk"/>
+                                    <constraint firstItem="Gyh-45-I7B" firstAttribute="leading" secondItem="ZGl-Pb-iR1" secondAttribute="leading" id="dSv-Q4-50l"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gyh-45-I7B" secondAttribute="bottom" id="ywE-XJ-Nm9"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="十二之卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVA-N3-h98">
-                                <rect key="frame" x="20" y="400" width="122" height="36"/>
+                                <rect key="frame" x="107" y="400" width="122" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.10.20 - 2021.10.22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24G-88-1Q7">
-                                <rect key="frame" x="20" y="446" width="181" height="21"/>
+                                <rect key="frame" x="107" y="446" width="181" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,7 +71,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqQ-at-1Lz">
-                                <rect key="frame" x="20" y="487" width="42" height="21"/>
+                                <rect key="frame" x="107" y="487" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -72,21 +83,21 @@
                             <constraint firstItem="rqQ-at-1Lz" firstAttribute="top" secondItem="24G-88-1Q7" secondAttribute="bottom" constant="20" id="6y0-4H-0Ja"/>
                             <constraint firstItem="24G-88-1Q7" firstAttribute="top" secondItem="LVA-N3-h98" secondAttribute="bottom" constant="10" id="BJA-wd-OWn"/>
                             <constraint firstItem="mnn-BH-Iqx" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="Eg4-sx-pAC"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Gyh-45-I7B" secondAttribute="trailing" constant="20" id="EuM-Ni-tvl"/>
-                            <constraint firstItem="LVA-N3-h98" firstAttribute="top" secondItem="Gyh-45-I7B" secondAttribute="bottom" constant="20" id="O5V-g4-OIH"/>
+                            <constraint firstItem="LVA-N3-h98" firstAttribute="top" secondItem="ZGl-Pb-iR1" secondAttribute="bottom" constant="20" id="NIo-v4-kve"/>
+                            <constraint firstItem="LVA-N3-h98" firstAttribute="leading" secondItem="Gyh-45-I7B" secondAttribute="leading" id="W4M-JY-Yyp"/>
                             <constraint firstItem="mnn-BH-Iqx" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ai5-X0-g6Z"/>
                             <constraint firstItem="rqQ-at-1Lz" firstAttribute="leading" secondItem="24G-88-1Q7" secondAttribute="leading" id="btu-PW-s1q"/>
                             <constraint firstAttribute="trailing" secondItem="mnn-BH-Iqx" secondAttribute="trailing" id="eke-qy-uqD"/>
+                            <constraint firstItem="ZGl-Pb-iR1" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="fJ4-Ld-7cz"/>
                             <constraint firstItem="hSY-Gz-k0X" firstAttribute="top" secondItem="rqQ-at-1Lz" secondAttribute="bottom" constant="5" id="g8J-Rt-O6y"/>
-                            <constraint firstItem="Gyh-45-I7B" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="iYC-BG-Cj8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hSY-Gz-k0X" secondAttribute="trailing" constant="20" id="kiz-2N-5sC"/>
                             <constraint firstItem="24G-88-1Q7" firstAttribute="leading" secondItem="LVA-N3-h98" secondAttribute="leading" id="mBf-wc-o3u"/>
-                            <constraint firstItem="Gyh-45-I7B" firstAttribute="top" secondItem="mnn-BH-Iqx" secondAttribute="bottom" constant="50" id="mWk-of-Aeu"/>
                             <constraint firstItem="hSY-Gz-k0X" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="sFO-b5-90T"/>
-                            <constraint firstItem="LVA-N3-h98" firstAttribute="leading" secondItem="Gyh-45-I7B" secondAttribute="leading" id="tAT-qR-J7j"/>
+                            <constraint firstItem="ZGl-Pb-iR1" firstAttribute="top" secondItem="mnn-BH-Iqx" secondAttribute="bottom" constant="50" id="uOk-T7-huk"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageContainer" destination="ZGl-Pb-iR1" id="d0o-fg-5B7"/>
                         <outlet property="lifeTimeLabel" destination="24G-88-1Q7" id="yie-10-9kf"/>
                         <outlet property="plantImage" destination="Gyh-45-I7B" id="aSu-NN-Rbs"/>
                         <outlet property="plantNameLabel" destination="LVA-N3-h98" id="l28-5W-kkB"/>
