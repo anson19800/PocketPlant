@@ -26,26 +26,11 @@
                                         <color key="textColor" red="0.12931125600000001" green="0.1663883229" blue="0.13009218040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G2m-dQ-2k6">
-                                        <rect key="frame" x="349" y="69.5" width="35" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="I11-8D-Dnf"/>
-                                            <constraint firstAttribute="width" constant="35" id="drF-wh-VW1"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="plus" catalog="system"/>
-                                        <connections>
-                                            <segue destination="pwU-Du-aHr" kind="show" id="3Xf-vZ-dNW"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.6900521033" green="0.87055634260000003" blue="0.7231718842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ROf-FD-3eI" firstAttribute="top" secondItem="dHq-7n-QCF" secondAttribute="top" constant="70" id="Jt4-wA-bsO"/>
-                                    <constraint firstItem="G2m-dQ-2k6" firstAttribute="centerY" secondItem="ROf-FD-3eI" secondAttribute="centerY" id="MIg-uI-2QJ"/>
                                     <constraint firstAttribute="height" constant="130" id="aIe-Xb-gAb"/>
-                                    <constraint firstAttribute="trailing" secondItem="G2m-dQ-2k6" secondAttribute="trailing" constant="30" id="bd4-P0-hyt"/>
                                     <constraint firstItem="ROf-FD-3eI" firstAttribute="leading" secondItem="dHq-7n-QCF" secondAttribute="leading" constant="33" id="xVc-mz-id4"/>
                                 </constraints>
                             </view>
@@ -53,15 +38,30 @@
                                 <rect key="frame" x="0.0" y="130" width="414" height="732"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0R6-M8-UeC">
+                                <rect key="frame" x="324" y="792.5" width="50" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1bC-vC-CJO"/>
+                                    <constraint firstAttribute="width" constant="50" id="TUL-2a-FGD"/>
+                                </constraints>
+                                <color key="tintColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                                <connections>
+                                    <segue destination="pwU-Du-aHr" kind="show" id="WCI-Al-cYh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dHq-7n-QCF" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="DYq-Vn-OMd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0R6-M8-UeC" secondAttribute="trailing" constant="20" id="E1z-gC-ohH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Sll-Tn-0Pw" secondAttribute="trailing" id="JdM-5g-I4c"/>
                             <constraint firstItem="Sll-Tn-0Pw" firstAttribute="top" secondItem="dHq-7n-QCF" secondAttribute="bottom" id="Jnu-aS-dWE"/>
                             <constraint firstItem="Sll-Tn-0Pw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aCX-Yf-TvY"/>
                             <constraint firstItem="dHq-7n-QCF" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="anY-Ah-ZvG"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="0R6-M8-UeC" secondAttribute="bottom" constant="20" id="bLR-6Z-cgG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Sll-Tn-0Pw" secondAttribute="bottom" id="uXI-dV-tYu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dHq-7n-QCF" secondAttribute="trailing" id="znZ-OH-sGc"/>
                         </constraints>
@@ -255,7 +255,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

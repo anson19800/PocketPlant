@@ -319,4 +319,13 @@ class FirebaseManager {
             completion(Result.success(shop))
         }
     }
+    
+    func deleteShop(shop: GardeningShop) {
+        
+        guard let id = shop.id else { return }
+        
+        let documentRef = dataBase.collection("shop").document(id)
+        
+        documentRef.delete()
+    }
 }

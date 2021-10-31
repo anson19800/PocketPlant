@@ -24,8 +24,6 @@ class GardeningShopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = true
-        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
                                                                 style: .plain,
                                                                 target: nil,
@@ -34,6 +32,7 @@ class GardeningShopViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         FirebaseManager.shared.fetchShops { result in
             switch result {
             case .success(let shops):
@@ -78,5 +77,15 @@ extension GardeningShopViewController: UITableViewDelegate, UITableViewDataSourc
         detailPageVC.modalPresentationStyle = .overCurrentContext
         
         navigationController?.pushViewController(detailPageVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard var shops = self.shops else { return }
+            FirebaseManager.shared.deleteShop(shop: shops[indexPath.row])
+            shops.remove(at: indexPath.row)
+            self.shops = shops
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
