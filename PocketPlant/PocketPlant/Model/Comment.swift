@@ -13,10 +13,19 @@ enum CommentType: String {
 }
 
 struct Comment: Codable {
-    let id: String
+    var id: String
     let commentType: String
     let objectID: String
     let senderID: String
     let content: String
     let createdTime: TimeInterval
+    
+    init(commentType: CommentType, objectID: String, content: String, createdTime: TimeInterval) {
+        self.id = "0"
+        self.commentType = commentType.rawValue
+        self.objectID = objectID
+        self.senderID = "0"
+        self.content = content
+        self.createdTime = createdTime
+    }
 }

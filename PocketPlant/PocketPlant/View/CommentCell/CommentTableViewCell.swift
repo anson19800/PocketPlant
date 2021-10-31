@@ -16,6 +16,7 @@ class CommentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
 
     func layoutCell(comment: Comment) {
@@ -24,7 +25,7 @@ class CommentTableViewCell: UITableViewCell {
         
         let date = Date(timeIntervalSince1970: comment.createdTime)
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy.MM.dd HH.mm"
+        dateFormater.dateFormat = "yyyy.MM.dd HH:mm"
         let createdTime = dateFormater.string(from: date)
         timeLabel.text = createdTime
         

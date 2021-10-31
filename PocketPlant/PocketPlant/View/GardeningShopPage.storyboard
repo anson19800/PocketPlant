@@ -102,7 +102,7 @@
                                             <constraint firstAttribute="height" constant="1" id="N0U-fn-bNr"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bUq-P3-1Ze">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bUq-P3-1Ze">
                                         <rect key="frame" x="20" y="106" width="374" height="394.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
@@ -129,6 +129,9 @@
                                         <rect key="frame" x="363" y="513.5" width="31" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="發布"/>
+                                        <connections>
+                                            <action selector="publishComment:" destination="2d0-2G-fyX" eventType="touchUpInside" id="Qjx-cQ-JRj"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMu-fM-KS4">
                                         <rect key="frame" x="0.0" y="500.5" width="414" height="1"/>
@@ -182,9 +185,11 @@
                     <connections>
                         <outlet property="addressTextView" destination="yu5-lf-PIA" id="wWx-Ax-ZWN"/>
                         <outlet property="backgroundView" destination="H8a-hN-XHQ" id="g8E-uu-Apl"/>
+                        <outlet property="commentTextField" destination="HWm-5U-FAz" id="CkK-3y-SDU"/>
                         <outlet property="mapView" destination="0vW-Ai-Mqe" id="bPg-Tk-fnM"/>
                         <outlet property="shopTitle" destination="fUH-i5-LVj" id="T5o-3r-SGB"/>
                         <outlet property="tableView" destination="bUq-P3-1Ze" id="dbD-EN-tKT"/>
+                        <outlet property="userImage" destination="Brg-xg-kVp" id="L42-oZ-IkI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZx-lJ-td8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

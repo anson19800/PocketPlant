@@ -15,6 +15,7 @@ class CommentTitleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
     
     func layoutCell(commentCount number: Int) {
