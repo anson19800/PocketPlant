@@ -21,13 +21,11 @@ class GardeningShopTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        contentView.layer.cornerRadius = 10
-//        contentView.backgroundColor = UIColor.hexStringToUIColor(hex: "DFEFDF")
+        selectionStyle = .none
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
     }
     
     func layoutCell(gardeningShop: GardeningShop) {

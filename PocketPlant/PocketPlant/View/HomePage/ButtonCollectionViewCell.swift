@@ -34,6 +34,10 @@ class ButtonCollectionViewCell: UICollectionViewCell {
             
             titleLabel.textColor = isSelected ? .white : UIColor.hexStringToUIColor(hex: "7F927F")
             
+            layer.shadowColor = isSelected ? UIColor.hexStringToUIColor(hex: "7F927F").cgColor : UIColor.black.cgColor
+            
+            layer.shadowOpacity = isSelected ? 1 : 0.1
+            
         }
     }
     

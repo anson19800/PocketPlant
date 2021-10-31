@@ -24,6 +24,7 @@
 		CB2241E7272D89B900BAEE90 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241E6272D89B900BAEE90 /* ShopDetailViewController.swift */; };
 		CB2241E9272D8E9200BAEE90 /* GardeningShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */; };
 		CB2241EB272DA82700BAEE90 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2241EA272DA82700BAEE90 /* MapKit.framework */; };
+		CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241EE272E735800BAEE90 /* NewShopViewController.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -90,6 +91,7 @@
 		CB2241E6272D89B900BAEE90 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardeningShop.swift; sourceTree = "<group>"; };
 		CB2241EA272DA82700BAEE90 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CB2241EE272E735800BAEE90 /* NewShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShopViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */,
 				CB2241E4272D379500BAEE90 /* GardeningShopViewController.swift */,
 				CB2241E6272D89B900BAEE90 /* ShopDetailViewController.swift */,
+				CB2241EE272E735800BAEE90 /* NewShopViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
+				CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */,
 				CB2241D3272BA3A000BAEE90 /* ProfilePageViewController.swift in Sources */,
 				CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */,
 				CB8F2EFE272B9EF9005E1448 /* DiscoverViewController.swift in Sources */,
