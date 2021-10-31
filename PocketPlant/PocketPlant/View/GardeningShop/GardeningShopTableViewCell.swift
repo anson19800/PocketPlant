@@ -10,12 +10,24 @@ import Kingfisher
 
 class GardeningShopTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var shopImage: UIImageView!
+    @IBOutlet weak var imageContainer: UIView!
+    @IBOutlet weak var shopImage: UIImageView! {
+        didSet {
+            shopImage.applyshadowWithCorner(containerView: imageContainer, cornerRadious: 10)
+        }
+    }
     @IBOutlet weak var shopTitle: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        contentView.layer.cornerRadius = 10
+//        contentView.backgroundColor = UIColor.hexStringToUIColor(hex: "DFEFDF")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15))
     }
     
     func layoutCell(gardeningShop: GardeningShop) {

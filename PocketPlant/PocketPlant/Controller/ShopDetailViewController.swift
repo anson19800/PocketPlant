@@ -20,6 +20,7 @@ class ShopDetailViewController: UIViewController {
             backgroundView.layer.cornerRadius = 10
         }
     }
+    @IBOutlet weak var tableView: UITableView!
     
     var shop: GardeningShop?
     

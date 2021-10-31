@@ -22,9 +22,10 @@ class HomePageViewController: UIViewController {
             searchBar.backgroundImage = UIImage()
             searchBar.searchTextField.backgroundColor = .white
             searchBar.searchTextField.layer.cornerRadius = 15
-            searchBar.searchTextField.layer.borderWidth = 1
-            searchBar.searchTextField.layer.borderColor = UIColor.hexStringToUIColor(hex: "DFEFDF").cgColor
-            searchBar.searchTextField.layer.masksToBounds = true
+            searchBar.searchTextField.layer.shadowColor = UIColor.black.cgColor
+            searchBar.searchTextField.layer.shadowOffset = CGSize.zero
+            searchBar.searchTextField.layer.shadowRadius = 4
+            searchBar.searchTextField.layer.shadowOpacity = 0.1
         }
     }
     
@@ -68,6 +69,8 @@ class HomePageViewController: UIViewController {
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         searchBar.delegate = self
+        
+        buttonCollectionView.layer.masksToBounds = false
         
         buttonCollectionView.registerCellWithNib(
             identifier: String(describing: ButtonCollectionViewCell.self),
@@ -447,7 +450,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
-        return CGSize(width: width, height: width * 1.8)
+        return CGSize(width: width, height: width * 1.2)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
