@@ -27,6 +27,10 @@ class CalendarPageViewController: UIViewController {
         super.viewDidLoad()
         calendar.locale = Locale(identifier: "zh_Hant_TW")
         calendar.calendar = Calendar(identifier: .republicOfChina)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,10 +63,10 @@ class CalendarPageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "showWater" {
             
             guard let plant = sender as? Plant,
-                  let destinationVC = segue.destination as? PlantDetailViewController else { return }
+                  let destinationVC = segue.destination as? DeathPlantViewController else { return }
             
             destinationVC.plant = plant
             
@@ -109,7 +113,7 @@ extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource
         FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
             switch result {
             case .success(let plant):
-                self.performSegue(withIdentifier: "showDetail", sender: plant)
+                self.performSegue(withIdentifier: "showWater", sender: plant)
             case .failure(let error):
                 print(error)
             }

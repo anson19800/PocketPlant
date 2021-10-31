@@ -68,8 +68,10 @@ class ReminderTableViewCell: UITableViewCell {
 
         reminds.forEach { remind in
             if type.rawValue == remind.type {
-                dayTextField.text = String(remind.times)
-                self.imageIsSelectes = true
+                if remind.times != 0 {
+                    dayTextField.text = String(remind.times)
+                    self.imageIsSelectes = true
+                }
             }
         }
     }

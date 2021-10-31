@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol RemindDelegate: AnyObject {
+    func updateRemind(plant: Plant)
+}
+
 class RemindViewController: UIViewController {
 
     @IBOutlet weak var floatingView: UIView! {
@@ -38,6 +42,8 @@ class RemindViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     var plant: Plant?
+    
+    weak var delegate: RemindDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +142,10 @@ class RemindViewController: UIViewController {
             case .success(_):
                 
                 UIView.animate(withDuration: 0.3) {
+                    
+                    if let delegate = self.delegate {
+                        delegate.updateRemind(plant: plant)
+                    }
                     
                     self.dismiss(animated: true, completion: nil)
                     

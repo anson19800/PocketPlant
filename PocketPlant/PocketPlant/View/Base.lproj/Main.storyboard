@@ -385,17 +385,17 @@
                     <connections>
                         <outlet property="calendar" destination="Si2-w9-bBi" id="RJa-Wa-dS4"/>
                         <outlet property="infoTableView" destination="JQD-0Y-b3B" id="6Wf-A9-YZB"/>
-                        <segue destination="b9S-vk-yrJ" kind="show" identifier="showDetail" id="xMt-Cc-G7M"/>
+                        <segue destination="b9S-vk-yrJ" kind="show" identifier="showWater" id="xMt-Cc-G7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6u-Pg-eRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4007.9439252336447" y="806.695464362851"/>
         </scene>
-        <!--PlantDetailPage-->
+        <!--DeathPlantPage-->
         <scene sceneID="9cC-zr-yZo">
             <objects>
-                <viewControllerPlaceholder storyboardName="PlantDetailPage" id="b9S-vk-yrJ" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="DeathPlantPage" id="b9S-vk-yrJ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2K6-VS-acs"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7F-Lx-BqB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
