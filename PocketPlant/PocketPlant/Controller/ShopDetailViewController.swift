@@ -24,10 +24,14 @@ class ShopDetailViewController: UIViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.registerCellWithNib(identifier: String(describing: CommentTableViewCell.self), bundle: nil)
+            tableView.registerCellWithNib(identifier: String(describing: CommentTitleTableViewCell.self), bundle: nil)
         }
     }
     
     var shop: GardeningShop?
+    
+    var comments: [Comment]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +69,25 @@ class ShopDetailViewController: UIViewController {
 
 extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CommentTitleTableViewCell.self),
+                                                     for: indexPath)
+            guard let titleCell = cell as? CommentTitleTableViewCell else { return cell }
+            
+            return titleCell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CommentTableViewCell.self),
+                                                     for: indexPath)
+            guard let commentCell = cell as? CommentTableViewCell else { return cell }
+            
+            return commentCell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
