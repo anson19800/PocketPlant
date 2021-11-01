@@ -75,13 +75,7 @@ class PlantDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
         fetchComment()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = false
     }
     
     func fetchComment() {
@@ -249,7 +243,6 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             commentCell.layoutCell(comment: comments[indexPath.row - 2])
             
             return commentCell
-            
         }
     }
 }

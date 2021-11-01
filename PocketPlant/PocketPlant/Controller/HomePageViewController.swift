@@ -90,10 +90,6 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.isNavigationBarHidden = true
-        
-        tabBarController?.tabBar.isHidden = false
-        
         switch isSelectedAt {
             
         case .myPlant:
@@ -111,6 +107,14 @@ class HomePageViewController: UIViewController {
                                             scrollPosition: .top)
             
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -307,6 +311,8 @@ class HomePageViewController: UIViewController {
         
         if sender.state == .ended {
             
+            dropView.isUserInteractionEnabled = false
+            
             let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
             
             UIView.animate(withDuration: 0.3, animations: {
@@ -330,10 +336,15 @@ class HomePageViewController: UIViewController {
                         
                         self.waterAlert(plantName: plantName)
                         
+                        dropView.isUserInteractionEnabled = true
+                        
                     }
                 }
             } else {
+                
                 dropView.shake()
+                
+                dropView.isUserInteractionEnabled = true
             }
         }
     }
@@ -463,6 +474,8 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             guard let plants = self.plants else { return }
         
             let plant = plants[indexPath.row]
+            
+            tabBarController?.tabBar.isHidden = true
         
             performSegue(withIdentifier: "showPlantDetail", sender: plant)
             

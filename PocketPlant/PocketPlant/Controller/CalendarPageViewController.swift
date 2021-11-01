@@ -54,7 +54,7 @@ class CalendarPageViewController: UIViewController {
                 self.waterRecords = waterRecords
                 self.infoTableView.performBatchUpdates {
                     let indexSet = IndexSet(integersIn: 0...0)
-                    self.infoTableView.reloadSections(indexSet, with: .left)
+                    self.infoTableView.reloadSections(indexSet, with: .fade)
                 }
             case .failure(let error):
                 print(error)
@@ -125,7 +125,7 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
     
     func deleteAction(indexPath: IndexPath) {
         
-        guard let records = waterRecords else { return }
+        guard var records = waterRecords else { return }
         
         let plantName = records[indexPath.row].plantName
         
@@ -139,7 +139,11 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
                 switch result {
                 case .success(let successInfo):
                     print(successInfo)
-                    self.fetchRecord(date: self.calendar.date)
+                    records.remove(at: indexPath.row)
+                    self.waterRecords = records
+                    self.infoTableView.deleteRows(at: [indexPath], with: .left)
+                    self.infoTableView.reloadData()
+//                    self.fetchRecord(date: self.calendar.date)
                 case .failure(let error):
                     print(error)
                 }
