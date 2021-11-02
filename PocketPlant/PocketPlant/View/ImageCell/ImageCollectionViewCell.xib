@@ -17,11 +17,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zpu-pa-Yhh">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zpu-pa-Yhh">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="Xpc-Ef-OcB"/>
-                            <constraint firstAttribute="width" constant="100" id="o9z-A2-O1R"/>
+                            <constraint firstAttribute="height" constant="100" id="lAr-yj-75a"/>
+                            <constraint firstAttribute="width" secondItem="Zpu-pa-Yhh" secondAttribute="height" multiplier="1:1" id="oM4-Oe-llf"/>
                         </constraints>
                     </imageView>
                 </subviews>
