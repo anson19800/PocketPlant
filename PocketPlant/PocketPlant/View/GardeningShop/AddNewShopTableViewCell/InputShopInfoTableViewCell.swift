@@ -26,4 +26,19 @@ class InputShopInfoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
+    
+    func renderInfo() -> GardeningShop? {
+        guard let name = shopNameTextField.text,
+              name != "",
+              let address = addressTextfield.text,
+              address != "",
+              let phone = phoneTextField.text,
+              let description = descriptionTextField.text else { return nil }
+        
+        let shop = GardeningShop(name: name,
+                                 address: address,
+                                 phone: phone,
+                                 description: description)
+        return shop
+    }
 }
