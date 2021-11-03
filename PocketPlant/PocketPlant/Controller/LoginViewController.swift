@@ -26,7 +26,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(appleLogInButton)
         appleLogInButton.center = view.center
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {

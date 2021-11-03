@@ -351,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAX-MO-NnS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1067" y="-152"/>
+            <point key="canvasLocation" x="1040" y="-139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XxA-fP-Y0v">
@@ -477,19 +477,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anson" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSK-K3-Tq7">
-                                <rect key="frame" x="140" y="80" width="59.333333333333343" height="28"/>
+                                <rect key="frame" x="140" y="80" width="268" height="28"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植栽菜鳥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yr1-eX-l9A">
-                                <rect key="frame" x="140" y="110" width="52" height="18.333333333333343"/>
+                                <rect key="frame" x="140" y="110" width="268" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="代表植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooz-ak-QSw">
-                                <rect key="frame" x="20" y="200" width="92" height="32.333333333333343"/>
+                                <rect key="frame" x="20" y="200" width="388" height="32.333333333333343"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="23"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -501,6 +501,17 @@
                                     <constraint firstAttribute="height" constant="1" id="PqS-hN-DVT"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cp-Ly-A6p">
+                                <rect key="frame" x="50" y="793" width="328" height="30"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="登出">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutAction:" destination="RAh-oC-sao" eventType="touchUpInside" id="jXv-hI-rPL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kbj-nL-0Bi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -513,10 +524,16 @@
                             <constraint firstItem="w93-px-dgp" firstAttribute="top" secondItem="ooz-ak-QSw" secondAttribute="bottom" constant="2" id="HLn-Hf-lww"/>
                             <constraint firstItem="Kbj-nL-0Bi" firstAttribute="trailing" secondItem="w93-px-dgp" secondAttribute="trailing" constant="20" id="Op7-Qj-ftM"/>
                             <constraint firstItem="gGo-Hc-jMf" firstAttribute="leading" secondItem="Kbj-nL-0Bi" secondAttribute="leading" id="RLk-zU-gpG"/>
+                            <constraint firstItem="5cp-Ly-A6p" firstAttribute="leading" secondItem="Kbj-nL-0Bi" secondAttribute="leading" constant="50" id="Sjc-2U-gbU"/>
+                            <constraint firstItem="yr1-eX-l9A" firstAttribute="trailing" secondItem="HSK-K3-Tq7" secondAttribute="trailing" id="TW9-pN-zaJ"/>
                             <constraint firstItem="HSK-K3-Tq7" firstAttribute="leading" secondItem="SAE-cU-Dgs" secondAttribute="trailing" constant="20" id="aP8-zf-wDx"/>
+                            <constraint firstItem="Kbj-nL-0Bi" firstAttribute="trailing" secondItem="5cp-Ly-A6p" secondAttribute="trailing" constant="50" id="amW-cG-v1J"/>
+                            <constraint firstItem="ooz-ak-QSw" firstAttribute="trailing" secondItem="w93-px-dgp" secondAttribute="trailing" id="fA0-pH-eX3"/>
+                            <constraint firstItem="HSK-K3-Tq7" firstAttribute="trailing" secondItem="ooz-ak-QSw" secondAttribute="trailing" id="hys-2a-GBl"/>
                             <constraint firstItem="SAE-cU-Dgs" firstAttribute="leading" secondItem="Kbj-nL-0Bi" secondAttribute="leading" constant="20" id="lrz-oA-MfU"/>
                             <constraint firstItem="HSK-K3-Tq7" firstAttribute="top" secondItem="SAE-cU-Dgs" secondAttribute="top" id="p2v-AL-Csn"/>
                             <constraint firstItem="ooz-ak-QSw" firstAttribute="leading" secondItem="SAE-cU-Dgs" secondAttribute="leading" id="wd9-wE-ejW"/>
+                            <constraint firstItem="Kbj-nL-0Bi" firstAttribute="bottom" secondItem="5cp-Ly-A6p" secondAttribute="bottom" constant="20" id="xa1-Po-UML"/>
                             <constraint firstItem="w93-px-dgp" firstAttribute="leading" secondItem="ooz-ak-QSw" secondAttribute="leading" id="xln-ua-Zaj"/>
                             <constraint firstAttribute="trailing" secondItem="gGo-Hc-jMf" secondAttribute="trailing" id="yCd-s4-RG3"/>
                         </constraints>
@@ -537,10 +554,13 @@
                             </hierarchicalColors>
                         </imageReference>
                     </tabBarItem>
+                    <connections>
+                        <segue destination="pAT-UV-nZa" kind="presentation" identifier="logOut" modalPresentationStyle="fullScreen" id="6Ct-Py-LVR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="To2-op-sx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5064.9532710280373" y="793.73650107991364"/>
+            <point key="canvasLocation" x="167" y="807"/>
         </scene>
         <!--日曆-->
         <scene sceneID="Xh5-FC-M6Z">
@@ -588,6 +608,9 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
