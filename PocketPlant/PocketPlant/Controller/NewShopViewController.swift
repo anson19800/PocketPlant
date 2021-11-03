@@ -18,6 +18,7 @@ class NewShopViewController: UIViewController {
             imageCollectionView.registerCellWithNib(
                 identifier: String(describing: ImageCollectionViewCell.self),
                 bundle: nil)
+            imageCollectionView.clipsToBounds = false
         }
     }
     
@@ -31,7 +32,7 @@ class NewShopViewController: UIViewController {
         }
     }
     
-    var selectedImage: [UIImage]?
+    var selectedImages: [UIImage]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +48,15 @@ class NewShopViewController: UIViewController {
         var imageURLList: [String] = []
         var imageIDList: [String] = []
         
-        if let selectedImage = selectedImage {
+        
+        if let selectedImage = selectedImages {
+            
+            let group: DispatchGroup = DispatchGroup()
+            
             selectedImage.forEach { image in
+                
+                group.enter()
+                
                 let scaleImage = image.scale(newWidth: 100)
                 ImageManager.shared.uploadImageToGetURL(image: scaleImage) { result in
                     switch result {
@@ -56,24 +64,27 @@ class NewShopViewController: UIViewController {
                         imageURLList.append(url)
                         imageIDList.append(uuid)
                         
-                        if imageURLList.count == selectedImage.count {
-                            shop.images = imageURLList
-                            shop.imagesID = imageIDList
-                            
-                            FirebaseManager.shared.addGardeningShop(shop: &shop) { isSuccess in
-                                if isSuccess {
-                                    print("upload success!")
-                                }
-                            }
-                        }
+                        group.leave()
+                        
                     case .failure(let error):
                         print(error)
                     }
                 }
             }
+            
+            group.notify(queue: DispatchQueue.main) {
+                
+                shop.images = imageURLList
+                shop.imagesID = imageIDList
+                
+                FirebaseManager.shared.addGardeningShop(shop: &shop) { isSuccess in
+                    if isSuccess {
+                        print("upload success!")
+                    }
+                }
+            }
+            
         }
-        
-        
     }
 }
 
@@ -96,7 +107,7 @@ extension NewShopViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let images = selectedImage else { return 1 }
+        guard let images = selectedImages else { return 1 }
         
         if images.count < 5 {
             
@@ -115,23 +126,29 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
             withReuseIdentifier: String(describing: ImageCollectionViewCell.self),
             for: indexPath)
         
-        guard let imageCell = cell as? ImageCollectionViewCell,
-              let images = selectedImage else { return cell }
+        guard let imageCell = cell as? ImageCollectionViewCell else { return cell }
         
-        if indexPath.row >= images.count || selectedImage == nil {
+        if let images = selectedImages {
+            
+            if indexPath.row >= images.count {
+                
+                imageCell.imageView.image = UIImage(named: "plant")
+                
+            } else {
+                
+                imageCell.imageView.image = images[indexPath.row]
+            }
+            
+        } else if selectedImages == nil {
             
             imageCell.imageView.image = UIImage(named: "plant")
-            
-        } else {
-            
-            imageCell.imageView.image = images[indexPath.row]
         }
         
         return imageCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let images = selectedImage else {
+        guard let images = selectedImages else {
             print("Add")
             if #available(iOS 14, *) {
                 addImage()
@@ -191,7 +208,7 @@ extension NewShopViewController: PHPickerViewControllerDelegate {
                     DispatchQueue.main.async {
                         guard let image = image as? UIImage else { return }
                         images.append(image)
-                        self.selectedImage = images
+                        self.selectedImages = images
                         self.imageCollectionView.reloadData()
                     }
                 }
