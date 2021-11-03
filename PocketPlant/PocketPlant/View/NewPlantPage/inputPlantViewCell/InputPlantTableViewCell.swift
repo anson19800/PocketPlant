@@ -172,11 +172,8 @@ class InputPlantTableViewCell: UITableViewCell {
                           buyPlace: buyPlace,
                           buyPrice: Int(buyPrice),
                           description: description,
-                          lastWater: nil,
-                          lastFertilizer: nil,
-                          lastSoil: nil,
                           favorite: false,
-                          ownerID: 0,
+                          ownerID: "0",
                           isPublic: false,
                           reminder: nil)
         

@@ -338,20 +338,62 @@
         <!--Login View Controller-->
         <scene sceneID="ssn-8o-p6x">
             <objects>
-                <viewController id="pAT-UV-nZa" customClass="LoginViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="pAT-UV-nZa" customClass="LoginViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KEO-gj-4qr">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3v-b4-RKY">
+                                <rect key="frame" x="124" y="144" width="180" height="180"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="Xpg-Sx-Db0">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Xpg-Sx-Db0" secondAttribute="trailing" id="0fm-hv-w3k"/>
+                                    <constraint firstItem="Xpg-Sx-Db0" firstAttribute="leading" secondItem="P3v-b4-RKY" secondAttribute="leading" id="9Eb-E6-vBZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xpg-Sx-Db0" secondAttribute="bottom" id="QFM-w3-sUe"/>
+                                    <constraint firstItem="Xpg-Sx-Db0" firstAttribute="top" secondItem="P3v-b4-RKY" secondAttribute="top" id="si5-h0-O2a"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="口袋植物" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckc-W9-2V2">
+                                <rect key="frame" x="134" y="354" width="160" height="56"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="40"/>
+                                <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PocketPlant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ds-gI-XIW">
+                                <rect key="frame" x="135.66666666666669" y="420" width="156.66666666666669" height="37.666666666666686"/>
+                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
+                                <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Nqo-vu-7kp"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.66850255044519313" green="0.89540201826666665" blue="0.72244736095152118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Ds-gI-XIW" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="7KA-rM-T0G"/>
+                            <constraint firstItem="P3v-b4-RKY" firstAttribute="top" secondItem="Nqo-vu-7kp" secondAttribute="top" constant="100" id="JzY-G8-fJw"/>
+                            <constraint firstItem="6Ds-gI-XIW" firstAttribute="top" secondItem="Ckc-W9-2V2" secondAttribute="bottom" constant="10" id="RJ9-xD-VjU"/>
+                            <constraint firstItem="Ckc-W9-2V2" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="Yih-6b-JCu"/>
+                            <constraint firstItem="Ckc-W9-2V2" firstAttribute="top" secondItem="P3v-b4-RKY" secondAttribute="bottom" constant="30" id="apR-uk-Oav"/>
+                            <constraint firstItem="P3v-b4-RKY" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="ciA-Ei-GJ2"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageContainer" destination="P3v-b4-RKY" id="oU1-0e-Swv"/>
+                        <outlet property="imageTopConstraint" destination="JzY-G8-fJw" id="fuZ-Cc-atP"/>
+                        <outlet property="mainImageView" destination="Xpg-Sx-Db0" id="vPd-nt-lcf"/>
+                        <outlet property="mainTitle" destination="Ckc-W9-2V2" id="iDJ-3o-Bye"/>
+                        <outlet property="subTitle" destination="6Ds-gI-XIW" id="UiY-EX-URK"/>
                         <segue destination="rgc-dz-Wew" kind="presentation" identifier="Login" modalPresentationStyle="fullScreen" id="IaU-M8-EKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAX-MO-NnS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040" y="-139"/>
+            <point key="canvasLocation" x="1225" y="-152"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XxA-fP-Y0v">
@@ -605,6 +647,7 @@
         <image name="drop.fill" catalog="system" width="101" height="128"/>
         <image name="globe.asia.australia.fill" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="icon" width="180" height="180"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>

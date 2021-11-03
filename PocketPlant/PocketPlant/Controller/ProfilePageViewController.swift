@@ -27,8 +27,13 @@ class ProfilePageViewController: UIViewController {
                 
                 try Auth.auth().signOut()
                 
-                self.performSegue(withIdentifier: "logOut", sender: nil)
-            
+                guard let loginVC = self.storyboard?.instantiateViewController(
+                    withIdentifier: String(describing: LoginViewController.self))
+                else { return }
+                
+                loginVC.modalPresentationStyle = .fullScreen
+                
+                self.present(loginVC, animated: true, completion: nil)
                 
             } catch let signOutError as NSError {
                 

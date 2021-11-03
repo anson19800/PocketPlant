@@ -17,26 +17,75 @@ class LoginViewController: UIViewController {
     var appleLogInButton: ASAuthorizationAppleIDButton = {
         let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default,
                                                   authorizationButtonStyle: .black)
-        button.cornerRadius = 8
+        button.cornerRadius = 3
         button.addTarget(self, action: #selector(handleLogInWithAppleID), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
+    @IBOutlet weak var imageContainer: UIView!
+    
+    @IBOutlet weak var mainImageView: UIImageView! {
+        didSet {
+            mainImageView.applyshadowWithCorner(
+                containerView: imageContainer,
+                cornerRadious: 3,
+                opacity: 0.15)
+        }
+    }
+    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var mainTitle: UILabel!
+    
+    @IBOutlet weak var subTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(appleLogInButton)
-        appleLogInButton.center = view.center
+        setUpButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        mainImageView.alpha = 0
+        imageContainer.alpha = 0
+        mainTitle.alpha = 0
+        subTitle.alpha = 0
+        appleLogInButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        imageContainer.transform = CGAffineTransform(translationX: 0, y: 100)
+        
+        UIView.animate(withDuration: 1) {
+            self.mainImageView.alpha = 1
+            self.imageContainer.alpha = 1
+            self.imageContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.appleLogInButton.transform = CGAffineTransform.identity
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            UIView.animate(withDuration: 0.5) {
+                self.mainTitle.alpha = 1
+                self.subTitle.alpha = 1
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser != nil {
-            self.view.backgroundColor = .blue
             self.performSegue(withIdentifier: "Login", sender: nil)
         } else {
           print("No user signed in.")
-            self.view.backgroundColor = .yellow
         }
+    }
+    
+    private func setUpButton() {
+        let guide = view.safeAreaLayoutGuide
+        appleLogInButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 50).isActive = true
+        appleLogInButton.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -50).isActive = true
+        appleLogInButton.topAnchor.constraint(equalTo: subTitle.bottomAnchor, constant: 40).isActive = true
+        appleLogInButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     @available(iOS 13, *)

@@ -84,7 +84,6 @@ class HomePageViewController: UIViewController {
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         searchBar.delegate = self
-        
         buttonCollectionView.layer.masksToBounds = false
         
         buttonCollectionView.registerCellWithNib(
