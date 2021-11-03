@@ -38,6 +38,7 @@
 		CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */; };
 		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
 		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
+		CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113C273230DC00AAE6CA /* LoginViewController.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -118,6 +119,8 @@
 		CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputShopInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PocketPlant.entitlements; sourceTree = "<group>"; };
+		CB8A113C273230DC00AAE6CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,6 +355,7 @@
 		CBF7AC01271C863E001E3C37 /* PocketPlant */ = {
 			isa = PBXGroup;
 			children = (
+				CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */,
 				CB2241D8272BC3F500BAEE90 /* Third Party Wrapper */,
 				CB8F2EFF272BA0A5005E1448 /* LottieAnimation */,
 				CBF7AC30271D773B001E3C37 /* Extension */,
@@ -420,6 +424,7 @@
 				CB2241E4272D379500BAEE90 /* GardeningShopViewController.swift */,
 				CB2241E6272D89B900BAEE90 /* ShopDetailViewController.swift */,
 				CB2241EE272E735800BAEE90 /* NewShopViewController.swift */,
+				CB8A113C273230DC00AAE6CA /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -645,6 +650,7 @@
 				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
 				CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */,
 				CB2241E7272D89B900BAEE90 /* ShopDetailViewController.swift in Sources */,
+				CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */,
 				CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */,
 				CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
@@ -826,6 +832,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -862,6 +869,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
