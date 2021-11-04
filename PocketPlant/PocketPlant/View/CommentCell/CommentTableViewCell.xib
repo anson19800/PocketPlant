@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="KGk-i7-Jjw" customClass="CommentTableViewCell" customModule="PocketPlant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="274" height="77"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="CommentTableViewCell" customModule="PocketPlant" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="274" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="274" height="77"/>
+                <rect key="frame" x="0.0" y="0.0" width="274" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e0S-ZY-4HV">
@@ -32,13 +32,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.10.18 09:58" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3za-PB-fwn">
-                        <rect key="frame" x="50" y="55" width="83" height="12"/>
+                        <rect key="frame" x="50" y="88" width="83" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="248" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="747" text="這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？這在哪？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMH-SW-Sip">
-                        <rect key="frame" x="50" y="28.5" width="219" height="21.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="248" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="747" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMH-SW-Sip">
+                        <rect key="frame" x="50" y="28.5" width="219" height="54.5"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -62,9 +62,9 @@
                 <outlet property="commentLabel" destination="VMH-SW-Sip" id="poE-HI-vh5"/>
                 <outlet property="timeLabel" destination="3za-PB-fwn" id="cjb-gg-89x"/>
                 <outlet property="userImageView" destination="e0S-ZY-4HV" id="A99-oY-hwO"/>
-                <outlet property="userLabel" destination="VMH-SW-Sip" id="XHt-98-ynT"/>
+                <outlet property="userLabel" destination="CeI-ea-CE0" id="g4a-j0-8qb"/>
             </connections>
-            <point key="canvasLocation" x="33.333333333333336" y="5.6919642857142856"/>
+            <point key="canvasLocation" x="33.333333333333336" y="18.75"/>
         </tableViewCell>
     </objects>
     <resources>

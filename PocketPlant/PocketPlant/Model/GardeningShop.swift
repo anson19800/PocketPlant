@@ -15,7 +15,7 @@ struct GardeningShop: Codable {
     let description: String
     var images: [String]?
     var imagesID: [String]?
-    
+    var createUserID: String
     
     init(name: String,
          address: String,
@@ -31,5 +31,6 @@ struct GardeningShop: Codable {
         self.description = description
         self.images = image
         self.imagesID = imageID
+        self.createUserID = UserManager.shared.userID
     }
 }

@@ -79,6 +79,7 @@ class NewShopViewController: UIViewController {
                 FirebaseManager.shared.addGardeningShop(shop: &shop) { isSuccess in
                     if isSuccess {
                         print("upload success!")
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }
