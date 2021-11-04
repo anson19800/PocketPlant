@@ -16,6 +16,8 @@ class FirebaseManager {
     
     private let dataBase = Firestore.firestore()
     
+    private init() {}
+    
     let imageManager = ImageManager.shared
     
     let userID: String = {
@@ -114,6 +116,7 @@ class FirebaseManager {
     func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
         dataBase.collection("plant")
+            .whereField("ownerID", isEqualTo: userID)
             .whereField("favorite", isEqualTo: true)
             .getDocuments { snapshot, error in
             

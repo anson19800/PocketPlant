@@ -55,11 +55,13 @@ class LoginViewController: UIViewController {
         appleLogInButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         imageContainer.transform = CGAffineTransform(translationX: 0, y: 100)
         
-        UIView.animate(withDuration: 1) {
-            self.mainImageView.alpha = 1
-            self.imageContainer.alpha = 1
-            self.imageContainer.transform = CGAffineTransform(translationX: 0, y: 0)
-            self.appleLogInButton.transform = CGAffineTransform.identity
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1) {
+                self.mainImageView.alpha = 1
+                self.imageContainer.alpha = 1
+                self.imageContainer.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.appleLogInButton.transform = CGAffineTransform.identity
+            }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
@@ -165,6 +167,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            if let giveName = appleIDCredential.fullName?.givenName {
+                UserManager.shared.userName = "\(giveName)"
+            }
+            
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
@@ -191,11 +197,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     print(error.localizedDescription)
                     return
                 }
-                // User is signed in to Firebase with Apple.
-                // ...
+                UserManager.shared.createUserInfo()
                 print("登入成功")
                 self.performSegue(withIdentifier: "Login", sender: nil)
             }
+//            Auth.auth().currentUser?.metadata.lastSignInDate
         }
     }
     

@@ -14,6 +14,8 @@ class RemindManager {
     
     private let center = UNUserNotificationCenter.current()
     
+    private init() {}
+    
     func setRemind(_ plant: Plant, remindDict: [ReminderType: Int]) {
         
         for (key, value) in remindDict {
