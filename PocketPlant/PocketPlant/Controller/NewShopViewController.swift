@@ -67,6 +67,7 @@ class NewShopViewController: UIViewController {
                         
                     case .failure(let error):
                         print(error)
+                        group.leave()
                     }
                 }
             }

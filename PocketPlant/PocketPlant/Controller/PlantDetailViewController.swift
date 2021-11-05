@@ -53,6 +53,8 @@ class PlantDetailViewController: UIViewController {
     
     var comments: [Comment]?
     
+    var commentUser: [String: User] = [:]
+    
     let firebaseManager = FirebaseManager.shared
     
     let commentManager = CommentManager.shared
@@ -89,9 +91,33 @@ class PlantDetailViewController: UIViewController {
                 
                 self.comments = comments
                 
-                self.tableView.performBatchUpdates {
-                    let indexSet = IndexSet(integersIn: 0...0)
-                    self.tableView.reloadSections(indexSet, with: .fade)
+                let group = DispatchGroup()
+                
+                comments.forEach { comment in
+                    
+                    group.enter()
+                    
+                    if self.commentUser[comment.senderID] == nil {
+                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                            switch result {
+                            case .success(let user):
+                                self.commentUser[comment.senderID] = user
+                                group.leave()
+                            case .failure(let error):
+                                print(error)
+                                group.leave()
+                            }
+                        }
+                    } else {
+                        group.leave()
+                    }
+                }
+                
+                group.notify(queue: .main) {
+                    self.tableView.performBatchUpdates {
+                        let indexSet = IndexSet(integersIn: 0...0)
+                        self.tableView.reloadSections(indexSet, with: .fade)
+                    }
                 }
                 
             case .failure(let error):
@@ -242,20 +268,16 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             
             let comment = comments[indexPath.row - 2]
             
-            UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+            if let user = self.commentUser[comment.senderID] {
                 
-                switch result {
-                    
-                case .success(let user):
-                    
-                    commentCell.layoutCell(comment: comment, user: user)
-                    
-                case .failure(_):
-                    
-                    commentCell.layoutCell(comment: comment)
-                }
+                commentCell.layoutCell(comment: comment, user: user)
+                
+            } else {
+                
+                commentCell.layoutCell(comment: comment, user: nil)
+                
             }
-    
+            
             return commentCell
         }
     }
