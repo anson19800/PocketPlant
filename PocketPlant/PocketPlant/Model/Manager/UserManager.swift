@@ -101,6 +101,23 @@ class UserManager {
             
             completion(Result.success(user))
         }
+    }
+    
+    func fetchCurrentUserInfo(completion: @escaping (Result<User, Error>) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(self.userID).getDocument { document, error in
+            if let error = error {
+                completion(Result.failure(error))
+            }
+            guard let document = document,
+                  document.exists,
+                  let user = try? document.data(as: User.self)
+            else { return }
+            
+            completion(Result.success(user))
+        }
         
     }
     
