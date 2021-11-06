@@ -195,13 +195,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     return
                 }
                 
-                if let isNewUser = authResult?.additionalUserInfo?.isNewUser {
+                if let additionalUserInfo = authResult?.additionalUserInfo,
+                   additionalUserInfo.isNewUser {
                     UserManager.shared.createUserInfo()
                 }
                 print("登入成功")
                 self.performSegue(withIdentifier: "Login", sender: nil)
             }
-//            Auth.auth().currentUser?.metadata.lastSignInDate
         }
     }
     

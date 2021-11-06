@@ -66,16 +66,11 @@ class ProfilePageViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var logoutButton: UIButton! {
-        didSet {
-            logoutButton.layer.cornerRadius = 5
-        }
-    }
-    
     var plantCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,40 +97,6 @@ class ProfilePageViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
-    @IBAction func logOutAction(_ sender: UIButton) {
-        
-        let controller = UIAlertController(title: "登出提醒", message: "確定要登出嗎?", preferredStyle: .alert)
-
-        let okAction = UIAlertAction(title: "確定", style: .default) { _ in
-            
-            do {
-                
-                try Auth.auth().signOut()
-                
-                guard let loginVC = self.storyboard?.instantiateViewController(
-                    withIdentifier: String(describing: LoginViewController.self))
-                else { return }
-                
-                loginVC.modalPresentationStyle = .fullScreen
-                
-                self.present(loginVC, animated: true, completion: nil)
-                
-            } catch let signOutError as NSError {
-                
-               print("Error signing out: \(signOutError)")
-                
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        
-        controller.addAction(okAction)
-        
-        controller.addAction(cancelAction)
-        
-        present(controller, animated: true, completion: nil)
-    }
 }
 
 extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -155,7 +116,7 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             let animationView = AnimationView(name: "72610-plantGrowing")
             
-            animationView.loopMode = .loop
+            animationView.loopMode = .autoReverse
             
             if let plantCount = plantCount {
                 
@@ -189,5 +150,21 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             return profileCell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 4 {
+            let storyBoard = UIStoryboard(name: "AccountSeetingPage", bundle: nil)
+            let viewController = storyBoard.instantiateViewController(
+                withIdentifier: String(describing: AccountSettingViewController.self))
+            
+            guard let accountingSettingVC = viewController as? AccountSettingViewController else { return }
+            
+            accountingSettingVC.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.pushViewController(accountingSettingVC, animated: true)
+        }
+        
     }
 }

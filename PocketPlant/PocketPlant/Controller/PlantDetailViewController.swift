@@ -116,7 +116,7 @@ class PlantDetailViewController: UIViewController {
                 group.notify(queue: .main) {
                     self.tableView.performBatchUpdates {
                         let indexSet = IndexSet(integersIn: 0...0)
-                        self.tableView.reloadSections(indexSet, with: .fade)
+                        self.tableView.reloadSections(indexSet, with: .none)
                     }
                 }
                 
