@@ -18,40 +18,73 @@ class SharePlantViewController: UIViewController {
         didSet {
             collectionView.registerCellWithNib(identifier: String(describing: PlantCollectionViewCell.self),
                                                bundle: nil)
+            collectionView.delegate = self
+            collectionView.dataSource = self
         }
     }
     
-    var plants: [Plant]?
+    var plants: [Plant] = []
+    
+    var plantsID: [String]?
     
     var dataSource: UICollectionViewDiffableDataSource<SharePlantSection, Plant>?
-    
-    var snapshot = NSDiffableDataSourceSnapshot<SharePlantSection, Plant>()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        FirebaseManager.shared.fetchPlants { result in
+//        
+//        UserManager.shared.fetchCurrentUserInfo { result in
+//            switch result {
+//            case .success(let user):
+//                guard let plants = user.sharePlants else { return }
+//                self.plantsID = plants
+//                self.getUserSharePlants()
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//        configureCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UserManager.shared.fetchCurrentUserInfo { result in
             switch result {
-            case .success(let plants):
-                self.plants = plants
-                self.configureCollectionView()
+            case .success(let user):
+                guard let plants = user.sharePlants else { return }
+                self.plantsID = plants
+                self.getUserSharePlants()
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func getUserSharePlants() {
         
-        FirebaseManager.shared.fetchPlants { result in
-            switch result {
-            case .success(let plants):
-                self.plants = plants
-            case .failure(let error):
-                print(error)
+        guard let plantsID = plantsID else { return }
+        
+        let group = DispatchGroup()
+        
+        self.plants = []
+
+        plantsID.forEach { plantID in
+            group.enter()
+            FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+                switch result {
+                case .success(let plant):
+                    self.plants.append(plant)
+                    group.leave()
+                case .failure(let error):
+                    print(error)
+                    group.leave()
+                }
             }
+        }
+        
+        group.notify(queue: .main) {
+//            self.applySnapShot()
+            self.collectionView.reloadData()
         }
     }
     
@@ -80,11 +113,15 @@ class SharePlantViewController: UIViewController {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
+        applySnapShot()
+    }
+    
+    func applySnapShot() {
+        var snapshot = NSDiffableDataSourceSnapshot<SharePlantSection, Plant>()
+        
         snapshot.appendSections([.share])
         
-        if let plants = plants {
-            snapshot.appendItems(plants, toSection: .share)
-        }
+        snapshot.appendItems(plants, toSection: .share)
         
         if let dataSource = dataSource {
             dataSource.apply(snapshot, animatingDifferences: false)
@@ -92,7 +129,32 @@ class SharePlantViewController: UIViewController {
     }
 }
 
-extension SharePlantViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension SharePlantViewController: UICollectionViewDataSource,
+                                    UICollectionViewDelegate,
+                                    UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return plants.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: PlantCollectionViewCell.self),
+            for: indexPath)
+        
+        guard let plantCell = cell as? PlantCollectionViewCell else { return cell }
+        
+        let imageURL = plants[indexPath.row].imageURL
+        
+        let name = plants[indexPath.row].name
+        
+        plantCell.layoutCell(imageURL: imageURL, name: name)
+        
+        return plantCell
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

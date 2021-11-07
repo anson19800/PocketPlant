@@ -437,9 +437,10 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             if searching {
                 
-                guard let searchPlants = self.searchPlants,
-                      let imageURL = searchPlants[indexPath.row].imageURL
+                guard let searchPlants = self.searchPlants
                 else { return cell }
+                
+                let imageURL = searchPlants[indexPath.row].imageURL
                 
                 plantCell.layoutCell(imageURL: imageURL,
                                      name: searchPlants[indexPath.row].name)
@@ -448,9 +449,10 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             } else {
                 
-                guard let plants = self.plants,
-                      let imageURL = plants[indexPath.row].imageURL
+                guard let plants = self.plants
                 else { return cell }
+                
+                let imageURL = plants[indexPath.row].imageURL
                 
                 plantCell.layoutCell(imageURL: imageURL,
                                      name: plants[indexPath.row].name)
