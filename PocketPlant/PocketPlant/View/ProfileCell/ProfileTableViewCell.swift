@@ -12,16 +12,15 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
         contentView.layer.cornerRadius = 10
         
-        iconImageView.applyshadowWithCorner(containerView: imageContainer,
-                                            cornerRadious: 10,
-                                            opacity: 0.1)
+//        iconImageView.applyshadowWithCorner(containerView: imageContainer,
+//                                            cornerRadious: 10,
+//                                            opacity: 0.05)
     }
 
     override func layoutSubviews() {
@@ -35,9 +34,8 @@ class ProfileTableViewCell: UITableViewCell {
         layer.masksToBounds = false
     }
     
-    func layoutCell(title: String, subTitle: String, image: UIImage?) {
+    func layoutCell(title: String, image: UIImage?) {
         titleLabel.text = title
-        subTitleLabel.text = subTitle
         if let image = image {
             iconImageView.image = image
         }

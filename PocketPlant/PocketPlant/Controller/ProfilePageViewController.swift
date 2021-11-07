@@ -11,32 +11,14 @@ import Lottie
 
 enum SettingSelection: String, CaseIterable {
     case userInfo = "編輯個人資訊"
-    case representPlant = "編輯代表植物"
     case toolStock = "材料庫存"
     case sharePlants = "共享植物"
     case acountManagement = "帳號管理"
-    
-    var subTitle: String {
-        switch self {
-        case .userInfo:
-            return "1"
-        case .representPlant:
-            return "2"
-        case .toolStock:
-            return "3"
-        case .acountManagement:
-            return "4"
-        case .sharePlants:
-            return "5"
-        }
-    }
     
     var iconImage: UIImage? {
         switch self {
         case .userInfo:
             return UIImage(systemName: "person.circle")
-        case .representPlant:
-            return UIImage(systemName: "leaf.fill")
         case .toolStock:
             return UIImage(systemName: "hammer.fill")
         case .acountManagement:
@@ -148,11 +130,9 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             let title = settingSelection.rawValue
             
-            let subTitle = settingSelection.subTitle
-            
             let image = settingSelection.iconImage
             
-            profileCell.layoutCell(title: title, subTitle: subTitle, image: image)
+            profileCell.layoutCell(title: title, image: image)
             
             return profileCell
         }
@@ -166,8 +146,6 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
         
         switch selectionType {
         case .userInfo:
-            break
-        case .representPlant:
             break
         case .toolStock:
             break

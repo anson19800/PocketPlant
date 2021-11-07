@@ -24,8 +24,8 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9qC-Gj-8H4">
                                 <rect key="frame" x="0.0" y="0.5" width="50" height="49.5"/>
-                                <color key="backgroundColor" red="0.51948985729999997" green="0.76873535159999995" blue="0.49732079029999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.71372549019999998" green="0.83529411760000005" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9qC-Gj-8H4" secondAttribute="height" multiplier="1:1" id="eAC-iV-tBe"/>
                                 </constraints>
@@ -44,15 +44,9 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gp-0k-dsf">
-                        <rect key="frame" x="70" y="10" width="47" height="25.5"/>
+                        <rect key="frame" x="70" y="22.5" width="47" height="25.5"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwj-XV-zqX">
-                        <rect key="frame" x="70" y="40.5" width="38" height="21"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="71k-KC-YVe">
@@ -66,16 +60,13 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="lwj-XV-zqX" firstAttribute="top" secondItem="2gp-0k-dsf" secondAttribute="bottom" constant="5" id="E6u-Ao-VJu"/>
+                    <constraint firstItem="2gp-0k-dsf" firstAttribute="centerY" secondItem="9qC-Gj-8H4" secondAttribute="centerY" id="Ek3-Wo-L1e"/>
                     <constraint firstAttribute="trailing" secondItem="71k-KC-YVe" secondAttribute="trailing" constant="10" id="Ioi-vR-9mt"/>
-                    <constraint firstItem="lwj-XV-zqX" firstAttribute="leading" secondItem="2gp-0k-dsf" secondAttribute="leading" id="KUY-eS-Ovc"/>
-                    <constraint firstAttribute="bottom" secondItem="lwj-XV-zqX" secondAttribute="bottom" constant="10" id="MzV-Pe-kqx"/>
                     <constraint firstItem="Tbw-ch-D7S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="NkJ-Am-8OR"/>
                     <constraint firstItem="71k-KC-YVe" firstAttribute="centerY" secondItem="9qC-Gj-8H4" secondAttribute="centerY" id="deo-Hf-gBu"/>
-                    <constraint firstItem="9qC-Gj-8H4" firstAttribute="bottom" secondItem="lwj-XV-zqX" secondAttribute="bottom" id="gFS-aK-NED"/>
+                    <constraint firstAttribute="bottom" secondItem="Tbw-ch-D7S" secondAttribute="bottom" constant="10" id="e9h-to-evv"/>
                     <constraint firstItem="Tbw-ch-D7S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="m08-a3-sXq"/>
                     <constraint firstItem="2gp-0k-dsf" firstAttribute="leading" secondItem="Tbw-ch-D7S" secondAttribute="trailing" constant="10" id="rJ4-C7-ws6"/>
-                    <constraint firstItem="2gp-0k-dsf" firstAttribute="top" secondItem="9qC-Gj-8H4" secondAttribute="top" id="w9A-G6-REf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -83,7 +74,6 @@
             <connections>
                 <outlet property="iconImageView" destination="9qC-Gj-8H4" id="cyw-i9-lOd"/>
                 <outlet property="imageContainer" destination="Tbw-ch-D7S" id="ieo-s1-ozc"/>
-                <outlet property="subTitleLabel" destination="lwj-XV-zqX" id="0fw-aK-wWY"/>
                 <outlet property="titleLabel" destination="2gp-0k-dsf" id="qFr-uA-Ux0"/>
             </connections>
             <point key="canvasLocation" x="103.62318840579711" y="131.58482142857142"/>
