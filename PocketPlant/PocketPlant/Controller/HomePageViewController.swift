@@ -470,7 +470,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let itemSpace: CGFloat = 10
         let columCount: CGFloat = 3
         
-        let plantWidth = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
         
         let buttonWidth = floor((buttonCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
