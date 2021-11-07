@@ -133,16 +133,16 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             if indexPath.row >= images.count {
                 
-                imageCell.imageView.image = UIImage(named: "plant")
+                imageCell.mainImageView.image = UIImage(named: "plant")
                 
             } else {
                 
-                imageCell.imageView.image = images[indexPath.row]
+                imageCell.mainImageView.image = images[indexPath.row]
             }
             
         } else if selectedImages == nil {
             
-            imageCell.imageView.image = UIImage(named: "plant")
+            imageCell.mainImageView.image = UIImage(named: "plant")
         }
         
         return imageCell

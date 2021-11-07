@@ -9,17 +9,19 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView! {
+    @IBOutlet weak var mainImageView: UIImageView! {
         didSet {
-            imageView.applyshadowWithCorner(containerView: imageContainer, cornerRadious: 10)
+            mainImageView.applyshadowWithCorner(
+                containerView: imageContainer,
+                cornerRadious: 10)
+            mainImageView.layer.cornerRadius = 10
+            mainImageView.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var imageContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        clipsToBounds = false
-        self.layer.cornerRadius = 10
     }
 
 }

@@ -47,7 +47,7 @@
             <size key="customSize" width="100" height="100"/>
             <connections>
                 <outlet property="imageContainer" destination="rgE-ST-wd5" id="GtI-Wu-JFu"/>
-                <outlet property="imageView" destination="Zpu-pa-Yhh" id="p7v-Os-2m5"/>
+                <outlet property="mainImageView" destination="Zpu-pa-Yhh" id="0IW-6k-097"/>
             </connections>
             <point key="canvasLocation" x="168.11594202898553" y="45.535714285714285"/>
         </collectionViewCell>

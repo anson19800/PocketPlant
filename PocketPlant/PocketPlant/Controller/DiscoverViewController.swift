@@ -64,7 +64,7 @@ class DiscoverViewController: UIViewController {
                 }
                 
                 if let object = object {
-                    self.discoverObject = object
+                    self.discoverObject = object.shuffled()
                     self.discoverCollectionView.performBatchUpdates({
                         let indexSet = IndexSet(integersIn: 0...0)
                         self.discoverCollectionView.reloadSections(indexSet)
@@ -82,7 +82,7 @@ class DiscoverViewController: UIViewController {
                 }
                 
                 if let object = object {
-                    self.discoverObject = object
+                    self.discoverObject = object.shuffled()
                     self.discoverCollectionView.performBatchUpdates({
                         let indexSet = IndexSet(integersIn: 0...0)
                         self.discoverCollectionView.reloadSections(indexSet)

@@ -251,9 +251,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
               let shop = shop else { return cell }
         
         if let images = shop.images {
-            imageCell.imageView.kf.setImage(with: URL(string: images[indexPath.row]))
+            imageCell.mainImageView.kf.setImage(with: URL(string: images[indexPath.row]))
         } else {
-            imageCell.imageView.image = UIImage(named: "plant")
+            imageCell.mainImageView.image = UIImage(named: "plant")
         }
         
         return imageCell
