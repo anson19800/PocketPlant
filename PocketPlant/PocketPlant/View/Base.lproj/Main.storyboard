@@ -77,7 +77,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="fkW-Ee-Fey"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YV1-Kd-KPW">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="50" id="YV1-Kd-KPW">
                                     <size key="itemSize" width="76" height="73"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -224,7 +224,7 @@
             </objects>
             <point key="canvasLocation" x="5146" y="-444"/>
         </scene>
-        <!--探索-->
+        <!--Discover View Controller-->
         <scene sceneID="OSo-WK-Aeu">
             <objects>
                 <viewController id="cq8-ww-kEA" customClass="DiscoverViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
@@ -295,29 +295,14 @@
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="top" secondItem="0OJ-cj-dQ4" secondAttribute="top" id="meE-vM-dSV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="探索" id="WqW-Do-deb">
-                        <imageReference key="image" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
-                            <hierarchicalColors>
-                                <color red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color systemColor="secondaryLabelColor"/>
-                                <color systemColor="tertiaryLabelColor"/>
-                            </hierarchicalColors>
-                        </imageReference>
-                        <imageReference key="selectedImage" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
-                            <hierarchicalColors>
-                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color systemColor="secondaryLabelColor"/>
-                                <color systemColor="tertiaryLabelColor"/>
-                            </hierarchicalColors>
-                        </imageReference>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="5l8-kM-pNH"/>
                     <connections>
                         <outlet property="discoverCollectionView" destination="3kz-0V-5tR" id="Kug-HE-QMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMi-wD-u6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168.6915887850464" y="806.695464362851"/>
+            <point key="canvasLocation" x="3067.2897196261679" y="806.695464362851"/>
         </scene>
         <!--首頁-->
         <scene sceneID="1Vg-Oa-xOb">
@@ -443,7 +428,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="OgS-ub-qNz" kind="relationship" relationship="viewControllers" id="OK6-DJ-OAc"/>
-                        <segue destination="cq8-ww-kEA" kind="relationship" relationship="viewControllers" id="3Gb-0Z-g35"/>
+                        <segue destination="O10-gm-hKd" kind="relationship" relationship="viewControllers" id="3Gb-0Z-g35"/>
                         <segue destination="xVj-D6-f8D" kind="relationship" relationship="viewControllers" id="C3D-rK-EhF"/>
                         <segue destination="2OS-Va-O1v" kind="relationship" relationship="viewControllers" id="O8X-o9-ocb"/>
                     </connections>
@@ -494,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6u-Pg-eRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4125.7009345794386" y="806.695464362851"/>
+            <point key="canvasLocation" x="5024.2990654205605" y="806.695464362851"/>
         </scene>
         <!--DeathPlantPage-->
         <scene sceneID="9cC-zr-yZo">
@@ -610,7 +595,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7f-0B-0Lp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3173.8317757009345" y="806.695464362851"/>
+            <point key="canvasLocation" x="4073.8317757009345" y="806.695464362851"/>
         </scene>
         <!--個人資訊-->
         <scene sceneID="4iN-3R-MJI">
@@ -653,6 +638,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAX-S9-s8b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="166.82242990654206" y="806.695464362851"/>
+        </scene>
+        <!--探索-->
+        <scene sceneID="jCB-PM-UDt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O10-gm-hKd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="探索" id="WqW-Do-deb">
+                        <imageReference key="image" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <imageReference key="selectedImage" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CNc-Yf-2CK">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cq8-ww-kEA" kind="relationship" relationship="rootViewController" id="qCz-X3-tjO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TI9-Tp-6nC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2167.2897196261679" y="806.695464362851"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

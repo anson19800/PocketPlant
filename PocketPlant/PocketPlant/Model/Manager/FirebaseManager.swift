@@ -388,6 +388,5 @@ class FirebaseManager {
             completion(object, nil)
             
         }
-        
     }
 }

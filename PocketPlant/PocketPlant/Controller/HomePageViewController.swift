@@ -472,12 +472,12 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
         
-        let buttonWidth = floor((buttonCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let buttonWidth = floor((buttonCollectionView.bounds.width - 50 * (columCount - 1)) / columCount )
 
         if collectionView == plantCollectionView {
             return CGSize(width: plantWidth, height: plantWidth * 1.2)
         } else {
-            return CGSize(width: buttonWidth, height: buttonWidth)
+            return CGSize(width: buttonWidth, height: 73.0)
         }
         
     }

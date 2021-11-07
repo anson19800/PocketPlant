@@ -88,7 +88,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                        <rect key="frame" x="37.666666666666671" y="266" width="32" height="21.666666666666686"/>
+                                        <rect key="frame" x="37.666666666666671" y="266" width="22" height="15.666666666666686"/>
                                         <color key="backgroundColor" red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,7 +118,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sot-9N-qqE" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                        <rect key="frame" x="37.666666666666686" y="297.66666666666669" width="200" height="41"/>
+                                        <rect key="frame" x="37.666666666666686" y="291.66666666666669" width="200" height="21"/>
                                         <color key="backgroundColor" red="0.9640071483670607" green="1" blue="0.95544262405105929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,10 +193,10 @@
     </scenes>
     <designables>
         <designable name="4wH-eh-M66">
-            <size key="intrinsicContentSize" width="32" height="21.666666666666664"/>
+            <size key="intrinsicContentSize" width="22" height="15.666666666666666"/>
         </designable>
         <designable name="sot-9N-qqE">
-            <size key="intrinsicContentSize" width="58" height="41"/>
+            <size key="intrinsicContentSize" width="38" height="21"/>
         </designable>
     </designables>
     <resources>

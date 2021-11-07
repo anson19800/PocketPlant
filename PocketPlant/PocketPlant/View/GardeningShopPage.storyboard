@@ -79,7 +79,7 @@
         <!--Shop Detail View Controller-->
         <scene sceneID="6XW-uB-pBM">
             <objects>
-                <viewController storyboardIdentifier="detail" id="2d0-2G-fyX" customClass="ShopDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShopDetailViewController" id="2d0-2G-fyX" customClass="ShopDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7fE-kS-hBg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,30 +90,67 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8a-hN-XHQ">
                                 <rect key="frame" x="0.0" y="308.5" width="414" height="587.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="竹藝花坊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUH-i5-LVj">
-                                        <rect key="frame" x="20" y="20" width="100" height="35"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
-                                        <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4w6-6V-ivO">
-                                        <rect key="frame" x="20" y="58" width="374" height="1"/>
-                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="N0U-fn-bNr"/>
-                                        </constraints>
-                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bUq-P3-1Ze">
-                                        <rect key="frame" x="20" y="106" width="374" height="394.5"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="500.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="mMA-n2-pER">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="192"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="竹藝花坊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUH-i5-LVj">
+                                                    <rect key="frame" x="0.0" y="20" width="100" height="35"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
+                                                    <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="台中市潭子區昌平路三段352巷8號" translatesAutoresizingMaskIntoConstraints="NO" id="yu5-lf-PIA">
+                                                    <rect key="frame" x="0.0" y="61" width="382" height="37"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4w6-6V-ivO">
+                                                    <rect key="frame" x="0.0" y="60" width="382" height="1"/>
+                                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="N0U-fn-bNr"/>
+                                                    </constraints>
+                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="0333333" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3VM-OA-HCz">
+                                                    <rect key="frame" x="0.0" y="98" width="382" height="37"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" red="0.25882352941176467" green="0.29411764705882354" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="0333333" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gj0-9k-ORo">
+                                                    <rect key="frame" x="0.0" y="135" width="382" height="37"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="3VM-OA-HCz" firstAttribute="top" secondItem="yu5-lf-PIA" secondAttribute="bottom" id="7G6-5e-GHN"/>
+                                                <constraint firstItem="fUH-i5-LVj" firstAttribute="top" secondItem="mMA-n2-pER" secondAttribute="top" constant="20" id="8uI-nD-5m9"/>
+                                                <constraint firstItem="gj0-9k-ORo" firstAttribute="top" secondItem="3VM-OA-HCz" secondAttribute="bottom" id="BUs-tJ-w1T"/>
+                                                <constraint firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailingMargin" id="GQr-mj-K7C"/>
+                                                <constraint firstItem="3VM-OA-HCz" firstAttribute="leading" secondItem="4w6-6V-ivO" secondAttribute="leading" id="KnR-h9-mR0"/>
+                                                <constraint firstItem="yu5-lf-PIA" firstAttribute="top" secondItem="4w6-6V-ivO" secondAttribute="bottom" id="Mao-n9-76z"/>
+                                                <constraint firstItem="4w6-6V-ivO" firstAttribute="leading" secondItem="fUH-i5-LVj" secondAttribute="leading" id="O1R-9P-frf"/>
+                                                <constraint firstItem="4w6-6V-ivO" firstAttribute="top" secondItem="fUH-i5-LVj" secondAttribute="bottom" constant="5" id="U5V-G5-xIG"/>
+                                                <constraint firstItem="3VM-OA-HCz" firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailing" id="a2H-UD-Bkv"/>
+                                                <constraint firstItem="gj0-9k-ORo" firstAttribute="leading" secondItem="4w6-6V-ivO" secondAttribute="leading" id="c1J-9N-Ma0"/>
+                                                <constraint firstItem="fUH-i5-LVj" firstAttribute="leading" secondItem="mMA-n2-pER" secondAttribute="leading" id="chU-Sh-NSs"/>
+                                                <constraint firstItem="gj0-9k-ORo" firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailing" id="ctp-Yl-cEp"/>
+                                                <constraint firstItem="yu5-lf-PIA" firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailing" id="gf0-yt-Mdr"/>
+                                                <constraint firstItem="yu5-lf-PIA" firstAttribute="leading" secondItem="4w6-6V-ivO" secondAttribute="leading" id="jx6-z5-KlP"/>
+                                            </constraints>
+                                        </view>
                                     </tableView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="台中市潭子區昌平路三段352巷8號" translatesAutoresizingMaskIntoConstraints="NO" id="yu5-lf-PIA">
-                                        <rect key="frame" x="20" y="59" width="374" height="37"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWm-5U-FAz">
                                         <rect key="frame" x="77" y="511.5" width="281" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,28 +182,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="nMu-fM-KS4" firstAttribute="top" secondItem="bUq-P3-1Ze" secondAttribute="bottom" id="3Tx-bY-9Hw"/>
-                                    <constraint firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailing" constant="20" id="5Nn-zD-pAL"/>
                                     <constraint firstItem="HWm-5U-FAz" firstAttribute="top" secondItem="nMu-fM-KS4" secondAttribute="bottom" constant="10" id="70G-ue-eAg"/>
                                     <constraint firstItem="nMu-fM-KS4" firstAttribute="leading" secondItem="H8a-hN-XHQ" secondAttribute="leading" id="AUI-Ab-hWR"/>
                                     <constraint firstItem="Brg-xg-kVp" firstAttribute="leading" secondItem="bUq-P3-1Ze" secondAttribute="leading" id="AUs-C4-alF"/>
-                                    <constraint firstItem="bUq-P3-1Ze" firstAttribute="leading" secondItem="fUH-i5-LVj" secondAttribute="leading" id="D4j-cA-hiV"/>
                                     <constraint firstItem="Brg-xg-kVp" firstAttribute="top" secondItem="nMu-fM-KS4" secondAttribute="bottom" constant="1" id="E8x-jR-gop"/>
                                     <constraint firstItem="nz4-O8-PTU" firstAttribute="trailing" secondItem="bUq-P3-1Ze" secondAttribute="trailing" id="Efy-ZF-bgV"/>
                                     <constraint firstItem="Brg-xg-kVp" firstAttribute="centerY" secondItem="HWm-5U-FAz" secondAttribute="centerY" id="FBh-Gu-JO6"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="HWm-5U-FAz" secondAttribute="bottom" id="Hcf-6c-9qN"/>
-                                    <constraint firstItem="yu5-lf-PIA" firstAttribute="top" secondItem="4w6-6V-ivO" secondAttribute="bottom" id="I97-UW-ld1"/>
-                                    <constraint firstItem="bUq-P3-1Ze" firstAttribute="top" secondItem="yu5-lf-PIA" secondAttribute="bottom" constant="10" id="IO0-ON-oy0"/>
                                     <constraint firstItem="HWm-5U-FAz" firstAttribute="leading" secondItem="Brg-xg-kVp" secondAttribute="trailing" constant="5" id="N1h-ah-m7G"/>
-                                    <constraint firstItem="fUH-i5-LVj" firstAttribute="leading" secondItem="H8a-hN-XHQ" secondAttribute="leading" constant="20" id="RrY-ku-ae1"/>
+                                    <constraint firstItem="bUq-P3-1Ze" firstAttribute="top" secondItem="H8a-hN-XHQ" secondAttribute="top" id="Pql-dZ-0FQ"/>
                                     <constraint firstItem="nz4-O8-PTU" firstAttribute="leading" secondItem="HWm-5U-FAz" secondAttribute="trailing" constant="5" id="XFG-Wm-Zsy"/>
-                                    <constraint firstItem="yu5-lf-PIA" firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailing" id="YOx-09-INt"/>
-                                    <constraint firstItem="fUH-i5-LVj" firstAttribute="top" secondItem="H8a-hN-XHQ" secondAttribute="top" constant="20" id="cRF-Mi-PIe"/>
-                                    <constraint firstItem="bUq-P3-1Ze" firstAttribute="trailing" secondItem="4w6-6V-ivO" secondAttribute="trailing" id="hd6-ft-stR"/>
-                                    <constraint firstItem="4w6-6V-ivO" firstAttribute="top" secondItem="fUH-i5-LVj" secondAttribute="bottom" constant="3" id="hwx-Ej-CDN"/>
                                     <constraint firstItem="nz4-O8-PTU" firstAttribute="centerY" secondItem="HWm-5U-FAz" secondAttribute="centerY" id="iOd-pG-twz"/>
+                                    <constraint firstAttribute="trailing" secondItem="bUq-P3-1Ze" secondAttribute="trailing" constant="20" id="jvS-qq-JtB"/>
                                     <constraint firstAttribute="trailing" secondItem="nMu-fM-KS4" secondAttribute="trailing" id="ohK-0M-Q27"/>
-                                    <constraint firstItem="yu5-lf-PIA" firstAttribute="leading" secondItem="4w6-6V-ivO" secondAttribute="leading" id="r6d-UP-tkB"/>
-                                    <constraint firstItem="4w6-6V-ivO" firstAttribute="leading" secondItem="fUH-i5-LVj" secondAttribute="leading" id="tit-rA-i4P"/>
+                                    <constraint firstItem="bUq-P3-1Ze" firstAttribute="leading" secondItem="H8a-hN-XHQ" secondAttribute="leading" constant="20" id="t6e-lC-2jo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -187,7 +216,9 @@
                         <outlet property="addressTextView" destination="yu5-lf-PIA" id="wWx-Ax-ZWN"/>
                         <outlet property="backgroundView" destination="H8a-hN-XHQ" id="g8E-uu-Apl"/>
                         <outlet property="commentTextField" destination="HWm-5U-FAz" id="CkK-3y-SDU"/>
+                        <outlet property="descriptionTextView" destination="gj0-9k-ORo" id="RVT-PO-3ot"/>
                         <outlet property="mapView" destination="0vW-Ai-Mqe" id="bPg-Tk-fnM"/>
+                        <outlet property="phoneTextView" destination="3VM-OA-HCz" id="vQP-NA-DGr"/>
                         <outlet property="shopTitle" destination="fUH-i5-LVj" id="T5o-3r-SGB"/>
                         <outlet property="tableView" destination="bUq-P3-1Ze" id="dbD-EN-tKT"/>
                         <outlet property="userImage" destination="Brg-xg-kVp" id="L42-oZ-IkI"/>

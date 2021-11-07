@@ -19,7 +19,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         clipsToBounds = false
-        
+        self.layer.cornerRadius = 10
     }
 
 }

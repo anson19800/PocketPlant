@@ -47,6 +47,12 @@ class DiscoverViewController: UIViewController {
         fetchData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     func fetchData() {
         switch discoverType {
         case .plant:
@@ -160,5 +166,53 @@ extension DiscoverViewController: UICollectionViewDataSource,
         let width = floor((collectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
         
         return CGSize(width: width, height: width * 1.2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let discoverObjects =  discoverObject else { return }
+        
+        switch discoverType {
+        case .plant:
+            
+            guard let plants = discoverObjects as? [Plant] else { return }
+        
+            let plant = plants[indexPath.row]
+            
+            let storyboard = UIStoryboard(name: "PlantDetailPage", bundle: nil)
+            
+            let plantDetailVC = storyboard.instantiateViewController(withIdentifier: String(describing: PlantDetailViewController.self))
+            
+            guard let plantDetailVC = plantDetailVC as? PlantDetailViewController else { return }
+            
+            plantDetailVC.plant = plant
+            
+            guard let navigationCon = self.navigationController else { return }
+            
+            tabBarController?.tabBar.isHidden = true
+            
+            navigationCon.pushViewController(plantDetailVC, animated: true)
+            
+        case .shop:
+            
+            guard let shops = discoverObjects as? [GardeningShop] else { return }
+        
+            let shop = shops[indexPath.row]
+            
+            let storyboard = UIStoryboard(name: "GardeningShopPage", bundle: nil)
+            
+            let shopDetailVC = storyboard.instantiateViewController(
+                withIdentifier: String(describing: ShopDetailViewController.self))
+            
+            guard let shopDetailVC = shopDetailVC as? ShopDetailViewController else { return }
+            
+            shopDetailVC.shop = shop
+            
+            guard let navigationCon = self.navigationController else { return }
+            
+            tabBarController?.tabBar.isHidden = true
+            
+            navigationCon.pushViewController(shopDetailVC, animated: true)
+        }
     }
 }
