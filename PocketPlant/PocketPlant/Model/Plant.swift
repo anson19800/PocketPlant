@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Plant: Identifiable, Codable {
+struct Plant: Identifiable, Codable, Hashable {
     
     var id: String
     let name: String

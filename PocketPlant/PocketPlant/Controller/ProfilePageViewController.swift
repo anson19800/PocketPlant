@@ -13,9 +13,10 @@ enum SettingSelection: String, CaseIterable {
     case userInfo = "編輯個人資訊"
     case representPlant = "編輯代表植物"
     case toolStock = "材料庫存"
+    case sharePlants = "共享植物"
     case acountManagement = "帳號管理"
     
-    func suntitle() -> String {
+    var subTitle: String {
         switch self {
         case .userInfo:
             return "1"
@@ -25,10 +26,12 @@ enum SettingSelection: String, CaseIterable {
             return "3"
         case .acountManagement:
             return "4"
+        case .sharePlants:
+            return "5"
         }
     }
     
-    func iconImage() -> UIImage? {
+    var iconImage: UIImage? {
         switch self {
         case .userInfo:
             return UIImage(systemName: "person.circle")
@@ -38,6 +41,8 @@ enum SettingSelection: String, CaseIterable {
             return UIImage(systemName: "hammer.fill")
         case .acountManagement:
             return UIImage(systemName: "gearshape")
+        case .sharePlants:
+            return UIImage(systemName: "leaf.fill")
         }
     }
 }
@@ -118,14 +123,15 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             animationView.loopMode = .autoReverse
             
-            if let plantCount = plantCount {
+            if let plantCount = plantCount,
+               plantCount > 0 {
                 
                 historyCell.layoutCell(animationView: animationView,
                                        historyTitle: "已經紀錄了\(plantCount)棵植物！")
             } else {
                 
                 historyCell.layoutCell(animationView: animationView,
-                                       historyTitle: "還沒紀錄植物。")
+                                       historyTitle: "快回到首頁開始紀錄吧！")
             }
             
             return historyCell
@@ -142,9 +148,9 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             let title = settingSelection.rawValue
             
-            let subTitle = settingSelection.suntitle()
+            let subTitle = settingSelection.subTitle
             
-            let image = settingSelection.iconImage()
+            let image = settingSelection.iconImage
             
             profileCell.layoutCell(title: title, subTitle: subTitle, image: image)
             
@@ -154,7 +160,32 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 4 {
+        guard indexPath.row > 0 else { return }
+        
+        let selectionType = SettingSelection.allCases[indexPath.row - 1]
+        
+        switch selectionType {
+        case .userInfo:
+            break
+        case .representPlant:
+            break
+        case .toolStock:
+            break
+        case .sharePlants:
+            
+            let storyBoard = UIStoryboard(name: "SharePlantPage", bundle: nil)
+            
+            let viewController = storyBoard.instantiateViewController(
+                withIdentifier: String(describing: SharePlantViewController.self))
+            
+            guard let sharePlantVC = viewController as? SharePlantViewController else { return }
+            
+            sharePlantVC.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.pushViewController(sharePlantVC, animated: true)
+            
+        case .acountManagement:
+            
             let storyBoard = UIStoryboard(name: "AccountSeetingPage", bundle: nil)
             let viewController = storyBoard.instantiateViewController(
                 withIdentifier: String(describing: AccountSettingViewController.self))
@@ -165,6 +196,5 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             self.navigationController?.pushViewController(accountingSettingVC, animated: true)
         }
-        
     }
 }

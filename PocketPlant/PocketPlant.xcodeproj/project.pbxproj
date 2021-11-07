@@ -48,6 +48,8 @@
 		CB8A114C2734E31200AAE6CA /* 72610-plantGrowing.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8A114B2734E31200AAE6CA /* 72610-plantGrowing.json */; };
 		CB8A114F27351F1000AAE6CA /* AccountSeetingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */; };
 		CB8A1155273522DB00AAE6CA /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */; };
+		CB8A11572736E48000AAE6CA /* SharePlantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */; };
+		CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -139,6 +141,8 @@
 		CB8A114B2734E31200AAE6CA /* 72610-plantGrowing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "72610-plantGrowing.json"; sourceTree = "<group>"; };
 		CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountSeetingPage.storyboard; sourceTree = "<group>"; };
 		CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
+		CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SharePlantPage.storyboard; sourceTree = "<group>"; };
+		CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlantViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -437,6 +441,7 @@
 				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
 				CBF7AC22271D5D11001E3C37 /* HomePage */,
 				CB2241E2272D369900BAEE90 /* GardeningShopPage.storyboard */,
+				CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				CB8A113C273230DC00AAE6CA /* LoginViewController.swift */,
 				CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */,
 				CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */,
+				CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				CB8A114A2734DB7200AAE6CA /* HistoryTableViewCell.xib in Resources */,
 				CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */,
 				CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */,
+				CB8A11572736E48000AAE6CA /* SharePlantPage.storyboard in Resources */,
 				CB2241E3272D369900BAEE90 /* GardeningShopPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */,
@@ -710,6 +717,7 @@
 				CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CB2241F5272ECEAC00BAEE90 /* CommentTableViewCell.swift in Sources */,
+				CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */,
 				CB8A11412732931600AAE6CA /* UserManager.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */,
