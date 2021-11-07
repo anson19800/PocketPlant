@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="64" y="81"/>
         </scene>
-        <!--Share Plant Detail View Controller-->
+        <!--Code Plant Detail View Controller-->
         <scene sceneID="Tj5-IE-d7k">
             <objects>
-                <viewController storyboardIdentifier="SharePlantDetailViewController" id="Ytd-o4-naD" customClass="SharePlantDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodePlantDetailViewController" id="Ytd-o4-naD" customClass="QRCodePlantDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ry1-hD-II4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,6 +83,9 @@
                                         <state key="normal" title="收藏">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="collectAction:" destination="Ytd-o4-naD" eventType="touchUpInside" id="NfX-Jr-nyX"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
                                         <rect key="frame" x="37.666666666666671" y="266" width="32" height="21.666666666666686"/>

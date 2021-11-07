@@ -10,9 +10,10 @@ import Kingfisher
 
 protocol SharePlantDetailDelegate: AnyObject {
     func cancelAction()
+    func goToSharePlantPage()
 }
 
-class SharePlantDetailViewController: UIViewController {
+class QRCodePlantDetailViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
@@ -133,5 +134,35 @@ class SharePlantDetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         guard let delegate = self.delegate else { return }
         delegate.cancelAction()
+    }
+    
+    @IBAction func collectAction(_ sender: UIButton) {
+        
+        let animationView = loadAnimation(
+            name: "9131-loading",
+            loopMode: .loop)
+        
+        animationView.play()
+        self.view.isUserInteractionEnabled = false
+        
+        guard let plant = plant else { return }
+
+        UserManager.shared.addSharePlant(plantID: plant.id) { isSuccess in
+            if isSuccess {
+                animationView.stop()
+                animationView.removeFromSuperview()
+                self.view.isUserInteractionEnabled = true
+                
+                let storyboard = UIStoryboard(name: "SharePlantPage", bundle: nil)
+                let sharePlantVC = storyboard.instantiateViewController(
+                    withIdentifier: String(describing: SharePlantViewController.self))
+                self.present(sharePlantVC, animated: true, completion: nil)
+            } else {
+                animationView.stop()
+                animationView.removeFromSuperview()
+                self.view.isUserInteractionEnabled = true
+            }
+        }
+        
     }
 }
