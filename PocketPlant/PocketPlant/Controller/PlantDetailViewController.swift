@@ -14,24 +14,52 @@ class PlantDetailViewController: UIViewController {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.registerCellWithNib(
+                identifier: String(describing: PlantDetailTableViewCell.self),
+                bundle: nil)
+            
+            tableView.registerCellWithNib(
+                identifier: String(describing: CommentTitleTableViewCell.self),
+                bundle: nil)
+            
+            tableView.registerCellWithNib(
+                identifier: String(describing: CommentTableViewCell.self),
+                bundle: nil)
+            
         }
     }
     
-    var plant: Plant?
-    
-    let firebaseManager = FirebaseManager.shared
+    @IBOutlet weak var infoView: UIView! {
+        didSet {
+            infoView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            infoView.layer.cornerRadius = 30
+            infoView.layer.masksToBounds = true
+        }
+    }
     
     @IBOutlet weak var plantNameLabel: UILabel!
+    
     @IBOutlet weak var plantCategoryLabel: UILabel!
+    
     @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var plantPhotoImageView: UIImageView!
     
+    @IBOutlet weak var userImageView: UIImageView!
+    
+    @IBOutlet weak var commentTextField: UITextField!
+    
+    var plant: Plant?
+    
+    var comments: [Comment]?
+    
+    let firebaseManager = FirebaseManager.shared
+    
+    let commentManager = CommentManager.shared
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        tableView.registerCellWithNib(identifier: String(describing: PlantDetailTableViewCell.self), bundle: nil)
         
         guard let plant = plant,
               let imageUrl = plant.imageURL else { return }
@@ -43,6 +71,34 @@ class PlantDetailViewController: UIViewController {
         favoriteButton.tintColor = plant.favorite ? .red : .gray
         
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchComment()
+    }
+    
+    func fetchComment() {
+        guard let plant = plant else { return }
+        
+        commentManager.fetchComment(type: .plant,
+                                    objectID: plant.id) { result in
+            switch result {
+                
+            case .success(let comments):
+                
+                self.comments = comments
+                
+                self.tableView.performBatchUpdates {
+                    let indexSet = IndexSet(integersIn: 0...0)
+                    self.tableView.reloadSections(indexSet, with: .fade)
+                }
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
     }
     
     @IBAction func addToFavorite(_ sender: UIButton) {
@@ -68,25 +124,131 @@ class PlantDetailViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func showRemindFloating(_ sender: UIButton) {
+        
+        let storyBoard = UIStoryboard(name: "RemindPage", bundle: nil)
+        
+        guard let remindVC = storyBoard.instantiateViewController(
+            withIdentifier: String(describing: RemindViewController.self)) as? RemindViewController else { return }
+        
+        remindVC.modalTransitionStyle = .crossDissolve
+        remindVC.modalPresentationStyle = .overCurrentContext
+        remindVC.plant = self.plant
+        remindVC.delegate = self
+        present(remindVC, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func tapOnQRCode(_ sender: UITapGestureRecognizer) {
+        
+        guard let plant = plant else {
+            return
+        }
+
+        let qrcodePage = storyboard?.instantiateViewController(
+            withIdentifier: String(describing: ShowQRCodePageViewController.self))
+        
+        guard let qrcodePageVC = qrcodePage as? ShowQRCodePageViewController else { return }
+        
+        qrcodePageVC.modalTransitionStyle = .crossDissolve
+        
+        qrcodePageVC.modalPresentationStyle = .overCurrentContext
+        
+        qrcodePageVC.plantID = plant.id
+        
+        present(qrcodePageVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func publishAction(_ sender: UIButton) {
+        guard let plant = plant,
+              let comment = commentTextField.text else { return }
+        
+        if comment != "" {
+            let comment = Comment(commentType: .plant,
+                                  objectID: plant.id,
+                                  content: comment,
+                                  createdTime: Date().timeIntervalSince1970)
+            
+            commentManager.publishComment(comment: comment) { isSuccess in
+                
+                if isSuccess {
+                    
+                    self.fetchComment()
+                    
+                    self.commentTextField.text = ""
+                    
+                    self.view.endEditing(true)
+                    
+                    if let comments = comments,
+                       comments.count != 0 {
+                        
+                        self.tableView.scrollToRow(at: IndexPath(row: 2, section: 0), at: .top, animated: false)
+                    }
+                    
+                } else {
+                    showAlert(title: "發送失敗", message: "發送的過程出了點問題，請再試一次！", buttonTitle: "確定")
+                }
+            }
+        }
+    }
 }
 
 extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        
+        guard let comments = comments else { return 1 }
+        
+        return comments.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: PlantDetailTableViewCell.self),
-            for: indexPath)
+        if indexPath.row == 0 {
         
-        guard let detailCell = cell as? PlantDetailTableViewCell,
-              let plant = self.plant else { return cell }
-        
-        detailCell.layoutCell(plant: plant)
-        
-        return detailCell
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: PlantDetailTableViewCell.self),
+                for: indexPath)
+            
+            guard let detailCell = cell as? PlantDetailTableViewCell,
+                  let plant = self.plant else { return cell }
+            
+            detailCell.layoutCell(plant: plant)
+            
+            return detailCell
+            
+        } else if indexPath.row == 1 {
+            
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: CommentTitleTableViewCell.self),
+                for: indexPath)
+            
+            guard let titleCell = cell as? CommentTitleTableViewCell,
+                  let comments = comments else { return cell }
+            
+            titleCell.layoutCell(commentCount: comments.count)
+            
+            return titleCell
+            
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: CommentTableViewCell.self),
+                for: indexPath)
+            
+            guard let commentCell = cell as? CommentTableViewCell,
+                  let comments = comments else { return cell }
+            
+            commentCell.layoutCell(comment: comments[indexPath.row - 2])
+            
+            return commentCell
+        }
+    }
+}
+
+extension PlantDetailViewController: RemindDelegate {
+    func updateRemind(plant: Plant) {
+        self.plant = plant
     }
 }

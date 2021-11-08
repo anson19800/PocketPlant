@@ -16,9 +16,13 @@ class ButtonCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.layer.cornerRadius = 4
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.hexStringToUIColor(hex: "7F927F").cgColor
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowRadius = 4
+        layer.shadowOpacity = 0.1
+        layer.masksToBounds = false
+        backgroundColor = .white
     }
     
     override var isSelected: Bool {
@@ -29,6 +33,10 @@ class ButtonCollectionViewCell: UICollectionViewCell {
             iconImage.tintColor = isSelected ? .white : UIColor.hexStringToUIColor(hex: "7F927F")
             
             titleLabel.textColor = isSelected ? .white : UIColor.hexStringToUIColor(hex: "7F927F")
+            
+            layer.shadowColor = isSelected ? UIColor.hexStringToUIColor(hex: "7F927F").cgColor : UIColor.black.cgColor
+            
+            layer.shadowOpacity = isSelected ? 1 : 0.1
             
         }
     }

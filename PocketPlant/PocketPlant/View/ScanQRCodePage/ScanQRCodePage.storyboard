@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ScanQR Code Page View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ScanQRCodePageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="81"/>
+        </scene>
+        <!--Share Plant Detail View Controller-->
+        <scene sceneID="Tj5-IE-d7k">
+            <objects>
+                <viewController storyboardIdentifier="SharePlantDetailViewController" id="Ytd-o4-naD" customClass="SharePlantDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ry1-hD-II4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lid-lb-4f2">
+                                <rect key="frame" x="50" y="194" width="275" height="484"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JmQ-eN-rMw">
+                                        <rect key="frame" x="37.666666666666686" y="24" width="200" height="200"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iS3-AZ-Rfk">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="iS3-AZ-Rfk" firstAttribute="top" secondItem="JmQ-eN-rMw" secondAttribute="top" id="4Q5-uh-0RQ"/>
+                                            <constraint firstAttribute="width" constant="200" id="R6e-hQ-Ifv"/>
+                                            <constraint firstItem="iS3-AZ-Rfk" firstAttribute="leading" secondItem="JmQ-eN-rMw" secondAttribute="leading" id="atK-L6-bob"/>
+                                            <constraint firstAttribute="trailing" secondItem="iS3-AZ-Rfk" secondAttribute="trailing" id="b8J-5S-5wF"/>
+                                            <constraint firstAttribute="bottom" secondItem="iS3-AZ-Rfk" secondAttribute="bottom" id="dyt-sq-thV"/>
+                                            <constraint firstAttribute="width" secondItem="JmQ-eN-rMw" secondAttribute="height" multiplier="1:1" id="f7f-qv-Zs9"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植物名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9e-Xz-hnH">
+                                        <rect key="frame" x="37.666666666666671" y="229" width="100.00000000000001" height="35"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3S-Az-XKg">
+                                        <rect key="frame" x="157.66666666666666" y="444" width="60" height="30"/>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="hGZ-iI-t8K"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="取消">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="Ytd-o4-naD" eventType="touchUpInside" id="ftd-yC-WQz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxp-zT-Fa8">
+                                        <rect key="frame" x="57.666666666666671" y="444" width="60" height="30"/>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="MNx-ce-ukd"/>
+                                            <constraint firstAttribute="height" constant="30" id="jBf-5f-1yY"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="收藏">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
+                                        <rect key="frame" x="37.666666666666671" y="266" width="22" height="15.666666666666686"/>
+                                        <color key="backgroundColor" red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lkBorderColor">
+                                                <color key="value" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sot-9N-qqE" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
+                                        <rect key="frame" x="37.666666666666686" y="291.66666666666669" width="200" height="21"/>
+                                        <color key="backgroundColor" red="0.9640071483670607" green="1" blue="0.95544262405105929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkBorderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lkCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bxp-zT-Fa8" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" constant="-50" id="1pS-JK-YL4"/>
+                                    <constraint firstItem="sot-9N-qqE" firstAttribute="top" secondItem="4wH-eh-M66" secondAttribute="bottom" constant="10" id="4Ta-e6-lRr"/>
+                                    <constraint firstAttribute="bottom" secondItem="bxp-zT-Fa8" secondAttribute="bottom" constant="10" id="Ceo-FC-LXD"/>
+                                    <constraint firstItem="sot-9N-qqE" firstAttribute="leading" secondItem="s9e-Xz-hnH" secondAttribute="leading" id="Gdc-Bi-vuB"/>
+                                    <constraint firstItem="JmQ-eN-rMw" firstAttribute="top" secondItem="lid-lb-4f2" secondAttribute="top" constant="24" id="JBV-gG-s4U"/>
+                                    <constraint firstItem="sot-9N-qqE" firstAttribute="trailing" secondItem="iS3-AZ-Rfk" secondAttribute="trailing" id="MTw-sh-66i"/>
+                                    <constraint firstItem="4wH-eh-M66" firstAttribute="top" secondItem="s9e-Xz-hnH" secondAttribute="bottom" constant="2" id="NRh-U5-ras"/>
+                                    <constraint firstItem="JmQ-eN-rMw" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" id="UpF-x3-Rci"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" constant="50" id="ZFx-VK-GQi"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="top" secondItem="JmQ-eN-rMw" secondAttribute="bottom" constant="5" id="esO-nI-Xt6"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="top" secondItem="bxp-zT-Fa8" secondAttribute="top" id="i9r-qt-8MZ"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sot-9N-qqE" secondAttribute="bottom" constant="20" id="jPC-9P-4Nb"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="leading" secondItem="iS3-AZ-Rfk" secondAttribute="leading" id="nT3-mz-ZY8"/>
+                                    <constraint firstItem="V3S-Az-XKg" firstAttribute="bottom" secondItem="bxp-zT-Fa8" secondAttribute="bottom" id="wFU-kI-bZk"/>
+                                    <constraint firstItem="4wH-eh-M66" firstAttribute="leading" secondItem="s9e-Xz-hnH" secondAttribute="leading" id="wgy-xU-7gk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3iz-yz-omt"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3iz-yz-omt" firstAttribute="bottom" secondItem="lid-lb-4f2" secondAttribute="bottom" constant="100" id="HK2-DR-SDg"/>
+                            <constraint firstItem="lid-lb-4f2" firstAttribute="leading" secondItem="3iz-yz-omt" secondAttribute="leading" constant="50" id="PGs-EN-u7Q"/>
+                            <constraint firstItem="3iz-yz-omt" firstAttribute="trailing" secondItem="lid-lb-4f2" secondAttribute="trailing" constant="50" id="kiD-Ob-7nD"/>
+                            <constraint firstItem="lid-lb-4f2" firstAttribute="top" secondItem="3iz-yz-omt" secondAttribute="top" constant="150" id="oZD-7i-zVO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VUt-FF-m74"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="lid-lb-4f2" id="3cq-AN-RFe"/>
+                        <outlet property="cancelButton" destination="V3S-Az-XKg" id="mOT-cc-3lq"/>
+                        <outlet property="categoryLabel" destination="4wH-eh-M66" id="QUi-58-QNQ"/>
+                        <outlet property="collectButton" destination="bxp-zT-Fa8" id="j7q-dQ-N0X"/>
+                        <outlet property="descriptionLabel" destination="sot-9N-qqE" id="wFM-lf-x4f"/>
+                        <outlet property="imageContainer" destination="JmQ-eN-rMw" id="Am7-RA-Nvs"/>
+                        <outlet property="plantImageView" destination="iS3-AZ-Rfk" id="Cns-iJ-zZO"/>
+                        <outlet property="plantNameLabel" destination="s9e-Xz-hnH" id="YlR-jp-lx8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qf2-l2-Vfh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="79.064039408867004"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -177,7 +177,8 @@ class InputPlantTableViewCell: UITableViewCell {
                           lastSoil: nil,
                           favorite: false,
                           ownerID: 0,
-                          isPublic: false)
+                          isPublic: false,
+                          reminder: nil)
         
         print(plant)
         guard let delegate = self.delegate else { return }

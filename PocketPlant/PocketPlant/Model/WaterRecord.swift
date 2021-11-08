@@ -17,5 +17,7 @@ struct WaterRecord: Codable {
     
     let id: String
     let plantID: String
+    let plantName: String
+    let plantImage: String?
     let waterDate: TimeInterval
 }

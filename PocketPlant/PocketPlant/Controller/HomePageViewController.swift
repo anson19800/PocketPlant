@@ -10,6 +10,7 @@ import UIKit
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
     case myFavorite = "最愛植物"
+    case gardeningShop = "園藝店"
 }
 
 class HomePageViewController: UIViewController {
@@ -21,9 +22,10 @@ class HomePageViewController: UIViewController {
             searchBar.backgroundImage = UIImage()
             searchBar.searchTextField.backgroundColor = .white
             searchBar.searchTextField.layer.cornerRadius = 15
-            searchBar.searchTextField.layer.borderWidth = 1
-            searchBar.searchTextField.layer.borderColor = UIColor.hexStringToUIColor(hex: "DFEFDF").cgColor
-            searchBar.searchTextField.layer.masksToBounds = true
+            searchBar.searchTextField.layer.shadowColor = UIColor.black.cgColor
+            searchBar.searchTextField.layer.shadowOffset = CGSize.zero
+            searchBar.searchTextField.layer.shadowRadius = 4
+            searchBar.searchTextField.layer.shadowOpacity = 0.1
         }
     }
     
@@ -36,17 +38,9 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var buttonCollectionView: UICollectionView!
     
-    @IBOutlet weak var addButton: UIButton! {
-        didSet {
-            addButton.titleLabel?.text = ""
-        }
-    }
+    @IBOutlet weak var addButton: UIButton!
     
-    @IBOutlet weak var qrcodeButton: UIButton! {
-        didSet {
-            qrcodeButton.titleLabel?.text = ""
-        }
-    }
+    @IBOutlet weak var qrcodeButton: UIButton!
     
     let firebaseManager = FirebaseManager.shared
     
@@ -60,8 +54,6 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var waterImageView: UIImageView!
     
-    @IBOutlet weak var plantCollectionTitle: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,8 +66,9 @@ class HomePageViewController: UIViewController {
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
-        
         searchBar.delegate = self
+        
+        buttonCollectionView.layer.masksToBounds = false
         
         buttonCollectionView.registerCellWithNib(
             identifier: String(describing: ButtonCollectionViewCell.self),
@@ -91,13 +84,11 @@ class HomePageViewController: UIViewController {
         
         let viewWidth = view.bounds.width
         let viewHeight = view.bounds.height
-        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 50)
+        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 130)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
         
         switch isSelectedAt {
             
@@ -109,7 +100,21 @@ class HomePageViewController: UIViewController {
             
             updateMyFavoritePlants(withAnimation: false)
             
+        case .gardeningShop:
+            
+            buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
+                                            animated: false,
+                                            scrollPosition: .top)
+            
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -149,8 +154,6 @@ class HomePageViewController: UIViewController {
                     
                 }
                 
-                self.plantCollectionTitle.text = "我的植物"
-                
             case .failure(let error):
                 
                 print(error)
@@ -180,8 +183,6 @@ class HomePageViewController: UIViewController {
                     self.plantCollectionView.reloadData()
                     
                 }
-                
-                self.plantCollectionTitle.text = "最愛植物"
                 
             case .failure(let error):
                 
@@ -238,9 +239,13 @@ class HomePageViewController: UIViewController {
             
         case "createPlant":
             
-            guard let destinationVC = segue.destination as? NewPlantPageViewController else { return }
+            guard let destinationNVC = segue.destination as? UINavigationController,
+                  let destinationVC = destinationNVC.viewControllers.first,
+                  let newPlantVC = destinationVC as? NewPlantPageViewController else { return }
             
-            destinationVC.pageMode = .create
+            newPlantVC.pageMode = .create
+            
+            newPlantVC.parentVC = self
             
         case "editPlant":
             
@@ -250,12 +255,18 @@ class HomePageViewController: UIViewController {
             
             destinationVC.pageMode = .edit(editedPlant: plant)
             
+            destinationVC.parentVC = self
+            
         case "deathPlant":
             
             guard let destinationVC = segue.destination as? DeathPlantViewController,
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
+            
+        case "showShop":
+            
+            break
 
         default:
             
@@ -269,7 +280,7 @@ class HomePageViewController: UIViewController {
         
         var waterCount = 0
         plants.forEach({ plant in
-            firebaseManager.updateWater(plantID: plant.id) { isSuccess in
+            firebaseManager.updateWater(plant: plant) { isSuccess in
                 if isSuccess {
                     waterCount += 1
                     print("\(waterCount) / \(plants.count)")
@@ -289,6 +300,10 @@ class HomePageViewController: UIViewController {
         
         guard let dropView = sender.view else { return }
         
+        UIView.animate(withDuration: 0.1) {() -> Void in
+            dropView.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }
+        
         let translation = sender.translation(in: view)
         dropView.center.x += translation.x
         dropView.center.y += translation.y
@@ -296,12 +311,16 @@ class HomePageViewController: UIViewController {
         
         if sender.state == .ended {
             
+            dropView.isUserInteractionEnabled = false
+            
             let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
             
             UIView.animate(withDuration: 0.3, animations: {
                 
+                dropView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                
                 let safeX = self.view.bounds.size.width - 50
-                let safeY = self.view.bounds.size.height - 50
+                let safeY = self.view.bounds.size.height - 130
                 
                 dropView.center = CGPoint(x: safeX, y: safeY)
                 
@@ -310,16 +329,22 @@ class HomePageViewController: UIViewController {
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
                let plants = self.plants {
                 let plantName = plants[indexPath.row].name
-                let plantID = plants[indexPath.row].id
                 
-                firebaseManager.updateWater(plantID: plantID) { isSuccess in
+                firebaseManager.updateWater(plant: plants[indexPath.row]) { isSuccess in
                     
                     if isSuccess {
                         
                         self.waterAlert(plantName: plantName)
                         
+                        dropView.isUserInteractionEnabled = true
+                        
                     }
                 }
+            } else {
+                
+                dropView.shake()
+                
+                dropView.isUserInteractionEnabled = true
             }
         }
     }
@@ -428,9 +453,16 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let itemSpace: CGFloat = 10
         let columCount: CGFloat = 3
         
-        let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let plantWidth = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        
+        let buttonWidth = floor((buttonCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
-        return CGSize(width: width, height: width * 1.8)
+        if collectionView == plantCollectionView {
+            return CGSize(width: plantWidth, height: plantWidth * 1.2)
+        } else {
+            return CGSize(width: buttonWidth, height: buttonWidth)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -442,6 +474,8 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             guard let plants = self.plants else { return }
         
             let plant = plants[indexPath.row]
+            
+            tabBarController?.tabBar.isHidden = true
         
             performSegue(withIdentifier: "showPlantDetail", sender: plant)
             
@@ -450,6 +484,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             let buttonType = HomePageButton.allCases[indexPath.row]
             
             switch buttonType {
+                
             case .myPlant:
                 
                 if isSelectedAt == .myPlant {
@@ -474,8 +509,17 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 updateMyFavoritePlants(withAnimation: true)
                 
-                self.isSelectedAt = .myFavorite
+                isSelectedAt = .myFavorite
                 
+            case .gardeningShop:
+                
+                isSelectedAt = .gardeningShop
+                
+                searching = false
+                
+                tabBarController?.tabBar.isHidden = true
+                
+                performSegue(withIdentifier: "shopList", sender: nil)
             }
         }
     }

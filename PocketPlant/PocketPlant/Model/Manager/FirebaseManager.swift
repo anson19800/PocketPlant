@@ -79,6 +79,18 @@ class FirebaseManager {
         }
     }
     
+    func fetchPlants(plantID: String, completion: @escaping (Result<Plant, Error>) -> Void) {
+    
+        dataBase.collection("plant").document(plantID).getDocument { document, error in
+            guard let document = document,
+                  document.exists,
+                  let plant = try? document.data(as: Plant.self)
+            else { return }
+            
+            completion(Result.success(plant))
+        }
+    }
+    
     func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
         dataBase.collection("plant")
@@ -164,15 +176,17 @@ class FirebaseManager {
         }
     }
     
-    func updateWater(plantID: String, isSuccess: @escaping (Bool) -> Void) {
+    func updateWater(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
         
         let waterRef = dataBase.collection("water")
         
         let documentID = waterRef.document().documentID
         
         let waterRecord = WaterRecord(id: documentID,
-                                      plantID: plantID,
-                                      waterDate: Date().timeIntervalSince1970)
+                                       plantID: plant.id,
+                                       plantName: plant.name,
+                                       plantImage: plant.imageURL,
+                                       waterDate: Date().timeIntervalSince1970)
         
         do {
             
@@ -208,7 +222,110 @@ class FirebaseManager {
             
             completion(Result.success(waterRecord))
         }
-        
     }
     
+    func fetchWaterRecord(date: Date, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
+        
+        let waterRef = dataBase.collection("water")
+        
+        waterRef.getDocuments { snapshot, error in
+            
+            if let error = error {
+                
+                completion(Result.failure(error))
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let waterRecord = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: WaterRecord.self)
+            }
+            
+            let recordDay = waterRecord.compactMap { (record) -> WaterRecord? in
+                let recordDate = Date(timeIntervalSince1970: record.waterDate)
+                if recordDate.hasSame(.day, as: date) {
+                    return record
+                } else {
+                    return nil
+                }
+            }
+            completion(.success(recordDay))
+        }
+    }
+    
+    func deleteWaterRecord(recordID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let waterRef = dataBase.collection("water").document(recordID)
+        
+        waterRef.delete { error in
+            if let error = error {
+                completion(Result.failure(error))
+            } else {
+                completion(Result.success("Delete Success"))
+            }
+        }
+    }
+    
+    func deleteWaterRecord(plantID: String) {
+        
+        dataBase.collection("water")
+            .whereField("plantID", isEqualTo: plantID).getDocuments { snapshot, error in
+                
+                guard let snapshot = snapshot else { return }
+                
+                snapshot.documents.forEach { snapshot in
+                    snapshot.reference.delete()
+                }
+        }
+    }
+    
+    func addGardeningShop(shop: inout GardeningShop, isSuccess: @escaping (Bool) -> Void) {
+        
+        let shopRef = dataBase.collection("shop")
+        
+        let documentID = shopRef.document().documentID
+        
+        shop.id = documentID
+        
+        do {
+            
+            try shopRef.document(documentID).setData(from: shop)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+        }
+    }
+    
+    func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
+        dataBase.collection("shop").getDocuments { snapshot, error in
+            
+            if let error = error {
+                
+                completion(Result.failure(error))
+                
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let shop = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: GardeningShop.self)
+            }
+            
+            completion(Result.success(shop))
+        }
+    }
+    
+    func deleteShop(shop: GardeningShop) {
+        
+        guard let id = shop.id else { return }
+        
+        let documentRef = dataBase.collection("shop").document(id)
+        
+        documentRef.delete()
+    }
 }

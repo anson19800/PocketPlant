@@ -16,5 +16,6 @@ target 'PocketPlant' do
 
   pod 'IQKeyboardManagerSwift'
   pod 'Charts'
+  pod 'lottie-ios'
 
 end
