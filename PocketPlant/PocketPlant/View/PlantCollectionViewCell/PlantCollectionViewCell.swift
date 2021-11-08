@@ -23,6 +23,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
     func layoutCell(imageURL: String?, name: String) {

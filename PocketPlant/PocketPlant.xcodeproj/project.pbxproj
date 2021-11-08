@@ -227,7 +227,6 @@
 			children = (
 				CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */,
 				CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */,
-				CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */,
 			);
 			path = PlantDetailPage;
 			sourceTree = "<group>";
@@ -288,7 +287,6 @@
 				CB8A11442733B08800AAE6CA /* ProfileTableViewCell.xib */,
 				CB8A11472734DB7200AAE6CA /* HistoryTableViewCell.swift */,
 				CB8A11482734DB7200AAE6CA /* HistoryTableViewCell.xib */,
-				CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */,
 			);
 			path = ProfileCell;
 			sourceTree = "<group>";
@@ -297,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				CB8F2ED72727AB6F005E1448 /* ReminderCell */,
-				CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */,
 			);
 			path = RemindPage;
 			sourceTree = "<group>";
@@ -332,28 +329,6 @@
 			path = CalendarPage;
 			sourceTree = "<group>";
 		};
-		CB8F2EE62728EFB3005E1448 /* DiscoverPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DiscoverPage;
-			sourceTree = "<group>";
-		};
-		CB8F2EE72728EFBF005E1448 /* ProfilePage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfilePage;
-			sourceTree = "<group>";
-		};
-		CB8F2EF62729569A005E1448 /* ScanQRCodePage */ = {
-			isa = PBXGroup;
-			children = (
-				CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */,
-			);
-			path = ScanQRCodePage;
-			sourceTree = "<group>";
-		};
 		CB8F2EFF272BA0A5005E1448 /* LottieAnimation */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,14 +338,6 @@
 				CB8A115E2737952700AAE6CA /* 9131-loading.json */,
 			);
 			path = LottieAnimation;
-			sourceTree = "<group>";
-		};
-		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
-			isa = PBXGroup;
-			children = (
-				CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */,
-			);
-			path = DeathPlantPage;
 			sourceTree = "<group>";
 		};
 		CBF7ABF6271C863E001E3C37 = {
@@ -432,19 +399,21 @@
 				CB2241FB272ED27500BAEE90 /* ImageCell */,
 				CB2241F2272ECE9100BAEE90 /* CommentCell */,
 				CB2241DD272D2C7A00BAEE90 /* GardeningShop */,
-				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
-				CB8F2EF62729569A005E1448 /* ScanQRCodePage */,
-				CB8F2EE72728EFBF005E1448 /* ProfilePage */,
-				CB8F2EE62728EFB3005E1448 /* DiscoverPage */,
 				CB8F2EE32728EE39005E1448 /* CalendarPage */,
 				CB8F2ED12726B8DB005E1448 /* RemindPage */,
-				CB9A49192724628D0095E5EE /* DeathPlantPage */,
 				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,
 				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
 				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
 				CBF7AC22271D5D11001E3C37 /* HomePage */,
 				CB2241E2272D369900BAEE90 /* GardeningShopPage.storyboard */,
+				CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */,
+				CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */,
+				CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */,
+				CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */,
+				CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */,
 				CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */,
+				CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */,
+				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -512,7 +481,6 @@
 			isa = PBXGroup;
 			children = (
 				CBF7AC3C271E77AD001E3C37 /* inputPlantViewCell */,
-				CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */,
 			);
 			path = NewPlantPage;
 			sourceTree = "<group>";

@@ -41,13 +41,28 @@ class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var plantCategoryLabel: UILabel!
     
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.layer.cornerRadius = favoriteButton.frame.width / 2
+        }
+    }
+    @IBOutlet weak var qrcodeButton: UIImageView! {
+        didSet {
+            qrcodeButton.layer.cornerRadius = 5
+        }
+    }
     
     @IBOutlet weak var plantPhotoImageView: UIImageView!
     
     @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var commentTextField: UITextField!
+    
+    @IBOutlet weak var remindButton: UIButton! {
+        didSet {
+            remindButton.layer.cornerRadius = remindButton.frame.width / 2
+        }
+    }
     
     var plant: Plant?
     

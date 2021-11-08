@@ -10,6 +10,8 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseAuth
 
+typealias GenericCompletion<T: Decodable> = (([T]?, Error?) -> Void)
+
 class FirebaseManager {
     
     static let shared = FirebaseManager()
@@ -356,5 +358,35 @@ class FirebaseManager {
         let documentRef = dataBase.collection("shop").document(id)
         
         documentRef.delete()
+    }
+    
+    func fetchDiscoverObject<T: Decodable>(_ type: DiscoverType, completion: @escaping GenericCompletion<T>) {
+        
+        let documentRef: CollectionReference?
+        
+        switch type {
+        case .plant:
+            documentRef = dataBase.collection("plant")
+        case .shop:
+            documentRef = dataBase.collection("shop")
+        }
+        
+        guard let documentRef = documentRef else { return }
+
+        documentRef.getDocuments { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let object = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: T.self)
+            }
+            
+            completion(object, nil)
+            
+        }
     }
 }

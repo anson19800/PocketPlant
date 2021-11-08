@@ -27,14 +27,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s10-cn-YDk">
-                                        <rect key="frame" x="20" y="91" width="374" height="1"/>
+                                        <rect key="frame" x="20" y="118" width="374" height="1"/>
                                         <color key="backgroundColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Vfl-aC-SIv"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EWu-id-PLU">
-                                        <rect key="frame" x="0.0" y="92" width="394" height="325"/>
+                                        <rect key="frame" x="0.0" y="119" width="394" height="298"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9o-gM-vve">
@@ -59,10 +59,18 @@
                                             <constraint firstAttribute="height" constant="4" id="wgO-wl-wGT"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="送出設定後會在當天同一時間提醒！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQo-bf-XAl">
+                                        <rect key="frame" x="20" y="89" width="240" height="21"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="s10-cn-YDk" firstAttribute="top" secondItem="0MH-Td-foE" secondAttribute="bottom" constant="5" id="5ML-Ni-Q3T"/>
+                                    <constraint firstItem="vQo-bf-XAl" firstAttribute="top" secondItem="0MH-Td-foE" secondAttribute="bottom" constant="3" id="1HD-fa-JnM"/>
+                                    <constraint firstItem="vQo-bf-XAl" firstAttribute="leading" secondItem="0MH-Td-foE" secondAttribute="leading" id="1Pn-Ut-msh"/>
+                                    <constraint firstItem="s10-cn-YDk" firstAttribute="top" secondItem="vQo-bf-XAl" secondAttribute="bottom" constant="8" id="5ML-Ni-Q3T"/>
                                     <constraint firstItem="JHe-qx-dvB" firstAttribute="centerX" secondItem="5tv-OV-QvF" secondAttribute="centerX" id="AEC-wt-xYT"/>
                                     <constraint firstItem="EWu-id-PLU" firstAttribute="top" secondItem="s10-cn-YDk" secondAttribute="bottom" id="D39-5O-yXy"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="I9o-gM-vve" secondAttribute="bottom" id="ERz-zp-vBi"/>

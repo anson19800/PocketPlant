@@ -155,7 +155,6 @@ extension SharePlantViewController: UICollectionViewDataSource,
         return plantCell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {

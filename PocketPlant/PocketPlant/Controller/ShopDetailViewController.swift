@@ -13,6 +13,8 @@ class ShopDetailViewController: UIViewController {
     @IBOutlet weak var shopTitle: UILabel!
     @IBOutlet weak var addressTextView: UITextView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var phoneTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
@@ -57,6 +59,12 @@ class ShopDetailViewController: UIViewController {
         
         shopTitle.text = shop.name
         addressTextView.text = shop.address
+        phoneTextView.text = "電話：\(shop.phone)"
+        if shop.description == "" {
+            descriptionTextView.text = "備註：上傳者沒有留訊息呦～"
+        } else {
+            descriptionTextView.text = "備註：\(shop.description)"
+        }
         
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(shop.address) { placemarks, _ in
@@ -243,9 +251,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
               let shop = shop else { return cell }
         
         if let images = shop.images {
-            imageCell.imageView.kf.setImage(with: URL(string: images[indexPath.row]))
+            imageCell.mainImageView.kf.setImage(with: URL(string: images[indexPath.row]))
         } else {
-            imageCell.imageView.image = UIImage(named: "plant")
+            imageCell.mainImageView.image = UIImage(named: "plant")
         }
         
         return imageCell
