@@ -27,6 +27,10 @@ class CalendarPageViewController: UIViewController {
         super.viewDidLoad()
         calendar.locale = Locale(identifier: "zh_Hant_TW")
         calendar.calendar = Calendar(identifier: .republicOfChina)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +54,7 @@ class CalendarPageViewController: UIViewController {
                 self.waterRecords = waterRecords
                 self.infoTableView.performBatchUpdates {
                     let indexSet = IndexSet(integersIn: 0...0)
-                    self.infoTableView.reloadSections(indexSet, with: .left)
+                    self.infoTableView.reloadSections(indexSet, with: .fade)
                 }
             case .failure(let error):
                 print(error)
@@ -59,10 +63,10 @@ class CalendarPageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "showWater" {
             
             guard let plant = sender as? Plant,
-                  let destinationVC = segue.destination as? PlantDetailViewController else { return }
+                  let destinationVC = segue.destination as? DeathPlantViewController else { return }
             
             destinationVC.plant = plant
             
@@ -109,7 +113,7 @@ extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource
         FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
             switch result {
             case .success(let plant):
-                self.performSegue(withIdentifier: "showDetail", sender: plant)
+                self.performSegue(withIdentifier: "showWater", sender: plant)
             case .failure(let error):
                 print(error)
             }
@@ -121,7 +125,7 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
     
     func deleteAction(indexPath: IndexPath) {
         
-        guard let records = waterRecords else { return }
+        guard var records = waterRecords else { return }
         
         let plantName = records[indexPath.row].plantName
         
@@ -135,7 +139,11 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
                 switch result {
                 case .success(let successInfo):
                     print(successInfo)
-                    self.fetchRecord(date: self.calendar.date)
+                    records.remove(at: indexPath.row)
+                    self.waterRecords = records
+                    self.infoTableView.deleteRows(at: [indexPath], with: .left)
+                    self.infoTableView.reloadData()
+//                    self.fetchRecord(date: self.calendar.date)
                 case .failure(let error):
                     print(error)
                 }
