@@ -29,4 +29,5 @@ struct Plant: Identifiable, Codable {
     let isPublic: Bool
     var imageID: String?
     var imageURL: String?
+    var reminder: [Remind]?
 }

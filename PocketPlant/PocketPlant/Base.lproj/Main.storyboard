@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home Page View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomePageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,6 +149,7 @@
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="rt7-Cg-FS0"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="ftW-8A-WjL"/>
                     <navigationItem key="navigationItem" id="LpM-Bc-Hwe"/>
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
@@ -176,7 +177,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1849.2753623188407" y="60.9375"/>
+            <point key="canvasLocation" x="1309" y="-139"/>
         </scene>
         <!--NewPlantPage-->
         <scene sceneID="gh4-fU-HLf">
@@ -186,7 +187,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="js3-5v-7Ot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677" y="-110"/>
+            <point key="canvasLocation" x="2111" y="-615"/>
         </scene>
         <!--PlantDetailPage-->
         <scene sceneID="6os-Se-7I5">
@@ -196,7 +197,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXg-s3-s9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="76"/>
+            <point key="canvasLocation" x="2982.4766355140187" y="-418.57451403887694"/>
         </scene>
         <!--DeathPlantPage-->
         <scene sceneID="McW-lZ-DlC">
@@ -206,7 +207,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTO-l4-Wcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2894" y="211"/>
+            <point key="canvasLocation" x="2982.4766355140187" y="-337.5809935205184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="klP-0w-elY">
@@ -224,7 +225,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vh4-N7-eyl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939.13043478260875" y="60.9375"/>
+            <point key="canvasLocation" x="575" y="-139"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
