@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
@@ -42,6 +43,8 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var qrcodeButton: UIButton!
     
+    @IBOutlet weak var homeTitleLabel: UILabel!
+    
     let firebaseManager = FirebaseManager.shared
     
     var plants: [Plant]?
@@ -52,10 +55,24 @@ class HomePageViewController: UIViewController {
     
     var isSelectedAt: HomePageButton = .myPlant
     
+    var handle: AuthStateDidChangeListenerHandle?
+    
     @IBOutlet weak var waterImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+              if let userName = user.displayName {
+                self.homeTitleLabel.text = "Hi！\(userName)"
+              } else {
+                self.homeTitleLabel.text = "Hi！歡迎"
+              }
+            } else {
+                self.homeTitleLabel.text = "Hi！訪客"
+            }
+        }
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
                                                                 style: .plain,
@@ -67,7 +84,6 @@ class HomePageViewController: UIViewController {
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         searchBar.delegate = self
-        
         buttonCollectionView.layer.masksToBounds = false
         
         buttonCollectionView.registerCellWithNib(
@@ -105,7 +121,6 @@ class HomePageViewController: UIViewController {
             buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
                                             animated: false,
                                             scrollPosition: .top)
-            
         }
     }
     

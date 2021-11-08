@@ -48,7 +48,6 @@ class NewShopViewController: UIViewController {
         var imageURLList: [String] = []
         var imageIDList: [String] = []
         
-        
         if let selectedImage = selectedImages {
             
             let group: DispatchGroup = DispatchGroup()

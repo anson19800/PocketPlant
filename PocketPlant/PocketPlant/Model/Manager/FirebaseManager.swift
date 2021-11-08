@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 
 class FirebaseManager {
     
@@ -16,6 +17,20 @@ class FirebaseManager {
     private let dataBase = Firestore.firestore()
     
     let imageManager = ImageManager.shared
+    
+    let userID: String = {
+        
+        if let user = Auth.auth().currentUser {
+            
+            return user.uid
+        
+        } else {
+            
+            return "0"
+            
+        }
+        
+    }()
     
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
@@ -26,6 +41,8 @@ class FirebaseManager {
         var uploadPlant = plant
         
         uploadPlant.id = documentID
+        
+        uploadPlant.ownerID = userID
         
         imageManager.uploadImageToGetURL(image: image) { result in
             
@@ -60,7 +77,10 @@ class FirebaseManager {
     
     func fetchPlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
-        dataBase.collection("plant").order(by: "buyTime", descending: true).getDocuments { snapshot, error in
+        dataBase.collection("plant")
+            .whereField("ownerID", isEqualTo: userID)
+            .order(by: "buyTime", descending: true)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
