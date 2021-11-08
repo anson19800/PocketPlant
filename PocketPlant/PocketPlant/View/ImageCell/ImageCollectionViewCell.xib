@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,43 +17,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgE-ST-wd5">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zpu-pa-Yhh">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zpu-pa-Yhh">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="2Bm-L4-C4C"/>
-                            <constraint firstAttribute="width" secondItem="rgE-ST-wd5" secondAttribute="height" multiplier="1:1" id="OSB-69-UdW"/>
-                            <constraint firstAttribute="bottom" secondItem="Zpu-pa-Yhh" secondAttribute="bottom" id="g1P-kr-I1X"/>
-                            <constraint firstItem="Zpu-pa-Yhh" firstAttribute="leading" secondItem="rgE-ST-wd5" secondAttribute="leading" id="gyQ-Cn-2uK"/>
-                            <constraint firstItem="Zpu-pa-Yhh" firstAttribute="top" secondItem="rgE-ST-wd5" secondAttribute="top" id="nu4-bN-EC0"/>
-                            <constraint firstAttribute="trailing" secondItem="Zpu-pa-Yhh" secondAttribute="trailing" id="sR5-fD-inI"/>
+                            <constraint firstAttribute="height" constant="100" id="Xpc-Ef-OcB"/>
+                            <constraint firstAttribute="width" constant="100" id="o9z-A2-O1R"/>
                         </constraints>
-                    </view>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="rgE-ST-wd5" secondAttribute="trailing" id="4S5-py-P9h"/>
-                <constraint firstItem="rgE-ST-wd5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4uA-Ek-K3h"/>
-                <constraint firstItem="rgE-ST-wd5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="e4K-fh-Zca"/>
-                <constraint firstAttribute="bottom" secondItem="rgE-ST-wd5" secondAttribute="bottom" id="lQH-fZ-mFw"/>
+                <constraint firstAttribute="trailing" secondItem="Zpu-pa-Yhh" secondAttribute="trailing" id="6UQ-mE-czr"/>
+                <constraint firstItem="Zpu-pa-Yhh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="K3k-bc-UXr"/>
+                <constraint firstAttribute="bottom" secondItem="Zpu-pa-Yhh" secondAttribute="bottom" id="Ror-F2-p7k"/>
+                <constraint firstItem="Zpu-pa-Yhh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ekM-xn-H2F"/>
             </constraints>
             <size key="customSize" width="100" height="100"/>
             <connections>
-                <outlet property="imageContainer" destination="rgE-ST-wd5" id="GtI-Wu-JFu"/>
                 <outlet property="imageView" destination="Zpu-pa-Yhh" id="p7v-Os-2m5"/>
             </connections>
-            <point key="canvasLocation" x="168.11594202898553" y="45.535714285714285"/>
+            <point key="canvasLocation" x="168.11594202898553" y="132.58928571428572"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
