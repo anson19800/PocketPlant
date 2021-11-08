@@ -25,17 +25,6 @@
 		CB2241E9272D8E9200BAEE90 /* GardeningShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */; };
 		CB2241EB272DA82700BAEE90 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2241EA272DA82700BAEE90 /* MapKit.framework */; };
 		CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241EE272E735800BAEE90 /* NewShopViewController.swift */; };
-		CB2241F1272ECCD100BAEE90 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241F0272ECCD000BAEE90 /* Comment.swift */; };
-		CB2241F5272ECEAC00BAEE90 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241F3272ECEAC00BAEE90 /* CommentTableViewCell.swift */; };
-		CB2241F6272ECEAC00BAEE90 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */; };
-		CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */; };
-		CB2241FA272ED01800BAEE90 /* CommentTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */; };
-		CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */; };
-		CB2241FF272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */; };
-		CB224201272EE17400BAEE90 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224200272EE17400BAEE90 /* CommentManager.swift */; };
-		CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */; };
-		CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */; };
-		CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -103,17 +92,6 @@
 		CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardeningShop.swift; sourceTree = "<group>"; };
 		CB2241EA272DA82700BAEE90 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CB2241EE272E735800BAEE90 /* NewShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShopViewController.swift; sourceTree = "<group>"; };
-		CB2241F0272ECCD000BAEE90 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
-		CB2241F3272ECEAC00BAEE90 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
-		CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTitleTableViewCell.swift; sourceTree = "<group>"; };
-		CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTitleTableViewCell.xib; sourceTree = "<group>"; };
-		CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionVIewTableViewCell.swift; sourceTree = "<group>"; };
-		CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionVIewTableViewCell.xib; sourceTree = "<group>"; };
-		CB224200272EE17400BAEE90 /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
-		CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -218,28 +196,6 @@
 			path = GardeningShop;
 			sourceTree = "<group>";
 		};
-		CB2241F2272ECE9100BAEE90 /* CommentCell */ = {
-			isa = PBXGroup;
-			children = (
-				CB2241F3272ECEAC00BAEE90 /* CommentTableViewCell.swift */,
-				CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */,
-				CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */,
-				CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */,
-			);
-			path = CommentCell;
-			sourceTree = "<group>";
-		};
-		CB2241FB272ED27500BAEE90 /* ImageCell */ = {
-			isa = PBXGroup;
-			children = (
-				CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */,
-				CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */,
-				CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */,
-				CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */,
-			);
-			path = ImageCell;
-			sourceTree = "<group>";
-		};
 		CB8F2ED12726B8DB005E1448 /* RemindPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +220,6 @@
 				CBF7AC35271DC9D0001E3C37 /* FirebaseManager.swift */,
 				CB9A4915272156FA0095E5EE /* ImageManager.swift */,
 				CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */,
-				CB224200272EE17400BAEE90 /* CommentManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -362,7 +317,6 @@
 				CB9A49172722CBA50095E5EE /* WaterRecord.swift */,
 				CB8F2EE127280AD2005E1448 /* Remind.swift */,
 				CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */,
-				CB2241F0272ECCD000BAEE90 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,8 +324,6 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CB2241FB272ED27500BAEE90 /* ImageCell */,
-				CB2241F2272ECE9100BAEE90 /* CommentCell */,
 				CB2241DD272D2C7A00BAEE90 /* GardeningShop */,
 				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 				CB8F2EF62729569A005E1448 /* ScanQRCodePage */,
@@ -440,7 +392,6 @@
 				CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */,
 				CB8F2EF2272921A2005E1448 /* Date+Extension.swift */,
 				CB8F2EF4272943D8005E1448 /* UIImageView+Extension.swift */,
-				CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -524,13 +475,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB2241FF272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.xib in Resources */,
 				CB8F2EF8272956CA005E1448 /* ScanQRCodePage.storyboard in Resources */,
-				CB2241FA272ED01800BAEE90 /* CommentTitleTableViewCell.xib in Resources */,
 				CBF7AC27271D5D46001E3C37 /* PlantCollectionViewCell.xib in Resources */,
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
 				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
-				CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */,
 				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
 				CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */,
 				CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */,
@@ -546,7 +494,6 @@
 				CB8F2F01272BA0C0005E1448 /* 16957-comming-soon.json in Resources */,
 				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
 				CB2241E1272D353A00BAEE90 /* GardeningShopTableViewCell.xib in Resources */,
-				CB2241F6272ECEAC00BAEE90 /* CommentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +563,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB224201272EE17400BAEE90 /* CommentManager.swift in Sources */,
 				CB2241DC272BEABF00BAEE90 /* ShowQRCodePageViewController.swift in Sources */,
 				CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */,
 				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
@@ -625,15 +571,12 @@
 				CB2241DA272BC41F00BAEE90 /* LottieWrapper.swift in Sources */,
 				CB8F2EF02728FC49005E1448 /* CalendarInfoTableViewCell.swift in Sources */,
 				CB8F2EE227280AD2005E1448 /* Remind.swift in Sources */,
-				CB2241F1272ECCD100BAEE90 /* Comment.swift in Sources */,
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
 				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
 				CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */,
 				CB2241E7272D89B900BAEE90 /* ShopDetailViewController.swift in Sources */,
 				CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */,
-				CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
-				CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
 				CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */,
 				CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */,
@@ -643,11 +586,8 @@
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
 				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
-				CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
-				CB2241F5272ECEAC00BAEE90 /* CommentTableViewCell.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
-				CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */,
 				CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */,
 				CB2241D3272BA3A000BAEE90 /* ProfilePageViewController.swift in Sources */,
 				CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */,
@@ -812,7 +752,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
@@ -824,7 +764,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -847,7 +786,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
@@ -859,7 +798,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
