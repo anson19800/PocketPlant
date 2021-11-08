@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="384" height="406"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8c5-xz-stL" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="100"/>
+                                <rect key="frame" x="20" y="0.0" width="344" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="K0t-4r-euu"/>
                                 </constraints>
@@ -108,57 +108,57 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6vK-Vx-h6y">
-                                <rect key="frame" x="0.0" y="241" width="384" height="4"/>
+                                <rect key="frame" x="20" y="241" width="344" height="4"/>
                                 <color key="tintColor" red="0.96462982890000004" green="0.86926549669999997" blue="0.78054064509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UGq-iA-3oW">
-                                <rect key="frame" x="0.0" y="285.5" width="384" height="4"/>
+                                <rect key="frame" x="20" y="285.5" width="344" height="4"/>
                                 <color key="tintColor" red="0.73299962279999997" green="0.88297933340000001" blue="0.9566895366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="溫度：25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vj4-PJ-WVE">
-                                <rect key="frame" x="0.0" y="215.5" width="72" height="20.5"/>
+                                <rect key="frame" x="20" y="215.5" width="72" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="濕度：25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MQ-g8-Biz">
-                                <rect key="frame" x="0.0" y="260" width="72" height="20.5"/>
+                                <rect key="frame" x="20" y="260" width="72" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="購買地點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGa-E0-bBg">
-                                <rect key="frame" x="0.0" y="304.5" width="69.5" height="20.5"/>
+                                <rect key="frame" x="20" y="304.5" width="69.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="園藝店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxa-lk-kqu">
-                                <rect key="frame" x="79.5" y="304.5" width="52" height="20.5"/>
+                                <rect key="frame" x="99.5" y="304.5" width="52" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="購買時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPY-az-0e9">
-                                <rect key="frame" x="0.0" y="335" width="69.5" height="20.5"/>
+                                <rect key="frame" x="20" y="335" width="69.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="購買價格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xva-JF-Ou8">
-                                <rect key="frame" x="0.0" y="365.5" width="69.5" height="20.5"/>
+                                <rect key="frame" x="20" y="365.5" width="69.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021/10/19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVl-b4-7wG">
-                                <rect key="frame" x="79.5" y="335" width="82.5" height="20.5"/>
+                                <rect key="frame" x="99.5" y="335" width="82.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgy-as-WUN">
-                                <rect key="frame" x="79.5" y="365.5" width="49" height="20.5"/>
+                                <rect key="frame" x="99.5" y="365.5" width="49" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -174,14 +174,13 @@
                             <constraint firstItem="jgy-as-WUN" firstAttribute="centerY" secondItem="xva-JF-Ou8" secondAttribute="centerY" id="4LW-vZ-0LZ"/>
                             <constraint firstItem="6Bs-iT-yTP" firstAttribute="top" secondItem="J0e-2w-tEf" secondAttribute="bottom" constant="10" id="58D-lZ-5bM"/>
                             <constraint firstItem="6Bs-iT-yTP" firstAttribute="centerX" secondItem="vic-ah-5Py" secondAttribute="centerX" id="5TP-7u-0Jk"/>
-                            <constraint firstItem="8c5-xz-stL" firstAttribute="leading" secondItem="FPR-gq-Spw" secondAttribute="leading" id="6nN-F9-fgw"/>
+                            <constraint firstItem="8c5-xz-stL" firstAttribute="leading" secondItem="FPR-gq-Spw" secondAttribute="leading" constant="20" id="6nN-F9-fgw"/>
                             <constraint firstItem="zeK-zN-Kwq" firstAttribute="centerX" secondItem="FPR-gq-Spw" secondAttribute="centerX" constant="100" id="7uV-kG-z36"/>
                             <constraint firstItem="QPY-az-0e9" firstAttribute="leading" secondItem="TGa-E0-bBg" secondAttribute="leading" id="AM1-r1-53m"/>
                             <constraint firstItem="TGa-E0-bBg" firstAttribute="leading" secondItem="6MQ-g8-Biz" secondAttribute="leading" id="G8d-0D-ygv"/>
                             <constraint firstItem="6vK-Vx-h6y" firstAttribute="leading" secondItem="vj4-PJ-WVE" secondAttribute="leading" id="HWM-oX-U6l"/>
                             <constraint firstItem="jgy-as-WUN" firstAttribute="leading" secondItem="QPY-az-0e9" secondAttribute="trailing" constant="10" id="L53-yX-xYF"/>
-                            <constraint firstItem="6vK-Vx-h6y" firstAttribute="trailing" secondItem="8c5-xz-stL" secondAttribute="trailing" id="Mbl-ha-iZA"/>
-                            <constraint firstAttribute="trailing" secondItem="8c5-xz-stL" secondAttribute="trailing" id="QpZ-my-W7g"/>
+                            <constraint firstAttribute="trailing" secondItem="8c5-xz-stL" secondAttribute="trailing" constant="20" id="QpZ-my-W7g"/>
                             <constraint firstItem="Pxa-lk-kqu" firstAttribute="leading" secondItem="TGa-E0-bBg" secondAttribute="trailing" constant="10" id="R8H-Pi-gtb"/>
                             <constraint firstItem="Pxa-lk-kqu" firstAttribute="centerY" secondItem="TGa-E0-bBg" secondAttribute="centerY" id="V5q-P2-Nla"/>
                             <constraint firstItem="8c5-xz-stL" firstAttribute="top" secondItem="FPR-gq-Spw" secondAttribute="top" id="VCz-GX-Enm"/>
@@ -194,6 +193,7 @@
                             <constraint firstItem="6vK-Vx-h6y" firstAttribute="top" secondItem="vj4-PJ-WVE" secondAttribute="bottom" constant="5" id="gCN-Ak-Rh5"/>
                             <constraint firstItem="dsF-bn-dCc" firstAttribute="centerX" secondItem="uli-dz-7g8" secondAttribute="centerX" id="hak-YA-Fgw"/>
                             <constraint firstItem="J0e-2w-tEf" firstAttribute="centerX" secondItem="FPR-gq-Spw" secondAttribute="centerX" constant="-100" id="jEM-lp-XDq"/>
+                            <constraint firstAttribute="trailing" secondItem="6vK-Vx-h6y" secondAttribute="trailing" constant="20" id="orK-yY-xT1"/>
                             <constraint firstItem="J0e-2w-tEf" firstAttribute="top" secondItem="8c5-xz-stL" secondAttribute="bottom" constant="20" id="pn2-AV-iRE"/>
                             <constraint firstItem="xva-JF-Ou8" firstAttribute="leading" secondItem="QPY-az-0e9" secondAttribute="leading" id="rQ7-eX-ibu"/>
                             <constraint firstItem="vj4-PJ-WVE" firstAttribute="leading" secondItem="8c5-xz-stL" secondAttribute="leading" id="rUq-Q7-eyk"/>
@@ -242,7 +242,7 @@
     </objects>
     <designables>
         <designable name="8c5-xz-stL">
-            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="61.5" height="40.5"/>
         </designable>
     </designables>
     <resources>
