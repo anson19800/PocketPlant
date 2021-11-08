@@ -56,6 +56,16 @@ class PlantDetailViewController: UIViewController {
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     @IBAction func addToFavorite(_ sender: UIButton) {
         
         guard var plant = plant else { return }
@@ -94,6 +104,25 @@ class PlantDetailViewController: UIViewController {
         
     }
     
+    @IBAction func tapOnQRCode(_ sender: UITapGestureRecognizer) {
+        
+        guard let plant = plant else {
+            return
+        }
+
+        let qrcodePage = storyboard?.instantiateViewController(
+            withIdentifier: String(describing: ShowQRCodePageViewController.self))
+        
+        guard let qrcodePageVC = qrcodePage as? ShowQRCodePageViewController else { return }
+        
+        qrcodePageVC.modalTransitionStyle = .crossDissolve
+        
+        qrcodePageVC.modalPresentationStyle = .overCurrentContext
+        
+        qrcodePageVC.plantID = plant.id
+        
+        present(qrcodePageVC, animated: true, completion: nil)
+    }
 }
 
 extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource {

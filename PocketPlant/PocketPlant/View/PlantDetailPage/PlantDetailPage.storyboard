@@ -93,10 +93,24 @@
                                     <action selector="showRemindFloating:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ai4-x4-R58"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4qz-J5-Kpz">
+                                <rect key="frame" x="20" y="211.66666666666666" width="30" height="27"/>
+                                <color key="tintColor" red="0.48271767469999999" green="0.73289326990000003" blue="0.46978409139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="h1k-yP-Qh5"/>
+                                    <constraint firstAttribute="height" constant="30" id="s0c-aI-NcJ"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="h9w-EZ-1wb" appends="YES" id="mMG-P1-shW"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4qz-J5-Kpz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="1Vt-KY-qpu"/>
+                            <constraint firstItem="4qz-J5-Kpz" firstAttribute="bottom" secondItem="8V4-kx-pdv" secondAttribute="top" constant="-10" id="BXv-93-URv"/>
                             <constraint firstItem="8V4-kx-pdv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CXl-Yf-Zee"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8V4-kx-pdv" secondAttribute="bottom" id="Fbr-Bp-ow2"/>
                             <constraint firstItem="HOV-px-egc" firstAttribute="leading" secondItem="tOk-Pc-NOS" secondAttribute="trailing" constant="10" id="aHH-Rk-9ve"/>
@@ -120,14 +134,91 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="h9w-EZ-1wb">
+                    <connections>
+                        <action selector="tapOnQRCode:" destination="Y6W-OH-hqX" id="lUh-JD-WPD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
+        </scene>
+        <!--ShowQR Code Page View Controller-->
+        <scene sceneID="k0u-Mu-lyF">
+            <objects>
+                <viewController storyboardIdentifier="ShowQRCodePageViewController" id="HnU-63-WrK" customClass="ShowQRCodePageViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LYy-VQ-vv2">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-gh-9yM">
+                                <rect key="frame" x="0.0" y="463" width="428" height="463"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lLY-Vo-TMo">
+                                        <rect key="frame" x="94" y="70" width="240" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lLY-Vo-TMo" secondAttribute="height" multiplier="1:1" id="aW3-uP-4bK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享給朋友你的植物QRCode，掃描後可以收藏你的植物！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGX-h8-QbO">
+                                        <rect key="frame" x="40" y="340" width="348" height="42"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <color key="textColor" red="0.25882352939999997" green="0.33333333329999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYM-s0-2Bi">
+                                        <rect key="frame" x="378" y="22.666666666666664" width="30" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="39w-Ja-Zua"/>
+                                            <constraint firstAttribute="width" secondItem="HYM-s0-2Bi" secondAttribute="height" multiplier="1:1.1" id="FhX-16-Ll9"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="xmark" catalog="system"/>
+                                        <connections>
+                                            <action selector="closeButton:" destination="HnU-63-WrK" eventType="touchUpInside" id="VAu-hM-aFT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="QGX-h8-QbO" firstAttribute="leading" secondItem="wQV-gh-9yM" secondAttribute="leading" constant="40" id="AP8-0U-hp6"/>
+                                    <constraint firstAttribute="trailing" secondItem="lLY-Vo-TMo" secondAttribute="trailing" constant="94" id="Czn-4d-mXm"/>
+                                    <constraint firstItem="HYM-s0-2Bi" firstAttribute="top" secondItem="wQV-gh-9yM" secondAttribute="top" constant="20" id="FKs-7v-WsP"/>
+                                    <constraint firstItem="lLY-Vo-TMo" firstAttribute="centerX" secondItem="wQV-gh-9yM" secondAttribute="centerX" id="H14-VW-jFq"/>
+                                    <constraint firstAttribute="trailing" secondItem="HYM-s0-2Bi" secondAttribute="trailing" constant="20" id="OUf-uV-7OX"/>
+                                    <constraint firstItem="lLY-Vo-TMo" firstAttribute="top" secondItem="wQV-gh-9yM" secondAttribute="top" constant="70" id="USt-yL-OJJ"/>
+                                    <constraint firstItem="QGX-h8-QbO" firstAttribute="centerX" secondItem="wQV-gh-9yM" secondAttribute="centerX" id="cNh-tI-jyN"/>
+                                    <constraint firstAttribute="trailing" secondItem="QGX-h8-QbO" secondAttribute="trailing" constant="40" id="mdJ-E7-Obt"/>
+                                    <constraint firstItem="QGX-h8-QbO" firstAttribute="top" secondItem="lLY-Vo-TMo" secondAttribute="bottom" constant="30" id="nfc-3W-N9I"/>
+                                    <constraint firstItem="lLY-Vo-TMo" firstAttribute="leading" secondItem="wQV-gh-9yM" secondAttribute="leading" constant="94" id="rEt-w0-SSo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xQq-Tj-k1D"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wQV-gh-9yM" firstAttribute="leading" secondItem="xQq-Tj-k1D" secondAttribute="leading" id="DaK-hO-wIq"/>
+                            <constraint firstAttribute="bottom" secondItem="wQV-gh-9yM" secondAttribute="bottom" id="crr-AA-0re"/>
+                            <constraint firstItem="xQq-Tj-k1D" firstAttribute="trailing" secondItem="wQV-gh-9yM" secondAttribute="trailing" id="uLl-49-4wz"/>
+                            <constraint firstItem="wQV-gh-9yM" firstAttribute="height" secondItem="LYy-VQ-vv2" secondAttribute="height" multiplier="0.5" id="v58-ZH-fjU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="wQV-gh-9yM" id="W2E-Fo-2P7"/>
+                        <outlet property="qrcodeImageView" destination="lLY-Vo-TMo" id="3QU-V3-xUe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tc6-LI-lMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="117"/>
         </scene>
     </scenes>
     <resources>
         <image name="clock.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plant" width="5456" height="3632"/>
+        <image name="qrcode" catalog="system" width="128" height="114"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

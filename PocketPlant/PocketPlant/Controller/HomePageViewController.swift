@@ -36,17 +36,9 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var buttonCollectionView: UICollectionView!
     
-    @IBOutlet weak var addButton: UIButton! {
-        didSet {
-            addButton.titleLabel?.text = ""
-        }
-    }
+    @IBOutlet weak var addButton: UIButton!
     
-    @IBOutlet weak var qrcodeButton: UIButton! {
-        didSet {
-            qrcodeButton.titleLabel?.text = ""
-        }
-    }
+    @IBOutlet weak var qrcodeButton: UIButton!
     
     let firebaseManager = FirebaseManager.shared
     
@@ -74,7 +66,6 @@ class HomePageViewController: UIViewController {
         plantCollectionView.dataSource = self
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
-        
         searchBar.delegate = self
         
         buttonCollectionView.registerCellWithNib(
@@ -238,9 +229,13 @@ class HomePageViewController: UIViewController {
             
         case "createPlant":
             
-            guard let destinationVC = segue.destination as? NewPlantPageViewController else { return }
+            guard let destinationNVC = segue.destination as? UINavigationController,
+                  let destinationVC = destinationNVC.viewControllers.first,
+                  let newPlantVC = destinationVC as? NewPlantPageViewController else { return }
             
-            destinationVC.pageMode = .create
+            newPlantVC.pageMode = .create
+            
+            newPlantVC.parentVC = self
             
         case "editPlant":
             
@@ -249,6 +244,8 @@ class HomePageViewController: UIViewController {
                   let plant = sender as? Plant else { return }
             
             destinationVC.pageMode = .edit(editedPlant: plant)
+            
+            destinationVC.parentVC = self
             
         case "deathPlant":
             
