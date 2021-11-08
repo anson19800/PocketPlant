@@ -39,6 +39,8 @@
 		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
 		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
 		CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113C273230DC00AAE6CA /* LoginViewController.swift */; };
+		CB8A113F27328C1E00AAE6CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113E27328C1E00AAE6CA /* User.swift */; };
+		CB8A11412732931600AAE6CA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11402732931600AAE6CA /* UserManager.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -121,6 +123,8 @@
 		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PocketPlant.entitlements; sourceTree = "<group>"; };
 		CB8A113C273230DC00AAE6CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CB8A113E27328C1E00AAE6CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CB8A11402732931600AAE6CA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 				CB9A4915272156FA0095E5EE /* ImageManager.swift */,
 				CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */,
 				CB224200272EE17400BAEE90 /* CommentManager.swift */,
+				CB8A11402732931600AAE6CA /* UserManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				CB8F2EE127280AD2005E1448 /* Remind.swift */,
 				CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */,
 				CB2241F0272ECCD000BAEE90 /* Comment.swift */,
+				CB8A113E27328C1E00AAE6CA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -664,10 +670,12 @@
 				CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */,
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
+				CB8A113F27328C1E00AAE6CA /* User.swift in Sources */,
 				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
 				CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CB2241F5272ECEAC00BAEE90 /* CommentTableViewCell.swift in Sources */,
+				CB8A11412732931600AAE6CA /* UserManager.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */,
 				CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */,

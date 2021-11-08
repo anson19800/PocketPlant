@@ -16,6 +16,8 @@ class FirebaseManager {
     
     private let dataBase = Firestore.firestore()
     
+    private init() {}
+    
     let imageManager = ImageManager.shared
     
     let userID: String = {
@@ -114,6 +116,7 @@ class FirebaseManager {
     func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
         dataBase.collection("plant")
+            .whereField("ownerID", isEqualTo: userID)
             .whereField("favorite", isEqualTo: true)
             .getDocuments { snapshot, error in
             
@@ -225,7 +228,9 @@ class FirebaseManager {
         
         let waterRef = dataBase.collection("water")
         
-        waterRef.whereField("plantID", isEqualTo: plantID).getDocuments { snapshot, error in
+        waterRef
+            .whereField("plantID", isEqualTo: plantID)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -248,7 +253,9 @@ class FirebaseManager {
         
         let waterRef = dataBase.collection("water")
         
-        waterRef.getDocuments { snapshot, error in
+        waterRef
+            .whereField("userID", isEqualTo: userID)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -321,7 +328,9 @@ class FirebaseManager {
     }
     
     func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
-        dataBase.collection("shop").getDocuments { snapshot, error in
+        dataBase.collection("shop")
+            .whereField("createUserID", isEqualTo: userID)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 

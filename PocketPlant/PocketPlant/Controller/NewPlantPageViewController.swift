@@ -219,6 +219,8 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
             newPlant.favorite = editPlant.favorite
             
+            newPlant.ownerID = UserManager.shared.userID
+            
             imageManager.deleteImage(imageID: editPlant.imageID!)
             
             let animationView = loadAnimation(name: "78093-planting", loopMode: .autoReverse)
@@ -291,7 +293,6 @@ extension NewPlantPageViewController: PHPickerViewControllerDelegate {
             }
         }
     }
-    
 }
 
 extension NewPlantPageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

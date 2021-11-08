@@ -240,8 +240,22 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let commentCell = cell as? CommentTableViewCell,
                   let comments = comments else { return cell }
             
-            commentCell.layoutCell(comment: comments[indexPath.row - 2])
+            let comment = comments[indexPath.row - 2]
             
+            UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                
+                switch result {
+                    
+                case .success(let user):
+                    
+                    commentCell.layoutCell(comment: comment, user: user)
+                    
+                case .failure(_):
+                    
+                    commentCell.layoutCell(comment: comment)
+                }
+            }
+    
             return commentCell
         }
     }
