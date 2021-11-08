@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Plant: Identifiable, Codable {
+struct Plant: Identifiable, Codable, Hashable {
     
     var id: String
     let name: String
@@ -21,11 +21,8 @@ struct Plant: Identifiable, Codable {
     let buyPlace: String
     let buyPrice: Int
     let description: String
-    let lastWater: TimeInterval?
-    let lastFertilizer: TimeInterval?
-    let lastSoil: TimeInterval?
     var favorite: Bool
-    let ownerID: Int
+    var ownerID: String
     let isPublic: Bool
     var imageID: String?
     var imageURL: String?

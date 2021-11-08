@@ -68,7 +68,8 @@ extension GardeningShopViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let nextPageVC = storyboard?.instantiateViewController(withIdentifier: "detail"),
+        guard let nextPageVC = storyboard?.instantiateViewController(
+            withIdentifier: String(describing: ShopDetailViewController.self)),
               let detailPageVC = nextPageVC as? ShopDetailViewController,
               let shops = shops else { return }
         

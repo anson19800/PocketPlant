@@ -41,7 +41,16 @@ class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var plantCategoryLabel: UILabel!
     
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.layer.cornerRadius = favoriteButton.frame.width / 2
+        }
+    }
+    @IBOutlet weak var qrcodeButton: UIImageView! {
+        didSet {
+            qrcodeButton.layer.cornerRadius = 5
+        }
+    }
     
     @IBOutlet weak var plantPhotoImageView: UIImageView!
     
@@ -49,9 +58,17 @@ class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var commentTextField: UITextField!
     
+    @IBOutlet weak var remindButton: UIButton! {
+        didSet {
+            remindButton.layer.cornerRadius = remindButton.frame.width / 2
+        }
+    }
+    
     var plant: Plant?
     
     var comments: [Comment]?
+    
+    var commentUser: [String: User] = [:]
     
     let firebaseManager = FirebaseManager.shared
     
@@ -89,9 +106,33 @@ class PlantDetailViewController: UIViewController {
                 
                 self.comments = comments
                 
-                self.tableView.performBatchUpdates {
-                    let indexSet = IndexSet(integersIn: 0...0)
-                    self.tableView.reloadSections(indexSet, with: .fade)
+                let group = DispatchGroup()
+                
+                comments.forEach { comment in
+                    
+                    group.enter()
+                    
+                    if self.commentUser[comment.senderID] == nil {
+                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                            switch result {
+                            case .success(let user):
+                                self.commentUser[comment.senderID] = user
+                                group.leave()
+                            case .failure(let error):
+                                print(error)
+                                group.leave()
+                            }
+                        }
+                    } else {
+                        group.leave()
+                    }
+                }
+                
+                group.notify(queue: .main) {
+                    self.tableView.performBatchUpdates {
+                        let indexSet = IndexSet(integersIn: 0...0)
+                        self.tableView.reloadSections(indexSet, with: .none)
+                    }
                 }
                 
             case .failure(let error):
@@ -240,7 +281,17 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let commentCell = cell as? CommentTableViewCell,
                   let comments = comments else { return cell }
             
-            commentCell.layoutCell(comment: comments[indexPath.row - 2])
+            let comment = comments[indexPath.row - 2]
+            
+            if let user = self.commentUser[comment.senderID] {
+                
+                commentCell.layoutCell(comment: comment, user: user)
+                
+            } else {
+                
+                commentCell.layoutCell(comment: comment, user: nil)
+                
+            }
             
             return commentCell
         }

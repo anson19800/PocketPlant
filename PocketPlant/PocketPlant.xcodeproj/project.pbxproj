@@ -36,6 +36,21 @@
 		CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */; };
 		CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */; };
 		CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */; };
+		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
+		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
+		CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113C273230DC00AAE6CA /* LoginViewController.swift */; };
+		CB8A113F27328C1E00AAE6CA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113E27328C1E00AAE6CA /* User.swift */; };
+		CB8A11412732931600AAE6CA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11402732931600AAE6CA /* UserManager.swift */; };
+		CB8A11452733B08800AAE6CA /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11432733B08800AAE6CA /* ProfileTableViewCell.swift */; };
+		CB8A11462733B08800AAE6CA /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11442733B08800AAE6CA /* ProfileTableViewCell.xib */; };
+		CB8A11492734DB7200AAE6CA /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11472734DB7200AAE6CA /* HistoryTableViewCell.swift */; };
+		CB8A114A2734DB7200AAE6CA /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11482734DB7200AAE6CA /* HistoryTableViewCell.xib */; };
+		CB8A114F27351F1000AAE6CA /* AccountSeetingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */; };
+		CB8A1155273522DB00AAE6CA /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */; };
+		CB8A11572736E48000AAE6CA /* SharePlantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */; };
+		CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */; };
+		CB8A115B273793EB00AAE6CA /* 72610-plantGrowing.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8A115A273793EA00AAE6CA /* 72610-plantGrowing.json */; };
+		CB8A115F2737952700AAE6CA /* 9131-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8A115E2737952700AAE6CA /* 9131-loading.json */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -50,7 +65,7 @@
 		CB8F2EF5272943D8005E1448 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF4272943D8005E1448 /* UIImageView+Extension.swift */; };
 		CB8F2EF8272956CA005E1448 /* ScanQRCodePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */; };
 		CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF9272A74D9005E1448 /* ScanQRCodePageViewController.swift */; };
-		CB8F2EFC272A9569005E1448 /* SharePlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EFB272A9568005E1448 /* SharePlantDetailViewController.swift */; };
+		CB8F2EFC272A9569005E1448 /* QRCodePlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EFB272A9568005E1448 /* QRCodePlantDetailViewController.swift */; };
 		CB8F2EFE272B9EF9005E1448 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EFD272B9EF9005E1448 /* DiscoverViewController.swift */; };
 		CB8F2F01272BA0C0005E1448 /* 16957-comming-soon.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2F00272BA0C0005E1448 /* 16957-comming-soon.json */; };
 		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
@@ -114,6 +129,22 @@
 		CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputShopInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PocketPlant.entitlements; sourceTree = "<group>"; };
+		CB8A113C273230DC00AAE6CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CB8A113E27328C1E00AAE6CA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CB8A11402732931600AAE6CA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		CB8A11432733B08800AAE6CA /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		CB8A11442733B08800AAE6CA /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		CB8A11472734DB7200AAE6CA /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		CB8A11482734DB7200AAE6CA /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountSeetingPage.storyboard; sourceTree = "<group>"; };
+		CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
+		CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SharePlantPage.storyboard; sourceTree = "<group>"; };
+		CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlantViewController.swift; sourceTree = "<group>"; };
+		CB8A115A273793EA00AAE6CA /* 72610-plantGrowing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "72610-plantGrowing.json"; path = "../../../../../Downloads/72610-plantGrowing.json"; sourceTree = "<group>"; };
+		CB8A115E2737952700AAE6CA /* 9131-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9131-loading.json"; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -128,7 +159,7 @@
 		CB8F2EF4272943D8005E1448 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanQRCodePage.storyboard; sourceTree = "<group>"; };
 		CB8F2EF9272A74D9005E1448 /* ScanQRCodePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodePageViewController.swift; sourceTree = "<group>"; };
-		CB8F2EFB272A9568005E1448 /* SharePlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlantDetailViewController.swift; sourceTree = "<group>"; };
+		CB8F2EFB272A9568005E1448 /* QRCodePlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodePlantDetailViewController.swift; sourceTree = "<group>"; };
 		CB8F2EFD272B9EF9005E1448 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		CB8F2F00272BA0C0005E1448 /* 16957-comming-soon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "16957-comming-soon.json"; sourceTree = "<group>"; };
 		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -196,7 +227,6 @@
 			children = (
 				CB07EDBB271FA67A00406913 /* PlantDetailTableViewCell.swift */,
 				CB07EDBC271FA67A00406913 /* PlantDetailTableViewCell.xib */,
-				CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */,
 			);
 			path = PlantDetailPage;
 			sourceTree = "<group>";
@@ -212,6 +242,7 @@
 		CB2241DD272D2C7A00BAEE90 /* GardeningShop */ = {
 			isa = PBXGroup;
 			children = (
+				CB8A11362730D66A00AAE6CA /* AddNewShopTableViewCell */,
 				CB2241DE272D353A00BAEE90 /* GardeningShopTableViewCell.swift */,
 				CB2241DF272D353A00BAEE90 /* GardeningShopTableViewCell.xib */,
 			);
@@ -240,11 +271,30 @@
 			path = ImageCell;
 			sourceTree = "<group>";
 		};
+		CB8A11362730D66A00AAE6CA /* AddNewShopTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */,
+				CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */,
+			);
+			path = AddNewShopTableViewCell;
+			sourceTree = "<group>";
+		};
+		CB8A11422733A84000AAE6CA /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A11432733B08800AAE6CA /* ProfileTableViewCell.swift */,
+				CB8A11442733B08800AAE6CA /* ProfileTableViewCell.xib */,
+				CB8A11472734DB7200AAE6CA /* HistoryTableViewCell.swift */,
+				CB8A11482734DB7200AAE6CA /* HistoryTableViewCell.xib */,
+			);
+			path = ProfileCell;
+			sourceTree = "<group>";
+		};
 		CB8F2ED12726B8DB005E1448 /* RemindPage */ = {
 			isa = PBXGroup;
 			children = (
 				CB8F2ED72727AB6F005E1448 /* ReminderCell */,
-				CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */,
 			);
 			path = RemindPage;
 			sourceTree = "<group>";
@@ -265,6 +315,7 @@
 				CB9A4915272156FA0095E5EE /* ImageManager.swift */,
 				CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */,
 				CB224200272EE17400BAEE90 /* CommentManager.swift */,
+				CB8A11402732931600AAE6CA /* UserManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -278,43 +329,15 @@
 			path = CalendarPage;
 			sourceTree = "<group>";
 		};
-		CB8F2EE62728EFB3005E1448 /* DiscoverPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DiscoverPage;
-			sourceTree = "<group>";
-		};
-		CB8F2EE72728EFBF005E1448 /* ProfilePage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfilePage;
-			sourceTree = "<group>";
-		};
-		CB8F2EF62729569A005E1448 /* ScanQRCodePage */ = {
-			isa = PBXGroup;
-			children = (
-				CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */,
-			);
-			path = ScanQRCodePage;
-			sourceTree = "<group>";
-		};
 		CB8F2EFF272BA0A5005E1448 /* LottieAnimation */ = {
 			isa = PBXGroup;
 			children = (
 				CB8F2F00272BA0C0005E1448 /* 16957-comming-soon.json */,
 				CB2241D4272BA52500BAEE90 /* 78093-planting.json */,
+				CB8A115A273793EA00AAE6CA /* 72610-plantGrowing.json */,
+				CB8A115E2737952700AAE6CA /* 9131-loading.json */,
 			);
 			path = LottieAnimation;
-			sourceTree = "<group>";
-		};
-		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
-			isa = PBXGroup;
-			children = (
-				CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */,
-			);
-			path = DeathPlantPage;
 			sourceTree = "<group>";
 		};
 		CBF7ABF6271C863E001E3C37 = {
@@ -338,6 +361,7 @@
 		CBF7AC01271C863E001E3C37 /* PocketPlant */ = {
 			isa = PBXGroup;
 			children = (
+				CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */,
 				CB2241D8272BC3F500BAEE90 /* Third Party Wrapper */,
 				CB8F2EFF272BA0A5005E1448 /* LottieAnimation */,
 				CBF7AC30271D773B001E3C37 /* Extension */,
@@ -363,6 +387,7 @@
 				CB8F2EE127280AD2005E1448 /* Remind.swift */,
 				CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */,
 				CB2241F0272ECCD000BAEE90 /* Comment.swift */,
+				CB8A113E27328C1E00AAE6CA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,21 +395,25 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB8A11422733A84000AAE6CA /* ProfileCell */,
 				CB2241FB272ED27500BAEE90 /* ImageCell */,
 				CB2241F2272ECE9100BAEE90 /* CommentCell */,
 				CB2241DD272D2C7A00BAEE90 /* GardeningShop */,
-				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
-				CB8F2EF62729569A005E1448 /* ScanQRCodePage */,
-				CB8F2EE72728EFBF005E1448 /* ProfilePage */,
-				CB8F2EE62728EFB3005E1448 /* DiscoverPage */,
 				CB8F2EE32728EE39005E1448 /* CalendarPage */,
 				CB8F2ED12726B8DB005E1448 /* RemindPage */,
-				CB9A49192724628D0095E5EE /* DeathPlantPage */,
 				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,
 				CBF7AC37271E71A4001E3C37 /* NewPlantPage */,
 				CBF7AC23271D5D26001E3C37 /* PlantCollectionViewCell */,
 				CBF7AC22271D5D11001E3C37 /* HomePage */,
 				CB2241E2272D369900BAEE90 /* GardeningShopPage.storyboard */,
+				CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */,
+				CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */,
+				CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */,
+				CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */,
+				CB8F2EF7272956CA005E1448 /* ScanQRCodePage.storyboard */,
+				CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */,
+				CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */,
+				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -399,13 +428,16 @@
 				CB8F2ED427279E08005E1448 /* RemindViewController.swift */,
 				CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */,
 				CB8F2EF9272A74D9005E1448 /* ScanQRCodePageViewController.swift */,
-				CB8F2EFB272A9568005E1448 /* SharePlantDetailViewController.swift */,
+				CB8F2EFB272A9568005E1448 /* QRCodePlantDetailViewController.swift */,
 				CB8F2EFD272B9EF9005E1448 /* DiscoverViewController.swift */,
-				CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */,
 				CB2241DB272BEABF00BAEE90 /* ShowQRCodePageViewController.swift */,
 				CB2241E4272D379500BAEE90 /* GardeningShopViewController.swift */,
 				CB2241E6272D89B900BAEE90 /* ShopDetailViewController.swift */,
 				CB2241EE272E735800BAEE90 /* NewShopViewController.swift */,
+				CB8A113C273230DC00AAE6CA /* LoginViewController.swift */,
+				CB2241D2272BA3A000BAEE90 /* ProfilePageViewController.swift */,
+				CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */,
+				CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -449,7 +481,6 @@
 			isa = PBXGroup;
 			children = (
 				CBF7AC3C271E77AD001E3C37 /* inputPlantViewCell */,
-				CBF7AC38271E7307001E3C37 /* NewPlantPage.storyboard */,
 			);
 			path = NewPlantPage;
 			sourceTree = "<group>";
@@ -529,19 +560,26 @@
 				CB2241FA272ED01800BAEE90 /* CommentTitleTableViewCell.xib in Resources */,
 				CBF7AC27271D5D46001E3C37 /* PlantCollectionViewCell.xib in Resources */,
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
+				CB8A115B273793EB00AAE6CA /* 72610-plantGrowing.json in Resources */,
 				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
 				CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */,
 				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
+				CB8A114A2734DB7200AAE6CA /* HistoryTableViewCell.xib in Resources */,
 				CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */,
+				CB8A115F2737952700AAE6CA /* 9131-loading.json in Resources */,
 				CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */,
+				CB8A11572736E48000AAE6CA /* SharePlantPage.storyboard in Resources */,
 				CB2241E3272D369900BAEE90 /* GardeningShopPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */,
 				CB2241D5272BA52500BAEE90 /* 78093-planting.json in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
 				CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */,
+				CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */,
 				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
 				CB9A491D2724632A0095E5EE /* DeathPlantPage.storyboard in Resources */,
+				CB8A114F27351F1000AAE6CA /* AccountSeetingPage.storyboard in Resources */,
+				CB8A11462733B08800AAE6CA /* ProfileTableViewCell.xib in Resources */,
 				CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */,
 				CB8F2F01272BA0C0005E1448 /* 16957-comming-soon.json in Resources */,
 				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
@@ -625,11 +663,14 @@
 				CB2241DA272BC41F00BAEE90 /* LottieWrapper.swift in Sources */,
 				CB8F2EF02728FC49005E1448 /* CalendarInfoTableViewCell.swift in Sources */,
 				CB8F2EE227280AD2005E1448 /* Remind.swift in Sources */,
+				CB8A11452733B08800AAE6CA /* ProfileTableViewCell.swift in Sources */,
+				CB8A1155273522DB00AAE6CA /* AccountSettingViewController.swift in Sources */,
 				CB2241F1272ECCD100BAEE90 /* Comment.swift in Sources */,
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
 				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
 				CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */,
 				CB2241E7272D89B900BAEE90 /* ShopDetailViewController.swift in Sources */,
+				CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */,
 				CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */,
 				CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
@@ -640,23 +681,28 @@
 				CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */,
 				CB8F2EDD2727D5D5005E1448 /* UIView+Extension.swift in Sources */,
 				CB8F2EF5272943D8005E1448 /* UIImageView+Extension.swift in Sources */,
+				CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */,
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
+				CB8A113F27328C1E00AAE6CA /* User.swift in Sources */,
 				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
 				CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */,
 				CBF7AC46271E9559001E3C37 /* UITableView+Extension.swift in Sources */,
 				CB2241F5272ECEAC00BAEE90 /* CommentTableViewCell.swift in Sources */,
+				CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */,
+				CB8A11412732931600AAE6CA /* UserManager.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */,
 				CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */,
 				CB2241D3272BA3A000BAEE90 /* ProfilePageViewController.swift in Sources */,
 				CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */,
+				CB8A11492734DB7200AAE6CA /* HistoryTableViewCell.swift in Sources */,
 				CB8F2EFE272B9EF9005E1448 /* DiscoverViewController.swift in Sources */,
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
 				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
-				CB8F2EFC272A9569005E1448 /* SharePlantDetailViewController.swift in Sources */,
+				CB8F2EFC272A9569005E1448 /* QRCodePlantDetailViewController.swift in Sources */,
 				CB8F2EED2728F6EF005E1448 /* CalendarPageViewController.swift in Sources */,
 				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,
 				CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */,
@@ -810,6 +856,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
@@ -846,6 +893,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;

@@ -1,0 +1,163 @@
+//
+//  UserManager.swift
+//  PocketPlant
+//
+//  Created by 邱瀚平 on 2021/11/3.
+//
+
+import UIKit
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseAuth
+
+class UserManager {
+    
+    static let shared = UserManager()
+    
+    var userName: String = "使用者"
+    
+    private init() {}
+    
+    let userID: String = {
+        
+        if let user = Auth.auth().currentUser {
+            return user.uid
+        } else {
+            return "0"
+        }
+    }()
+    
+    let userDisplayName: String = {
+        
+        if let user = Auth.auth().currentUser,
+           let userName = user.displayName {
+            return userName
+        } else {
+            return "使用者"
+        }
+    }()
+    
+    private let dataBase = Firestore.firestore()
+    
+    func createUserInfo() {
+        let user = User(userID: userID,
+                        name: userDisplayName,
+                        userImageURL: nil,
+                        representPlamtID: nil,
+                        sharePlants: nil,
+                        favoriteShop: nil)
+        
+        let userRef = dataBase.collection("User")
+        
+        searchUserisExist(userID: userID ) { isExists in
+            if !isExists {
+                do {
+                    
+                    try userRef.document(user.userID).setData(from: user)
+                    
+                } catch {
+                    
+                    print("Fail to create user.")
+                }
+            }
+        }
+    }
+    
+    func searchUserisExist(userID: String, isExists: @escaping (Bool) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(userID).getDocument { document, _ in
+            if let document = document {
+                
+                if document.exists {
+                    
+                    isExists(true)
+                    
+                } else {
+                    
+                    isExists(false)
+                }
+                
+            } else {
+                
+                isExists(false)
+            }
+        }
+    }
+    
+    func fetchUserInfo(userID: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(userID).getDocument { document, error in
+            if let error = error {
+                completion(Result.failure(error))
+            }
+            guard let document = document,
+                  document.exists,
+                  let user = try? document.data(as: User.self)
+            else { return }
+            
+            completion(Result.success(user))
+        }
+    }
+    
+    func fetchCurrentUserInfo(completion: @escaping (Result<User, Error>) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(self.userID).getDocument { document, error in
+            if let error = error {
+                completion(Result.failure(error))
+            }
+            guard let document = document,
+                  document.exists,
+                  let user = try? document.data(as: User.self)
+            else { return }
+            
+            completion(Result.success(user))
+        }
+    }
+    
+    func addSharePlant(plantID: String, isSuccess: @escaping (Bool) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(self.userID).getDocument { document, error in
+            
+            if error != nil {
+                
+                isSuccess(false)
+                
+            } else if let document = document,
+                      document.exists {
+                
+                do {
+                    
+                    guard var user = try document.data(as: User.self)
+                    else {
+                        isSuccess(false)
+                        return
+                    }
+                    
+                    if var sharePlants = user.sharePlants {
+                        sharePlants.append(plantID)
+                        user.sharePlants = sharePlants
+                    } else {
+                        user.sharePlants = [plantID]
+                    }
+                    
+                    try userRef.document(self.userID).setData(from: user)
+                    isSuccess(true)
+                
+                } catch {
+                    isSuccess(false)
+                }
+            } else {
+                isSuccess(false)
+            }
+            
+        }
+    }
+}

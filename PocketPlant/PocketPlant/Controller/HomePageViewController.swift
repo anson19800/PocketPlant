@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
@@ -42,6 +43,8 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var qrcodeButton: UIButton!
     
+    @IBOutlet weak var homeTitleLabel: UILabel!
+    
     let firebaseManager = FirebaseManager.shared
     
     var plants: [Plant]?
@@ -52,10 +55,35 @@ class HomePageViewController: UIViewController {
     
     var isSelectedAt: HomePageButton = .myPlant
     
+    var handle: AuthStateDidChangeListenerHandle?
+    
     @IBOutlet weak var waterImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        handle = Auth.auth().addStateDidChangeListener { _, user in
+//            if let user = user {
+//              if let userName = user.displayName {
+//                self.homeTitleLabel.text = "Hi！\(userName)"
+//              } else {
+//                self.homeTitleLabel.text = "Hi！歡迎"
+//              }
+//            } else {
+//                self.homeTitleLabel.text = "Hi！訪客"
+//            }
+//        }
+        
+        UserManager.shared.fetchCurrentUserInfo { result in
+            switch result {
+            case .success(let user):
+                if let name = user.name {
+                    self.homeTitleLabel.text = "Hi！歡迎\(name)"
+                }
+            case .failure(_):
+                break
+            }
+        }
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
                                                                 style: .plain,
@@ -67,7 +95,6 @@ class HomePageViewController: UIViewController {
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         searchBar.delegate = self
-        
         buttonCollectionView.layer.masksToBounds = false
         
         buttonCollectionView.registerCellWithNib(
@@ -102,10 +129,11 @@ class HomePageViewController: UIViewController {
             
         case .gardeningShop:
             
+            updateMyPlants(withAnimation: false)
+            
             buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
                                             animated: false,
                                             scrollPosition: .top)
-            
         }
     }
     
@@ -422,9 +450,10 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             if searching {
                 
-                guard let searchPlants = self.searchPlants,
-                      let imageURL = searchPlants[indexPath.row].imageURL
+                guard let searchPlants = self.searchPlants
                 else { return cell }
+                
+                let imageURL = searchPlants[indexPath.row].imageURL
                 
                 plantCell.layoutCell(imageURL: imageURL,
                                      name: searchPlants[indexPath.row].name)
@@ -433,9 +462,10 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             } else {
                 
-                guard let plants = self.plants,
-                      let imageURL = plants[indexPath.row].imageURL
+                guard let plants = self.plants
                 else { return cell }
+                
+                let imageURL = plants[indexPath.row].imageURL
                 
                 plantCell.layoutCell(imageURL: imageURL,
                                      name: plants[indexPath.row].name)
@@ -453,14 +483,14 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let itemSpace: CGFloat = 10
         let columCount: CGFloat = 3
         
-        let plantWidth = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
         
-        let buttonWidth = floor((buttonCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let buttonWidth = floor((buttonCollectionView.bounds.width - 50 * (columCount - 1)) / columCount )
 
         if collectionView == plantCollectionView {
             return CGSize(width: plantWidth, height: plantWidth * 1.2)
         } else {
-            return CGSize(width: buttonWidth, height: buttonWidth)
+            return CGSize(width: buttonWidth, height: 73.0)
         }
         
     }

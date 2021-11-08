@@ -13,6 +13,8 @@ class ShopDetailViewController: UIViewController {
     @IBOutlet weak var shopTitle: UILabel!
     @IBOutlet weak var addressTextView: UITextView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var phoneTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
@@ -38,6 +40,8 @@ class ShopDetailViewController: UIViewController {
     
     var comments: [Comment]?
     
+    var commentUser: [String: User] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -55,6 +59,12 @@ class ShopDetailViewController: UIViewController {
         
         shopTitle.text = shop.name
         addressTextView.text = shop.address
+        phoneTextView.text = "電話：\(shop.phone)"
+        if shop.description == "" {
+            descriptionTextView.text = "備註：上傳者沒有留訊息呦～"
+        } else {
+            descriptionTextView.text = "備註：\(shop.description)"
+        }
         
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(shop.address) { placemarks, _ in
@@ -89,15 +99,39 @@ class ShopDetailViewController: UIViewController {
                 
                 self.comments = comments
                 
-                self.tableView.performBatchUpdates {
-                    let indexSet = IndexSet(integersIn: 0...0)
-                    self.tableView.reloadSections(indexSet, with: .fade)
+                let group = DispatchGroup()
+                
+                comments.forEach { comment in
+                    
+                    group.enter()
+                    
+                    if self.commentUser[comment.senderID] == nil {
+                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                            switch result {
+                            case .success(let user):
+                                self.commentUser[comment.senderID] = user
+                                group.leave()
+                            case .failure(let error):
+                                print(error)
+                                group.leave()
+                            }
+                        }
+                    } else {
+                        group.leave()
+                    }
                 }
                 
-                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                group.notify(queue: .main) {
+                    
+                    self.tableView.performBatchUpdates {
+                        let indexSet = IndexSet(integersIn: 0...0)
+                        self.tableView.reloadSections(indexSet, with: .fade)
+                    }
+                    
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                }
                 
             case .failure(let error):
-                
                 print(error)
             }
         }
@@ -176,7 +210,17 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
                                                      for: indexPath)
             guard let commentCell = cell as? CommentTableViewCell else { return cell }
             
-            commentCell.layoutCell(comment: comments[indexPath.row - 2])
+            let comment = comments[indexPath.row - 2]
+            
+            if let user = self.commentUser[comment.senderID] {
+                
+                commentCell.layoutCell(comment: comment, user: user)
+                
+            } else {
+                
+                commentCell.layoutCell(comment: comment, user: nil)
+                
+            }
             
             return commentCell
         }
@@ -191,7 +235,9 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        guard let shop = shop,
+              let images = shop.images else { return 0 }
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -201,9 +247,14 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             withReuseIdentifier: String(describing: ImageCollectionViewCell.self),
             for: indexPath)
         
-        guard let imageCell = cell as? ImageCollectionViewCell else { return cell }
+        guard let imageCell = cell as? ImageCollectionViewCell,
+              let shop = shop else { return cell }
         
-        imageCell.imageView.image = UIImage(named: "plant")
+        if let images = shop.images {
+            imageCell.mainImageView.kf.setImage(with: URL(string: images[indexPath.row]))
+        } else {
+            imageCell.mainImageView.image = UIImage(named: "plant")
+        }
         
         return imageCell
     }

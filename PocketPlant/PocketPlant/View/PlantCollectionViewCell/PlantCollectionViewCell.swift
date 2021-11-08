@@ -23,10 +23,16 @@ class PlantCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    func layoutCell(imageURL: String, name: String) {
-        plantImageView.kf.setImage(with: URL(string: imageURL))
+    func layoutCell(imageURL: String?, name: String) {
+        if let imageURL = imageURL {
+            plantImageView.kf.setImage(with: URL(string: imageURL))
+        } else {
+            plantImageView.image = UIImage(named: "plant")
+        }
+        
         nameLabel.text = name
     }
 }

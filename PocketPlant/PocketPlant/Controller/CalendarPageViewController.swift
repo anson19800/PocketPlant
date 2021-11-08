@@ -36,6 +36,8 @@ class CalendarPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.calendar.date = Date()
+        
         fetchRecord(date: self.calendar.date)
     }
     

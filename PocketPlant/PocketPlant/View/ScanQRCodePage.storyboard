@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="64" y="81"/>
         </scene>
-        <!--Share Plant Detail View Controller-->
+        <!--Code Plant Detail View Controller-->
         <scene sceneID="Tj5-IE-d7k">
             <objects>
-                <viewController storyboardIdentifier="SharePlantDetailViewController" id="Ytd-o4-naD" customClass="SharePlantDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodePlantDetailViewController" id="Ytd-o4-naD" customClass="QRCodePlantDetailViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ry1-hD-II4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,9 +83,12 @@
                                         <state key="normal" title="收藏">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="collectAction:" destination="Ytd-o4-naD" eventType="touchUpInside" id="NfX-Jr-nyX"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                        <rect key="frame" x="37.666666666666671" y="266" width="22" height="15.666666666666686"/>
+                                        <rect key="frame" x="37.666666666666671" y="266" width="32" height="21.666666666666686"/>
                                         <color key="backgroundColor" red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,7 +118,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sot-9N-qqE" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                        <rect key="frame" x="37.666666666666686" y="291.66666666666669" width="200" height="21"/>
+                                        <rect key="frame" x="37.666666666666686" y="297.66666666666669" width="200" height="41"/>
                                         <color key="backgroundColor" red="0.9640071483670607" green="1" blue="0.95544262405105929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -188,6 +191,14 @@
             <point key="canvasLocation" x="1060" y="79.064039408867004"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="4wH-eh-M66">
+            <size key="intrinsicContentSize" width="32" height="21.666666666666664"/>
+        </designable>
+        <designable name="sot-9N-qqE">
+            <size key="intrinsicContentSize" width="58" height="41"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

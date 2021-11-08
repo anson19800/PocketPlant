@@ -8,6 +8,9 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
+
+typealias GenericCompletion<T: Decodable> = (([T]?, Error?) -> Void)
 
 class FirebaseManager {
     
@@ -15,7 +18,23 @@ class FirebaseManager {
     
     private let dataBase = Firestore.firestore()
     
-    let imageManager = ImageManager.shared
+    private init() {}
+    
+    private let imageManager = ImageManager.shared
+    
+    let userID: String = {
+        
+        if let user = Auth.auth().currentUser {
+            
+            return user.uid
+        
+        } else {
+            
+            return "0"
+            
+        }
+        
+    }()
     
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
@@ -26,6 +45,8 @@ class FirebaseManager {
         var uploadPlant = plant
         
         uploadPlant.id = documentID
+        
+        uploadPlant.ownerID = userID
         
         imageManager.uploadImageToGetURL(image: image) { result in
             
@@ -60,7 +81,10 @@ class FirebaseManager {
     
     func fetchPlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
-        dataBase.collection("plant").order(by: "buyTime", descending: true).getDocuments { snapshot, error in
+        dataBase.collection("plant")
+            .whereField("ownerID", isEqualTo: userID)
+            .order(by: "buyTime", descending: true)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -94,6 +118,7 @@ class FirebaseManager {
     func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
     
         dataBase.collection("plant")
+            .whereField("ownerID", isEqualTo: userID)
             .whereField("favorite", isEqualTo: true)
             .getDocuments { snapshot, error in
             
@@ -205,7 +230,9 @@ class FirebaseManager {
         
         let waterRef = dataBase.collection("water")
         
-        waterRef.whereField("plantID", isEqualTo: plantID).getDocuments { snapshot, error in
+        waterRef
+            .whereField("plantID", isEqualTo: plantID)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -228,7 +255,9 @@ class FirebaseManager {
         
         let waterRef = dataBase.collection("water")
         
-        waterRef.getDocuments { snapshot, error in
+        waterRef
+            .whereField("userID", isEqualTo: userID)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -301,7 +330,9 @@ class FirebaseManager {
     }
     
     func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
-        dataBase.collection("shop").getDocuments { snapshot, error in
+        dataBase.collection("shop")
+            .whereField("createUserID", isEqualTo: userID)
+            .getDocuments { snapshot, error in
             
             if let error = error {
                 
@@ -327,5 +358,35 @@ class FirebaseManager {
         let documentRef = dataBase.collection("shop").document(id)
         
         documentRef.delete()
+    }
+    
+    func fetchDiscoverObject<T: Decodable>(_ type: DiscoverType, completion: @escaping GenericCompletion<T>) {
+        
+        let documentRef: CollectionReference?
+        
+        switch type {
+        case .plant:
+            documentRef = dataBase.collection("plant")
+        case .shop:
+            documentRef = dataBase.collection("shop")
+        }
+        
+        guard let documentRef = documentRef else { return }
+
+        documentRef.getDocuments { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let object = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: T.self)
+            }
+            
+            completion(object, nil)
+            
+        }
     }
 }

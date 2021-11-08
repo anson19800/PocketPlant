@@ -8,12 +8,15 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 
 class CommentManager {
     
     static let shared = CommentManager()
     
     private let dataBase = Firestore.firestore()
+    
+    private init() {}
     
     func publishComment(comment: Comment, isSuccess: (Bool) -> Void) {
         
