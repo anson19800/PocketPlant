@@ -23,13 +23,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="口袋植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06M-3v-eqW">
-                                        <rect key="frame" x="33" y="50" width="108" height="38"/>
+                                        <rect key="frame" x="33" y="60" width="108" height="38"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="27"/>
                                         <color key="textColor" red="0.12931125602759783" green="0.16638832293333339" blue="0.13009218043732002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpB-Pp-zi3">
-                                        <rect key="frame" x="316" y="53" width="35" height="32.999999999999993"/>
+                                        <rect key="frame" x="316" y="63" width="35" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="Asg-5A-qYw"/>
                                             <constraint firstAttribute="height" constant="35" id="ZNe-de-uiK"/>
@@ -42,7 +42,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-YK-xjB">
-                                        <rect key="frame" x="363" y="53.999999999999986" width="35" height="30.666666666666686"/>
+                                        <rect key="frame" x="363" y="63.999999999999986" width="35" height="30.666666666666686"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="nLr-8V-FRT"/>
                                             <constraint firstAttribute="height" constant="35" id="zBF-hl-MZw"/>
@@ -60,7 +60,7 @@
                                     <constraint firstItem="tdd-YK-xjB" firstAttribute="centerY" secondItem="06M-3v-eqW" secondAttribute="centerY" id="8Qr-FJ-wOM"/>
                                     <constraint firstItem="QpB-Pp-zi3" firstAttribute="centerY" secondItem="tdd-YK-xjB" secondAttribute="centerY" id="Bdc-Xx-MAq"/>
                                     <constraint firstItem="tdd-YK-xjB" firstAttribute="leading" secondItem="QpB-Pp-zi3" secondAttribute="trailing" constant="12" id="HLy-7X-KBt"/>
-                                    <constraint firstItem="06M-3v-eqW" firstAttribute="top" secondItem="jdc-Vf-YSU" secondAttribute="top" constant="50" id="NzS-W6-Oj1"/>
+                                    <constraint firstItem="06M-3v-eqW" firstAttribute="top" secondItem="jdc-Vf-YSU" secondAttribute="top" constant="60" id="NzS-W6-Oj1"/>
                                     <constraint firstAttribute="height" constant="130" id="Pk8-0I-OUH"/>
                                     <constraint firstAttribute="trailing" secondItem="tdd-YK-xjB" secondAttribute="trailing" constant="30" id="ThV-LV-2Hk"/>
                                     <constraint firstItem="QpB-Pp-zi3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="06M-3v-eqW" secondAttribute="trailing" constant="210" id="lId-L6-x06"/>
@@ -130,7 +130,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oF9-CH-E7h" secondAttribute="trailing" constant="35" id="4W2-bn-rK5"/>
-                            <constraint firstItem="oF9-CH-E7h" firstAttribute="top" secondItem="06M-3v-eqW" secondAttribute="bottom" constant="25" id="6fM-Db-m0F"/>
+                            <constraint firstItem="oF9-CH-E7h" firstAttribute="top" secondItem="06M-3v-eqW" secondAttribute="bottom" constant="15" id="6fM-Db-m0F"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Dsf-G1-Lhx"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="EZ5-UU-E4B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VoJ-oc-igC" secondAttribute="trailing" id="Jhl-AX-cNP"/>
@@ -241,12 +241,20 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="探索其他人的植物和園藝店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkV-KU-CFG">
+                                        <rect key="frame" x="33" y="90" width="180" height="21"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                        <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.6900521033" green="0.87055634260000003" blue="0.7231718842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="TkV-KU-CFG" firstAttribute="leading" secondItem="5Yv-KP-SKA" secondAttribute="leading" id="52v-Bw-bzc"/>
                                     <constraint firstItem="5Yv-KP-SKA" firstAttribute="top" secondItem="4W7-Kd-5IS" secondAttribute="top" constant="50" id="7Zf-Cb-YKK"/>
                                     <constraint firstItem="5Yv-KP-SKA" firstAttribute="leading" secondItem="4W7-Kd-5IS" secondAttribute="leading" constant="33" id="DHm-7e-Lmb"/>
                                     <constraint firstAttribute="height" constant="130" id="a9Y-MG-aYI"/>
+                                    <constraint firstItem="TkV-KU-CFG" firstAttribute="top" secondItem="5Yv-KP-SKA" secondAttribute="bottom" constant="10" id="ewT-Ab-qcY"/>
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-hg-Qdl">

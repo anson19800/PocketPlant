@@ -62,15 +62,26 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            if let user = user {
-              if let userName = user.displayName {
-                self.homeTitleLabel.text = "Hi！\(userName)"
-              } else {
-                self.homeTitleLabel.text = "Hi！歡迎"
-              }
-            } else {
-                self.homeTitleLabel.text = "Hi！訪客"
+//        handle = Auth.auth().addStateDidChangeListener { _, user in
+//            if let user = user {
+//              if let userName = user.displayName {
+//                self.homeTitleLabel.text = "Hi！\(userName)"
+//              } else {
+//                self.homeTitleLabel.text = "Hi！歡迎"
+//              }
+//            } else {
+//                self.homeTitleLabel.text = "Hi！訪客"
+//            }
+//        }
+        
+        UserManager.shared.fetchCurrentUserInfo { result in
+            switch result {
+            case .success(let user):
+                if let name = user.name {
+                    self.homeTitleLabel.text = "Hi！歡迎\(name)"
+                }
+            case .failure(_):
+                break
             }
         }
         
@@ -117,6 +128,8 @@ class HomePageViewController: UIViewController {
             updateMyFavoritePlants(withAnimation: false)
             
         case .gardeningShop:
+            
+            updateMyPlants(withAnimation: false)
             
             buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
                                             animated: false,
