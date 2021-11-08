@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="388" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="dab-qx-Deq"/>
+                            <constraint firstAttribute="height" constant="100" id="nkT-6H-aZK"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U4r-2N-NQp">
                             <size key="itemSize" width="128" height="128"/>

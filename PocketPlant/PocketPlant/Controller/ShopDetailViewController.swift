@@ -191,9 +191,7 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
 extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let shop = shop,
-              let images = shop.images else { return 0 }
-        return images.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -203,14 +201,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             withReuseIdentifier: String(describing: ImageCollectionViewCell.self),
             for: indexPath)
         
-        guard let imageCell = cell as? ImageCollectionViewCell,
-              let shop = shop else { return cell }
+        guard let imageCell = cell as? ImageCollectionViewCell else { return cell }
         
-        if let images = shop.images {
-            imageCell.imageView.kf.setImage(with: URL(string: images[indexPath.row]))
-        } else {
-            imageCell.imageView.image = UIImage(named: "plant")
-        }
+        imageCell.imageView.image = UIImage(named: "plant")
         
         return imageCell
     }

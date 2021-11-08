@@ -9,17 +9,10 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView! {
-        didSet {
-            imageView.applyshadowWithCorner(containerView: imageContainer, cornerRadious: 10)
-        }
-    }
-    @IBOutlet weak var imageContainer: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        clipsToBounds = false
-        
     }
 
 }
