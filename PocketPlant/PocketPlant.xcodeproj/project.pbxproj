@@ -20,6 +20,10 @@
 		CB8F2EDD2727D5D5005E1448 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */; };
 		CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */; };
 		CB8F2EE227280AD2005E1448 /* Remind.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EE127280AD2005E1448 /* Remind.swift */; };
+		CB8F2EED2728F6EF005E1448 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */; };
+		CB8F2EF02728FC49005E1448 /* CalendarInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EEE2728FC49005E1448 /* CalendarInfoTableViewCell.swift */; };
+		CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */; };
+		CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2EF2272921A2005E1448 /* Date+Extension.swift */; };
 		CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A4915272156FA0095E5EE /* ImageManager.swift */; };
 		CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A49172722CBA50095E5EE /* WaterRecord.swift */; };
 		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
@@ -65,6 +69,10 @@
 		CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CB8F2EDE2727E4AA005E1448 /* RemindManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindManager.swift; sourceTree = "<group>"; };
 		CB8F2EE127280AD2005E1448 /* Remind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remind.swift; sourceTree = "<group>"; };
+		CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
+		CB8F2EEE2728FC49005E1448 /* CalendarInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarInfoTableViewCell.xib; sourceTree = "<group>"; };
+		CB8F2EF2272921A2005E1448 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		CB9A4915272156FA0095E5EE /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		CB9A49172722CBA50095E5EE /* WaterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterRecord.swift; sourceTree = "<group>"; };
 		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +169,29 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		CB8F2EE32728EE39005E1448 /* CalendarPage */ = {
+			isa = PBXGroup;
+			children = (
+				CB8F2EEE2728FC49005E1448 /* CalendarInfoTableViewCell.swift */,
+				CB8F2EEF2728FC49005E1448 /* CalendarInfoTableViewCell.xib */,
+			);
+			path = CalendarPage;
+			sourceTree = "<group>";
+		};
+		CB8F2EE62728EFB3005E1448 /* DiscoverPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DiscoverPage;
+			sourceTree = "<group>";
+		};
+		CB8F2EE72728EFBF005E1448 /* ProfilePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfilePage;
+			sourceTree = "<group>";
+		};
 		CB9A49192724628D0095E5EE /* DeathPlantPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +227,6 @@
 				CBF7AC1A271D5B99001E3C37 /* Model */,
 				CBF7AC02271C863E001E3C37 /* AppDelegate.swift */,
 				CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */,
-				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 				CBF7AC0B271C8641001E3C37 /* Assets.xcassets */,
 				CBF7AC0D271C8641001E3C37 /* LaunchScreen.storyboard */,
 				CBF7AC10271C8641001E3C37 /* Info.plist */,
@@ -219,6 +249,10 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
+				CB8F2EE72728EFBF005E1448 /* ProfilePage */,
+				CB8F2EE62728EFB3005E1448 /* DiscoverPage */,
+				CB8F2EE32728EE39005E1448 /* CalendarPage */,
 				CB8F2ED12726B8DB005E1448 /* RemindPage */,
 				CB9A49192724628D0095E5EE /* DeathPlantPage */,
 				CB07EDB4271EE5DB00406913 /* PlantDetailPage */,
@@ -237,6 +271,7 @@
 				CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */,
 				CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */,
 				CB8F2ED427279E08005E1448 /* RemindViewController.swift */,
+				CB8F2EEC2728F6EF005E1448 /* CalendarPageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,6 +304,7 @@
 				CB07EDB7271EE74100406913 /* UILabel+Extension.swift */,
 				CB07EDBF271FFDF100406913 /* UIImage+Extension.swift */,
 				CB8F2EDC2727D5D5005E1448 /* UIView+Extension.swift */,
+				CB8F2EF2272921A2005E1448 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -359,6 +395,7 @@
 				CB8F2EDB2727AB8F005E1448 /* ReminderTableViewCell.xib in Resources */,
 				CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
+				CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
 				CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */,
 				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
@@ -437,6 +474,7 @@
 				CB8F2EDF2727E4AA005E1448 /* RemindManager.swift in Sources */,
 				CBF7AC42271E8D37001E3C37 /* PaddingLabel.swift in Sources */,
 				CBF7AC32271D77AD001E3C37 /* UIColor+Extension.swift in Sources */,
+				CB8F2EF02728FC49005E1448 /* CalendarInfoTableViewCell.swift in Sources */,
 				CB8F2EE227280AD2005E1448 /* Remind.swift in Sources */,
 				CBF7AC2F271D6A77001E3C37 /* UICollectionView+Extension.swift in Sources */,
 				CB9A4916272156FA0095E5EE /* ImageManager.swift in Sources */,
@@ -456,7 +494,9 @@
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
 				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
+				CB8F2EED2728F6EF005E1448 /* CalendarPageViewController.swift in Sources */,
 				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,
+				CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */,
 				CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */,
 				CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */,
 			);
@@ -535,7 +575,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -590,7 +630,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
