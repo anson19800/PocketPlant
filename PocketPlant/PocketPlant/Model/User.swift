@@ -12,6 +12,6 @@ struct User: Codable {
     var name: String?
     var userImageURL: String?
     var representPlamtID: String?
-    var sharePlants: [Plant]?
+    var sharePlants: [String]?
     var favoriteShop: [GardeningShop]?
 }

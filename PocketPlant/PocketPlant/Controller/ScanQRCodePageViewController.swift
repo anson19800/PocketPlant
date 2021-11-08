@@ -110,8 +110,8 @@ extension ScanQRCodePageViewController: AVCaptureMetadataOutputObjectsDelegate {
     func showSharePlant(plant: Plant) {
         let storyBoard = UIStoryboard(name: "ScanQRCodePage", bundle: nil)
         guard let remindVC = storyBoard.instantiateViewController(
-            withIdentifier: String(describing: SharePlantDetailViewController.self))
-                as? SharePlantDetailViewController else { return }
+            withIdentifier: String(describing: QRCodePlantDetailViewController.self))
+                as? QRCodePlantDetailViewController else { return }
         remindVC.modalTransitionStyle = .crossDissolve
         remindVC.modalPresentationStyle = .overCurrentContext
         remindVC.plant = plant
@@ -125,5 +125,11 @@ extension ScanQRCodePageViewController: SharePlantDetailDelegate {
     
     func cancelAction() {
         captureSession.startRunning()
+    }
+    
+    func goToSharePlantPage() {
+        self.dismiss(animated: true, completion: nil)
+        self.tabBarController?.selectedIndex = 3
+        let vcccc = self.tabBarController?.presentationController
     }
 }

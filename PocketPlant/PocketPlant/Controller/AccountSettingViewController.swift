@@ -13,20 +13,26 @@ enum AccountSetting: String, CaseIterable {
     case deleteAccount = "刪除帳號"
     
     var iconImage: UIImage {
-        get {
-            switch self {
-            case .logOut:
-                if let image = UIImage(systemName: "person.fill.xmark") {
-                    return image
-                } else {
-                    return UIImage()
-                }
-            case .deleteAccount:
-                if let image = UIImage(systemName: "trash.fill") {
-                    return image
-                } else {
-                    return UIImage()
-                }
+        switch self {
+        case .logOut:
+            if let image = UIImage(systemName: "person.fill.xmark") {
+                
+                return image
+                
+            } else {
+                
+                return UIImage()
+                
+            }
+        case .deleteAccount:
+            if let image = UIImage(systemName: "trash.fill") {
+                
+                return image
+                
+            } else {
+                
+                return UIImage()
+                
             }
         }
     }
@@ -70,7 +76,12 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
         
         let image = settingType.iconImage
         
-        settingCell.layoutCell(title: title, subTitle: title, image: image)
+        settingCell.layoutCell(title: title, image: image)
+        
+        if settingType == .deleteAccount {
+            settingCell.iconImageView.tintColor = .red
+            settingCell.titleLabel.textColor = .red
+        }
         
         return settingCell
     }
