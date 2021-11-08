@@ -36,6 +36,8 @@
 		CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */; };
 		CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */; };
 		CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */; };
+		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
+		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -114,6 +116,8 @@
 		CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputShopInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		CB2241DD272D2C7A00BAEE90 /* GardeningShop */ = {
 			isa = PBXGroup;
 			children = (
+				CB8A11362730D66A00AAE6CA /* AddNewShopTableViewCell */,
 				CB2241DE272D353A00BAEE90 /* GardeningShopTableViewCell.swift */,
 				CB2241DF272D353A00BAEE90 /* GardeningShopTableViewCell.xib */,
 			);
@@ -238,6 +243,15 @@
 				CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */,
 			);
 			path = ImageCell;
+			sourceTree = "<group>";
+		};
+		CB8A11362730D66A00AAE6CA /* AddNewShopTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */,
+				CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */,
+			);
+			path = AddNewShopTableViewCell;
 			sourceTree = "<group>";
 		};
 		CB8F2ED12726B8DB005E1448 /* RemindPage */ = {
@@ -540,6 +554,7 @@
 				CB2241D5272BA52500BAEE90 /* 78093-planting.json in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
 				CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */,
+				CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */,
 				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
 				CB9A491D2724632A0095E5EE /* DeathPlantPage.storyboard in Resources */,
 				CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */,
@@ -640,6 +655,7 @@
 				CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */,
 				CB8F2EDD2727D5D5005E1448 /* UIView+Extension.swift in Sources */,
 				CB8F2EF5272943D8005E1448 /* UIImageView+Extension.swift in Sources */,
+				CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */,
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
 				CB9A49182722CBA60095E5EE /* WaterRecord.swift in Sources */,
