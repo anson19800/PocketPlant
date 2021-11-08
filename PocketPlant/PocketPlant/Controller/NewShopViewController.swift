@@ -6,33 +6,11 @@
 //
 
 import UIKit
-import PhotosUI
-import Kingfisher
 
 class NewShopViewController: UIViewController {
     
-    @IBOutlet weak var imageCollectionView: UICollectionView! {
-        didSet {
-            imageCollectionView.delegate = self
-            imageCollectionView.dataSource = self
-            imageCollectionView.registerCellWithNib(
-                identifier: String(describing: ImageCollectionViewCell.self),
-                bundle: nil)
-            imageCollectionView.clipsToBounds = false
-        }
-    }
-    
-    @IBOutlet weak var infoTableView: UITableView! {
-        didSet {
-            infoTableView.delegate = self
-            infoTableView.dataSource = self
-            infoTableView.registerCellWithNib(
-                identifier: String(describing: InputShopInfoTableViewCell.self),
-                bundle: nil)
-        }
-    }
-    
-    var selectedImages: [UIImage]?
+    @IBOutlet weak var shopNameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +18,7 @@ class NewShopViewController: UIViewController {
     
     @IBAction func addAction(_ sender: UIButton) {
         
+
         let cell = infoTableView.cellForRow(at: IndexPath(row: 0, section: 0))
         
         guard let infoCell = cell as? InputShopInfoTableViewCell,
@@ -197,20 +176,17 @@ extension NewShopViewController: PHPickerViewControllerDelegate {
         
         var images: [UIImage] = []
         picker.dismiss(animated: true, completion: nil)
+
+        guard let name = shopNameTextField.text,
+              let address = addressTextField.text else { return }
+
         
-        let itemProviders = results.map(\.itemProvider)
+        var shop = GardeningShop(name: name,
+                                 address: address)
         
-        itemProviders.forEach { itemProvider in
-            if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                
-                itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                    DispatchQueue.main.async {
-                        guard let image = image as? UIImage else { return }
-                        images.append(image)
-                        self.selectedImages = images
-                        self.imageCollectionView.reloadData()
-                    }
-                }
+        FirebaseManager.shared.addGardeningShop(shop: &shop) { isSuccess in
+            if isSuccess {
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
