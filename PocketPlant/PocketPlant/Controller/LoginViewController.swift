@@ -190,18 +190,18 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             // Sign in with Firebase.
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if let error = error {
-                    // Error. If error.code == .MissingOrInvalidNonce, make sure
-                    // you're sending the SHA256-hashed nonce as a hex string with
-                    // your request to Apple.
                     print("登入失敗")
                     print(error.localizedDescription)
                     return
                 }
-                UserManager.shared.createUserInfo()
+                
+                if let additionalUserInfo = authResult?.additionalUserInfo,
+                   additionalUserInfo.isNewUser {
+                    UserManager.shared.createUserInfo()
+                }
                 print("登入成功")
                 self.performSegue(withIdentifier: "Login", sender: nil)
             }
-//            Auth.auth().currentUser?.metadata.lastSignInDate
         }
     }
     

@@ -18,7 +18,7 @@ class FirebaseManager {
     
     private init() {}
     
-    let imageManager = ImageManager.shared
+    private let imageManager = ImageManager.shared
     
     let userID: String = {
         
