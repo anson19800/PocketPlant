@@ -279,4 +279,53 @@ class FirebaseManager {
                 }
         }
     }
+    
+    func addGardeningShop(shop: inout GardeningShop, isSuccess: @escaping (Bool) -> Void) {
+        
+        let shopRef = dataBase.collection("shop")
+        
+        let documentID = shopRef.document().documentID
+        
+        shop.id = documentID
+        
+        do {
+            
+            try shopRef.document(documentID).setData(from: shop)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+        }
+    }
+    
+    func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
+        dataBase.collection("shop").getDocuments { snapshot, error in
+            
+            if let error = error {
+                
+                completion(Result.failure(error))
+                
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let shop = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: GardeningShop.self)
+            }
+            
+            completion(Result.success(shop))
+        }
+    }
+    
+    func deleteShop(shop: GardeningShop) {
+        
+        guard let id = shop.id else { return }
+        
+        let documentRef = dataBase.collection("shop").document(id)
+        
+        documentRef.delete()
+    }
 }

@@ -11,7 +11,15 @@ import Charts
 
 class DeathPlantViewController: UIViewController {
 
-    @IBOutlet weak var plantImage: UIImageView!
+    @IBOutlet weak var imageContainer: UIView!
+    @IBOutlet weak var plantImage: UIImageView! {
+        didSet {
+            plantImage.applyshadowWithCorner(
+                containerView: imageContainer,
+                cornerRadious: 0,
+                opacity: 0.3)
+        }
+    }
     @IBOutlet weak var plantNameLabel: UILabel!
     @IBOutlet weak var lifeTimeLabel: UILabel!
     @IBOutlet weak var waterInfoLabel: UILabel!
@@ -52,7 +60,6 @@ class DeathPlantViewController: UIViewController {
             case .failure(_):
 
                 self.noDataAlert(plant: plant, type: .water)
-
             }
         }
     }

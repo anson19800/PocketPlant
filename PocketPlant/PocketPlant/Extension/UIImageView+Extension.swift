@@ -22,4 +22,19 @@ extension UIImageView {
             }
         }
     }
+    
+    func applyshadowWithCorner(containerView: UIView, cornerRadious: CGFloat, opacity: Float = 0.1) {
+        
+        containerView.backgroundColor = .clear
+        containerView.clipsToBounds = false
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = opacity
+        containerView.layer.shadowOffset = CGSize(width: 0.0, height: 0.3)
+        containerView.layer.shadowRadius = 10
+        containerView.layer.cornerRadius = cornerRadious
+        containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds,
+                                                      cornerRadius: cornerRadious).cgPath
+        self.clipsToBounds = true
+        self.layer.cornerRadius = cornerRadious
+    }
 }

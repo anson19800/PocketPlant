@@ -10,6 +10,7 @@ import Kingfisher
 
 class PlantCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var plantImageView: UIImageView! {
         didSet {
             plantImageView.layer.cornerRadius = 5

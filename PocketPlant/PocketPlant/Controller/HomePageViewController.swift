@@ -10,6 +10,7 @@ import UIKit
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
     case myFavorite = "最愛植物"
+    case gardeningShop = "園藝店"
 }
 
 class HomePageViewController: UIViewController {
@@ -21,9 +22,10 @@ class HomePageViewController: UIViewController {
             searchBar.backgroundImage = UIImage()
             searchBar.searchTextField.backgroundColor = .white
             searchBar.searchTextField.layer.cornerRadius = 15
-            searchBar.searchTextField.layer.borderWidth = 1
-            searchBar.searchTextField.layer.borderColor = UIColor.hexStringToUIColor(hex: "DFEFDF").cgColor
-            searchBar.searchTextField.layer.masksToBounds = true
+            searchBar.searchTextField.layer.shadowColor = UIColor.black.cgColor
+            searchBar.searchTextField.layer.shadowOffset = CGSize.zero
+            searchBar.searchTextField.layer.shadowRadius = 4
+            searchBar.searchTextField.layer.shadowOpacity = 0.1
         }
     }
     
@@ -52,8 +54,6 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var waterImageView: UIImageView!
     
-    @IBOutlet weak var plantCollectionTitle: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +67,8 @@ class HomePageViewController: UIViewController {
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         searchBar.delegate = self
+        
+        buttonCollectionView.layer.masksToBounds = false
         
         buttonCollectionView.registerCellWithNib(
             identifier: String(describing: ButtonCollectionViewCell.self),
@@ -88,7 +90,9 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true
+        
+        tabBarController?.tabBar.isHidden = false
         
         switch isSelectedAt {
             
@@ -99,6 +103,12 @@ class HomePageViewController: UIViewController {
         case .myFavorite:
             
             updateMyFavoritePlants(withAnimation: false)
+            
+        case .gardeningShop:
+            
+            buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
+                                            animated: false,
+                                            scrollPosition: .top)
             
         }
     }
@@ -140,8 +150,6 @@ class HomePageViewController: UIViewController {
                     
                 }
                 
-                self.plantCollectionTitle.text = "我的植物"
-                
             case .failure(let error):
                 
                 print(error)
@@ -171,8 +179,6 @@ class HomePageViewController: UIViewController {
                     self.plantCollectionView.reloadData()
                     
                 }
-                
-                self.plantCollectionTitle.text = "最愛植物"
                 
             case .failure(let error):
                 
@@ -253,6 +259,10 @@ class HomePageViewController: UIViewController {
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
+            
+        case "showShop":
+            
+            break
 
         default:
             
@@ -432,9 +442,16 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         let itemSpace: CGFloat = 10
         let columCount: CGFloat = 3
         
-        let width = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let plantWidth = floor( (plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        
+        let buttonWidth = floor((buttonCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
 
-        return CGSize(width: width, height: width * 1.8)
+        if collectionView == plantCollectionView {
+            return CGSize(width: plantWidth, height: plantWidth * 1.2)
+        } else {
+            return CGSize(width: buttonWidth, height: buttonWidth)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -454,6 +471,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             let buttonType = HomePageButton.allCases[indexPath.row]
             
             switch buttonType {
+                
             case .myPlant:
                 
                 if isSelectedAt == .myPlant {
@@ -478,8 +496,17 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 updateMyFavoritePlants(withAnimation: true)
                 
-                self.isSelectedAt = .myFavorite
+                isSelectedAt = .myFavorite
                 
+            case .gardeningShop:
+                
+                isSelectedAt = .gardeningShop
+                
+                searching = false
+                
+                tabBarController?.tabBar.isHidden = true
+                
+                performSegue(withIdentifier: "shopList", sender: nil)
             }
         }
     }

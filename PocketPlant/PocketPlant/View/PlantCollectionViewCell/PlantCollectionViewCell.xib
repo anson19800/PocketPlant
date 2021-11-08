@@ -12,38 +12,49 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PlantCollectionViewCell" customModule="PocketPlant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+            <rect key="frame" x="0.0" y="0.0" width="136" height="154"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                <rect key="frame" x="0.0" y="0.0" width="136" height="154"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltF-1s-XO8">
-                        <rect key="frame" x="0.0" y="0.0" width="162" height="162"/>
+                        <rect key="frame" x="0.0" y="0.0" width="136" height="154"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vuS-9o-vxR">
-                                <rect key="frame" x="5" y="5" width="152" height="126"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7r5-RB-xXi">
+                                <rect key="frame" x="10" y="10" width="116" height="116"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vuS-9o-vxR">
+                                        <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vuS-9o-vxR" secondAttribute="height" multiplier="1:1" id="25Q-D5-LWX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="152" id="gCP-Y8-kFx"/>
-                                    <constraint firstAttribute="height" constant="126" id="hYl-QW-Jde"/>
+                                    <constraint firstItem="vuS-9o-vxR" firstAttribute="top" secondItem="7r5-RB-xXi" secondAttribute="top" id="9F5-uV-QXe"/>
+                                    <constraint firstAttribute="trailing" secondItem="vuS-9o-vxR" secondAttribute="trailing" id="KKx-md-1P5"/>
+                                    <constraint firstAttribute="bottom" secondItem="vuS-9o-vxR" secondAttribute="bottom" id="T9o-nd-4DB"/>
+                                    <constraint firstItem="vuS-9o-vxR" firstAttribute="leading" secondItem="7r5-RB-xXi" secondAttribute="leading" id="bnR-Te-8hs"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小草一號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-RJ-40G">
-                                <rect key="frame" x="47" y="133" width="68" height="24"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
-                                <color key="textColor" red="0.25813597440000002" green="0.33305498960000002" blue="0.26039248700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小草一號" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-RJ-40G">
+                                <rect key="frame" x="40" y="126" width="56" height="23"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <color key="textColor" red="0.49803921569999998" green="0.57254901960000004" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vuS-9o-vxR" firstAttribute="leading" secondItem="ltF-1s-XO8" secondAttribute="leading" constant="5" id="Bm5-9b-CYf"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LgL-RJ-40G" secondAttribute="bottom" constant="5" id="Jdu-Ov-Kpb"/>
+                            <constraint firstAttribute="bottom" secondItem="LgL-RJ-40G" secondAttribute="bottom" constant="5" id="Jdu-Ov-Kpb"/>
+                            <constraint firstAttribute="trailing" secondItem="7r5-RB-xXi" secondAttribute="trailing" constant="10" id="Mcp-0u-Chu"/>
                             <constraint firstItem="LgL-RJ-40G" firstAttribute="centerX" secondItem="ltF-1s-XO8" secondAttribute="centerX" id="PqO-NJ-kko"/>
-                            <constraint firstItem="vuS-9o-vxR" firstAttribute="top" secondItem="ltF-1s-XO8" secondAttribute="top" constant="5" id="dE6-QV-d1H"/>
-                            <constraint firstAttribute="trailing" secondItem="vuS-9o-vxR" secondAttribute="trailing" constant="5" id="elE-LP-iEP"/>
-                            <constraint firstItem="LgL-RJ-40G" firstAttribute="top" secondItem="vuS-9o-vxR" secondAttribute="bottom" constant="2" id="x42-a5-T9W"/>
+                            <constraint firstItem="LgL-RJ-40G" firstAttribute="top" secondItem="7r5-RB-xXi" secondAttribute="bottom" id="ael-zV-XYm"/>
+                            <constraint firstItem="7r5-RB-xXi" firstAttribute="top" secondItem="ltF-1s-XO8" secondAttribute="top" constant="10" id="fsd-5F-8dO"/>
+                            <constraint firstItem="7r5-RB-xXi" firstAttribute="leading" secondItem="ltF-1s-XO8" secondAttribute="leading" constant="10" id="tgf-2M-bDl"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -55,12 +66,13 @@
                 <constraint firstAttribute="trailing" secondItem="ltF-1s-XO8" secondAttribute="trailing" id="l54-lw-pDk"/>
                 <constraint firstAttribute="bottom" secondItem="ltF-1s-XO8" secondAttribute="bottom" id="nM0-Je-bAr"/>
             </constraints>
-            <size key="customSize" width="162" height="162"/>
+            <size key="customSize" width="136" height="154"/>
             <connections>
+                <outlet property="imageContainer" destination="7r5-RB-xXi" id="la1-zc-gS7"/>
                 <outlet property="nameLabel" destination="LgL-RJ-40G" id="Gcz-sz-zqS"/>
                 <outlet property="plantImageView" destination="vuS-9o-vxR" id="RLr-ji-kbt"/>
             </connections>
-            <point key="canvasLocation" x="213.04347826086959" y="163.39285714285714"/>
+            <point key="canvasLocation" x="194.20289855072465" y="160.04464285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
