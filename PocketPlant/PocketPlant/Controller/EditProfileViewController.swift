@@ -42,8 +42,6 @@ class EditProfileViewController: UIViewController {
     }
     @IBOutlet weak var userPhotoImageView: UIImageView!
     
-    var isFirstEdit: Bool = true
-    
     var editStepNow: EditStep = .nameStep
     
     var name: String?
@@ -54,7 +52,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = isFirstEdit ? "我叫做" : "我把名字改成"
+        titleLabel.text = "我叫做"
         let animationView = generateAnimationView(name: "9624-plantPeople", loopMode: .loop)
         animationView.frame = animationContainer.bounds
         animationContainer.addSubview(animationView)
@@ -68,7 +66,8 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        editStepNow = .nameStep
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,25 +79,60 @@ class EditProfileViewController: UIViewController {
         
         switch editStepNow {
         case .nameStep:
+            
             if let name = nameInputTextField.text,
-               name != "" {
+               name != "",
+               name.count <= 8 {
+                
                 self.name = name
+                
                 nextAnimation()
+                
+                editStepNow = .photoStep
+                
             } else {
+                
                 nameInputTextField.shake(count: 3, for: 0.3, withTranslation: 1)
+                
                 nameInputTextField.attributedPlaceholder = NSAttributedString(
                     string: "輸入您的名字，最多8個字",
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
                 )
-            }
-        case .photoStep:
-            if let name = name,
-               let userPhoto = userPhotoImageView.image {
                 
             }
+            
+        case .photoStep:
+            
+            if let userPhoto = userPhotoImageView.image {
+                
+                ImageManager.shared.uploadImageToGetURL(image: userPhoto) { result in
+                    
+                    switch result {
+                        
+                    case .success((let uuid, let url)):
+                        
+                        UserManager.shared.createUserInfo(name: self.name ?? "使用者", imageURL: url, imageID: uuid)
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                }
+                
+            } else {
+                
+                UserManager.shared.createUserInfo(name: self.name ?? "使用者", imageURL: nil, imageID: nil)
+            }
+            
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let homeVC = storyBoard.instantiateViewController(
+                withIdentifier: "HomePage")
+            
+            homeVC.modalPresentationStyle = .fullScreen
+            
+            self.present(homeVC, animated: true, completion: nil)
         }
-        
-        
     }
     
     func nextAnimation() {
@@ -146,7 +180,6 @@ class EditProfileViewController: UIViewController {
         }
     }
     
-    
     @available(iOS 14, *)
     @objc func selectUserPhoto() {
         let controller = UIAlertController(title: nil,
@@ -193,7 +226,6 @@ class EditProfileViewController: UIViewController {
         controller.addAction(cancelAction)
         
         present(controller, animated: true, completion: nil)
-        
     }
 }
 

@@ -219,7 +219,7 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
             newPlant.favorite = editPlant.favorite
             
-            newPlant.ownerID = UserManager.shared.userID
+            newPlant.ownerID = UserManager.shared.getUserID()
             
             imageManager.deleteImage(imageID: editPlant.imageID!)
             
