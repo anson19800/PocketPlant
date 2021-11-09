@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         IQKeyboardManager.shared.enable = true
         
+        UITabBar.appearance().tintColor = .white
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .carPlay]) { granted, error in
             if granted {
                 print("允許")

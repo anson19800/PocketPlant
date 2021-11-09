@@ -146,7 +146,16 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
         
         switch selectionType {
         case .userInfo:
-            break
+            let storyBoard = UIStoryboard(name: "EditProfile", bundle: nil)
+            
+            let viewController = storyBoard.instantiateViewController(
+                withIdentifier: String(describing: EditProfileViewController.self))
+            
+            guard let editProfileVC = viewController as? EditProfileViewController else { return }
+            
+            editProfileVC.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.pushViewController(editProfileVC, animated: true)
         case .toolStock:
             break
         case .sharePlants:
