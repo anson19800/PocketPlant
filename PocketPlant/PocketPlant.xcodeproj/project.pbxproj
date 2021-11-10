@@ -39,6 +39,10 @@
 		CB846208273A11DB00283683 /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB846207273A11DB00283683 /* EditProfile.storyboard */; };
 		CB84620A273A129100283683 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB846209273A129100283683 /* EditProfileViewController.swift */; };
 		CB84620C273A158900283683 /* 9624-plantPeople.json in Resources */ = {isa = PBXBuildFile; fileRef = CB84620B273A158900283683 /* 9624-plantPeople.json */; };
+		CB846215273B762B00283683 /* ToolStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB846213273B762B00283683 /* ToolStockTableViewCell.swift */; };
+		CB846216273B762B00283683 /* ToolStockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB846214273B762B00283683 /* ToolStockTableViewCell.xib */; };
+		CB846218273BA2EE00283683 /* ToolStock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB846217273BA2EE00283683 /* ToolStock.storyboard */; };
+		CB84621A273BA37500283683 /* ToolStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB846219273BA37500283683 /* ToolStockViewController.swift */; };
 		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
 		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
 		CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113C273230DC00AAE6CA /* LoginViewController.swift */; };
@@ -135,6 +139,10 @@
 		CB846207273A11DB00283683 /* EditProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfile.storyboard; sourceTree = "<group>"; };
 		CB846209273A129100283683 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CB84620B273A158900283683 /* 9624-plantPeople.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9624-plantPeople.json"; sourceTree = "<group>"; };
+		CB846213273B762B00283683 /* ToolStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolStockTableViewCell.swift; sourceTree = "<group>"; };
+		CB846214273B762B00283683 /* ToolStockTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolStockTableViewCell.xib; sourceTree = "<group>"; };
+		CB846217273BA2EE00283683 /* ToolStock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToolStock.storyboard; sourceTree = "<group>"; };
+		CB846219273BA37500283683 /* ToolStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolStockViewController.swift; sourceTree = "<group>"; };
 		CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputShopInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PocketPlant.entitlements; sourceTree = "<group>"; };
@@ -277,6 +285,15 @@
 			path = ImageCell;
 			sourceTree = "<group>";
 		};
+		CB846212273B753B00283683 /* ToolStockCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB846213273B762B00283683 /* ToolStockTableViewCell.swift */,
+				CB846214273B762B00283683 /* ToolStockTableViewCell.xib */,
+			);
+			path = ToolStockCell;
+			sourceTree = "<group>";
+		};
 		CB8A11362730D66A00AAE6CA /* AddNewShopTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +419,7 @@
 		CBF7AC1B271D5BA1001E3C37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CB846212273B753B00283683 /* ToolStockCell */,
 				CB8A11422733A84000AAE6CA /* ProfileCell */,
 				CB2241FB272ED27500BAEE90 /* ImageCell */,
 				CB2241F2272ECE9100BAEE90 /* CommentCell */,
@@ -421,6 +439,7 @@
 				CB8A11562736E47F00AAE6CA /* SharePlantPage.storyboard */,
 				CB8A114E27351F1000AAE6CA /* AccountSeetingPage.storyboard */,
 				CB846207273A11DB00283683 /* EditProfile.storyboard */,
+				CB846217273BA2EE00283683 /* ToolStock.storyboard */,
 				CBF7AC08271C863E001E3C37 /* Main.storyboard */,
 			);
 			path = View;
@@ -447,6 +466,7 @@
 				CB8A1154273522DB00AAE6CA /* AccountSettingViewController.swift */,
 				CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */,
 				CB846209273A129100283683 /* EditProfileViewController.swift */,
+				CB846219273BA37500283683 /* ToolStockViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -572,6 +592,7 @@
 				CBF7AC0F271C8641001E3C37 /* LaunchScreen.storyboard in Resources */,
 				CB8A115B273793EB00AAE6CA /* 72610-plantGrowing.json in Resources */,
 				CBF7AC2B271D6280001E3C37 /* ButtonCollectionViewCell.xib in Resources */,
+				CB846216273B762B00283683 /* ToolStockTableViewCell.xib in Resources */,
 				CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */,
 				CBF7AC39271E7307001E3C37 /* NewPlantPage.storyboard in Resources */,
 				CB8A114A2734DB7200AAE6CA /* HistoryTableViewCell.xib in Resources */,
@@ -588,6 +609,7 @@
 				CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */,
 				CBF7AC40271E8CF0001E3C37 /* InputPlantTableViewCell.xib in Resources */,
 				CB9A491D2724632A0095E5EE /* DeathPlantPage.storyboard in Resources */,
+				CB846218273BA2EE00283683 /* ToolStock.storyboard in Resources */,
 				CB8A114F27351F1000AAE6CA /* AccountSeetingPage.storyboard in Resources */,
 				CB8A11462733B08800AAE6CA /* ProfileTableViewCell.xib in Resources */,
 				CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */,
@@ -688,11 +710,13 @@
 				CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
 				CBF7AC36271DC9D0001E3C37 /* FirebaseManager.swift in Sources */,
+				CB84621A273BA37500283683 /* ToolStockViewController.swift in Sources */,
 				CBF7AC3F271E8CF0001E3C37 /* InputPlantTableViewCell.swift in Sources */,
 				CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */,
 				CB8F2EDD2727D5D5005E1448 /* UIView+Extension.swift in Sources */,
 				CB8F2EF5272943D8005E1448 /* UIImageView+Extension.swift in Sources */,
 				CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */,
+				CB846215273B762B00283683 /* ToolStockTableViewCell.swift in Sources */,
 				CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */,
 				CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */,
 				CB8A113F27328C1E00AAE6CA /* User.swift in Sources */,
