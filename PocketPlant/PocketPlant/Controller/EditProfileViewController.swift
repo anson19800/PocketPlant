@@ -207,7 +207,7 @@ class EditProfileViewController: UIViewController {
                 
                 let imagePicker = UIImagePickerController()
                 
-                imagePicker.allowsEditing = false
+                imagePicker.allowsEditing = true
                 
                 imagePicker.sourceType = .camera
                 

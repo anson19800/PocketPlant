@@ -67,7 +67,7 @@ class UserManager {
     
     func updateUserInfo(userName: String?, userImageID: String?, userImageURL: String?, isSuccess: @escaping (Bool) -> Void) {
         
-        let userRef = dataBase.collection("user")
+        let userRef = dataBase.collection("User")
         
         guard let currentUser = Auth.auth().currentUser else { return }
         
@@ -85,14 +85,19 @@ class UserManager {
             
             do {
                 
-                user.name = userName
+                if let userName = userName {
+                    user.name = userName
+                }
                 
                 if let imageID = user.userImageID {
                     ImageManager.shared.deleteImage(imageID: imageID)
                 }
                 
-                user.userImageID = userImageID
-                user.userImageURL = userImageURL
+                if let userImageID = userImageID,
+                   let userImageURL = userImageURL {
+                    user.userImageID = userImageID
+                    user.userImageURL = userImageURL
+                }
                 
                 try userRef.document(userID).setData(from: user)
                 
