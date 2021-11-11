@@ -331,7 +331,7 @@ class FirebaseManager {
     
     func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
         dataBase.collection("shop")
-            .whereField("createUserID", isEqualTo: userID)
+            .whereField("ownerID", isEqualTo: userID)
             .getDocuments { snapshot, error in
             
             if let error = error {
@@ -373,7 +373,9 @@ class FirebaseManager {
         
         guard let documentRef = documentRef else { return }
 
-        documentRef.getDocuments { snapshot, error in
+        documentRef
+            .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
+            .getDocuments { snapshot, error in
             if let error = error {
                 completion(nil, error)
             }

@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         UITabBar.appearance().tintColor = .white
         
+        UINavigationBar.appearance().tintColor = UIColor.darkGreen1
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .carPlay]) { granted, error in
             if granted {
                 print("允許")

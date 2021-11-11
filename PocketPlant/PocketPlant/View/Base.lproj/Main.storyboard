@@ -268,7 +268,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3kz-0V-5tR">
-                                <rect key="frame" x="33" y="191" width="362" height="652"/>
+                                <rect key="frame" x="33" y="191" width="362" height="612"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Z3-R4-26y">
                                     <size key="itemSize" width="128" height="128"/>
@@ -299,7 +299,7 @@
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="trailing" secondItem="QGH-hg-Qdl" secondAttribute="trailing" id="bVd-e5-O1T"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="leading" secondItem="QGH-hg-Qdl" secondAttribute="leading" id="cmP-UJ-DbC"/>
                             <constraint firstItem="QGH-hg-Qdl" firstAttribute="leading" secondItem="5Yv-KP-SKA" secondAttribute="leading" id="ft2-U3-UQx"/>
-                            <constraint firstItem="4D7-Y7-qZC" firstAttribute="bottom" secondItem="3kz-0V-5tR" secondAttribute="bottom" id="k9f-Q8-RXz"/>
+                            <constraint firstItem="4D7-Y7-qZC" firstAttribute="bottom" secondItem="3kz-0V-5tR" secondAttribute="bottom" constant="40" id="k9f-Q8-RXz"/>
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="top" secondItem="0OJ-cj-dQ4" secondAttribute="top" id="meE-vM-dSV"/>
                         </constraints>
                     </view>

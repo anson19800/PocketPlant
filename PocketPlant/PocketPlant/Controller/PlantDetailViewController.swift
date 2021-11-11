@@ -88,6 +88,11 @@ class PlantDetailViewController: UIViewController {
         favoriteButton.tintColor = plant.favorite ? .red : .gray
         
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
+        
+        if plant.ownerID != UserManager.shared.userID {
+            remindButton.isHidden = true
+            favoriteButton.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

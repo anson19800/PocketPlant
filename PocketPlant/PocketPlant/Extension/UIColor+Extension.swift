@@ -10,6 +10,7 @@ import UIKit
 extension UIColor {
     
     static let cloudBlue = UIColor.hexStringToUIColor(hex: "CCE5FF")
+    static let darkGreen1 = UIColor.hexStringToUIColor(hex: "347159")
     
     static func hexStringToUIColor(hex: String) -> UIColor {
 

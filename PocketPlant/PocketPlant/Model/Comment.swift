@@ -24,7 +24,7 @@ struct Comment: Codable {
         self.id = "0"
         self.commentType = commentType.rawValue
         self.objectID = objectID
-        self.senderID = UserManager.shared.getUserID()
+        self.senderID = UserManager.shared.userID
         self.content = content
         self.createdTime = createdTime
     }

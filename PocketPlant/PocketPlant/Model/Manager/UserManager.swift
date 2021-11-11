@@ -16,17 +16,15 @@ class UserManager {
     
     var userName: String = "使用者"
     
-    private init() {}
-    
-    let userDisplayName: String = {
-        
-        if let user = Auth.auth().currentUser,
-           let userName = user.displayName {
-            return userName
+    var userID: String {
+        if let user = Auth.auth().currentUser {
+            return user.uid
         } else {
-            return "使用者"
+            return "0"
         }
-    }()
+    }
+    
+    private init() {}
     
     private let dataBase = Firestore.firestore()
     
@@ -65,7 +63,10 @@ class UserManager {
         }
     }
     
-    func updateUserInfo(userName: String?, userImageID: String?, userImageURL: String?, isSuccess: @escaping (Bool) -> Void) {
+    func updateUserInfo(userName: String?,
+                        userImageID: String?,
+                        userImageURL: String?,
+                        isSuccess: @escaping (Bool) -> Void) {
         
         let userRef = dataBase.collection("User")
         
