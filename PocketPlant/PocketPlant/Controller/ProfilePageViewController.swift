@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import Lottie
 import Kingfisher
+import SafariServices
 
 enum SettingSelection: String, CaseIterable {
     case toolStock = "材料庫存"

@@ -187,7 +187,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="輸入庫存數量" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRN-iR-op2">
-                                        <rect key="frame" x="160" y="216.5" width="204" height="23"/>
+                                        <rect key="frame" x="170" y="216.5" width="184" height="23"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -196,18 +196,18 @@
                                         </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evK-yr-ue0">
-                                        <rect key="frame" x="160" y="239.5" width="204" height="1"/>
+                                        <rect key="frame" x="170" y="239.5" width="184" height="1"/>
                                         <color key="backgroundColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="1iJ-Cw-KZe"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-xi-VWx">
-                                        <rect key="frame" x="130" y="213.5" width="30" height="29"/>
+                                        <rect key="frame" x="130" y="208.5" width="40" height="39"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="UVI-DT-XBy"/>
-                                            <constraint firstAttribute="height" constant="30" id="gM1-3r-NCa"/>
+                                            <constraint firstAttribute="width" secondItem="TRM-xi-VWx" secondAttribute="height" multiplier="1:1" id="GkR-pW-gYg"/>
+                                            <constraint firstAttribute="width" constant="40" id="UVI-DT-XBy"/>
                                         </constraints>
                                         <color key="tintColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -217,11 +217,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSh-lp-aAX">
-                                        <rect key="frame" x="364" y="213.5" width="30" height="29"/>
+                                        <rect key="frame" x="354" y="208.5" width="40" height="39"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="ETi-a5-9Af"/>
-                                            <constraint firstAttribute="width" constant="30" id="r3y-8c-9mU"/>
+                                            <constraint firstAttribute="width" secondItem="MSh-lp-aAX" secondAttribute="height" multiplier="1:1" id="sEU-Aw-Oxx"/>
                                         </constraints>
                                         <color key="tintColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -256,6 +255,7 @@
                                     <constraint firstItem="vzG-rv-plB" firstAttribute="leading" secondItem="71W-iK-nSj" secondAttribute="leading" id="U4v-PP-atf"/>
                                     <constraint firstItem="uuN-X4-slb" firstAttribute="leading" secondItem="GIW-Ui-XYI" secondAttribute="leading" id="W4G-fR-IeO"/>
                                     <constraint firstItem="rbJ-Am-2Hb" firstAttribute="leading" secondItem="tQN-g7-H4P" secondAttribute="leading" id="XEq-sa-24d"/>
+                                    <constraint firstItem="MSh-lp-aAX" firstAttribute="width" secondItem="TRM-xi-VWx" secondAttribute="width" id="Y7d-DN-3EG"/>
                                     <constraint firstItem="uuN-X4-slb" firstAttribute="top" secondItem="GIW-Ui-XYI" secondAttribute="bottom" constant="20" id="YU4-sw-0lp"/>
                                     <constraint firstItem="MSh-lp-aAX" firstAttribute="trailing" secondItem="rbJ-Am-2Hb" secondAttribute="trailing" id="aPZ-rF-FtL"/>
                                     <constraint firstItem="GIW-Ui-XYI" firstAttribute="top" secondItem="KeJ-Cp-7ZW" secondAttribute="bottom" constant="8" id="bhH-js-0r6"/>

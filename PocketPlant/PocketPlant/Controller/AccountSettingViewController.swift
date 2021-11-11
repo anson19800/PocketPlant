@@ -7,33 +7,21 @@
 
 import UIKit
 import FirebaseAuth
+import SafariServices
 
 enum AccountSetting: String, CaseIterable {
     case logOut = "登出"
+    case privacyPolicy = "隱私權政策"
     case deleteAccount = "刪除帳號"
     
-    var iconImage: UIImage {
+    var iconImage: UIImage? {
         switch self {
         case .logOut:
-            if let image = UIImage(systemName: "person.fill.xmark") {
-                
-                return image
-                
-            } else {
-                
-                return UIImage()
-                
-            }
+            return UIImage(systemName: "person.fill.xmark")
         case .deleteAccount:
-            if let image = UIImage(systemName: "trash.fill") {
-                
-                return image
-                
-            } else {
-                
-                return UIImage()
-                
-            }
+            return UIImage(systemName: "trash.fill")
+        case .privacyPolicy:
+            return UIImage(systemName: "exclamationmark.circle.fill")
         }
     }
 }
@@ -87,36 +75,59 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let controller = UIAlertController(title: "登出提醒", message: "確定要登出嗎?", preferredStyle: .alert)
-
-            let okAction = UIAlertAction(title: "確定", style: .default) { _ in
-                
-                do {
-                    
-                    try Auth.auth().signOut()
-                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                    let loginVC = mainStoryBoard.instantiateViewController(
-                        withIdentifier: String(describing: LoginViewController.self))
-                    
-                    loginVC.modalPresentationStyle = .fullScreen
-                    
-                    self.present(loginVC, animated: true, completion: nil)
-                    
-                } catch let signOutError as NSError {
-                    
-                   print("Error signing out: \(signOutError)")
-                    
-                }
+        
+        let selection = AccountSetting.allCases[indexPath.row]
+        
+        switch selection {
+        case .logOut:
+            
+            logOutAction()
+            
+        case .deleteAccount:
+            
+            break
+            
+        case .privacyPolicy:
+            
+            let privacyPolicyLink = "https://www.privacypolicies.com/live/25920b7a-f6fc-42f1-a6d9-e2a709e1a5fe"
+            
+            if let url = URL(string: privacyPolicyLink) {
+                let safariController = SFSafariViewController(url: url)
+                present(safariController, animated: true, completion: nil)
             }
             
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            
-            controller.addAction(okAction)
-            
-            controller.addAction(cancelAction)
-            
-            present(controller, animated: true, completion: nil)
         }
+    }
+    
+    func logOutAction() {
+        let controller = UIAlertController(title: "登出提醒", message: "確定要登出嗎?", preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "確定", style: .default) { _ in
+            
+            do {
+                
+                try Auth.auth().signOut()
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+                let loginVC = mainStoryBoard.instantiateViewController(
+                    withIdentifier: String(describing: LoginViewController.self))
+                
+                loginVC.modalPresentationStyle = .fullScreen
+                
+                self.present(loginVC, animated: true, completion: nil)
+                
+            } catch let signOutError as NSError {
+                
+               print("Error signing out: \(signOutError)")
+                
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        controller.addAction(okAction)
+        
+        controller.addAction(cancelAction)
+        
+        present(controller, animated: true, completion: nil)
     }
 }
