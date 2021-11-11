@@ -11,27 +11,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="KGk-i7-Jjw" customClass="ToolStockTableViewCell" customModule="PocketPlant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="423" height="103"/>
+            <rect key="frame" x="0.0" y="0.0" width="483" height="103"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="423" height="103"/>
+                <rect key="frame" x="0.0" y="0.0" width="483" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="剪刀" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekb-bf-ZPH">
-                        <rect key="frame" x="184" y="18.5" width="30" height="23"/>
+                        <rect key="frame" x="199" y="19.5" width="36" height="26"/>
                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="台北市信義區台北市信義區" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfl-IM-2oG">
-                        <rect key="frame" x="184" y="59" width="180" height="22.5"/>
+                        <rect key="frame" x="199" y="54.5" width="216" height="26"/>
                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="購買地點：" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Slz-02-A2U">
-                        <rect key="frame" x="104" y="55" width="75" height="30"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                        <rect key="frame" x="104" y="50" width="90" height="35"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -48,8 +48,8 @@
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名稱：" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E28-Yg-Qqa">
-                        <rect key="frame" x="84" y="15" width="95" height="30"/>
-                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="15"/>
+                        <rect key="frame" x="84" y="15" width="110" height="35"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -60,14 +60,14 @@
                     <constraint firstItem="Slz-02-A2U" firstAttribute="bottom" secondItem="uEa-JH-Lm2" secondAttribute="bottom" constant="5" id="BF7-rC-Frb"/>
                     <constraint firstItem="uEa-JH-Lm2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="EZd-Df-FYQ"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ekb-bf-ZPH" secondAttribute="trailing" constant="30" id="Mit-JS-4Ow"/>
-                    <constraint firstItem="Slz-02-A2U" firstAttribute="top" secondItem="uEa-JH-Lm2" secondAttribute="centerY" constant="5" id="P6c-J3-rEr"/>
+                    <constraint firstItem="Slz-02-A2U" firstAttribute="top" secondItem="uEa-JH-Lm2" secondAttribute="centerY" id="P6c-J3-rEr"/>
                     <constraint firstItem="ekb-bf-ZPH" firstAttribute="leading" secondItem="qfl-IM-2oG" secondAttribute="leading" id="R7D-NW-6RQ"/>
                     <constraint firstItem="Slz-02-A2U" firstAttribute="leading" secondItem="E28-Yg-Qqa" secondAttribute="leading" constant="20" id="RKR-6Z-2VX"/>
                     <constraint firstItem="qfl-IM-2oG" firstAttribute="centerY" secondItem="Slz-02-A2U" secondAttribute="centerY" id="RkC-3B-ehh"/>
                     <constraint firstItem="uEa-JH-Lm2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="V0o-Ev-jb8"/>
                     <constraint firstAttribute="bottom" secondItem="uEa-JH-Lm2" secondAttribute="bottom" constant="20" id="VBZ-98-shc"/>
                     <constraint firstItem="ekb-bf-ZPH" firstAttribute="centerY" secondItem="E28-Yg-Qqa" secondAttribute="centerY" id="ViO-pn-tJ6"/>
-                    <constraint firstItem="E28-Yg-Qqa" firstAttribute="bottom" secondItem="uEa-JH-Lm2" secondAttribute="centerY" constant="-5" id="Yj2-Li-S2h"/>
+                    <constraint firstItem="E28-Yg-Qqa" firstAttribute="bottom" secondItem="uEa-JH-Lm2" secondAttribute="centerY" id="Yj2-Li-S2h"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qfl-IM-2oG" secondAttribute="trailing" constant="30" id="bXa-ke-gLu"/>
                     <constraint firstItem="E28-Yg-Qqa" firstAttribute="leading" secondItem="uEa-JH-Lm2" secondAttribute="trailing" id="nlI-PY-m7j"/>
                     <constraint firstItem="qfl-IM-2oG" firstAttribute="leading" secondItem="Slz-02-A2U" secondAttribute="trailing" constant="5" id="rQL-kx-aNa"/>
@@ -81,7 +81,7 @@
                 <outlet property="buyPlaceTextField" destination="qfl-IM-2oG" id="XZM-Bg-Ie7"/>
                 <outlet property="nameTextField" destination="ekb-bf-ZPH" id="S5E-cL-mak"/>
             </connections>
-            <point key="canvasLocation" x="347.10144927536237" y="104.79910714285714"/>
+            <point key="canvasLocation" x="390.57971014492756" y="104.79910714285714"/>
         </tableViewCell>
     </objects>
 </document>

@@ -80,12 +80,28 @@ extension ToolStockViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let addPageVC = storyboard?.instantiateViewController(
-            withIdentifier: String(describing: AddToolStockViewController.self)) as? AddToolStockViewController else { return }
+            withIdentifier: String(describing: AddToolStockViewController.self))
+                as? AddToolStockViewController else { return }
         
         addPageVC.modalTransitionStyle = .crossDissolve
         addPageVC.modalPresentationStyle = .overCurrentContext
         addPageVC.parentVC = self
         addPageVC.tool = toolList[indexPath.row]
         navigationController?.present(addPageVC, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let tool = toolList[indexPath.row]
+            FirebaseManager.shared.deleteTool(toolID: tool.id) { isSuccess in
+                if isSuccess {
+                    self.toolList.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+        }
     }
 }

@@ -37,7 +37,6 @@ class AddToolStockViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    
     private var stock: Int = 0 {
         didSet {
             stockTextField.text = String(stock)

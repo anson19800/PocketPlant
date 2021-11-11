@@ -456,4 +456,16 @@ class FirebaseManager {
             
         }
     }
+    
+    func deleteTool(toolID: String, isSuccess: @escaping (Bool) -> Void) {
+        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(toolID)
+        
+        toolRef.delete { error in
+            if let error = error {
+                isSuccess(false)
+            } else {
+                isSuccess(true)
+            }
+        }
+    }
 }
