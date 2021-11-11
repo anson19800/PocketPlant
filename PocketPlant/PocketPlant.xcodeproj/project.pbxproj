@@ -43,6 +43,8 @@
 		CB846216273B762B00283683 /* ToolStockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB846214273B762B00283683 /* ToolStockTableViewCell.xib */; };
 		CB846218273BA2EE00283683 /* ToolStock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB846217273BA2EE00283683 /* ToolStock.storyboard */; };
 		CB84621A273BA37500283683 /* ToolStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB846219273BA37500283683 /* ToolStockViewController.swift */; };
+		CB84621C273BAF6500283683 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84621B273BAF6500283683 /* Tool.swift */; };
+		CB84621E273CB2E400283683 /* AddToolStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84621D273CB2E300283683 /* AddToolStockViewController.swift */; };
 		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
 		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
 		CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113C273230DC00AAE6CA /* LoginViewController.swift */; };
@@ -143,6 +145,8 @@
 		CB846214273B762B00283683 /* ToolStockTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolStockTableViewCell.xib; sourceTree = "<group>"; };
 		CB846217273BA2EE00283683 /* ToolStock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ToolStock.storyboard; sourceTree = "<group>"; };
 		CB846219273BA37500283683 /* ToolStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolStockViewController.swift; sourceTree = "<group>"; };
+		CB84621B273BAF6500283683 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		CB84621D273CB2E300283683 /* AddToolStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToolStockViewController.swift; sourceTree = "<group>"; };
 		CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputShopInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PocketPlant.entitlements; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 				CB2241E8272D8E9200BAEE90 /* GardeningShop.swift */,
 				CB2241F0272ECCD000BAEE90 /* Comment.swift */,
 				CB8A113E27328C1E00AAE6CA /* User.swift */,
+				CB84621B273BAF6500283683 /* Tool.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */,
 				CB846209273A129100283683 /* EditProfileViewController.swift */,
 				CB846219273BA37500283683 /* ToolStockViewController.swift */,
+				CB84621D273CB2E300283683 /* AddToolStockViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -729,6 +735,7 @@
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */,
 				CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */,
+				CB84621E273CB2E400283683 /* AddToolStockViewController.swift in Sources */,
 				CB2241D3272BA3A000BAEE90 /* ProfilePageViewController.swift in Sources */,
 				CB8F2EFA272A74D9005E1448 /* ScanQRCodePageViewController.swift in Sources */,
 				CB8A11492734DB7200AAE6CA /* HistoryTableViewCell.swift in Sources */,
@@ -739,6 +746,7 @@
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
 				CB84620A273A129100283683 /* EditProfileViewController.swift in Sources */,
 				CB8F2EFC272A9569005E1448 /* QRCodePlantDetailViewController.swift in Sources */,
+				CB84621C273BAF6500283683 /* Tool.swift in Sources */,
 				CB8F2EED2728F6EF005E1448 /* CalendarPageViewController.swift in Sources */,
 				CB07EDBD271FA67A00406913 /* PlantDetailTableViewCell.swift in Sources */,
 				CB8F2EF3272921A2005E1448 /* Date+Extension.swift in Sources */,

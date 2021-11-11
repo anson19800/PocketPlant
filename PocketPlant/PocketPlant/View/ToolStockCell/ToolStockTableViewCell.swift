@@ -9,11 +9,9 @@ import UIKit
 
 class ToolStockTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var minusButton: UIButton!
-    @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var amountTextField: UITextField!
-    
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var buyPlaceTextField: UITextField!
     
     var stockNumber: Int = 0
     
@@ -33,5 +31,10 @@ class ToolStockTableViewCell: UITableViewCell {
         contentView.layer.masksToBounds = false
         layer.masksToBounds = false
     }
-
+    
+    func layoutCell(tool: Tool) {
+        amountTextField.text = "x\(tool.stock)"
+        nameTextField.text = tool.name
+        buyPlaceTextField.text = tool.buyPlace
+    }
 }
