@@ -301,6 +301,35 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return commentCell
         }
     }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard indexPath.row > 1 else { return nil }
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            
+            let blockAction = UIAction(title: "封鎖使用者",
+                                        image: UIImage(systemName: "person.fill.xmark"),
+                                        attributes: .destructive) { _ in
+                
+                let commentIndex = indexPath.row - 2
+                
+                guard let comments = self.comments else { return }
+                
+                let comment = comments[commentIndex]
+                
+                let blockedUserID = comment.senderID
+                
+                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
+                    if isSuccess {
+                        print("Success Blocked user \(blockedUserID)")
+                    }
+                }
+            }
+            return UIMenu(title: "", children: [blockAction])
+        }
+    }
 }
 
 extension PlantDetailViewController: RemindDelegate {

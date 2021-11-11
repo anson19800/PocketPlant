@@ -111,6 +111,42 @@ class UserManager {
         }
     }
     
+    func addBlockedUser(blockedID: String, isSuccess: @escaping (Bool) -> Void) {
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(self.userID).getDocument { document, error in
+            
+            if error != nil {
+                isSuccess(false)
+            }
+            
+            guard let document = document,
+                  document.exists,
+            var user = try? document.data(as: User.self)
+            else { return }
+            
+            do {
+                if user.blockedUserID == nil {
+                    
+                    user.blockedUserID = [blockedID]
+                    
+                } else {
+                    
+                    user.blockedUserID?.append(blockedID)
+                    
+                }
+                
+                try userRef.document(self.userID).setData(from: user)
+                
+                isSuccess(true)
+                
+            } catch {
+                
+                isSuccess(false)
+            }
+        }
+    }
+    
     func searchUserisExist(userID: String, isExists: @escaping (Bool) -> Void) {
         
         let userRef = dataBase.collection("User")

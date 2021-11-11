@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UITabBar.appearance().tintColor = .white
         
         UINavigationBar.appearance().tintColor = UIColor.darkGreen1
+        let backImage = UIImage(systemName: "chevron.backward.circle.fill")
+        UINavigationBar.appearance().backIndicatorImage = backImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .carPlay]) { granted, error in
             if granted {

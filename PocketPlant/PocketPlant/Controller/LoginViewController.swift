@@ -101,7 +101,7 @@ class LoginViewController: UIViewController {
         
         let request = provider.createRequest()
         
-        request.requestedScopes = [.email, .fullName]
+        request.requestedScopes = [.email]
         
         request.nonce = sha256(nonce)
         
