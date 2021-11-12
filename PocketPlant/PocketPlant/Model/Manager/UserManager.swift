@@ -14,8 +14,6 @@ class UserManager {
     
     static let shared = UserManager()
     
-    var userName: String = "使用者"
-    
     var userID: String {
         if let user = Auth.auth().currentUser {
             return user.uid
@@ -24,7 +22,13 @@ class UserManager {
         }
     }
     
-    var currentUser: User?
+    var currentUser: User? {
+        didSet {
+            if let currentUser = currentUser {
+                print(currentUser)
+            }
+        }
+    }
     
     private init() {}
     
@@ -104,6 +108,8 @@ class UserManager {
                     user.userImageURL = userImageURL
                 }
                 
+                self.currentUser = user
+                
                 try userRef.document(userID).setData(from: user)
                 
                 isSuccess(true)
@@ -139,6 +145,8 @@ class UserManager {
                     user.blockedUserID?.append(blockedID)
                     
                 }
+                
+                self.currentUser = user
                 
                 try userRef.document(self.userID).setData(from: user)
                 
@@ -208,6 +216,8 @@ class UserManager {
                   let user = try? document.data(as: User.self)
             else { return }
             
+            self.currentUser = user
+            
             completion(Result.success(user))
         }
     }
@@ -243,6 +253,8 @@ class UserManager {
                     } else {
                         user.sharePlants = [plantID]
                     }
+                    
+                    self.currentUser = user
                     
                     try userRef.document(userID).setData(from: user)
                     isSuccess(true)

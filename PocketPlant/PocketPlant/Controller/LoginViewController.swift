@@ -158,9 +158,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            if let giveName = appleIDCredential.fullName?.givenName {
-                UserManager.shared.userName = "\(giveName)"
-            }
             
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -202,8 +199,15 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     
                 } else {
                     
-                    self.performSegue(withIdentifier: "Login", sender: nil)
-                    
+                    UserManager.shared.fetchCurrentUserInfo { result in
+                        switch result {
+                        case .success(_):
+                            self.performSegue(withIdentifier: "Login", sender: nil)
+                        case .failure(let error):
+                            print(error)
+                            return
+                        }
+                    }
                 }
             }
         }

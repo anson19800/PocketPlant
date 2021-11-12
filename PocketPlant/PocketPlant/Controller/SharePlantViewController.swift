@@ -32,22 +32,13 @@ class SharePlantViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        
-//        UserManager.shared.fetchCurrentUserInfo { result in
-//            switch result {
-//            case .success(let user):
-//                guard let plants = user.sharePlants else { return }
-//                self.plantsID = plants
-//                self.getUserSharePlants()
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        
 //        configureCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         UserManager.shared.fetchCurrentUserInfo { result in
             switch result {
             case .success(let user):

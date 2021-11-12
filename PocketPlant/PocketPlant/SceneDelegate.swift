@@ -21,12 +21,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            if Auth.auth().currentUser != nil {
+            if let currentUser = Auth.auth().currentUser {
                 
-                let rootVC = storyBoard.instantiateViewController(
-                    withIdentifier: "HomePage")
-                
-                window.rootViewController = rootVC
+                let userID = currentUser.uid
+                UserManager.shared.fetchUserInfo(userID: userID) { result in
+                    switch result {
+                    case .success(let user):
+                        
+                        UserManager.shared.currentUser = user
+                        
+                        let rootVC = storyBoard.instantiateViewController(
+                            withIdentifier: "HomePage")
+                        
+                        window.rootViewController = rootVC
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                        
+                        let rootVC = storyBoard.instantiateViewController(
+                            withIdentifier: String(describing: LoginViewController.self))
+                        
+                        window.rootViewController = rootVC
+                        
+                    }
+                }
                 
             } else {
                 

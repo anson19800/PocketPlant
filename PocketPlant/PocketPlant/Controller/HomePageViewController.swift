@@ -94,15 +94,11 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserManager.shared.fetchCurrentUserInfo { result in
-            switch result {
-            case .success(let user):
-                if let name = user.name {
-                    self.homeTitleLabel.text = "Hi！歡迎\(name)"
-                }
-            case .failure(_):
-                break
-            }
+        if let currentUser = UserManager.shared.currentUser,
+           let userName = currentUser.name {
+            self.homeTitleLabel.text = "歡迎回來 \(userName)"
+        } else {
+            self.homeTitleLabel.text = "口袋植物"
         }
         
         switch isSelectedAt {
