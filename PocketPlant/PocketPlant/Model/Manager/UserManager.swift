@@ -24,6 +24,8 @@ class UserManager {
         }
     }
     
+    var currentUser: User?
+    
     private init() {}
     
     private let dataBase = Firestore.firestore()
@@ -54,6 +56,8 @@ class UserManager {
                 do {
                     
                     try userRef.document(user.userID).setData(from: user)
+                    
+                    self.currentUser = user
                     
                 } catch {
                     

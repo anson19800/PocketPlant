@@ -258,5 +258,4 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         
         return imageCell
     }
-    
 }

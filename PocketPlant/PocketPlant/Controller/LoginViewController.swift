@@ -14,10 +14,10 @@ class LoginViewController: UIViewController {
     
     fileprivate var currentNonce: String?
     
-    var appleLogInButton: ASAuthorizationAppleIDButton = {
+    lazy var appleLogInButton: ASAuthorizationAppleIDButton = {
         let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default,
-                                                  authorizationButtonStyle: .black)
-        button.cornerRadius = 3
+                                                  authorizationButtonStyle: .white)
+        button.cornerRadius = 10
         button.addTarget(self, action: #selector(handleLogInWithAppleID), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -71,15 +71,6 @@ class LoginViewController: UIViewController {
             }
         }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "Login", sender: nil)
-        } else {
-          print("No user signed in.")
-        }
     }
     
     private func setUpButton() {
@@ -210,7 +201,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     self.present(editProfileVC, animated: true, completion: nil)
                     
                 } else {
+                    
                     self.performSegue(withIdentifier: "Login", sender: nil)
+                    
                 }
             }
         }
@@ -224,6 +217,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+        if let window = self.view.window {
+            return window
+        } else {
+            return UIWindow()
+        }
     }
 }
