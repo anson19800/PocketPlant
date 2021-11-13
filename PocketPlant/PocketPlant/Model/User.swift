@@ -15,4 +15,5 @@ struct User: Codable {
     var sharePlants: [String]?
     var favoriteShop: [GardeningShop]?
     var blockedUserID: [String]?
+    
 }

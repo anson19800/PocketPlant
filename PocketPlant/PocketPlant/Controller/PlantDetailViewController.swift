@@ -25,7 +25,6 @@ class PlantDetailViewController: UIViewController {
             tableView.registerCellWithNib(
                 identifier: String(describing: CommentTableViewCell.self),
                 bundle: nil)
-            
         }
     }
     
@@ -66,9 +65,15 @@ class PlantDetailViewController: UIViewController {
     
     var plant: Plant?
     
-    var comments: [Comment]?
+    var comments: [Comment]? {
+        didSet {
+            if let comments = comments {
+                print(comments)
+            }
+        }
+    }
     
-    var commentUser: [String: User] = [:]
+    var commentUser: [String: User?] = [:]
     
     let firebaseManager = FirebaseManager.shared
     
@@ -191,7 +196,7 @@ class PlantDetailViewController: UIViewController {
         guard let plant = plant else {
             return
         }
-
+        
         let qrcodePage = storyboard?.instantiateViewController(
             withIdentifier: String(describing: ShowQRCodePageViewController.self))
         
@@ -229,7 +234,7 @@ class PlantDetailViewController: UIViewController {
                     if let comments = comments,
                        comments.count != 0 {
                         
-                        self.tableView.scrollToRow(at: IndexPath(row: 2, section: 0), at: .top, animated: false)
+                        self.tableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: false)
                     }
                     
                 } else {
@@ -244,7 +249,7 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let comments = comments else { return 1 }
+        guard let comments = comments else { return 2 }
         
         return comments.count + 2
     }
@@ -252,7 +257,7 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-        
+            
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: PlantDetailTableViewCell.self),
                 for: indexPath)
@@ -310,8 +315,8 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
                                           previewProvider: nil) { _ in
             
             let blockAction = UIAction(title: "封鎖使用者",
-                                        image: UIImage(systemName: "person.fill.xmark"),
-                                        attributes: .destructive) { _ in
+                                       image: UIImage(systemName: "person.fill.xmark"),
+                                       attributes: .destructive) { _ in
                 
                 let commentIndex = indexPath.row - 2
                 

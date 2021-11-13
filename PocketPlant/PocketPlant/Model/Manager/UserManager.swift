@@ -265,7 +265,6 @@ class UserManager {
             } else {
                 isSuccess(false)
             }
-            
         }
     }
 }

@@ -49,17 +49,30 @@ class CommentManager {
             .order(by: "createdTime", descending: true)
             .getDocuments { snapshot, error in
                 
-            if let error = error {
-                completion(Result.failure(error))
+                if let error = error {
+                    completion(Result.failure(error))
+                }
+                
+                guard let snapshot = snapshot else { return }
+                
+                let comments = snapshot.documents.compactMap { snapshot in
+                    try? snapshot.data(as: Comment.self)
+                }
+                
+                if let blockedUserID = UserManager.shared.currentUser?.blockedUserID {
+                    
+                    let blockedComments = comments.filter { comment in
+                        
+                        !(blockedUserID.contains(comment.senderID))
+                    }
+                    
+                    completion(Result.success(blockedComments))
+                    
+                } else {
+                    
+                    completion(Result.success(comments))
+                    
+                }
             }
-            
-            guard let snapshot = snapshot else { return }
-            
-            let comments = snapshot.documents.compactMap { snapshot in
-                try? snapshot.data(as: Comment.self)
-            }
-            
-            completion(Result.success(comments))
-        }
     }
 }

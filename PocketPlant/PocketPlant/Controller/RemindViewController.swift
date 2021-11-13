@@ -68,6 +68,7 @@ class RemindViewController: UIViewController {
     @objc private func panOnFloatingView(_ recognizer: UIPanGestureRecognizer) {
         
         switch recognizer.state {
+            
         case .began:
             animator = UIViewPropertyAnimator(duration: 0.3,
                                               curve: .easeOut,
