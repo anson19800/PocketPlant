@@ -389,4 +389,83 @@ class FirebaseManager {
             
         }
     }
+    
+    func uploadTool(tool: Tool, isSuccess: (Bool) -> Void) {
+        
+        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList")
+        
+        var documentID: String = ""
+        
+        if tool.id == "" {
+            documentID = toolRef.document().documentID
+        } else {
+            documentID = tool.id
+        }
+        
+        var tool = tool
+        
+        tool.id = documentID
+        
+        do {
+            
+            try toolRef.document(documentID).setData(from: tool)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+            
+        }
+    }
+    
+    func fetchTool(completion: @escaping (Result<[Tool], Error>) -> Void) {
+        
+        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList")
+        
+        toolRef.getDocuments { snapshot, error in
+            
+            if let error = error {
+                completion(Result.failure(error))
+            }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let tools = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: Tool.self)
+            }
+            
+            completion(Result.success(tools))
+        }
+    }
+    
+    func updateTool(toolID: String, tool: Tool, isSuccess: (Bool) -> Void) {
+        
+        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(toolID)
+        
+        do {
+            
+            try toolRef.setData(from: tool)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+            
+        }
+    }
+    
+    func deleteTool(toolID: String, isSuccess: @escaping (Bool) -> Void) {
+        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(toolID)
+        
+        toolRef.delete { error in
+            if let error = error {
+                isSuccess(false)
+            } else {
+                isSuccess(true)
+            }
+        }
+    }
 }

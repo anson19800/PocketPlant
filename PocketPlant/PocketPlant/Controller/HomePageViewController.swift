@@ -62,29 +62,6 @@ class HomePageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        handle = Auth.auth().addStateDidChangeListener { _, user in
-//            if let user = user {
-//              if let userName = user.displayName {
-//                self.homeTitleLabel.text = "Hi！\(userName)"
-//              } else {
-//                self.homeTitleLabel.text = "Hi！歡迎"
-//              }
-//            } else {
-//                self.homeTitleLabel.text = "Hi！訪客"
-//            }
-//        }
-        
-        UserManager.shared.fetchCurrentUserInfo { result in
-            switch result {
-            case .success(let user):
-                if let name = user.name {
-                    self.homeTitleLabel.text = "Hi！歡迎\(name)"
-                }
-            case .failure(_):
-                break
-            }
-        }
-        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
                                                                 style: .plain,
                                                                 target: nil,
@@ -116,6 +93,17 @@ class HomePageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        UserManager.shared.fetchCurrentUserInfo { result in
+            switch result {
+            case .success(let user):
+                if let name = user.name {
+                    self.homeTitleLabel.text = "Hi！歡迎\(name)"
+                }
+            case .failure(_):
+                break
+            }
+        }
         
         switch isSelectedAt {
             

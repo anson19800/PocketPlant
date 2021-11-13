@@ -183,7 +183,7 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
                plantCount > 0 {
                 
                 historyCell.layoutCell(animationView: animationView,
-                                       historyTitle: "已經紀錄了\(plantCount)棵植物！")
+                                       historyTitle: "目前紀錄了\(plantCount)棵植物！")
             } else {
                 
                 historyCell.layoutCell(animationView: animationView,
@@ -221,7 +221,18 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
         switch selectionType {
             
         case .toolStock:
-            break
+            
+            let storyBoard = UIStoryboard(name: "ToolStock", bundle: nil)
+            
+            let viewController = storyBoard.instantiateViewController(
+                withIdentifier: String(describing: ToolStockViewController.self))
+            
+            guard let toolStockVC = viewController as? ToolStockViewController else { return }
+            
+            toolStockVC.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.pushViewController(toolStockVC, animated: true)
+            
         case .sharePlants:
             
             let storyBoard = UIStoryboard(name: "SharePlantPage", bundle: nil)
