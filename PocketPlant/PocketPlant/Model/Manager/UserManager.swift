@@ -18,15 +18,6 @@ class UserManager {
     
     private init() {}
     
-    let userID: String = {
-        
-        if let user = Auth.auth().currentUser {
-            return user.uid
-        } else {
-            return "0"
-        }
-    }()
-    
     let userDisplayName: String = {
         
         if let user = Auth.auth().currentUser,
@@ -39,11 +30,22 @@ class UserManager {
     
     private let dataBase = Firestore.firestore()
     
-    func createUserInfo() {
+    func getUserID() -> String {
+        if let user = Auth.auth().currentUser {
+            return user.uid
+        } else {
+            return "0"
+        }
+    }
+    
+    func createUserInfo(name: String, imageURL: String?, imageID: String?) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
         let user = User(userID: userID,
-                        name: userDisplayName,
-                        userImageURL: nil,
-                        representPlamtID: nil,
+                        name: name,
+                        userImageURL: imageURL,
+                        userImageID: imageID,
                         sharePlants: nil,
                         favoriteShop: nil)
         
@@ -59,6 +61,51 @@ class UserManager {
                     
                     print("Fail to create user.")
                 }
+            }
+        }
+    }
+    
+    func updateUserInfo(userName: String?, userImageID: String?, userImageURL: String?, isSuccess: @escaping (Bool) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
+        
+        userRef.document(userID).getDocument { document, error in
+            if error != nil {
+                isSuccess(false)
+            }
+            
+            guard let document = document,
+                  document.exists,
+            var user = try? document.data(as: User.self)
+            else { return }
+            
+            do {
+                
+                if let userName = userName {
+                    user.name = userName
+                }
+                
+                if let imageID = user.userImageID {
+                    ImageManager.shared.deleteImage(imageID: imageID)
+                }
+                
+                if let userImageID = userImageID,
+                   let userImageURL = userImageURL {
+                    user.userImageID = userImageID
+                    user.userImageURL = userImageURL
+                }
+                
+                try userRef.document(userID).setData(from: user)
+                
+                isSuccess(true)
+                
+            } catch {
+                
+                isSuccess(false)
             }
         }
     }
@@ -107,7 +154,11 @@ class UserManager {
         
         let userRef = dataBase.collection("User")
         
-        userRef.document(self.userID).getDocument { document, error in
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
+        
+        userRef.document(userID).getDocument { document, error in
             if let error = error {
                 completion(Result.failure(error))
             }
@@ -124,7 +175,11 @@ class UserManager {
         
         let userRef = dataBase.collection("User")
         
-        userRef.document(self.userID).getDocument { document, error in
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
+        
+        userRef.document(userID).getDocument { document, error in
             
             if error != nil {
                 
@@ -148,7 +203,7 @@ class UserManager {
                         user.sharePlants = [plantID]
                     }
                     
-                    try userRef.document(self.userID).setData(from: user)
+                    try userRef.document(userID).setData(from: user)
                     isSuccess(true)
                 
                 } catch {

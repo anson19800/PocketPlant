@@ -197,10 +197,21 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 
                 if let additionalUserInfo = authResult?.additionalUserInfo,
                    additionalUserInfo.isNewUser {
-                    UserManager.shared.createUserInfo()
+                    
+                    let storyBoard = UIStoryboard(name: "EditProfile", bundle: nil)
+                    
+                    let viewController = storyBoard.instantiateViewController(
+                        withIdentifier: String(describing: EditProfileViewController.self))
+                    
+                    guard let editProfileVC = viewController as? EditProfileViewController else { return }
+                    
+                    editProfileVC.modalPresentationStyle = .fullScreen
+                    
+                    self.present(editProfileVC, animated: true, completion: nil)
+                    
+                } else {
+                    self.performSegue(withIdentifier: "Login", sender: nil)
                 }
-                print("登入成功")
-                self.performSegue(withIdentifier: "Login", sender: nil)
             }
         }
     }

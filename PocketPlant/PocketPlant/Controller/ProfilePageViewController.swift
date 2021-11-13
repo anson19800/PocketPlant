@@ -8,17 +8,15 @@
 import UIKit
 import FirebaseAuth
 import Lottie
+import Kingfisher
 
 enum SettingSelection: String, CaseIterable {
-    case userInfo = "編輯個人資訊"
     case toolStock = "材料庫存"
     case sharePlants = "共享植物"
     case acountManagement = "帳號管理"
     
     var iconImage: UIImage? {
         switch self {
-        case .userInfo:
-            return UIImage(systemName: "person.circle")
         case .toolStock:
             return UIImage(systemName: "hammer.fill")
         case .acountManagement:
@@ -43,7 +41,7 @@ class ProfilePageViewController: UIViewController {
     
     @IBOutlet weak var imageContainer: UIView!
     
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userNameTextField: UITextField!
     
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
@@ -52,12 +50,23 @@ class ProfilePageViewController: UIViewController {
             userImageView.applyshadowWithCorner(containerView: imageContainer, cornerRadious: width / 2)
         }
     }
+    @IBOutlet weak var updatePhotoButton: UIImageView! {
+        didSet {
+            updatePhotoButton.layer.cornerRadius = updatePhotoButton.frame.width / 2
+        }
+    }
+    
+    @IBOutlet weak var updateNameButton: UIImageView!
     
     var plantCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.largeTitleDisplayMode = .never
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectUserPhoto))
+        userImageView.addGestureRecognizer(tap)
+        userImageView.isUserInteractionEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,9 +75,12 @@ class ProfilePageViewController: UIViewController {
         UserManager.shared.fetchCurrentUserInfo { result in
             switch result {
             case .success(let user):
-                self.userNameLabel.text = user.name
+                self.userNameTextField.text = user.name
+                if let imageURL = user.userImageURL {
+                    self.userImageView.kf.setImage(with: URL(string: imageURL))
+                }
             case .failure(let error):
-                self.userNameLabel.text = "使用者"
+                self.userNameTextField.text = "使用者"
                 print(error)
             }
         }
@@ -84,6 +96,68 @@ class ProfilePageViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    @objc func selectUserPhoto() {
+        let controller = UIAlertController(title: nil,
+                                           message: nil,
+                                           preferredStyle: .actionSheet)
+        
+        let photoAction = UIAlertAction(title: "從相簿選擇",
+                                        style: .default) { _ in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                
+                let imagePicker = UIImagePickerController()
+                
+                imagePicker.allowsEditing = true
+                
+                imagePicker.sourceType = .photoLibrary
+                
+                imagePicker.delegate = self
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        let cameraAction = UIAlertAction(title: "開啟相機拍照",
+                                         style: .default) { _ in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                
+                let imagePicker = UIImagePickerController()
+                
+                imagePicker.allowsEditing = true
+                
+                imagePicker.sourceType = .camera
+                
+                imagePicker.delegate = self
+                
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "取消",
+                                         style: .cancel,
+                                         handler: nil)
+        
+        controller.addAction(photoAction)
+        controller.addAction(cameraAction)
+        controller.addAction(cancelAction)
+        
+        present(controller, animated: true, completion: nil)
+    }
+ 
+    @IBAction func endRenameAction(_ sender: UITextField) {
+        guard let userName = sender.text else { return }
+        UserManager.shared.updateUserInfo(userName: userName,
+                                          userImageID: nil,
+                                          userImageURL: nil) { isSuccess in
+            if isSuccess {
+                return
+            }
+        }
+    }
+    
 }
 
 extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -145,8 +219,7 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
         let selectionType = SettingSelection.allCases[indexPath.row - 1]
         
         switch selectionType {
-        case .userInfo:
-            break
+            
         case .toolStock:
             break
         case .sharePlants:
@@ -173,6 +246,30 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             accountingSettingVC.modalPresentationStyle = .fullScreen
             
             self.navigationController?.pushViewController(accountingSettingVC, animated: true)
+        }
+    }
+}
+
+extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            ImageManager.shared.uploadImageToGetURL(image: image) { result in
+                switch result {
+                case .success((let uuid, let url)):
+                    UserManager.shared.updateUserInfo(userName: nil,
+                                                      userImageID: uuid,
+                                                      userImageURL: url) { isSuccess in
+                        if isSuccess {
+                            self.userImageView.image = image
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    }
+                case .failure(let error):
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
 }

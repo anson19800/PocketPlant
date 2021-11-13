@@ -21,4 +21,11 @@ extension UIViewController {
         
         return animationView
     }
+    
+    func generateAnimationView(name: String, loopMode: LottieLoopMode) -> AnimationView {
+        let animationView = AnimationView(name: name)
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = loopMode
+        return animationView
+    }
 }
