@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +23,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="BackgroundGreen"/>
                         <constraints>
                             <constraint firstItem="VTq-br-xqa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="84L-TI-H5d"/>
                             <constraint firstItem="VTq-br-xqa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="5" id="OuQ-62-Ka6"/>
@@ -39,28 +39,31 @@
             </objects>
             <point key="canvasLocation" x="138" y="45"/>
         </scene>
-        <!--View Controller-->
+        <!--Blocked User View Controller-->
         <scene sceneID="G9e-m3-tbP">
             <objects>
-                <viewController id="xYj-C3-VQr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlockedUserViewController" id="xYj-C3-VQr" customClass="BlockedUserViewController" customModule="PocketPlant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TX5-wY-jSd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LWg-5t-QXk">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LWg-5t-QXk">
+                                <rect key="frame" x="10" y="44" width="394" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5r5-kJ-Ecy"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundGreen"/>
                         <constraints>
                             <constraint firstItem="5r5-kJ-Ecy" firstAttribute="bottom" secondItem="LWg-5t-QXk" secondAttribute="bottom" id="6WT-9p-4wR"/>
-                            <constraint firstItem="LWg-5t-QXk" firstAttribute="leading" secondItem="5r5-kJ-Ecy" secondAttribute="leading" id="LM5-ut-xKx"/>
-                            <constraint firstItem="5r5-kJ-Ecy" firstAttribute="trailing" secondItem="LWg-5t-QXk" secondAttribute="trailing" id="VFV-i8-zMU"/>
+                            <constraint firstItem="LWg-5t-QXk" firstAttribute="leading" secondItem="5r5-kJ-Ecy" secondAttribute="leading" constant="10" id="LM5-ut-xKx"/>
+                            <constraint firstItem="5r5-kJ-Ecy" firstAttribute="trailing" secondItem="LWg-5t-QXk" secondAttribute="trailing" constant="10" id="VFV-i8-zMU"/>
                             <constraint firstItem="LWg-5t-QXk" firstAttribute="top" secondItem="5r5-kJ-Ecy" secondAttribute="top" id="Wlt-aF-KCQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="LWg-5t-QXk" id="PnJ-kl-KUQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZxT-89-bRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,8 +71,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="BackgroundGreen">
+            <color red="0.94117647059999998" green="1" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

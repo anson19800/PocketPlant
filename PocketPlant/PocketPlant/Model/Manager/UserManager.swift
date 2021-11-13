@@ -267,4 +267,35 @@ class UserManager {
             }
         }
     }
+    
+    func deleteBlockedUser(blockedUserID: String, isSuccess: (Bool) -> Void) {
+        
+        guard var blockedUsersID = self.currentUser?.blockedUserID,
+              var currentUser = self.currentUser else {
+            isSuccess(false)
+            return
+        }
+        
+        blockedUsersID.removeAll { userID -> Bool in
+            return userID == blockedUserID
+        }
+        
+        currentUser.blockedUserID = blockedUsersID
+        
+        self.currentUser = currentUser
+        
+        let userRef = dataBase.collection("User")
+        
+        do {
+        
+            try userRef.document(currentUser.userID).setData(from: currentUser)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+            
+        }
+    }
 }

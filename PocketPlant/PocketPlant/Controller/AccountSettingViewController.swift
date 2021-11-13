@@ -11,12 +11,15 @@ import SafariServices
 
 enum AccountSetting: String, CaseIterable {
     case logOut = "登出"
+    case blockedList = "封鎖用戶"
     case privacyPolicy = "隱私權政策"
     case deleteAccount = "刪除帳號"
     
     var iconImage: UIImage? {
         switch self {
         case .logOut:
+            return UIImage(systemName: "person.fill.xmark")
+        case .blockedList:
             return UIImage(systemName: "person.fill.xmark")
         case .deleteAccount:
             return UIImage(systemName: "trash.fill")
@@ -82,6 +85,14 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
         case .logOut:
             
             logOutAction()
+            
+        case .blockedList:
+            
+            guard let blockedListVC = self.storyboard?.instantiateViewController(
+                withIdentifier: String(describing: BlockedUserViewController.self)) as? BlockedUserViewController
+            else { return }
+            
+            self.navigationController?.pushViewController(blockedListVC, animated: true)
             
         case .deleteAccount:
             
