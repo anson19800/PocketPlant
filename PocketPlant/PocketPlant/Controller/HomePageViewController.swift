@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
@@ -45,9 +46,23 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var homeTitleLabel: UILabel!
     
+    @IBOutlet weak var animationContainer: UIView!
+    
+    @IBOutlet weak var emptyPlantLabel: UILabel! {
+        didSet {
+            emptyPlantLabel.text = "還沒有紀錄任何植物呢\n快去新增吧！"
+        }
+    }
+    
+    var emptyAnimation: AnimationView?
+    
     let firebaseManager = FirebaseManager.shared
     
-    var plants: [Plant]?
+    var plants: [Plant]? {
+        didSet {
+            checkIsEmpty()
+        }
+    }
     
     var searchPlants: [Plant]?
     
@@ -89,6 +104,16 @@ class HomePageViewController: UIViewController {
         let viewWidth = view.bounds.width
         let viewHeight = view.bounds.height
         waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 130)
+        
+        emptyAnimation = loadAnimation(name: "33731-emptyPlant", loopMode: .loop)
+        if let emptyAnimation = emptyAnimation {
+            emptyAnimation.frame = animationContainer.bounds
+            animationContainer.addSubview(emptyAnimation)
+            emptyAnimation.play()
+        }
+        
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,12 +158,6 @@ class HomePageViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
-        
-        self.searchBar.endEditing(true)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
         
         self.searchBar.endEditing(true)
     }
@@ -201,6 +220,28 @@ class HomePageViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func checkIsEmpty() {
+        if let plants = plants {
+            if plants.count <= 0 {
+                animationContainer.isHidden = false
+                emptyPlantLabel.isHidden = false
+                waterImageView.isHidden = true
+                emptyPlantLabel.text = "還沒有植物呢\n快去新增吧！"
+                if let emptyAnimation = emptyAnimation {
+                    emptyAnimation.play()
+                }
+            } else {
+                animationContainer.isHidden = true
+                emptyPlantLabel.isHidden = true
+                waterImageView.isHidden = false
+                if let emptyAnimation = emptyAnimation {
+                    emptyAnimation.stop()
+                }
+            }
+        }
+        
     }
     
     func deletePlantAction(indexPath: IndexPath) {
@@ -576,18 +617,28 @@ extension HomePageViewController: UISearchBarDelegate {
         
         guard let plants = plants else { return }
         
-        searchPlants = plants.filter { plant -> Bool in
+        if searchText != "" {
             
-            return plant.name.prefix(searchText.count) == searchText
+            searchPlants = plants.filter { plant -> Bool in
+                
+                return plant.name.contains(searchText)
+                
+            }
+            
+            searching = true
+            
+        } else {
+            
+            searching = false
             
         }
-        
-        searching = true
         
         self.plantCollectionView.performBatchUpdates({
             let indexSet = IndexSet(integersIn: 0...0)
             self.plantCollectionView.reloadSections(indexSet)
         }, completion: nil)
+        
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

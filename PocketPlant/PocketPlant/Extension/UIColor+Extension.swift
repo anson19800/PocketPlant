@@ -18,6 +18,8 @@ private enum PPColor: String {
     
     case CloudBlue
     
+    case DarkBlue
+    
 }
 
 extension UIColor {
@@ -29,6 +31,8 @@ extension UIColor {
     static let NavTabColor = PPColor(.NavTabColor)
 
     static let CloudBlue = PPColor(.CloudBlue)
+    
+    static let DarkBlue = PPColor(.DarkBlue)
     
     // swiftlint:enable identifier_name
     

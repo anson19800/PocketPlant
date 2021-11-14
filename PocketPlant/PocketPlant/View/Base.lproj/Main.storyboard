@@ -127,12 +127,28 @@
                                     <outletCollection property="gestureRecognizers" destination="27u-HF-mpq" appends="YES" id="D4A-Mv-PS3"/>
                                 </connections>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-f4-YDy">
+                                <rect key="frame" x="114" y="423" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="H0e-GN-ycd"/>
+                                    <constraint firstAttribute="height" constant="200" id="Nba-k3-6H0"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒有紀錄任何植物呢快去新增吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Naz-9Y-pLb">
+                                <rect key="frame" x="114" y="623" width="200" height="47.666666666666629"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Naz-9Y-pLb" firstAttribute="trailing" secondItem="Eeb-f4-YDy" secondAttribute="trailing" id="0UQ-Z4-R5m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oF9-CH-E7h" secondAttribute="trailing" constant="35" id="4W2-bn-rK5"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="top" secondItem="06M-3v-eqW" secondAttribute="bottom" constant="15" id="6fM-Db-m0F"/>
+                            <constraint firstItem="Naz-9Y-pLb" firstAttribute="top" secondItem="Eeb-f4-YDy" secondAttribute="bottom" id="Ckg-bc-fyT"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Dsf-G1-Lhx"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="EZ5-UU-E4B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VoJ-oc-igC" secondAttribute="trailing" id="Jhl-AX-cNP"/>
@@ -141,7 +157,10 @@
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="top" secondItem="oF9-CH-E7h" secondAttribute="bottom" constant="20" id="ZLO-YV-eId"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZyC-l0-P9K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdc-Vf-YSU" secondAttribute="trailing" id="hZL-jP-hJK"/>
+                            <constraint firstItem="Eeb-f4-YDy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="60" id="itN-m6-CGH"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="trailing" secondItem="oF9-CH-E7h" secondAttribute="trailing" id="kvR-1g-y6y"/>
+                            <constraint firstItem="Eeb-f4-YDy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mMg-ur-Tw7"/>
+                            <constraint firstItem="Naz-9Y-pLb" firstAttribute="leading" secondItem="Eeb-f4-YDy" secondAttribute="leading" id="nek-A4-2mp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iFC-IX-pb8" secondAttribute="bottom" id="o77-lY-ioT"/>
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="rt7-Cg-FS0"/>
                         </constraints>
@@ -149,7 +168,9 @@
                     <navigationItem key="navigationItem" id="LpM-Bc-Hwe"/>
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
+                        <outlet property="animationContainer" destination="Eeb-f4-YDy" id="gm4-Pa-Hfq"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
+                        <outlet property="emptyPlantLabel" destination="Naz-9Y-pLb" id="6Pj-pa-NMi"/>
                         <outlet property="headerBackground" destination="jdc-Vf-YSU" id="EOG-UY-WIx"/>
                         <outlet property="homeTitleLabel" destination="06M-3v-eqW" id="VCd-hF-2s8"/>
                         <outlet property="plantCollectionView" destination="iFC-IX-pb8" id="X41-XB-Clo"/>
@@ -728,8 +749,11 @@
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="water" width="1024" height="1024"/>
+        <namedColor name="DarkBlue">
+            <color red="0.25900000333786011" green="0.29399999976158142" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="NavTabColor">
-            <color red="0.71372549019999998" green="0.83529411760000005" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.71372549019607845" green="0.83137254901960789" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
