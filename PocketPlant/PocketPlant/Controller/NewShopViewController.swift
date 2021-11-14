@@ -133,7 +133,11 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             if indexPath.row >= images.count {
                 
-                imageCell.mainImageView.image = UIImage(named: "plant")
+                let placeHolderImage = UIImage(systemName: "photo")
+                
+                imageCell.mainImageView.image = placeHolderImage
+                
+                imageCell.mainImageView.tintColor = .DarkGreen
                 
             } else {
                 
@@ -142,7 +146,11 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
             
         } else if selectedImages == nil {
             
-            imageCell.mainImageView.image = UIImage(named: "plant")
+            let placeHolderImage = UIImage(systemName: "photo")
+            
+            imageCell.mainImageView.image = placeHolderImage
+            
+            imageCell.mainImageView.tintColor = .DarkGreen
         }
         
         return imageCell

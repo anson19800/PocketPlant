@@ -128,8 +128,17 @@ extension ScanQRCodePageViewController: SharePlantDetailDelegate {
     }
     
     func goToSharePlantPage() {
-        self.dismiss(animated: true, completion: nil)
-        self.tabBarController?.selectedIndex = 3
-        let vcccc = self.tabBarController?.presentationController
+        
+        let parentVC = self.navigationController?.viewControllers.first
+        
+        guard let homepageVC = parentVC as? HomePageViewController else { return }
+        
+        homepageVC.isSelectedAt = .sharePlants
+        
+        homepageVC.buttonCollectionView.selectItem(at: IndexPath(row: 2, section: 0),
+                                                   animated: false,
+                                                   scrollPosition: .top)
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

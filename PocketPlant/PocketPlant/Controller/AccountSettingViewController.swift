@@ -18,7 +18,7 @@ enum AccountSetting: String, CaseIterable {
     var iconImage: UIImage? {
         switch self {
         case .logOut:
-            return UIImage(systemName: "person.fill.xmark")
+            return UIImage(systemName: "clear.fill")
         case .blockedList:
             return UIImage(systemName: "person.fill.xmark")
         case .deleteAccount:

@@ -31,14 +31,14 @@ class NewPlantPageViewController: UIViewController {
         didSet {
             uploadImageButton.layer.borderWidth = 2
             uploadImageButton.layer.borderColor = UIColor.lightGray.cgColor
-            uploadImageButton.layer.cornerRadius = 20
+            uploadImageButton.layer.cornerRadius = 15
         }
     }
     @IBOutlet weak var takePhotoButton: UIButton! {
         didSet {
             takePhotoButton.layer.borderWidth = 2
             takePhotoButton.layer.borderColor = UIColor.lightGray.cgColor
-            takePhotoButton.layer.cornerRadius = 20
+            takePhotoButton.layer.cornerRadius = 15
         }
     }
     

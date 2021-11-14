@@ -86,9 +86,17 @@ class PlantDetailViewController: UIViewController {
         guard let plant = plant,
               let imageUrl = plant.imageURL else { return }
         
-        plantNameLabel.text = plant.name
+        if plant.name == "" {
+            plantNameLabel.text = "未命名的植物"
+        } else {
+            plantNameLabel.text = plant.name
+        }
         
-        plantCategoryLabel.text = plant.category
+        if plant.category == "" {
+            plantCategoryLabel.text = "未分類"
+        } else {
+            plantCategoryLabel.text = plant.category
+        }
         
         favoriteButton.tintColor = plant.favorite ? .red : .gray
         
