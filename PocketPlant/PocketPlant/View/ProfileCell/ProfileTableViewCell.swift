@@ -42,6 +42,8 @@ class ProfileTableViewCell: UITableViewCell {
         titleLabel.text = title
         if let imageURL = imageURL {
             iconImageView.kf.setImage(with: URL(string: imageURL))
+        } else {
+            iconImageView.image = UIImage(systemName: "person.circle.fill")
         }
     }
 }

@@ -292,7 +292,14 @@ class HomePageViewController: UIViewController {
                 animationContainer.isHidden = false
                 emptyPlantLabel.isHidden = false
                 waterImageView.isHidden = true
-                emptyPlantLabel.text = "還沒有植物呢\n快去新增吧！"
+                switch isSelectedAt {
+                case .myPlant:
+                    emptyPlantLabel.text = "還沒有植物呢\n快去新增吧！"
+                case .myFavorite:
+                    emptyPlantLabel.text = "還沒有最愛植物呢！"
+                case .sharePlants:
+                    emptyPlantLabel.text = "還沒有收藏植物呢\n快掃描朋友的植物QRCode!"
+                }
                 if let emptyAnimation = emptyAnimation {
                     emptyAnimation.play()
                 }
@@ -303,6 +310,22 @@ class HomePageViewController: UIViewController {
                 if let emptyAnimation = emptyAnimation {
                     emptyAnimation.stop()
                 }
+            }
+        } else {
+            
+            animationContainer.isHidden = false
+            emptyPlantLabel.isHidden = false
+            waterImageView.isHidden = true
+            switch isSelectedAt {
+            case .myPlant:
+                emptyPlantLabel.text = "還沒有植物呢\n快去新增吧！"
+            case .myFavorite:
+                emptyPlantLabel.text = "還沒有最愛植物呢！"
+            case .sharePlants:
+                emptyPlantLabel.text = "還沒有收藏植物呢\n快掃描朋友的植物QRCode!"
+            }
+            if let emptyAnimation = emptyAnimation {
+                emptyAnimation.play()
             }
         }
         
@@ -330,7 +353,6 @@ class HomePageViewController: UIViewController {
         UserManager.shared.deleteSharePlant(sharePlants: sharePlants) { isSuccess in
             if isSuccess {
                 self.updateSharePlants(withAnimation: true)
-                self.checkIsEmpty()
             }
         }
     }
@@ -437,7 +459,40 @@ class HomePageViewController: UIViewController {
         dropView.center.y += translation.y
         sender.setTranslation(.zero, in: view)
         
+        let selectedPoint = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
+        
+        if let indexPath = plantCollectionView.indexPathForItem(at: selectedPoint) {
+            
+            if let selectedCell = plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell,
+               let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell]{
+                
+                cells.forEach { cell in
+                    if cell == selectedCell {
+                        
+                        cell.isPanOnCell = true
+                        
+                    } else {
+                        
+                        cell.isPanOnCell = false
+                        
+                    }
+                }
+            }
+        } else {
+            if let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
+                cells.forEach { cell in
+                    cell.isPanOnCell = false
+                }
+            }
+        }
+        
         if sender.state == .ended {
+            
+            if let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
+                cells.forEach { cell in
+                    cell.isPanOnCell = false
+                }
+            }
             
             dropView.isUserInteractionEnabled = false
             
