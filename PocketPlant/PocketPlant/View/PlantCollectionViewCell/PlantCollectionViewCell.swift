@@ -17,9 +17,18 @@ class PlantCollectionViewCell: UICollectionViewCell {
             plantImageView.layer.borderWidth = 1
             plantImageView.layer.borderColor = UIColor.hexStringToUIColor(hex: "DFEFDF").cgColor
         }
-        
     }
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var isPanOnCell: Bool = false {
+        didSet {
+            if isPanOnCell != oldValue {
+                UIView.animate(withDuration: 0.3) {
+                    self.transform = self.isPanOnCell ? CGAffineTransform(scaleX: 1.2, y: 1.2) : .identity
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

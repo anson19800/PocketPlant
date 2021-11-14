@@ -127,8 +127,6 @@ class ShopDetailViewController: UIViewController {
                         let indexSet = IndexSet(integersIn: 0...0)
                         self.tableView.reloadSections(indexSet, with: .fade)
                     }
-                    
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                 }
                 
             case .failure(let error):
@@ -214,11 +212,11 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let user = self.commentUser[comment.senderID] {
                 
-                commentCell.layoutCell(comment: comment, user: user)
+                commentCell.layoutCell(comment: comment, user: user, isOwner: false)
                 
             } else {
                 
-                commentCell.layoutCell(comment: comment, user: nil)
+                commentCell.layoutCell(comment: comment, user: nil, isOwner: false)
                 
             }
             

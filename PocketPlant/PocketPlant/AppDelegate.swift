@@ -14,14 +14,13 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         
         IQKeyboardManager.shared.enable = true
         
-        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().tintColor = .DarkGreen
         
         UINavigationBar.appearance().tintColor = UIColor.darkGreen1
         let backImage = UIImage(systemName: "chevron.backward.circle.fill")

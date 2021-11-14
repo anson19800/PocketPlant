@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -23,13 +24,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="口袋植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06M-3v-eqW">
-                                        <rect key="frame" x="33" y="60" width="273" height="38"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="27"/>
+                                        <rect key="frame" x="33" y="60" width="273" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.12931125602759783" green="0.16638832293333339" blue="0.13009218043732002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpB-Pp-zi3">
-                                        <rect key="frame" x="316" y="63" width="35" height="33"/>
+                                        <rect key="frame" x="316" y="59" width="35" height="32.999999999999993"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="Asg-5A-qYw"/>
                                             <constraint firstAttribute="height" constant="35" id="ZNe-de-uiK"/>
@@ -43,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdd-YK-xjB">
-                                        <rect key="frame" x="363" y="63.999999999999986" width="35" height="30.666666666666686"/>
+                                        <rect key="frame" x="363" y="59.999999999999986" width="35" height="30.666666666666686"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="nLr-8V-FRT"/>
                                             <constraint firstAttribute="height" constant="35" id="zBF-hl-MZw"/>
@@ -56,7 +57,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.69005210325858801" green="0.87055634259999992" blue="0.72317188420877854" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="NavTabColor"/>
                                 <constraints>
                                     <constraint firstItem="tdd-YK-xjB" firstAttribute="centerY" secondItem="06M-3v-eqW" secondAttribute="centerY" id="8Qr-FJ-wOM"/>
                                     <constraint firstItem="QpB-Pp-zi3" firstAttribute="centerY" secondItem="tdd-YK-xjB" secondAttribute="centerY" id="Bdc-Xx-MAq"/>
@@ -69,14 +70,14 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
-                                <rect key="frame" x="35" y="113" width="358" height="51"/>
+                                <rect key="frame" x="35" y="104.66666666666669" width="358" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VoJ-oc-igC">
-                                <rect key="frame" x="35" y="184" width="393" height="76"/>
+                                <rect key="frame" x="43" y="165.66666666666666" width="350" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="76" id="fkW-Ee-Fey"/>
+                                    <constraint firstAttribute="height" constant="40" id="fUR-Ne-800"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="50" id="YV1-Kd-KPW">
                                     <size key="itemSize" width="76" height="73"/>
@@ -86,7 +87,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="button" id="CQW-43-v4G">
-                                        <rect key="frame" x="0.0" y="1.6666666666666667" width="76" height="73"/>
+                                        <rect key="frame" x="0.0" y="-16.666666666666668" width="76" height="73"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aOI-wd-fyt">
                                             <rect key="frame" x="0.0" y="0.0" width="76" height="73"/>
@@ -97,7 +98,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
-                                <rect key="frame" x="35" y="280" width="358" height="563"/>
+                                <rect key="frame" x="35" y="225.66666666666669" width="358" height="617.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -126,29 +127,50 @@
                                     <outletCollection property="gestureRecognizers" destination="27u-HF-mpq" appends="YES" id="D4A-Mv-PS3"/>
                                 </connections>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-f4-YDy">
+                                <rect key="frame" x="114" y="423" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="H0e-GN-ycd"/>
+                                    <constraint firstAttribute="height" constant="200" id="Nba-k3-6H0"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒有紀錄任何植物呢快去新增吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Naz-9Y-pLb">
+                                <rect key="frame" x="114" y="623" width="200" height="47.666666666666629"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Naz-9Y-pLb" firstAttribute="trailing" secondItem="Eeb-f4-YDy" secondAttribute="trailing" id="0UQ-Z4-R5m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oF9-CH-E7h" secondAttribute="trailing" constant="35" id="4W2-bn-rK5"/>
-                            <constraint firstItem="oF9-CH-E7h" firstAttribute="top" secondItem="06M-3v-eqW" secondAttribute="bottom" constant="15" id="6fM-Db-m0F"/>
+                            <constraint firstItem="Naz-9Y-pLb" firstAttribute="top" secondItem="Eeb-f4-YDy" secondAttribute="bottom" id="Ckg-bc-fyT"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Dsf-G1-Lhx"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="EZ5-UU-E4B"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VoJ-oc-igC" secondAttribute="trailing" id="Jhl-AX-cNP"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="20" id="RvC-Ke-p1d"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TET-yt-ZRc"/>
-                            <constraint firstItem="VoJ-oc-igC" firstAttribute="top" secondItem="oF9-CH-E7h" secondAttribute="bottom" constant="20" id="ZLO-YV-eId"/>
+                            <constraint firstItem="VoJ-oc-igC" firstAttribute="top" secondItem="oF9-CH-E7h" secondAttribute="bottom" constant="10" id="ZLO-YV-eId"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZyC-l0-P9K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdc-Vf-YSU" secondAttribute="trailing" id="hZL-jP-hJK"/>
+                            <constraint firstItem="Eeb-f4-YDy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="60" id="itN-m6-CGH"/>
+                            <constraint firstItem="VoJ-oc-igC" firstAttribute="trailing" secondItem="oF9-CH-E7h" secondAttribute="trailing" id="jXO-jM-gjh"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="trailing" secondItem="oF9-CH-E7h" secondAttribute="trailing" id="kvR-1g-y6y"/>
+                            <constraint firstItem="Eeb-f4-YDy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mMg-ur-Tw7"/>
+                            <constraint firstItem="Naz-9Y-pLb" firstAttribute="leading" secondItem="Eeb-f4-YDy" secondAttribute="leading" id="nek-A4-2mp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iFC-IX-pb8" secondAttribute="bottom" id="o77-lY-ioT"/>
-                            <constraint firstItem="VoJ-oc-igC" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="rt7-Cg-FS0"/>
+                            <constraint firstItem="VoJ-oc-igC" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" constant="8" id="rt7-Cg-FS0"/>
+                            <constraint firstItem="oF9-CH-E7h" firstAttribute="centerY" secondItem="jdc-Vf-YSU" secondAttribute="bottom" id="xFE-z9-DoF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LpM-Bc-Hwe"/>
                     <connections>
                         <outlet property="addButton" destination="tdd-YK-xjB" id="pgs-Wc-eAs"/>
+                        <outlet property="animationContainer" destination="Eeb-f4-YDy" id="gm4-Pa-Hfq"/>
                         <outlet property="buttonCollectionView" destination="VoJ-oc-igC" id="DJl-SA-qhc"/>
+                        <outlet property="emptyPlantLabel" destination="Naz-9Y-pLb" id="6Pj-pa-NMi"/>
                         <outlet property="headerBackground" destination="jdc-Vf-YSU" id="EOG-UY-WIx"/>
                         <outlet property="homeTitleLabel" destination="06M-3v-eqW" id="VCd-hF-2s8"/>
                         <outlet property="plantCollectionView" destination="iFC-IX-pb8" id="X41-XB-Clo"/>
@@ -249,7 +271,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.6900521033" green="0.87055634260000003" blue="0.7231718842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="NavTabColor"/>
                                 <constraints>
                                     <constraint firstItem="TkV-KU-CFG" firstAttribute="leading" secondItem="5Yv-KP-SKA" secondAttribute="leading" id="52v-Bw-bzc"/>
                                     <constraint firstItem="5Yv-KP-SKA" firstAttribute="top" secondItem="4W7-Kd-5IS" secondAttribute="top" constant="50" id="7Zf-Cb-YKK"/>
@@ -258,12 +280,13 @@
                                     <constraint firstItem="TkV-KU-CFG" firstAttribute="top" secondItem="5Yv-KP-SKA" secondAttribute="bottom" constant="10" id="ewT-Ab-qcY"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-hg-Qdl">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QGH-hg-Qdl">
                                 <rect key="frame" x="33" y="150" width="362" height="32"/>
                                 <segments>
                                     <segment title="植物"/>
                                     <segment title="園藝店"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" name="NavTabColor"/>
                                 <connections>
                                     <action selector="switchType:" destination="cq8-ww-kEA" eventType="valueChanged" id="71O-R4-5Dz"/>
                                 </connections>
@@ -318,14 +341,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OgS-ub-qNz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首頁" id="ftW-8A-WjL">
-                        <imageReference key="image" image="house.fill" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="image" image="Home-normal" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color red="0.27843137254901962" green="0.42352941176470588" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
                         </imageReference>
-                        <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large" renderingMode="hierarchical-single">
+                        <imageReference key="selectedImage" image="Home-selected" symbolScale="large" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color red="0.50492659200000001" green="0.73289326990000003" blue="0.51663499509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -420,7 +443,7 @@
                         <color key="tintColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <tabBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.71372549019999998" green="0.83529411760000005" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="NavTabColor"/>
                             <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <tabBarItemAppearance key="stackedLayoutAppearance">
                                 <tabBarItemStateAppearance key="normal"/>
@@ -428,11 +451,10 @@
                                 <tabBarItemStateAppearance key="disabled"/>
                                 <tabBarItemStateAppearance key="focused"/>
                             </tabBarItemAppearance>
-                            <color key="selectionIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tabBarAppearance>
                         <tabBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" red="0.71372549019607845" green="0.83529411764705885" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="selectionIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="selectionIndicatorTintColor" red="0.20392156859999999" green="0.4431372549" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
@@ -604,14 +626,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xVj-D6-f8D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="日曆" id="3YV-E3-MZT">
-                        <imageReference key="image" image="calendar" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="image" image="Calendar-normal" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
                         </imageReference>
-                        <imageReference key="selectedImage" image="calendar" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="selectedImage" image="Calendar-select" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
@@ -638,14 +660,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2OS-Va-O1v" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="個人資訊" id="bmX-Ra-4aG">
-                        <imageReference key="image" image="person.fill" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="image" image="Profile-normal" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
                         </imageReference>
-                        <imageReference key="selectedImage" image="person.fill" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="selectedImage" image="Profile-select" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
@@ -658,7 +680,7 @@
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="BackgroundGreen"/>
                             <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
@@ -680,14 +702,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O10-gm-hKd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="探索" id="WqW-Do-deb">
-                        <imageReference key="image" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="image" image="Discover-normal" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color systemColor="secondaryLabelColor"/>
                                 <color systemColor="tertiaryLabelColor"/>
                             </hierarchicalColors>
                         </imageReference>
-                        <imageReference key="selectedImage" image="globe.asia.australia.fill" catalog="system" renderingMode="hierarchical-single">
+                        <imageReference key="selectedImage" image="Discover-selected" renderingMode="hierarchical-single">
                             <hierarchicalColors>
                                 <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color systemColor="secondaryLabelColor"/>
@@ -714,16 +736,29 @@
         <segue reference="TN7-OC-vVQ"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="globe.asia.australia.fill" catalog="system" width="128" height="121"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="Calendar-normal" width="25" height="25"/>
+        <image name="Calendar-select" width="25" height="25"/>
+        <image name="Discover-normal" width="25" height="25"/>
+        <image name="Discover-selected" width="25" height="25"/>
+        <image name="Home-normal" width="25" height="25"/>
+        <image name="Home-selected" width="25" height="25"/>
+        <image name="Profile-normal" width="25" height="25"/>
+        <image name="Profile-select" width="25" height="25"/>
         <image name="icon" width="180" height="180"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="water" width="1024" height="1024"/>
+        <namedColor name="BackgroundGreen">
+            <color red="0.94099998474121094" green="1" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DarkBlue">
+            <color red="0.25900000333786011" green="0.29399999976158142" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="NavTabColor">
+            <color red="0.71372549019607845" green="0.83137254901960789" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
