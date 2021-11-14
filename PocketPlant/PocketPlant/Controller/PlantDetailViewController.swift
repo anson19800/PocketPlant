@@ -311,6 +311,16 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard indexPath.row > 1 else { return nil }
         
+        guard let comments = self.comments,
+              let currentUser = UserManager.shared.currentUser
+        else { return nil }
+        
+        let comment = comments[indexPath.row - 2]
+        
+        if comment.senderID == currentUser.userID {
+            return nil
+        }
+        
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
             
@@ -328,6 +338,7 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 
                 UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
                     if isSuccess {
+                        self.fetchComment()
                         print("Success Blocked user \(blockedUserID)")
                     }
                 }

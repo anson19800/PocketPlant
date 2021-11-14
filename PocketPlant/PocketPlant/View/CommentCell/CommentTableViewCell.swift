@@ -38,6 +38,8 @@ class CommentTableViewCell: UITableViewCell {
         userLabel.text = user.name
         if let imageURL = user.userImageURL {
             userImageView.kf.setImage(with: URL(string: imageURL))
+        } else {
+            userImageView.image = UIImage(systemName: "person.circle.fill")
         }
     }
 }
