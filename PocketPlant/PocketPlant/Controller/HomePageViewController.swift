@@ -294,7 +294,7 @@ class HomePageViewController: UIViewController {
                 waterImageView.isHidden = true
                 switch isSelectedAt {
                 case .myPlant:
-                    emptyPlantLabel.text = "還沒有植物呢\n快去新增吧！"
+                    emptyPlantLabel.text = "還沒有植物呢\n點擊畫面右上角＋新增！"
                 case .myFavorite:
                     emptyPlantLabel.text = "還沒有最愛植物呢！"
                 case .sharePlants:
@@ -318,7 +318,7 @@ class HomePageViewController: UIViewController {
             waterImageView.isHidden = true
             switch isSelectedAt {
             case .myPlant:
-                emptyPlantLabel.text = "還沒有植物呢\n快去新增吧！"
+                emptyPlantLabel.text = "還沒有植物呢\n點擊畫面右上角＋新增！"
             case .myFavorite:
                 emptyPlantLabel.text = "還沒有最愛植物呢！"
             case .sharePlants:
@@ -434,17 +434,34 @@ class HomePageViewController: UIViewController {
             return
         }
         
-        var waterCount = 0
+        let group = DispatchGroup()
         plants.forEach({ plant in
+            group.enter()
             firebaseManager.updateWater(plant: plant) { isSuccess in
                 if isSuccess {
-                    waterCount += 1
-                    print("\(waterCount) / \(plants.count)")
+                    group.leave()
+                } else {
+                    group.leave()
                 }
             }
         })
         
-        showAlert(title: "全部澆水", message: "對畫面上所有植物澆水", buttonTitle: "確定")
+        group.notify(queue: .main) {
+            
+            let dropAnimation = self.loadAnimation(name: "61313-waterDrop", loopMode: .playOnce)
+            
+            dropAnimation.contentMode = .scaleToFill
+            
+            dropAnimation.frame = self.view.frame
+            
+            self.view.addSubview(dropAnimation)
+            
+            dropAnimation.play() { _ in
+                dropAnimation.removeFromSuperview()
+            }
+        }
+        
+//        showAlert(title: "全部澆水", message: "對畫面上所有植物澆水", buttonTitle: "確定")
     }
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
         
@@ -517,9 +534,25 @@ class HomePageViewController: UIViewController {
                     
                     if isSuccess {
                         
-                        self.waterAlert(plantName: plantName)
-                        
                         dropView.isUserInteractionEnabled = true
+                        
+                        if let plantCell = self.plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell {
+                            
+                            let dropAnimation = self.loadAnimation(name: "61313-waterDrop", loopMode: .playOnce)
+                            
+                            dropAnimation.frame = self.plantCollectionView.convert(plantCell.frame, to: self.view)
+                            
+                            dropAnimation.contentMode = .scaleToFill
+                            
+                            self.view.addSubview(dropAnimation)
+                            
+                            dropAnimation.bringSubviewToFront(plantCell)
+                            
+                            dropAnimation.play() { _ in
+                                dropAnimation.removeFromSuperview()
+                            }
+                            
+                        }
                         
                     }
                 }
@@ -530,16 +563,6 @@ class HomePageViewController: UIViewController {
                 dropView.isUserInteractionEnabled = true
             }
         }
-    }
-    
-    func waterAlert(plantName: String) {
-        
-        let controller = UIAlertController(title: "已紀錄",
-                                           message: "對\(plantName)澆水",
-                                           preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
-        controller.addAction(okAction)
-        present(controller, animated: true, completion: nil)
     }
 }
 
