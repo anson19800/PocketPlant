@@ -295,11 +295,11 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             
             if let user = self.commentUser[comment.senderID] {
                 
-                commentCell.layoutCell(comment: comment, user: user)
+                commentCell.layoutCell(comment: comment, user: user, isOwner: comment.senderID == plant?.ownerID)
                 
             } else {
                 
-                commentCell.layoutCell(comment: comment, user: nil)
+                commentCell.layoutCell(comment: comment, user: nil, isOwner: comment.senderID == plant?.ownerID)
                 
             }
             

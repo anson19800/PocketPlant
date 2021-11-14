@@ -212,11 +212,11 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let user = self.commentUser[comment.senderID] {
                 
-                commentCell.layoutCell(comment: comment, user: user)
+                commentCell.layoutCell(comment: comment, user: user, isOwner: false)
                 
             } else {
                 
-                commentCell.layoutCell(comment: comment, user: nil)
+                commentCell.layoutCell(comment: comment, user: nil, isOwner: false)
                 
             }
             

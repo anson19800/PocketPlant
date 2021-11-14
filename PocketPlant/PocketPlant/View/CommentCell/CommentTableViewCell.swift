@@ -25,7 +25,7 @@ class CommentTableViewCell: UITableViewCell {
         contentView.autoresizingMask = [.flexibleHeight]
     }
 
-    func layoutCell(comment: Comment, user: User? = nil) {
+    func layoutCell(comment: Comment, user: User? = nil, isOwner: Bool) {
         
         commentLabel.text = comment.content
         
@@ -35,7 +35,11 @@ class CommentTableViewCell: UITableViewCell {
         let createdTime = dateFormater.string(from: date)
         timeLabel.text = createdTime
         guard let user = user else { return }
-        userLabel.text = user.name
+        if isOwner {
+            userLabel.text = "草主-\(user.name ?? "匿名")"
+        } else {
+            userLabel.text = user.name
+        }
         if let imageURL = user.userImageURL {
             userImageView.kf.setImage(with: URL(string: imageURL))
         } else {

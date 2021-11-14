@@ -515,9 +515,13 @@ class HomePageViewController: UIViewController {
             
             let point = dropView.convert(CGPoint.zero, to: self.plantCollectionView)
             
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.3) {
+                dropView.transform = CGAffineTransform(rotationAngle: .pi / -4)
+            }
+            
+            UIView.animate(withDuration: 0.3, delay: 0.5, animations: {
                 
-                dropView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                dropView.transform = .identity
                 
                 let safeX = self.view.bounds.size.width - 50
                 let safeY = self.view.bounds.size.height - 130
@@ -528,6 +532,7 @@ class HomePageViewController: UIViewController {
             
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
                let plants = self.plants {
+                
                 let plantName = plants[indexPath.row].name
                 
                 firebaseManager.updateWater(plant: plants[indexPath.row]) { isSuccess in
