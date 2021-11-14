@@ -290,6 +290,11 @@ class HomePageViewController: UIViewController {
         
         guard let plants = plants else { return }
         
+        if plants.count <= 0 {
+            showAlert(title: "沒有植物", message: "沒有植物可以澆水，快去新增吧！", buttonTitle: "確定")
+            return
+        }
+        
         var waterCount = 0
         plants.forEach({ plant in
             firebaseManager.updateWater(plant: plant) { isSuccess in
@@ -300,13 +305,7 @@ class HomePageViewController: UIViewController {
             }
         })
         
-        let controller = UIAlertController(title: "一鍵澆水",
-                                           message: "對畫面上所有植物澆水",
-                                           preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "確定", style: .default, handler: nil)
-        controller.addAction(okAction)
-        present(controller, animated: true, completion: nil)
-        
+        showAlert(title: "全部澆水", message: "對畫面上所有植物澆水", buttonTitle: "確定")
     }
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
         

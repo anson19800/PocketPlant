@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         IQKeyboardManager.shared.enable = true
         
-        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().tintColor = .BackgroundGreen
         
         UINavigationBar.appearance().tintColor = UIColor.darkGreen1
         let backImage = UIImage(systemName: "chevron.backward.circle.fill")
