@@ -49,7 +49,7 @@ class ReminderTableViewCell: UITableViewCell {
         switch type {
         case .water:
             typeImageView.image = UIImage(systemName: "drop.circle.fill")
-            imageColor = UIColor.cloudBlue
+            imageColor = UIColor.CloudBlue ?? .blue
         case .fertilizer:
             typeImageView.image = UIImage(systemName: "leaf.circle.fill")
             imageColor = UIColor.hexStringToUIColor(hex: "A2CDA2")

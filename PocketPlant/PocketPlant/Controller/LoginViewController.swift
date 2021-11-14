@@ -14,10 +14,10 @@ class LoginViewController: UIViewController {
     
     fileprivate var currentNonce: String?
     
-    var appleLogInButton: ASAuthorizationAppleIDButton = {
+    lazy var appleLogInButton: ASAuthorizationAppleIDButton = {
         let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default,
-                                                  authorizationButtonStyle: .black)
-        button.cornerRadius = 3
+                                                  authorizationButtonStyle: .white)
+        button.cornerRadius = 10
         button.addTarget(self, action: #selector(handleLogInWithAppleID), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -73,15 +73,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "Login", sender: nil)
-        } else {
-          print("No user signed in.")
-        }
-    }
-    
     private func setUpButton() {
         let guide = view.safeAreaLayoutGuide
         appleLogInButton.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 50).isActive = true
@@ -101,7 +92,7 @@ class LoginViewController: UIViewController {
         
         let request = provider.createRequest()
         
-        request.requestedScopes = [.email, .fullName]
+        request.requestedScopes = [.email]
         
         request.nonce = sha256(nonce)
         
@@ -167,9 +158,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            if let giveName = appleIDCredential.fullName?.givenName {
-                UserManager.shared.userName = "\(giveName)"
-            }
             
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -210,7 +198,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     self.present(editProfileVC, animated: true, completion: nil)
                     
                 } else {
-                    self.performSegue(withIdentifier: "Login", sender: nil)
+                    
+                    UserManager.shared.fetchCurrentUserInfo { result in
+                        switch result {
+                        case .success(_):
+                            self.performSegue(withIdentifier: "Login", sender: nil)
+                        case .failure(let error):
+                            print(error)
+                            return
+                        }
+                    }
                 }
             }
         }
@@ -224,6 +221,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+        if let window = self.view.window {
+            return window
+        } else {
+            return UIWindow()
+        }
     }
 }

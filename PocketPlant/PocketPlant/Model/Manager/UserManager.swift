@@ -14,19 +14,23 @@ class UserManager {
     
     static let shared = UserManager()
     
-    var userName: String = "使用者"
+    var userID: String {
+        if let user = Auth.auth().currentUser {
+            return user.uid
+        } else {
+            return "0"
+        }
+    }
+    
+    var currentUser: User? {
+        didSet {
+            if let currentUser = currentUser {
+                print(currentUser)
+            }
+        }
+    }
     
     private init() {}
-    
-    let userDisplayName: String = {
-        
-        if let user = Auth.auth().currentUser,
-           let userName = user.displayName {
-            return userName
-        } else {
-            return "使用者"
-        }
-    }()
     
     private let dataBase = Firestore.firestore()
     
@@ -57,6 +61,8 @@ class UserManager {
                     
                     try userRef.document(user.userID).setData(from: user)
                     
+                    self.currentUser = user
+                    
                 } catch {
                     
                     print("Fail to create user.")
@@ -65,7 +71,10 @@ class UserManager {
         }
     }
     
-    func updateUserInfo(userName: String?, userImageID: String?, userImageURL: String?, isSuccess: @escaping (Bool) -> Void) {
+    func updateUserInfo(userName: String?,
+                        userImageID: String?,
+                        userImageURL: String?,
+                        isSuccess: @escaping (Bool) -> Void) {
         
         let userRef = dataBase.collection("User")
         
@@ -99,7 +108,47 @@ class UserManager {
                     user.userImageURL = userImageURL
                 }
                 
+                self.currentUser = user
+                
                 try userRef.document(userID).setData(from: user)
+                
+                isSuccess(true)
+                
+            } catch {
+                
+                isSuccess(false)
+            }
+        }
+    }
+    
+    func addBlockedUser(blockedID: String, isSuccess: @escaping (Bool) -> Void) {
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(self.userID).getDocument { document, error in
+            
+            if error != nil {
+                isSuccess(false)
+            }
+            
+            guard let document = document,
+                  document.exists,
+            var user = try? document.data(as: User.self)
+            else { return }
+            
+            do {
+                if user.blockedUserID == nil {
+                    
+                    user.blockedUserID = [blockedID]
+                    
+                } else {
+                    
+                    user.blockedUserID?.append(blockedID)
+                    
+                }
+                
+                self.currentUser = user
+                
+                try userRef.document(self.userID).setData(from: user)
                 
                 isSuccess(true)
                 
@@ -167,6 +216,8 @@ class UserManager {
                   let user = try? document.data(as: User.self)
             else { return }
             
+            self.currentUser = user
+            
             completion(Result.success(user))
         }
     }
@@ -203,6 +254,8 @@ class UserManager {
                         user.sharePlants = [plantID]
                     }
                     
+                    self.currentUser = user
+                    
                     try userRef.document(userID).setData(from: user)
                     isSuccess(true)
                 
@@ -212,6 +265,36 @@ class UserManager {
             } else {
                 isSuccess(false)
             }
+        }
+    }
+    
+    func deleteBlockedUser(blockedUserID: String, isSuccess: (Bool) -> Void) {
+        
+        guard var blockedUsersID = self.currentUser?.blockedUserID,
+              var currentUser = self.currentUser else {
+            isSuccess(false)
+            return
+        }
+        
+        blockedUsersID.removeAll { userID -> Bool in
+            return userID == blockedUserID
+        }
+        
+        currentUser.blockedUserID = blockedUsersID
+        
+        self.currentUser = currentUser
+        
+        let userRef = dataBase.collection("User")
+        
+        do {
+        
+            try userRef.document(currentUser.userID).setData(from: currentUser)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
             
         }
     }

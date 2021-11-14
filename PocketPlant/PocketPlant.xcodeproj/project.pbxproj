@@ -45,6 +45,7 @@
 		CB84621A273BA37500283683 /* ToolStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB846219273BA37500283683 /* ToolStockViewController.swift */; };
 		CB84621C273BAF6500283683 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84621B273BAF6500283683 /* Tool.swift */; };
 		CB84621E273CB2E400283683 /* AddToolStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84621D273CB2E300283683 /* AddToolStockViewController.swift */; };
+		CB846220273FB4EE00283683 /* BlockedUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84621F273FB4ED00283683 /* BlockedUserViewController.swift */; };
 		CB8A11392730D76D00AAE6CA /* InputShopInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */; };
 		CB8A113A2730D76D00AAE6CA /* InputShopInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */; };
 		CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A113C273230DC00AAE6CA /* LoginViewController.swift */; };
@@ -147,6 +148,7 @@
 		CB846219273BA37500283683 /* ToolStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolStockViewController.swift; sourceTree = "<group>"; };
 		CB84621B273BAF6500283683 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		CB84621D273CB2E300283683 /* AddToolStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToolStockViewController.swift; sourceTree = "<group>"; };
+		CB84621F273FB4ED00283683 /* BlockedUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedUserViewController.swift; sourceTree = "<group>"; };
 		CB8A11372730D76D00AAE6CA /* InputShopInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputShopInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CB8A11382730D76D00AAE6CA /* InputShopInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputShopInfoTableViewCell.xib; sourceTree = "<group>"; };
 		CB8A113B2732306100AAE6CA /* PocketPlant.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PocketPlant.entitlements; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				CB846209273A129100283683 /* EditProfileViewController.swift */,
 				CB846219273BA37500283683 /* ToolStockViewController.swift */,
 				CB84621D273CB2E300283683 /* AddToolStockViewController.swift */,
+				CB84621F273FB4ED00283683 /* BlockedUserViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				CBF7AC34271D980F001E3C37 /* Plant.swift in Sources */,
 				CBF7AC2A271D6280001E3C37 /* ButtonCollectionViewCell.swift in Sources */,
 				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
+				CB846220273FB4EE00283683 /* BlockedUserViewController.swift in Sources */,
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
 				CB84620A273A129100283683 /* EditProfileViewController.swift in Sources */,
 				CB8F2EFC272A9569005E1448 /* QRCodePlantDetailViewController.swift in Sources */,

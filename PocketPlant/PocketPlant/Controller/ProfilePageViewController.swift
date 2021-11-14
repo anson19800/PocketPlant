@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import Lottie
 import Kingfisher
+import SafariServices
 
 enum SettingSelection: String, CaseIterable {
     case toolStock = "材料庫存"
@@ -72,17 +73,13 @@ class ProfilePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserManager.shared.fetchCurrentUserInfo { result in
-            switch result {
-            case .success(let user):
-                self.userNameTextField.text = user.name
-                if let imageURL = user.userImageURL {
-                    self.userImageView.kf.setImage(with: URL(string: imageURL))
-                }
-            case .failure(let error):
-                self.userNameTextField.text = "使用者"
-                print(error)
+        if let currentUser = UserManager.shared.currentUser {
+            self.userNameTextField.text = currentUser.name
+            if let imageURL = currentUser.userImageURL {
+                self.userImageView.kf.setImage(with: URL(string: imageURL))
             }
+        } else {
+            self.userNameTextField.text = "使用者"
         }
         
         if let tabBarCon = self.tabBarController,

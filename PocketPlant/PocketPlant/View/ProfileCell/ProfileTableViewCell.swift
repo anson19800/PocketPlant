@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileTableViewCell: UITableViewCell {
 
@@ -34,6 +35,13 @@ class ProfileTableViewCell: UITableViewCell {
         titleLabel.text = title
         if let image = image {
             iconImageView.image = image
+        }
+    }
+    
+    func layoutCell(title: String, imageURL: String?) {
+        titleLabel.text = title
+        if let imageURL = imageURL {
+            iconImageView.kf.setImage(with: URL(string: imageURL))
         }
     }
 }

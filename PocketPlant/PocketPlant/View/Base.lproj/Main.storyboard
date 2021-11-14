@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="口袋植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06M-3v-eqW">
-                                        <rect key="frame" x="33" y="60" width="108" height="38"/>
+                                        <rect key="frame" x="33" y="60" width="273" height="38"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="27"/>
                                         <color key="textColor" red="0.12931125602759783" green="0.16638832293333339" blue="0.13009218043732002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -34,6 +34,7 @@
                                             <constraint firstAttribute="width" constant="35" id="Asg-5A-qYw"/>
                                             <constraint firstAttribute="height" constant="35" id="ZNe-de-uiK"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="0.0"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="qrcode.viewfinder" catalog="system"/>
@@ -63,7 +64,7 @@
                                     <constraint firstItem="06M-3v-eqW" firstAttribute="top" secondItem="jdc-Vf-YSU" secondAttribute="top" constant="60" id="NzS-W6-Oj1"/>
                                     <constraint firstAttribute="height" constant="130" id="Pk8-0I-OUH"/>
                                     <constraint firstAttribute="trailing" secondItem="tdd-YK-xjB" secondAttribute="trailing" constant="30" id="ThV-LV-2Hk"/>
-                                    <constraint firstItem="QpB-Pp-zi3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="06M-3v-eqW" secondAttribute="trailing" constant="210" id="lId-L6-x06"/>
+                                    <constraint firstItem="QpB-Pp-zi3" firstAttribute="leading" secondItem="06M-3v-eqW" secondAttribute="trailing" constant="10" id="lId-L6-x06"/>
                                     <constraint firstItem="06M-3v-eqW" firstAttribute="leading" secondItem="jdc-Vf-YSU" secondAttribute="leading" constant="33" id="rcP-ld-VYS"/>
                                 </constraints>
                             </view>
@@ -115,7 +116,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="drop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-jp-GEC">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="water" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-jp-GEC">
                                 <rect key="frame" x="340" y="800" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.72295867609999998" green="0.88710906150000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -268,7 +269,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3kz-0V-5tR">
-                                <rect key="frame" x="33" y="191" width="362" height="652"/>
+                                <rect key="frame" x="33" y="191" width="362" height="612"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Z3-R4-26y">
                                     <size key="itemSize" width="128" height="128"/>
@@ -299,7 +300,7 @@
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="trailing" secondItem="QGH-hg-Qdl" secondAttribute="trailing" id="bVd-e5-O1T"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="leading" secondItem="QGH-hg-Qdl" secondAttribute="leading" id="cmP-UJ-DbC"/>
                             <constraint firstItem="QGH-hg-Qdl" firstAttribute="leading" secondItem="5Yv-KP-SKA" secondAttribute="leading" id="ft2-U3-UQx"/>
-                            <constraint firstItem="4D7-Y7-qZC" firstAttribute="bottom" secondItem="3kz-0V-5tR" secondAttribute="bottom" id="k9f-Q8-RXz"/>
+                            <constraint firstItem="4D7-Y7-qZC" firstAttribute="bottom" secondItem="3kz-0V-5tR" secondAttribute="bottom" constant="40" id="k9f-Q8-RXz"/>
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="top" secondItem="0OJ-cj-dQ4" secondAttribute="top" id="meE-vM-dSV"/>
                         </constraints>
                     </view>
@@ -714,7 +715,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="drop.fill" catalog="system" width="101" height="128"/>
         <image name="globe.asia.australia.fill" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="icon" width="180" height="180"/>
@@ -723,6 +723,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <image name="water" width="1024" height="1024"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

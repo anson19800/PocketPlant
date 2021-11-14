@@ -25,7 +25,6 @@ class PlantDetailViewController: UIViewController {
             tableView.registerCellWithNib(
                 identifier: String(describing: CommentTableViewCell.self),
                 bundle: nil)
-            
         }
     }
     
@@ -66,9 +65,15 @@ class PlantDetailViewController: UIViewController {
     
     var plant: Plant?
     
-    var comments: [Comment]?
+    var comments: [Comment]? {
+        didSet {
+            if let comments = comments {
+                print(comments)
+            }
+        }
+    }
     
-    var commentUser: [String: User] = [:]
+    var commentUser: [String: User?] = [:]
     
     let firebaseManager = FirebaseManager.shared
     
@@ -88,6 +93,11 @@ class PlantDetailViewController: UIViewController {
         favoriteButton.tintColor = plant.favorite ? .red : .gray
         
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
+        
+        if plant.ownerID != UserManager.shared.userID {
+            remindButton.isHidden = true
+            favoriteButton.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -186,7 +196,7 @@ class PlantDetailViewController: UIViewController {
         guard let plant = plant else {
             return
         }
-
+        
         let qrcodePage = storyboard?.instantiateViewController(
             withIdentifier: String(describing: ShowQRCodePageViewController.self))
         
@@ -224,7 +234,7 @@ class PlantDetailViewController: UIViewController {
                     if let comments = comments,
                        comments.count != 0 {
                         
-                        self.tableView.scrollToRow(at: IndexPath(row: 2, section: 0), at: .top, animated: false)
+                        self.tableView.scrollToRow(at: IndexPath(row: 1, section: 0), at: .top, animated: false)
                     }
                     
                 } else {
@@ -239,7 +249,7 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let comments = comments else { return 1 }
+        guard let comments = comments else { return 2 }
         
         return comments.count + 2
     }
@@ -247,7 +257,7 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
-        
+            
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: String(describing: PlantDetailTableViewCell.self),
                 for: indexPath)
@@ -294,6 +304,46 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
             }
             
             return commentCell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard indexPath.row > 1 else { return nil }
+        
+        guard let comments = self.comments,
+              let currentUser = UserManager.shared.currentUser
+        else { return nil }
+        
+        let comment = comments[indexPath.row - 2]
+        
+        if comment.senderID == currentUser.userID {
+            return nil
+        }
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            
+            let blockAction = UIAction(title: "封鎖使用者",
+                                       image: UIImage(systemName: "person.fill.xmark"),
+                                       attributes: .destructive) { _ in
+                
+                let commentIndex = indexPath.row - 2
+                
+                guard let comments = self.comments else { return }
+                
+                let comment = comments[commentIndex]
+                
+                let blockedUserID = comment.senderID
+                
+                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
+                    if isSuccess {
+                        self.fetchComment()
+                        print("Success Blocked user \(blockedUserID)")
+                    }
+                }
+            }
+            return UIMenu(title: "", children: [blockAction])
         }
     }
 }

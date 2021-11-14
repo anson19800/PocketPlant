@@ -22,7 +22,7 @@ enum DiscoverType: CaseIterable {
 }
 
 class DiscoverViewController: UIViewController {
-
+    
     @IBOutlet weak var discoverCollectionView: UICollectionView! {
         didSet {
             discoverCollectionView.registerCellWithNib(
@@ -54,42 +54,84 @@ class DiscoverViewController: UIViewController {
     }
     
     func fetchData() {
+        
         switch discoverType {
+            
         case .plant:
-            FirebaseManager.shared.fetchDiscoverObject(discoverType, completion: {
-                (object: [Plant]?, error: Error?) in
+            FirebaseManager.shared.fetchDiscoverObject(
+                discoverType,
+                completion: { (plants: [Plant]?, error: Error?) in
                 
-                if let error = error {
-                    print(error)
-                }
-                
-                if let object = object {
-                    self.discoverObject = object.shuffled()
-                    self.discoverCollectionView.performBatchUpdates({
-                        let indexSet = IndexSet(integersIn: 0...0)
-                        self.discoverCollectionView.reloadSections(indexSet)
-                    }, completion: nil)
-                }
-                
+                    if let error = error {
+                        print(error)
+                    }
+                    
+                    let anyPlants = self.blockedObject(type: .plant, object: plants)
+                    
+                    if let anyPlants = anyPlants,
+                       let plants = anyPlants as? [Plant] {
+                        self.discoverObject = plants.shuffled()
+                        self.discoverCollectionView.performBatchUpdates({
+                            let indexSet = IndexSet(integersIn: 0...0)
+                            self.discoverCollectionView.reloadSections(indexSet)
+                        }, completion: nil)
+                    }
+                    
             })
         case .shop:
             FirebaseManager.shared.fetchDiscoverObject(
                 discoverType,
-                completion: { (object: [GardeningShop]?, error: Error?) in
+                completion: { (shops: [GardeningShop]?, error: Error?) in
+                    
+                    if let error = error {
+                        print(error)
+                    }
+                    
+                    let anyShops = self.blockedObject(type: .shop, object: shops)
+                    
+                    if let anyShops = anyShops,
+                       let shops = anyShops as? [GardeningShop] {
+                        self.discoverObject = shops.shuffled()
+                        self.discoverCollectionView.performBatchUpdates({
+                            let indexSet = IndexSet(integersIn: 0...0)
+                            self.discoverCollectionView.reloadSections(indexSet)
+                        }, completion: nil)
+                    }
+                    
+                })
+        }
+    }
+    
+    private func blockedObject<T>(type: DiscoverType, object: T) -> Any? {
+        switch type {
+        case .plant:
+            
+            if let blockedUserID = UserManager.shared.currentUser?.blockedUserID {
                 
-                if let error = error {
-                    print(error)
+                guard let plants = object as? [Plant] else { return nil }
+                
+                let blockedPlants = plants.filter { plant in
+                    !(blockedUserID.contains(plant.ownerID))
                 }
                 
-                if let object = object {
-                    self.discoverObject = object.shuffled()
-                    self.discoverCollectionView.performBatchUpdates({
-                        let indexSet = IndexSet(integersIn: 0...0)
-                        self.discoverCollectionView.reloadSections(indexSet)
-                    }, completion: nil)
+                return blockedPlants
+            } else {
+                return nil
+            }
+        case .shop:
+            
+            if let blockedUserID = UserManager.shared.currentUser?.blockedUserID {
+                
+                guard let shops = object as? [GardeningShop] else { return nil }
+                
+                let blockedShops = shops.filter { shops in
+                    !(blockedUserID.contains(shops.ownerID))
                 }
                 
-            })
+                return blockedShops
+            } else {
+                return nil
+            }
         }
     }
     
@@ -176,7 +218,7 @@ extension DiscoverViewController: UICollectionViewDataSource,
         case .plant:
             
             guard let plants = discoverObjects as? [Plant] else { return }
-        
+            
             let plant = plants[indexPath.row]
             
             let storyboard = UIStoryboard(name: "PlantDetailPage", bundle: nil)
@@ -196,7 +238,7 @@ extension DiscoverViewController: UICollectionViewDataSource,
         case .shop:
             
             guard let shops = discoverObjects as? [GardeningShop] else { return }
-        
+            
             let shop = shops[indexPath.row]
             
             let storyboard = UIStoryboard(name: "GardeningShopPage", bundle: nil)
