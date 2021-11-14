@@ -13,6 +13,7 @@ import SafariServices
 
 enum SettingSelection: String, CaseIterable {
     case toolStock = "材料庫存"
+    case gardeningShop = "園藝店收藏"
     case sharePlants = "共享植物"
     case acountManagement = "帳號管理"
     
@@ -20,6 +21,8 @@ enum SettingSelection: String, CaseIterable {
         switch self {
         case .toolStock:
             return UIImage(systemName: "hammer.fill")
+        case .gardeningShop:
+            return UIImage(systemName: "house.fill")
         case .acountManagement:
             return UIImage(systemName: "gearshape")
         case .sharePlants:
@@ -65,6 +68,11 @@ class ProfilePageViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.largeTitleDisplayMode = .never
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                                style: .plain,
+                                                                target: nil,
+                                                                action: nil)
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectUserPhoto))
         userImageView.addGestureRecognizer(tap)
         userImageView.isUserInteractionEnabled = true
@@ -92,6 +100,11 @@ class ProfilePageViewController: UIViewController {
             plantCount = plants.count
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
     @objc func selectUserPhoto() {
@@ -229,6 +242,23 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             toolStockVC.modalPresentationStyle = .fullScreen
             
             self.navigationController?.pushViewController(toolStockVC, animated: true)
+            
+        case .gardeningShop:
+            
+            let storyBoard = UIStoryboard(name: "GardeningShopPage", bundle: nil)
+            
+            let viewController = storyBoard.instantiateViewController(
+                withIdentifier: String(describing: GardeningShopViewController.self))
+            
+            guard let gardeningShopVC = viewController as? GardeningShopViewController else { return }
+            
+            gardeningShopVC.modalPresentationStyle = .fullScreen
+            
+            navigationController?.navigationBar.backgroundColor = .clear
+            
+            tabBarController?.tabBar.isHidden = true
+            
+            self.navigationController?.pushViewController(gardeningShopVC, animated: true)
             
         case .sharePlants:
             

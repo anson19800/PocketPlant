@@ -12,7 +12,18 @@ import Lottie
 enum HomePageButton: String, CaseIterable {
     case myPlant = "我的植物"
     case myFavorite = "最愛植物"
-    case gardeningShop = "園藝店"
+    case sharePlants = "共享植物"
+    
+    var icon: UIImage? {
+        switch self {
+        case .myPlant:
+            return UIImage(systemName: "leaf.fill")
+        case .myFavorite:
+            return UIImage(systemName: "heart.fill")
+        case .sharePlants:
+            return UIImage(systemName: "leaf.arrow.triangle.circlepath")
+        }
+    }
 }
 
 class HomePageViewController: UIViewController {
@@ -136,13 +147,9 @@ class HomePageViewController: UIViewController {
             
             updateMyFavoritePlants(withAnimation: false)
             
-        case .gardeningShop:
+        case .sharePlants:
             
-            updateMyPlants(withAnimation: false)
-            
-            buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
-                                            animated: false,
-                                            scrollPosition: .top)
+            updateSharePlants(withAnimation: false)
         }
     }
     
@@ -222,6 +229,63 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    func updateSharePlants(withAnimation: Bool) {
+        
+        guard let currentUser = UserManager.shared.currentUser,
+              let sharePlantsID = currentUser.sharePlants else { return }
+        
+        let group = DispatchGroup()
+        
+        self.plants = nil
+        
+        sharePlantsID.forEach { plantID in
+            
+            group.enter()
+            
+            firebaseManager.fetchPlants(plantID: plantID) { result in
+                switch result {
+                case .success(let plant):
+                    
+                    if var plants = self.plants {
+                        
+                        plants.append(plant)
+                        
+                        self.plants = plants
+                        
+                        group.leave()
+                        
+                    } else {
+                        
+                        self.plants = [plant]
+                        
+                        group.leave()
+                        
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                    group.leave()
+                }
+            }
+        }
+        
+        group.notify(queue: .main) {
+            
+            if withAnimation {
+            
+                self.plantCollectionView.performBatchUpdates({
+                    let indexSet = IndexSet(integersIn: 0...0)
+                    self.plantCollectionView.reloadSections(indexSet)
+                }, completion: nil)
+                
+            } else {
+                
+                self.plantCollectionView.reloadData()
+                
+            }
+        }
+    }
+    
     func checkIsEmpty() {
         if let plants = plants {
             if plants.count <= 0 {
@@ -242,6 +306,9 @@ class HomePageViewController: UIViewController {
             }
         }
         
+        if isSelectedAt == .sharePlants {
+            waterImageView.isHidden = true
+        }
     }
     
     func deletePlantAction(indexPath: IndexPath) {
@@ -257,6 +324,15 @@ class HomePageViewController: UIViewController {
         firebaseManager.deletePlant(plant: plant)
         
         plantCollectionView.deleteItems(at: [indexPath])
+    }
+    
+    func deleteSharePlant(sharePlants: [String]) {
+        UserManager.shared.deleteSharePlant(sharePlants: sharePlants) { isSuccess in
+            if isSuccess {
+                self.updateSharePlants(withAnimation: true)
+                self.checkIsEmpty()
+            }
+        }
     }
     
     func editPlantAction(indexPath: IndexPath) {
@@ -457,9 +533,15 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             guard let buttonCell = cell as? ButtonCollectionViewCell else { return cell }
             
-            let title = HomePageButton.allCases[indexPath.row].rawValue
+            let buttonType = HomePageButton.allCases[indexPath.row]
             
-            buttonCell.layoutCell(image: UIImage(systemName: "leaf.fill")!, title: title)
+            let title = buttonType.rawValue
+            
+            if let iconImage = buttonType.icon {
+                
+                buttonCell.layoutCell(image: iconImage, title: title)
+                
+            }
             
             return buttonCell
             
@@ -509,12 +591,12 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
         
-        let buttonWidth = floor((buttonCollectionView.bounds.width - 50 * (columCount - 1)) / columCount )
+        let buttonWidth = floor((buttonCollectionView.bounds.width - 35 * (columCount - 1)) / columCount )
 
         if collectionView == plantCollectionView {
             return CGSize(width: plantWidth, height: plantWidth * 1.2)
         } else {
-            return CGSize(width: buttonWidth, height: 73.0)
+            return CGSize(width: buttonWidth, height: 55)
         }
         
     }
@@ -565,15 +647,19 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 isSelectedAt = .myFavorite
                 
-            case .gardeningShop:
+            case .sharePlants:
                 
-                isSelectedAt = .gardeningShop
+                if isSelectedAt == .sharePlants {
+                    
+                    break
+                    
+                }
+                
+                isSelectedAt = .sharePlants
                 
                 searching = false
                 
-                tabBarController?.tabBar.isHidden = true
-                
-                performSegue(withIdentifier: "shopList", sender: nil)
+                updateSharePlants(withAnimation: true)
             }
         }
     }
@@ -583,6 +669,27 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                         point: CGPoint) -> UIContextMenuConfiguration? {
         
         guard collectionView == plantCollectionView else { return nil }
+        
+        if isSelectedAt == .sharePlants {
+            return UIContextMenuConfiguration(identifier: nil,
+                                              previewProvider: nil) { _ in
+                
+                let deleteAction = UIAction(title: "取消收藏",
+                                            image: UIImage(systemName: "trash"),
+                                            attributes: .destructive) { _ in
+                    if let currentUser = UserManager.shared.currentUser,
+                       var sharePlants = currentUser.sharePlants{
+                        
+                        sharePlants.remove(at: indexPath.row)
+                        
+                        self.deleteSharePlant(sharePlants: sharePlants)
+                        
+                    }
+                }
+                
+                return UIMenu(title: "", children: [deleteAction])
+            }
+        }
         
         return UIContextMenuConfiguration(identifier: nil,
                                           previewProvider: nil) { _ in
@@ -637,7 +744,6 @@ extension HomePageViewController: UISearchBarDelegate {
             let indexSet = IndexSet(integersIn: 0...0)
             self.plantCollectionView.reloadSections(indexSet)
         }, completion: nil)
-        
         
     }
     

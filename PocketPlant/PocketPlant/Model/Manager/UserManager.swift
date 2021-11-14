@@ -268,6 +268,32 @@ class UserManager {
         }
     }
     
+    func deleteSharePlant(sharePlants: [String], isSuccess: (Bool) -> Void) {
+        guard var currentUser = currentUser else {
+            return
+        }
+        
+        currentUser.sharePlants = sharePlants
+        
+        self.currentUser = currentUser
+        
+        let userRef = dataBase.collection("User")
+        
+        let userID = currentUser.userID
+        
+        do {
+            
+            try userRef.document(userID).setData(from: currentUser)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+            
+        }
+    }
+    
     func deleteBlockedUser(blockedUserID: String, isSuccess: (Bool) -> Void) {
         
         guard var blockedUsersID = self.currentUser?.blockedUserID,

@@ -127,8 +127,6 @@ class ShopDetailViewController: UIViewController {
                         let indexSet = IndexSet(integersIn: 0...0)
                         self.tableView.reloadSections(indexSet, with: .fade)
                     }
-                    
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                 }
                 
             case .failure(let error):
