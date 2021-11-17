@@ -273,10 +273,16 @@ class FirebaseManager {
             
             let recordDay = waterRecord.compactMap { (record) -> WaterRecord? in
                 let recordDate = Date(timeIntervalSince1970: record.waterDate)
-                if recordDate.hasSame(.day, as: date) {
+                if recordDate.hasSame(.year, as: date)
+                    && recordDate.hasSame(.month, as: date)
+                    && recordDate.hasSame(.day, as: date) {
+                    
                     return record
+                    
                 } else {
+                    
                     return nil
+                    
                 }
             }
             completion(.success(recordDay))

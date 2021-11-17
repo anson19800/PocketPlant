@@ -233,12 +233,17 @@ class HomePageViewController: UIViewController {
     
     func updateSharePlants(withAnimation: Bool) {
         
+        
         guard let currentUser = UserManager.shared.currentUser,
-              let sharePlantsID = currentUser.sharePlants else { return }
+              let sharePlantsID = currentUser.sharePlants
+        else {
+            self.plants = []
+            return
+        }
         
         let group = DispatchGroup()
         
-        self.plants = nil
+        self.plants = []
         
         sharePlantsID.forEach { plantID in
             
