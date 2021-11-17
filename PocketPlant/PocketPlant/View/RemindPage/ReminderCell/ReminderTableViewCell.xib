@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="KGk-i7-Jjw" customClass="ReminderTableViewCell" customModule="PocketPlant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="764" height="95"/>
+            <rect key="frame" x="0.0" y="0.0" width="385" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="764" height="95"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ev8-Be-Kpo">
@@ -28,12 +28,12 @@
                         </constraints>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-CQ-B5s">
-                        <rect key="frame" x="152.5" y="21.5" width="434.5" height="37.5"/>
+                        <rect key="frame" x="152.5" y="21.5" width="55.5" height="37.5"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZY-1I-vxd">
-                        <rect key="frame" x="597" y="24.5" width="38" height="31"/>
+                        <rect key="frame" x="218" y="24.5" width="38" height="31"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="19"/>
                         <color key="textColor" name="DarkBlue"/>
                         <nil key="highlightedColor"/>
@@ -45,13 +45,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="h1V-Tb-aXS">
-                        <rect key="frame" x="640" y="25" width="90" height="31"/>
+                        <rect key="frame" x="261" y="25" width="90" height="31"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="eiD-Wb-QZP"/>
                         </constraints>
                     </datePicker>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ls1-bI-gMZ">
-                        <rect key="frame" x="735" y="26.5" width="19" height="27"/>
+                        <rect key="frame" x="356" y="26.5" width="19" height="27"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="19"/>
                         <color key="textColor" name="DarkBlue"/>
                         <nil key="highlightedColor"/>
@@ -78,11 +78,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dayTextField" destination="4Uc-CQ-B5s" id="GMq-Un-ipZ"/>
+                <outlet property="timePicker" destination="h1V-Tb-aXS" id="CQO-ks-8T4"/>
                 <outlet property="trailLabel" destination="6ZY-1I-vxd" id="4FS-L3-wAl"/>
                 <outlet property="typeImageView" destination="ev8-Be-Kpo" id="Pg0-bn-09o"/>
                 <outlet property="typelabel" destination="gir-PJ-w5E" id="IQ2-ea-wT0"/>
             </connections>
-            <point key="canvasLocation" x="424.63768115942031" y="148.32589285714286"/>
+            <point key="canvasLocation" x="615.21739130434787" y="148.32589285714286"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -11,4 +11,5 @@ struct Remind: Codable, Hashable {
     let plantID: String
     let type: String
     let times: Int
+    let time: TimeInterval
 }

@@ -100,7 +100,7 @@ class RemindViewController: UIViewController {
         
         guard var plant = plant else { return }
         
-        var dict: [ReminderType: Int] = [:]
+        var dict: [ReminderType: (Int, Date?)] = [:]
         
         var reminds: [Remind] = []
         
@@ -115,20 +115,24 @@ class RemindViewController: UIViewController {
                       timesString != "",
                       let times = Int(timesString)
                 else {
-                    dict[ReminderType.allCases[index]] = 0
+                    dict[ReminderType.allCases[index]] = (0, nil)
                     continue
                 }
                 
-                dict[ReminderType.allCases[index]] = times
+                let time = remindCell.timePicker.date
+                let timeDate = time.timeIntervalSince1970
+                dict[ReminderType.allCases[index]] = (times, time)
                 
                 let remind = Remind(plantID: plant.id,
                                     type: ReminderType.allCases[index].rawValue,
-                                    times: times)
+                                    times: times,
+                                    time: timeDate)
+                
                 reminds.append(remind)
                 
             } else {
                 
-                dict[ReminderType.allCases[index]] = 0
+                dict[ReminderType.allCases[index]] = (0, nil)
                 
             }
         }

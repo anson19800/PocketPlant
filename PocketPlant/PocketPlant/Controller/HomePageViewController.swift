@@ -233,7 +233,6 @@ class HomePageViewController: UIViewController {
     
     func updateSharePlants(withAnimation: Bool) {
         
-        
         guard let currentUser = UserManager.shared.currentUser,
               let sharePlantsID = currentUser.sharePlants
         else {
@@ -467,7 +466,6 @@ class HomePageViewController: UIViewController {
                 dropAnimation.removeFromSuperview()
             }
         }
-        
 //        showAlert(title: "全部澆水", message: "對畫面上所有植物澆水", buttonTitle: "確定")
     }
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
@@ -488,7 +486,7 @@ class HomePageViewController: UIViewController {
         if let indexPath = plantCollectionView.indexPathForItem(at: selectedPoint) {
             
             if let selectedCell = plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell,
-               let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell]{
+               let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
                 
                 cells.forEach { cell in
                     if cell == selectedCell {
