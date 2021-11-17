@@ -53,7 +53,11 @@ class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var plantPhotoImageView: UIImageView!
     
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView! {
+        didSet {
+            userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        }
+    }
     
     @IBOutlet weak var commentTextField: UITextField!
     
@@ -105,6 +109,10 @@ class PlantDetailViewController: UIViewController {
         if plant.ownerID != UserManager.shared.userID {
             remindButton.isHidden = true
             favoriteButton.isHidden = true
+        }
+        
+        if let useImageURL = UserManager.shared.currentUser?.userImageURL {
+            userImageView.kf.setImage(with: URL(string: useImageURL))
         }
     }
     
