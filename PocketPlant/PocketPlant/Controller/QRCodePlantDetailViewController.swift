@@ -17,7 +17,7 @@ class QRCodePlantDetailViewController: UIViewController {
     
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
-            backgroundView.layer.cornerRadius = 1
+            backgroundView.layer.cornerRadius = 10
         }
     }
     @IBOutlet weak var plantImageView: UIImageView! {
@@ -153,10 +153,13 @@ class QRCodePlantDetailViewController: UIViewController {
                 animationView.removeFromSuperview()
                 self.view.isUserInteractionEnabled = true
                 
-                let storyboard = UIStoryboard(name: "SharePlantPage", bundle: nil)
-                let sharePlantVC = storyboard.instantiateViewController(
-                    withIdentifier: String(describing: SharePlantViewController.self))
-                self.present(sharePlantVC, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
+                
+                if let delegate = self.delegate {
+                    delegate.goToSharePlantPage()
+                }
+
+                
             } else {
                 animationView.stop()
                 animationView.removeFromSuperview()

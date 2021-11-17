@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,13 +22,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="新增植物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVq-g6-5c7">
-                                        <rect key="frame" x="33" y="50" width="112" height="39.5"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="28"/>
+                                        <rect key="frame" x="33" y="50" width="101.5" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <color key="textColor" red="0.12931125600000001" green="0.1663883229" blue="0.13009218040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.87471872569999998" green="0.93721419569999997" blue="0.87317281960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="NavTabColor"/>
                                 <constraints>
                                     <constraint firstItem="GVq-g6-5c7" firstAttribute="leading" secondItem="67o-y9-cT4" secondAttribute="leading" constant="33" id="0N4-j1-Fnk"/>
                                     <constraint firstAttribute="height" constant="100" id="pVl-dV-jdc"/>
@@ -131,7 +132,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plant" width="5456" height="3632"/>
+        <image name="plant" width="1024" height="1024"/>
+        <namedColor name="NavTabColor">
+            <color red="0.71372549019607845" green="0.83137254901960789" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

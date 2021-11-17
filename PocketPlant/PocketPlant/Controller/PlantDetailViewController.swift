@@ -53,7 +53,11 @@ class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var plantPhotoImageView: UIImageView!
     
-    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userImageView: UIImageView! {
+        didSet {
+            userImageView.layer.cornerRadius = userImageView.frame.width / 2
+        }
+    }
     
     @IBOutlet weak var commentTextField: UITextField!
     
@@ -86,9 +90,17 @@ class PlantDetailViewController: UIViewController {
         guard let plant = plant,
               let imageUrl = plant.imageURL else { return }
         
-        plantNameLabel.text = plant.name
+        if plant.name == "" {
+            plantNameLabel.text = "未命名的植物"
+        } else {
+            plantNameLabel.text = plant.name
+        }
         
-        plantCategoryLabel.text = plant.category
+        if plant.category == "" {
+            plantCategoryLabel.text = "未分類"
+        } else {
+            plantCategoryLabel.text = plant.category
+        }
         
         favoriteButton.tintColor = plant.favorite ? .red : .gray
         
@@ -97,6 +109,10 @@ class PlantDetailViewController: UIViewController {
         if plant.ownerID != UserManager.shared.userID {
             remindButton.isHidden = true
             favoriteButton.isHidden = true
+        }
+        
+        if let useImageURL = UserManager.shared.currentUser?.userImageURL {
+            userImageView.kf.setImage(with: URL(string: useImageURL))
         }
     }
     

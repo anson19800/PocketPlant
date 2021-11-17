@@ -84,6 +84,7 @@
 		CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */; };
 		CB9A491D2724632A0095E5EE /* DeathPlantPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */; };
 		CBE904462741409F00B73CF8 /* 61313-waterDrop.json in Resources */ = {isa = PBXBuildFile; fileRef = CBE904452741409F00B73CF8 /* 61313-waterDrop.json */; };
+		CBE90448274184E100B73CF8 /* 70780-emptyResult.json in Resources */ = {isa = PBXBuildFile; fileRef = CBE90447274184E100B73CF8 /* 70780-emptyResult.json */; };
 		CBF7AC03271C863E001E3C37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC02271C863E001E3C37 /* AppDelegate.swift */; };
 		CBF7AC05271C863E001E3C37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */; };
 		CBF7AC07271C863E001E3C37 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7AC06271C863E001E3C37 /* HomePageViewController.swift */; };
@@ -190,6 +191,7 @@
 		CB9A491A2724630A0095E5EE /* DeathPlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathPlantViewController.swift; sourceTree = "<group>"; };
 		CB9A491C2724632A0095E5EE /* DeathPlantPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeathPlantPage.storyboard; sourceTree = "<group>"; };
 		CBE904452741409F00B73CF8 /* 61313-waterDrop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "61313-waterDrop.json"; sourceTree = "<group>"; };
+		CBE90447274184E100B73CF8 /* 70780-emptyResult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "70780-emptyResult.json"; sourceTree = "<group>"; };
 		CBF7ABFF271C863E001E3C37 /* PocketPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF7AC02271C863E001E3C37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF7AC04271C863E001E3C37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				CB8A115E2737952700AAE6CA /* 9131-loading.json */,
 				CB8462212740F17400283683 /* 33731-emptyPlant.json */,
 				CBE904452741409F00B73CF8 /* 61313-waterDrop.json */,
+				CBE90447274184E100B73CF8 /* 70780-emptyResult.json */,
 			);
 			path = LottieAnimation;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				CB2241E3272D369900BAEE90 /* GardeningShopPage.storyboard in Resources */,
 				CBF7AC0C271C8641001E3C37 /* Assets.xcassets in Resources */,
 				CB8F2EF12728FC49005E1448 /* CalendarInfoTableViewCell.xib in Resources */,
+				CBE90448274184E100B73CF8 /* 70780-emptyResult.json in Resources */,
 				CB2241D5272BA52500BAEE90 /* 78093-planting.json in Resources */,
 				CBF7AC0A271C863E001E3C37 /* Main.storyboard in Resources */,
 				CB07EDBE271FA67A00406913 /* PlantDetailTableViewCell.xib in Resources */,
@@ -915,7 +919,7 @@
 				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
@@ -952,7 +956,7 @@
 				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;

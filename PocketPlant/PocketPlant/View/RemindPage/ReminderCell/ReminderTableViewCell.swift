@@ -19,32 +19,17 @@ class ReminderTableViewCell: UITableViewCell {
     @IBOutlet weak var typelabel: UILabel!
     @IBOutlet weak var dayTextField: UITextField!
     @IBOutlet weak var trailLabel: UILabel!
-    
-    var imageIsSelectes: Bool = false {
-        didSet {
-            typeImageView.tintColor = imageIsSelectes ? imageColor : .lightGray
-            typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
-            trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
-            dayTextField.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
-            dayTextField.isEnabled = imageIsSelectes
-        }
-    }
-    
+
     private var imageColor: UIColor = .gray
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        
-        let tap = UITapGestureRecognizer(target: self,
-                                         action: #selector(tapOnImage(_:)))
-        typeImageView.isUserInteractionEnabled = true
-        typeImageView.addGestureRecognizer(tap)
     }
     
     func layoutCell(type: ReminderType, reminds: [Remind]?) {
         
-        typelabel.text = "\(type.rawValue)提醒"
+        typelabel.text = "\(type.rawValue)  每隔"
         
         switch type {
         case .water:
@@ -58,11 +43,10 @@ class ReminderTableViewCell: UITableViewCell {
             imageColor = UIColor.hexStringToUIColor(hex: "BC956F")
         }
         
-        typeImageView.tintColor = imageIsSelectes ? imageColor : .lightGray
-        typelabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
-        trailLabel.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
-        dayTextField.textColor = imageIsSelectes ? UIColor.hexStringToUIColor(hex: "424B5A") : .lightGray
-        dayTextField.isEnabled = imageIsSelectes
+        typeImageView.tintColor = imageColor
+        typelabel.textColor = UIColor.DarkBlue
+        trailLabel.textColor = UIColor.DarkBlue
+        dayTextField.textColor = UIColor.DarkBlue
         
         guard let reminds = reminds else { return }
 
@@ -70,34 +54,8 @@ class ReminderTableViewCell: UITableViewCell {
             if type.rawValue == remind.type {
                 if remind.times != 0 {
                     dayTextField.text = String(remind.times)
-                    self.imageIsSelectes = true
                 }
             }
         }
     }
-    @objc private func tapOnImage(_ sender: UITapGestureRecognizer) {
-        
-        imageIsSelectes = !imageIsSelectes
-        
-        if imageIsSelectes {
-            
-            dayTextField.isEnabled = true
-            
-            UIView.animate(withDuration: 0.1, animations: {() -> Void in
-                self.typeImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-            }, completion: {(_ finished: Bool) -> Void in
-                UIView.animate(withDuration: 0.1, animations: {() -> Void in
-                    self.typeImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                })
-            })
-
-        } else {
-            
-            typeImageView.shake(count: 3, for: 0.2, withTranslation: 2)
-            
-            dayTextField.isEnabled = false
-            
-        }
-    }
-    
 }

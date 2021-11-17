@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 enum DiscoverType: CaseIterable {
     case plant
@@ -33,12 +34,28 @@ class DiscoverViewController: UIViewController {
         }
     }
     
-    var discoverObject: [Any]?
+    @IBOutlet weak var animationContainer: UIView!
+    @IBOutlet weak var emptyLabel: UILabel!
+    
+    var discoverObject: [Any]? {
+        didSet {
+            checkEmpty()
+        }
+    }
     
     var discoverType: DiscoverType = .plant
     
+    private var emptyAnimation: AnimationView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emptyAnimation = loadAnimation(name: "70780-emptyResult", loopMode: .loop)
+        if let emptyAnimation = emptyAnimation {
+            emptyAnimation.frame = animationContainer.bounds
+            animationContainer.addSubview(emptyAnimation)
+            emptyAnimation.play()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,8 +132,9 @@ class DiscoverViewController: UIViewController {
                 }
                 
                 return blockedPlants
+                
             } else {
-                return nil
+                return object
             }
         case .shop:
             
@@ -129,8 +147,11 @@ class DiscoverViewController: UIViewController {
                 }
                 
                 return blockedShops
+                
             } else {
-                return nil
+                
+                return object
+                
             }
         }
     }
@@ -151,6 +172,32 @@ class DiscoverViewController: UIViewController {
             
             fetchData()
             
+        }
+    }
+    private func checkEmpty() {
+        if let discoverObject = discoverObject {
+            if discoverObject.count <= 0 {
+                animationContainer.isHidden = false
+                emptyLabel.isHidden = false
+                emptyLabel.text = "Oops!現在好像沒東西，晚點再來看看吧！"
+                if let emptyAnimation = emptyAnimation {
+                    emptyAnimation.play()
+                }
+            } else {
+                animationContainer.isHidden = true
+                emptyLabel.isHidden = true
+                if let emptyAnimation = emptyAnimation {
+                    emptyAnimation.stop()
+                }
+            }
+        } else {
+            
+            animationContainer.isHidden = false
+            emptyLabel.isHidden = false
+            emptyLabel.text = "Oops!現在好像沒東西，晚點再來看看吧！"
+            if let emptyAnimation = emptyAnimation {
+                emptyAnimation.play()
+            }
         }
     }
 }

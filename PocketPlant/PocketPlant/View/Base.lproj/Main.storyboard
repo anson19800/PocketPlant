@@ -129,7 +129,7 @@
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-f4-YDy">
                                 <rect key="frame" x="114" y="423" width="200" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H0e-GN-ycd"/>
                                     <constraint firstAttribute="height" constant="200" id="Nba-k3-6H0"/>
@@ -311,25 +311,46 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpL-we-NxT">
+                                <rect key="frame" x="114" y="363" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="COh-LD-dGF"/>
+                                    <constraint firstAttribute="height" constant="200" id="vPB-KI-30f"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒有紀錄任何植物呢快去新增吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3k-nc-vFg">
+                                <rect key="frame" x="114" y="563" width="200" height="47.666666666666629"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4D7-Y7-qZC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QGH-hg-Qdl" firstAttribute="top" secondItem="4W7-Kd-5IS" secondAttribute="bottom" constant="20" id="6G0-7k-HCQ"/>
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="leading" secondItem="0OJ-cj-dQ4" secondAttribute="leading" id="6yj-eo-KnT"/>
+                            <constraint firstItem="U3k-nc-vFg" firstAttribute="leading" secondItem="fpL-we-NxT" secondAttribute="leading" id="9X8-OG-zTu"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="top" secondItem="QGH-hg-Qdl" secondAttribute="bottom" constant="10" id="EZ8-XD-hlj"/>
                             <constraint firstItem="4D7-Y7-qZC" firstAttribute="trailing" secondItem="QGH-hg-Qdl" secondAttribute="trailing" constant="33" id="IdX-K1-cXs"/>
+                            <constraint firstItem="U3k-nc-vFg" firstAttribute="trailing" secondItem="fpL-we-NxT" secondAttribute="trailing" id="NWf-Xz-NeT"/>
                             <constraint firstItem="4D7-Y7-qZC" firstAttribute="trailing" secondItem="4W7-Kd-5IS" secondAttribute="trailing" id="Noa-ne-jBO"/>
+                            <constraint firstItem="fpL-we-NxT" firstAttribute="centerX" secondItem="0OJ-cj-dQ4" secondAttribute="centerX" id="UFa-2F-4Rs"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="trailing" secondItem="QGH-hg-Qdl" secondAttribute="trailing" id="bVd-e5-O1T"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="leading" secondItem="QGH-hg-Qdl" secondAttribute="leading" id="cmP-UJ-DbC"/>
                             <constraint firstItem="QGH-hg-Qdl" firstAttribute="leading" secondItem="5Yv-KP-SKA" secondAttribute="leading" id="ft2-U3-UQx"/>
                             <constraint firstItem="4D7-Y7-qZC" firstAttribute="bottom" secondItem="3kz-0V-5tR" secondAttribute="bottom" constant="40" id="k9f-Q8-RXz"/>
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="top" secondItem="0OJ-cj-dQ4" secondAttribute="top" id="meE-vM-dSV"/>
+                            <constraint firstItem="fpL-we-NxT" firstAttribute="centerY" secondItem="0OJ-cj-dQ4" secondAttribute="centerY" id="nvd-19-LgQ"/>
+                            <constraint firstItem="U3k-nc-vFg" firstAttribute="top" secondItem="fpL-we-NxT" secondAttribute="bottom" id="nwW-gc-jFM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5l8-kM-pNH"/>
                     <connections>
+                        <outlet property="animationContainer" destination="fpL-we-NxT" id="hSs-KX-s9S"/>
                         <outlet property="discoverCollectionView" destination="3kz-0V-5tR" id="Kug-HE-QMh"/>
+                        <outlet property="emptyLabel" destination="U3k-nc-vFg" id="LAC-1w-lMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMi-wD-u6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -488,22 +509,44 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnf-Wx-xVx">
+                                <rect key="frame" x="114" y="499.33333333333326" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="16V-ZY-pqa"/>
+                                    <constraint firstAttribute="width" constant="200" id="PId-SB-xca"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒有紀錄任何植物呢快去新增吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvw-sO-Xsf">
+                                <rect key="frame" x="114" y="699.33333333333337" width="200" height="47.666666666666629"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h1d-wb-U0g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="top" secondItem="tnf-Wx-xVx" secondAttribute="bottom" id="3D6-7v-zFr"/>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="trailing" secondItem="tnf-Wx-xVx" secondAttribute="trailing" id="MWt-2O-mpD"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="top" secondItem="Si2-w9-bBi" secondAttribute="bottom" id="Pss-KZ-nF0"/>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="centerX" secondItem="tnf-Wx-xVx" secondAttribute="centerX" id="SLf-FZ-bE1"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" constant="20" id="Vbh-Pw-FJ8"/>
                             <constraint firstItem="Si2-w9-bBi" firstAttribute="top" secondItem="7iF-Ub-Ypz" secondAttribute="top" constant="30" id="afc-v7-fsy"/>
+                            <constraint firstItem="tnf-Wx-xVx" firstAttribute="centerX" secondItem="JQD-0Y-b3B" secondAttribute="centerX" id="cHn-x5-OfS"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="bottom" secondItem="JQD-0Y-b3B" secondAttribute="bottom" id="gjl-ue-NJO"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" id="h2K-uw-8jc"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="leading" secondItem="Si2-w9-bBi" secondAttribute="leading" id="kk9-sO-zyD"/>
                             <constraint firstItem="Si2-w9-bBi" firstAttribute="leading" secondItem="h1d-wb-U0g" secondAttribute="leading" constant="20" id="mvt-LS-IoC"/>
+                            <constraint firstItem="tnf-Wx-xVx" firstAttribute="top" secondItem="Si2-w9-bBi" secondAttribute="bottom" constant="50" id="peY-Nw-1OB"/>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="leading" secondItem="tnf-Wx-xVx" secondAttribute="leading" id="qK6-U9-KXo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YGn-le-L5D"/>
                     <connections>
+                        <outlet property="animationContainer" destination="tnf-Wx-xVx" id="nSp-TN-1vt"/>
                         <outlet property="calendar" destination="Si2-w9-bBi" id="RJa-Wa-dS4"/>
+                        <outlet property="emptyLabel" destination="hvw-sO-Xsf" id="TqU-4J-aG9"/>
                         <outlet property="infoTableView" destination="JQD-0Y-b3B" id="6Wf-A9-YZB"/>
                         <segue destination="b9S-vk-yrJ" kind="show" identifier="showWater" id="xMt-Cc-G7M"/>
                     </connections>

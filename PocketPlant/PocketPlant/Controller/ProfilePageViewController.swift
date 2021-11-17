@@ -14,7 +14,6 @@ import SafariServices
 enum SettingSelection: String, CaseIterable {
     case toolStock = "材料庫存"
     case gardeningShop = "園藝店收藏"
-    case sharePlants = "共享植物"
     case acountManagement = "帳號管理"
     
     var iconImage: UIImage? {
@@ -25,8 +24,6 @@ enum SettingSelection: String, CaseIterable {
             return UIImage(systemName: "house.fill")
         case .acountManagement:
             return UIImage(systemName: "gearshape")
-        case .sharePlants:
-            return UIImage(systemName: "leaf.fill")
         }
     }
 }
@@ -260,19 +257,6 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             self.navigationController?.pushViewController(gardeningShopVC, animated: true)
             
-        case .sharePlants:
-            
-            let storyBoard = UIStoryboard(name: "SharePlantPage", bundle: nil)
-            
-            let viewController = storyBoard.instantiateViewController(
-                withIdentifier: String(describing: SharePlantViewController.self))
-            
-            guard let sharePlantVC = viewController as? SharePlantViewController else { return }
-            
-            sharePlantVC.modalPresentationStyle = .fullScreen
-            
-            self.navigationController?.pushViewController(sharePlantVC, animated: true)
-            
         case .acountManagement:
             
             let storyBoard = UIStoryboard(name: "AccountSeetingPage", bundle: nil)
@@ -305,6 +289,7 @@ extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigati
                         }
                     }
                 case .failure(let error):
+                    
                     self.dismiss(animated: true, completion: nil)
                 }
             }

@@ -130,12 +130,14 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let currentUser = UserManager.shared.currentUser,
-           let userName = currentUser.name {
-            self.homeTitleLabel.text = "歡迎回來 \(userName)"
-        } else {
-            self.homeTitleLabel.text = "口袋植物"
-        }
+//        if let currentUser = UserManager.shared.currentUser,
+//           let userName = currentUser.name {
+//            self.homeTitleLabel.text = "植物清單"
+//        } else {
+//            self.homeTitleLabel.text = "植物清單"
+//        }
+        
+        self.homeTitleLabel.text = "植物清單"
         
         switch isSelectedAt {
             
@@ -231,12 +233,17 @@ class HomePageViewController: UIViewController {
     
     func updateSharePlants(withAnimation: Bool) {
         
+        
         guard let currentUser = UserManager.shared.currentUser,
-              let sharePlantsID = currentUser.sharePlants else { return }
+              let sharePlantsID = currentUser.sharePlants
+        else {
+            self.plants = []
+            return
+        }
         
         let group = DispatchGroup()
         
-        self.plants = nil
+        self.plants = []
         
         sharePlantsID.forEach { plantID in
             

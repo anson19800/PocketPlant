@@ -109,7 +109,7 @@ class RemindViewController: UIViewController {
             guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
                   let remindCell = cell as? ReminderTableViewCell else { return }
             
-            if remindCell.imageIsSelectes {
+            if remindCell.dayTextField.text != "0" {
                 
                 guard let timesString = remindCell.dayTextField.text,
                       timesString != "",
