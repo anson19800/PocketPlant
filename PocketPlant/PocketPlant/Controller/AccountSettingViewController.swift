@@ -96,7 +96,7 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
             
         case .deleteAccount:
             
-            break
+            showAlert(title: "刪除帳號", message: "如果您需要刪除帳號請來信\nanson19800@gmail.com\n感謝您！", buttonTitle: "確認")
             
         case .privacyPolicy:
             

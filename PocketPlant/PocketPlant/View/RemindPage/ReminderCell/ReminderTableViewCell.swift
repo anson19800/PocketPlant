@@ -30,7 +30,7 @@ class ReminderTableViewCell: UITableViewCell {
     
     func layoutCell(type: ReminderType, reminds: [Remind]?) {
         
-        typelabel.text = "\(type.rawValue)  每隔"
+        typelabel.text = "\(type.rawValue)  每"
         
         switch type {
         case .water:
