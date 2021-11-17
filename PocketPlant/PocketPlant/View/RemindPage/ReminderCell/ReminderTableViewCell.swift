@@ -19,7 +19,8 @@ class ReminderTableViewCell: UITableViewCell {
     @IBOutlet weak var typelabel: UILabel!
     @IBOutlet weak var dayTextField: UITextField!
     @IBOutlet weak var trailLabel: UILabel!
-
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
     private var imageColor: UIColor = .gray
     
     override func awakeFromNib() {
@@ -54,6 +55,7 @@ class ReminderTableViewCell: UITableViewCell {
             if type.rawValue == remind.type {
                 if remind.times != 0 {
                     dayTextField.text = String(remind.times)
+                    timePicker.setDate(Date(timeIntervalSince1970: remind.time), animated: false)
                 }
             }
         }
