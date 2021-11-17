@@ -14,36 +14,42 @@ class UserManager {
     
     static let shared = UserManager()
     
-    var userName: String = "使用者"
-    
-    private init() {}
-    
-    let userID: String = {
-        
+    var userID: String {
         if let user = Auth.auth().currentUser {
             return user.uid
         } else {
             return "0"
         }
-    }()
+    }
     
-    let userDisplayName: String = {
-        
-        if let user = Auth.auth().currentUser,
-           let userName = user.displayName {
-            return userName
-        } else {
-            return "使用者"
+    var currentUser: User? {
+        didSet {
+            if let currentUser = currentUser {
+                print(currentUser)
+            }
         }
-    }()
+    }
+    
+    private init() {}
     
     private let dataBase = Firestore.firestore()
     
-    func createUserInfo() {
+    func getUserID() -> String {
+        if let user = Auth.auth().currentUser {
+            return user.uid
+        } else {
+            return "0"
+        }
+    }
+    
+    func createUserInfo(name: String, imageURL: String?, imageID: String?) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
         let user = User(userID: userID,
-                        name: userDisplayName,
-                        userImageURL: nil,
-                        representPlamtID: nil,
+                        name: name,
+                        userImageURL: imageURL,
+                        userImageID: imageID,
                         sharePlants: nil,
                         favoriteShop: nil)
         
@@ -55,10 +61,100 @@ class UserManager {
                     
                     try userRef.document(user.userID).setData(from: user)
                     
+                    self.currentUser = user
+                    
                 } catch {
                     
                     print("Fail to create user.")
                 }
+            }
+        }
+    }
+    
+    func updateUserInfo(userName: String?,
+                        userImageID: String?,
+                        userImageURL: String?,
+                        isSuccess: @escaping (Bool) -> Void) {
+        
+        let userRef = dataBase.collection("User")
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
+        
+        userRef.document(userID).getDocument { document, error in
+            if error != nil {
+                isSuccess(false)
+            }
+            
+            guard let document = document,
+                  document.exists,
+            var user = try? document.data(as: User.self)
+            else { return }
+            
+            do {
+                
+                if let userName = userName {
+                    user.name = userName
+                }
+                
+                if let imageID = user.userImageID {
+                    ImageManager.shared.deleteImage(imageID: imageID)
+                }
+                
+                if let userImageID = userImageID,
+                   let userImageURL = userImageURL {
+                    user.userImageID = userImageID
+                    user.userImageURL = userImageURL
+                }
+                
+                self.currentUser = user
+                
+                try userRef.document(userID).setData(from: user)
+                
+                isSuccess(true)
+                
+            } catch {
+                
+                isSuccess(false)
+            }
+        }
+    }
+    
+    func addBlockedUser(blockedID: String, isSuccess: @escaping (Bool) -> Void) {
+        let userRef = dataBase.collection("User")
+        
+        userRef.document(self.userID).getDocument { document, error in
+            
+            if error != nil {
+                isSuccess(false)
+            }
+            
+            guard let document = document,
+                  document.exists,
+            var user = try? document.data(as: User.self)
+            else { return }
+            
+            do {
+                if user.blockedUserID == nil {
+                    
+                    user.blockedUserID = [blockedID]
+                    
+                } else {
+                    
+                    user.blockedUserID?.append(blockedID)
+                    
+                }
+                
+                self.currentUser = user
+                
+                try userRef.document(self.userID).setData(from: user)
+                
+                isSuccess(true)
+                
+            } catch {
+                
+                isSuccess(false)
             }
         }
     }
@@ -107,7 +203,11 @@ class UserManager {
         
         let userRef = dataBase.collection("User")
         
-        userRef.document(self.userID).getDocument { document, error in
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
+        
+        userRef.document(userID).getDocument { document, error in
             if let error = error {
                 completion(Result.failure(error))
             }
@@ -115,6 +215,8 @@ class UserManager {
                   document.exists,
                   let user = try? document.data(as: User.self)
             else { return }
+            
+            self.currentUser = user
             
             completion(Result.success(user))
         }
@@ -124,7 +226,11 @@ class UserManager {
         
         let userRef = dataBase.collection("User")
         
-        userRef.document(self.userID).getDocument { document, error in
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        let userID = currentUser.uid
+        
+        userRef.document(userID).getDocument { document, error in
             
             if error != nil {
                 
@@ -148,7 +254,9 @@ class UserManager {
                         user.sharePlants = [plantID]
                     }
                     
-                    try userRef.document(self.userID).setData(from: user)
+                    self.currentUser = user
+                    
+                    try userRef.document(userID).setData(from: user)
                     isSuccess(true)
                 
                 } catch {
@@ -157,6 +265,62 @@ class UserManager {
             } else {
                 isSuccess(false)
             }
+        }
+    }
+    
+    func deleteSharePlant(sharePlants: [String], isSuccess: (Bool) -> Void) {
+        guard var currentUser = currentUser else {
+            return
+        }
+        
+        currentUser.sharePlants = sharePlants
+        
+        self.currentUser = currentUser
+        
+        let userRef = dataBase.collection("User")
+        
+        let userID = currentUser.userID
+        
+        do {
+            
+            try userRef.document(userID).setData(from: currentUser)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
+            
+        }
+    }
+    
+    func deleteBlockedUser(blockedUserID: String, isSuccess: (Bool) -> Void) {
+        
+        guard var blockedUsersID = self.currentUser?.blockedUserID,
+              var currentUser = self.currentUser else {
+            isSuccess(false)
+            return
+        }
+        
+        blockedUsersID.removeAll { userID -> Bool in
+            return userID == blockedUserID
+        }
+        
+        currentUser.blockedUserID = blockedUsersID
+        
+        self.currentUser = currentUser
+        
+        let userRef = dataBase.collection("User")
+        
+        do {
+        
+            try userRef.document(currentUser.userID).setData(from: currentUser)
+            
+            isSuccess(true)
+            
+        } catch {
+            
+            isSuccess(false)
             
         }
     }

@@ -127,8 +127,6 @@ class ShopDetailViewController: UIViewController {
                         let indexSet = IndexSet(integersIn: 0...0)
                         self.tableView.reloadSections(indexSet, with: .fade)
                     }
-                    
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                 }
                 
             case .failure(let error):
@@ -214,11 +212,11 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let user = self.commentUser[comment.senderID] {
                 
-                commentCell.layoutCell(comment: comment, user: user)
+                commentCell.layoutCell(comment: comment, user: user, isOwner: false)
                 
             } else {
                 
-                commentCell.layoutCell(comment: comment, user: nil)
+                commentCell.layoutCell(comment: comment, user: nil, isOwner: false)
                 
             }
             
@@ -259,4 +257,43 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         return imageCell
     }
     
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard indexPath.row > 1 else { return nil }
+        
+        guard let comments = self.comments,
+              let currentUser = UserManager.shared.currentUser
+        else { return nil }
+        
+        let comment = comments[indexPath.row - 2]
+        
+        if comment.senderID == currentUser.userID {
+            return nil
+        }
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            
+            let blockAction = UIAction(title: "封鎖使用者",
+                                       image: UIImage(systemName: "person.fill.xmark"),
+                                       attributes: .destructive) { _ in
+                
+                let commentIndex = indexPath.row - 2
+                
+                guard let comments = self.comments else { return }
+                
+                let comment = comments[commentIndex]
+                
+                let blockedUserID = comment.senderID
+                
+                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
+                    if isSuccess {
+                        self.fetchComment()
+                        print("Success Blocked user \(blockedUserID)")
+                    }
+                }
+            }
+            return UIMenu(title: "", children: [blockAction])
+        }
+    }
 }

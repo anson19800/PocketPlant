@@ -101,23 +101,23 @@ class InputPlantTableViewCell: UITableViewCell {
         case waterLevel1:
             
             waterLevel = .one
-            waterLevel1.tintColor = .cloudBlue
+            waterLevel1.tintColor = .CloudBlue
             waterLevel2.tintColor = .gray
             waterLevel3.tintColor = .gray
             
         case waterLevel2:
             
             waterLevel = .two
-            waterLevel1.tintColor = .cloudBlue
-            waterLevel2.tintColor = .cloudBlue
+            waterLevel1.tintColor = .CloudBlue
+            waterLevel2.tintColor = .CloudBlue
             waterLevel3.tintColor = .gray
             
         case waterLevel3:
             
             waterLevel = .three
-            waterLevel1.tintColor = .cloudBlue
-            waterLevel2.tintColor = .cloudBlue
-            waterLevel3.tintColor = .cloudBlue
+            waterLevel1.tintColor = .CloudBlue
+            waterLevel2.tintColor = .CloudBlue
+            waterLevel3.tintColor = .CloudBlue
             
         case lightLevel1:
             
@@ -191,23 +191,23 @@ class InputPlantTableViewCell: UITableViewCell {
         case 1:
             
             waterLevel = .one
-            waterLevel1.tintColor = .cloudBlue
+            waterLevel1.tintColor = .CloudBlue
             waterLevel2.tintColor = .gray
             waterLevel3.tintColor = .gray
             
         case 2:
             
             waterLevel = .two
-            waterLevel1.tintColor = .cloudBlue
-            waterLevel2.tintColor = .cloudBlue
+            waterLevel1.tintColor = .CloudBlue
+            waterLevel2.tintColor = .CloudBlue
             waterLevel3.tintColor = .gray
             
         case 3:
             
             waterLevel = .three
-            waterLevel1.tintColor = .cloudBlue
-            waterLevel2.tintColor = .cloudBlue
-            waterLevel3.tintColor = .cloudBlue
+            waterLevel1.tintColor = .CloudBlue
+            waterLevel2.tintColor = .CloudBlue
+            waterLevel3.tintColor = .CloudBlue
             
         default:
             waterLevel = .zero

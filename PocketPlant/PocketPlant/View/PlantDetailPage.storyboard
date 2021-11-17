@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="300" width="428" height="592"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tAz-ai-juk">
-                                        <rect key="frame" x="20" y="0.0" width="388" height="545"/>
+                                        <rect key="frame" x="20" y="25" width="388" height="520"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="yNs-vw-IQl">
                                             <rect key="frame" x="0.0" y="0.0" width="388" height="99"/>
@@ -83,7 +83,6 @@
                                     <constraint firstItem="EaQ-t9-lQc" firstAttribute="leading" secondItem="mMa-ub-Y6p" secondAttribute="trailing" constant="5" id="Ve2-Ea-CkH"/>
                                     <constraint firstAttribute="trailing" secondItem="tAz-ai-juk" secondAttribute="trailing" constant="20" id="apC-0X-3dl"/>
                                     <constraint firstItem="EaQ-t9-lQc" firstAttribute="trailing" secondItem="tAz-ai-juk" secondAttribute="trailing" id="bDb-Jl-FoB"/>
-                                    <constraint firstItem="tAz-ai-juk" firstAttribute="top" secondItem="8V4-kx-pdv" secondAttribute="top" id="djf-Sw-Lyp"/>
                                     <constraint firstItem="jNz-lT-zyN" firstAttribute="centerY" secondItem="mMa-ub-Y6p" secondAttribute="centerY" id="iOj-SY-fx0"/>
                                     <constraint firstItem="jNz-lT-zyN" firstAttribute="top" secondItem="tAz-ai-juk" secondAttribute="bottom" constant="1" id="ibF-CF-6Qf"/>
                                     <constraint firstItem="tAz-ai-juk" firstAttribute="leading" secondItem="8V4-kx-pdv" secondAttribute="leading" constant="20" id="nDl-jV-4Il"/>
@@ -148,6 +147,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4qz-J5-Kpz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="1Vt-KY-qpu"/>
+                            <constraint firstItem="tAz-ai-juk" firstAttribute="top" secondItem="HOV-px-egc" secondAttribute="bottom" id="8zq-Sg-iHi"/>
                             <constraint firstItem="4qz-J5-Kpz" firstAttribute="bottom" secondItem="8V4-kx-pdv" secondAttribute="top" constant="-10" id="BXv-93-URv"/>
                             <constraint firstItem="8V4-kx-pdv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CXl-Yf-Zee"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8V4-kx-pdv" secondAttribute="bottom" id="Fbr-Bp-ow2"/>
@@ -259,7 +259,7 @@
         <image name="clock.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="plant" width="5456" height="3632"/>
+        <image name="plant" width="1024" height="1024"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

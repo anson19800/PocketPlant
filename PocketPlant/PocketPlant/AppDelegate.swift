@@ -14,14 +14,20 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         
         IQKeyboardManager.shared.enable = true
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .carPlay]) { granted, error in
+        UITabBar.appearance().tintColor = .DarkGreen
+        
+        UINavigationBar.appearance().tintColor = UIColor.darkGreen1
+        let backImage = UIImage(systemName: "chevron.backward.circle.fill")
+        UINavigationBar.appearance().backIndicatorImage = backImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
             if granted {
                 print("允許")
             } else {
@@ -53,6 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         completionHandler([.badge, .sound, .alert])
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return .portrait
     }
 
 }

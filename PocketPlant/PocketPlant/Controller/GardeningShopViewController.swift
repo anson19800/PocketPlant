@@ -80,7 +80,10 @@ extension GardeningShopViewController: UITableViewDelegate, UITableViewDataSourc
         navigationController?.pushViewController(detailPageVC, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             guard var shops = self.shops else { return }
             FirebaseManager.shared.deleteShop(shop: shops[indexPath.row])

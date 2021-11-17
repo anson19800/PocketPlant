@@ -78,16 +78,16 @@ class PlantDetailTableViewCell: UITableViewCell {
             waterLabel.text = "不需水份"
         case .one:
             waterLabel.text = "少量水份"
-            waterLevel1Image.tintColor = .cloudBlue
+            waterLevel1Image.tintColor = .CloudBlue
         case .two:
             waterLabel.text = "適中水份"
-            waterLevel1Image.tintColor = .cloudBlue
-            waterLevel2Image.tintColor = .cloudBlue
+            waterLevel1Image.tintColor = .CloudBlue
+            waterLevel2Image.tintColor = .CloudBlue
         case .three:
             waterLabel.text = "大量水份"
-            waterLevel1Image.tintColor = .cloudBlue
-            waterLevel2Image.tintColor = .cloudBlue
-            waterLevel3Image.tintColor = .cloudBlue
+            waterLevel1Image.tintColor = .CloudBlue
+            waterLevel2Image.tintColor = .CloudBlue
+            waterLevel3Image.tintColor = .CloudBlue
         }
         
         switch light {

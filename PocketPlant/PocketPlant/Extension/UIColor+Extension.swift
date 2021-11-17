@@ -7,9 +7,42 @@
 
 import UIKit
 
+private enum PPColor: String {
+
+    // swiftlint:disable identifier_name
+    case DarkGreen
+    
+    case BackgroundGreen
+    
+    case NavTabColor
+    
+    case CloudBlue
+    
+    case DarkBlue
+    
+}
+
 extension UIColor {
     
+    static let DarkGreen = PPColor(.DarkGreen)
+
+    static let BackgroundGreen = PPColor(.BackgroundGreen)
+
+    static let NavTabColor = PPColor(.NavTabColor)
+
+    static let CloudBlue = PPColor(.CloudBlue)
+    
+    static let DarkBlue = PPColor(.DarkBlue)
+    
+    // swiftlint:enable identifier_name
+    
     static let cloudBlue = UIColor.hexStringToUIColor(hex: "CCE5FF")
+    static let darkGreen1 = UIColor.hexStringToUIColor(hex: "347159")
+    
+    private static func PPColor(_ color: PPColor) -> UIColor? {
+
+        return UIColor(named: color.rawValue)
+    }
     
     static func hexStringToUIColor(hex: String) -> UIColor {
 

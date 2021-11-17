@@ -56,7 +56,7 @@ class NewShopViewController: UIViewController {
                 
                 group.enter()
                 
-                let scaleImage = image.scale(newWidth: 100)
+                let scaleImage = image.scale(newWidth: 150)
                 ImageManager.shared.uploadImageToGetURL(image: scaleImage) { result in
                     switch result {
                     case .success((let uuid, let url)):

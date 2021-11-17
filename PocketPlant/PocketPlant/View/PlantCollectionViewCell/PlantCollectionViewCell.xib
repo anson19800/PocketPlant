@@ -12,20 +12,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PlantCollectionViewCell" customModule="PocketPlant" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="176" height="252"/>
+            <rect key="frame" x="0.0" y="0.0" width="92" height="105"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="176" height="252"/>
+                <rect key="frame" x="0.0" y="0.0" width="92" height="105"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ltF-1s-XO8">
-                        <rect key="frame" x="0.0" y="0.0" width="176" height="252"/>
+                        <rect key="frame" x="0.0" y="0.0" width="92" height="105"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7r5-RB-xXi">
-                                <rect key="frame" x="10" y="10" width="156" height="156"/>
+                                <rect key="frame" x="10" y="10" width="72" height="72"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vuS-9o-vxR">
-                                        <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="72"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vuS-9o-vxR" secondAttribute="height" multiplier="1:1" id="25Q-D5-LWX"/>
@@ -40,8 +40,8 @@
                                     <constraint firstItem="vuS-9o-vxR" firstAttribute="leading" secondItem="7r5-RB-xXi" secondAttribute="leading" id="bnR-Te-8hs"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小草一號" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-RJ-40G">
-                                <rect key="frame" x="60" y="166" width="56" height="81"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="跑步看到的超高仙人掌" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgL-RJ-40G">
+                                <rect key="frame" x="10" y="82" width="72" height="18"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <color key="textColor" red="0.49803921569999998" green="0.57254901960000004" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -49,11 +49,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LgL-RJ-40G" firstAttribute="leading" secondItem="7r5-RB-xXi" secondAttribute="leading" id="CQg-69-P4w"/>
                             <constraint firstAttribute="bottom" secondItem="LgL-RJ-40G" secondAttribute="bottom" constant="5" id="Jdu-Ov-Kpb"/>
                             <constraint firstAttribute="trailing" secondItem="7r5-RB-xXi" secondAttribute="trailing" constant="10" id="Mcp-0u-Chu"/>
                             <constraint firstItem="LgL-RJ-40G" firstAttribute="centerX" secondItem="ltF-1s-XO8" secondAttribute="centerX" id="PqO-NJ-kko"/>
                             <constraint firstItem="LgL-RJ-40G" firstAttribute="top" secondItem="7r5-RB-xXi" secondAttribute="bottom" id="ael-zV-XYm"/>
                             <constraint firstItem="7r5-RB-xXi" firstAttribute="top" secondItem="ltF-1s-XO8" secondAttribute="top" constant="10" id="fsd-5F-8dO"/>
+                            <constraint firstItem="LgL-RJ-40G" firstAttribute="trailing" secondItem="7r5-RB-xXi" secondAttribute="trailing" id="m3I-0X-05e"/>
                             <constraint firstItem="7r5-RB-xXi" firstAttribute="leading" secondItem="ltF-1s-XO8" secondAttribute="leading" constant="10" id="tgf-2M-bDl"/>
                         </constraints>
                     </view>
@@ -66,13 +68,13 @@
                 <constraint firstAttribute="trailing" secondItem="ltF-1s-XO8" secondAttribute="trailing" id="l54-lw-pDk"/>
                 <constraint firstAttribute="bottom" secondItem="ltF-1s-XO8" secondAttribute="bottom" id="nM0-Je-bAr"/>
             </constraints>
-            <size key="customSize" width="176" height="252"/>
+            <size key="customSize" width="92" height="105"/>
             <connections>
                 <outlet property="imageContainer" destination="7r5-RB-xXi" id="la1-zc-gS7"/>
                 <outlet property="nameLabel" destination="LgL-RJ-40G" id="Gcz-sz-zqS"/>
                 <outlet property="plantImageView" destination="vuS-9o-vxR" id="RLr-ji-kbt"/>
             </connections>
-            <point key="canvasLocation" x="223.18840579710147" y="192.1875"/>
+            <point key="canvasLocation" x="229" y="163"/>
         </collectionViewCell>
     </objects>
     <resources>

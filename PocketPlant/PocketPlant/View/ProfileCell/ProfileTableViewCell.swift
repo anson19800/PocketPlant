@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileTableViewCell: UITableViewCell {
 
@@ -17,10 +18,6 @@ class ProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         contentView.layer.cornerRadius = 10
-        
-//        iconImageView.applyshadowWithCorner(containerView: imageContainer,
-//                                            cornerRadious: 10,
-//                                            opacity: 0.05)
     }
 
     override func layoutSubviews() {
@@ -38,6 +35,15 @@ class ProfileTableViewCell: UITableViewCell {
         titleLabel.text = title
         if let image = image {
             iconImageView.image = image
+        }
+    }
+    
+    func layoutCell(title: String, imageURL: String?) {
+        titleLabel.text = title
+        if let imageURL = imageURL {
+            iconImageView.kf.setImage(with: URL(string: imageURL))
+        } else {
+            iconImageView.image = UIImage(systemName: "person.circle.fill")
         }
     }
 }
