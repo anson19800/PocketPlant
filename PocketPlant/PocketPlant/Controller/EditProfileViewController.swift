@@ -111,17 +111,38 @@ class EditProfileViewController: UIViewController {
                         
                     case .success((let uuid, let url)):
                         
-                        UserManager.shared.createUserInfo(name: self.name ?? "使用者", imageURL: url, imageID: uuid)
+                        UserManager.shared.updateUserInfo(userName: self.name ?? "使用者",
+                                                          userImageID: uuid,
+                                                          userImageURL: url) { isSuccess in
+                            
+                            if !isSuccess {
+                                self.showAlert(title: "Oops", message: "建立的過程好像出了問題請重新試過", buttonTitle: "好的")
+                                return
+                            }
+                        }
+                        
+//                        UserManager.shared.createUserInfo(name: self.name ?? "使用者", imageURL: url, imageID: uuid)
                         
                     case .failure(let error):
                         
+                        self.showAlert(title: "Oops", message: "網路好像出了問題請重新試過", buttonTitle: "好的")
+                        
                         print(error)
+                        
+                        return
                     }
                 }
-                
             } else {
                 
-                UserManager.shared.createUserInfo(name: self.name ?? "使用者", imageURL: nil, imageID: nil)
+                UserManager.shared.updateUserInfo(userName: self.name ?? "使用者",
+                                                  userImageID: nil,
+                                                  userImageURL: nil) { isSuccess in
+                    
+                    if !isSuccess {
+                        self.showAlert(title: "Oops", message: "建立的過程好像出了問題請重新試過", buttonTitle: "好的")
+                        return
+                    }
+                }
             }
             
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)

@@ -56,7 +56,8 @@ class NewShopViewController: UIViewController {
                 
                 group.enter()
                 
-                let scaleImage = image.scale(newWidth: 150)
+                let scaleImage = image.scale(newWidth: 100)
+                
                 ImageManager.shared.uploadImageToGetURL(image: scaleImage) { result in
                     switch result {
                     case .success((let uuid, let url)):
@@ -133,7 +134,7 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
             
             if indexPath.row >= images.count {
                 
-                let placeHolderImage = UIImage(systemName: "photo")
+                let placeHolderImage = UIImage(systemName: "plus.square.dashed")
                 
                 imageCell.mainImageView.image = placeHolderImage
                 
@@ -146,7 +147,7 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
             
         } else if selectedImages == nil {
             
-            let placeHolderImage = UIImage(systemName: "photo")
+            let placeHolderImage = UIImage(systemName: "plus.square.dashed")
             
             imageCell.mainImageView.image = placeHolderImage
             

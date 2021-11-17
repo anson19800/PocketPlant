@@ -42,7 +42,7 @@ class UserManager {
         }
     }
     
-    func createUserInfo(name: String, imageURL: String?, imageID: String?) {
+    func createUserInfo(name: String, imageURL: String?, imageID: String?, isSuccess: @escaping (Bool) -> Void) {
         guard let currentUser = Auth.auth().currentUser else { return }
         
         let userID = currentUser.uid
@@ -63,8 +63,11 @@ class UserManager {
                     
                     self.currentUser = user
                     
+                    isSuccess(true)
+                    
                 } catch {
                     
+                    isSuccess(false)
                     print("Fail to create user.")
                 }
             }

@@ -194,7 +194,9 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
         case .create:
             
-            self.firebaseManager.uploadPlant(plant: &plant, image: image) { isSuccess in
+            let scaleImage = image.scale(newWidth: 200)
+            
+            self.firebaseManager.uploadPlant(plant: &plant, image: scaleImage) { isSuccess in
                 
                 if isSuccess {
                     

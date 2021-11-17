@@ -107,48 +107,48 @@ class LoginViewController: UIViewController {
     
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
     private func randomNonceString(length: Int = 32) -> String {
-      precondition(length > 0)
-      let charset: [Character] =
+        precondition(length > 0)
+        let charset: [Character] =
         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-      var result = ""
-      var remainingLength = length
-
-      while remainingLength > 0 {
-        let randoms: [UInt8] = (0 ..< 16).map { _ in
-          var random: UInt8 = 0
-          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-          if errorCode != errSecSuccess {
-            fatalError(
-              "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-            )
-          }
-          return random
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError(
+                        "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+                    )
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
-
-        randoms.forEach { random in
-          if remainingLength == 0 {
-            return
-          }
-
-          if random < charset.count {
-            result.append(charset[Int(random)])
-            remainingLength -= 1
-          }
-        }
-      }
-
-      return result
+        
+        return result
     }
-
+    
     @available(iOS 13, *)
     private func sha256(_ input: String) -> String {
-      let inputData = Data(input.utf8)
-      let hashedData = SHA256.hash(data: inputData)
-      let hashString = hashedData.compactMap {
-        String(format: "%02x", $0)
-      }.joined()
-
-      return hashString
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
     }
 }
 
@@ -177,8 +177,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                                                       rawNonce: nonce)
             // Sign in with Firebase.
             Auth.auth().signIn(with: credential) { (authResult, error) in
+                
                 if let error = error {
-                    print("登入失敗")
+                    
+                    self.showAlert(title: "登入失敗", message: "請重新登入", buttonTitle: "確認")
                     print(error.localizedDescription)
                     return
                 }
@@ -186,26 +188,42 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 if let additionalUserInfo = authResult?.additionalUserInfo,
                    additionalUserInfo.isNewUser {
                     
-                    let storyBoard = UIStoryboard(name: "EditProfile", bundle: nil)
-                    
-                    let viewController = storyBoard.instantiateViewController(
-                        withIdentifier: String(describing: EditProfileViewController.self))
-                    
-                    guard let editProfileVC = viewController as? EditProfileViewController else { return }
-                    
-                    editProfileVC.modalPresentationStyle = .fullScreen
-                    
-                    self.present(editProfileVC, animated: true, completion: nil)
+                    UserManager.shared.createUserInfo(name: "新的草主", imageURL: nil, imageID: nil) { isSuccess in
+                        
+                        if isSuccess {
+                            
+                            let storyBoard = UIStoryboard(name: "EditProfile", bundle: nil)
+                            
+                            let viewController = storyBoard.instantiateViewController(
+                                withIdentifier: String(describing: EditProfileViewController.self))
+                            
+                            guard let editProfileVC = viewController as? EditProfileViewController else { return }
+                            
+                            editProfileVC.modalPresentationStyle = .fullScreen
+                            
+                            self.present(editProfileVC, animated: true, completion: nil)
+                            
+                        } else {
+                            
+                            self.showAlert(title: "無法建立使用者", message: "請確認網路狀態並重啟APP", buttonTitle: "確認")
+                        }
+                    }
                     
                 } else {
                     
                     UserManager.shared.fetchCurrentUserInfo { result in
                         switch result {
+                            
                         case .success(_):
+                            
                             self.performSegue(withIdentifier: "Login", sender: nil)
-                        case .failure(let error):
-                            print(error)
+                            
+                        case .failure(_):
+                            
+                            self.showAlert(title: "登入失敗", message: "請重新登入", buttonTitle: "確認")
+                            
                             return
+                            
                         }
                     }
                 }
@@ -215,6 +233,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // Handle error.
+        self.showAlert(title: "登入失敗", message: "請重新登入", buttonTitle: "確認")
         print("Sign in with Apple errored: \(error)")
     }
 }

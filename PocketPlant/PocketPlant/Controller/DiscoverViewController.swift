@@ -132,8 +132,9 @@ class DiscoverViewController: UIViewController {
                 }
                 
                 return blockedPlants
+                
             } else {
-                return nil
+                return object
             }
         case .shop:
             
@@ -146,8 +147,11 @@ class DiscoverViewController: UIViewController {
                 }
                 
                 return blockedShops
+                
             } else {
-                return nil
+                
+                return object
+                
             }
         }
     }

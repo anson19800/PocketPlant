@@ -919,7 +919,7 @@
 				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
@@ -956,7 +956,7 @@
 				CODE_SIGN_ENTITLEMENTS = PocketPlant/PocketPlant.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 849PT6PZ3X;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PocketPlant/Info.plist;
