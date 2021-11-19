@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import FirebaseAuth
 
 class CalendarPageViewController: UIViewController {
     
@@ -55,6 +56,13 @@ class CalendarPageViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.calendar.date = Date()
+        
+        if Auth.auth().currentUser == nil {
+            
+            self.waterRecords = []
+            
+            return
+        }
         
         fetchRecord(date: self.calendar.date)
     }

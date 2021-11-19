@@ -78,13 +78,27 @@ class ProfilePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if Auth.auth().currentUser == nil {
+            
+            self.userNameTextField.text = "訪客"
+            
+            return
+        }
+        
         if let currentUser = UserManager.shared.currentUser {
+            
             self.userNameTextField.text = currentUser.name
+            
             if let imageURL = currentUser.userImageURL {
+                
                 self.userImageView.kf.setImage(with: URL(string: imageURL))
+                
             }
+            
         } else {
+            
             self.userNameTextField.text = "使用者"
+            
         }
         
         if let tabBarCon = self.tabBarController,
@@ -112,6 +126,15 @@ class ProfilePageViewController: UIViewController {
     }
         
     @objc func selectUserPhoto() {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         let controller = UIAlertController(title: nil,
                                            message: nil,
                                            preferredStyle: .actionSheet)
@@ -160,7 +183,18 @@ class ProfilePageViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
- 
+    @IBAction func beginRenameAction(_ sender: UITextField) {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            sender.endEditing(true)
+            
+        }
+        
+    }
+    
     @IBAction func endRenameAction(_ sender: UITextField) {
         guard let userName = sender.text else { return }
         UserManager.shared.updateUserInfo(userName: userName,
@@ -227,6 +261,14 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
         
         guard indexPath.row > 0 else { return }
         

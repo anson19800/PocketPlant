@@ -37,8 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         UINavigationBar.appearance().backgroundColor = .clear
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
-        { granted, _ in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _ in
             if granted {
                 print("允許")
             } else {

@@ -130,14 +130,21 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if let currentUser = UserManager.shared.currentUser,
-//           let userName = currentUser.name {
-//            self.homeTitleLabel.text = "植物清單"
-//        } else {
-//            self.homeTitleLabel.text = "植物清單"
-//        }
+        if let currentUser = UserManager.shared.currentUser,
+           let userName = currentUser.name {
+            self.homeTitleLabel.text = "歡迎\(userName)"
+        } else {
+            self.homeTitleLabel.text = "歡迎"
+        }
         
-        self.homeTitleLabel.text = "植物清單"
+        if Auth.auth().currentUser == nil {
+            
+            self.homeTitleLabel.text = "歡迎"
+            
+            self.plants = []
+            
+            return
+        }
         
         switch isSelectedAt {
             
@@ -389,6 +396,14 @@ class HomePageViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         switch segue.identifier {
             
         case "showPlantDetail":
@@ -422,10 +437,6 @@ class HomePageViewController: UIViewController {
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
-            
-        case "showShop":
-            
-            break
 
         default:
             
@@ -694,6 +705,14 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         searchBar.endEditing(true)
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
         
         if collectionView == plantCollectionView {
         

@@ -41,7 +41,14 @@ class ProfileTableViewCell: UITableViewCell {
     func layoutCell(title: String, imageURL: String?) {
         titleLabel.text = title
         if let imageURL = imageURL {
-            iconImageView.kf.setImage(with: URL(string: imageURL))
+            iconImageView.kf.setImage(with: URL(string: imageURL)) { result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(_):
+                    self.iconImageView.image = UIImage(systemName: "person.circle.fill")
+                }
+            }
         } else {
             iconImageView.image = UIImage(systemName: "person.circle.fill")
         }

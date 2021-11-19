@@ -39,6 +39,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var subTitle: UILabel!
     
+    @IBOutlet weak var visitorButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(appleLogInButton)
@@ -150,6 +153,13 @@ class LoginViewController: UIViewController {
         
         return hashString
     }
+    
+    @IBAction func visitorEnterAction(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "Login", sender: nil)
+        
+    }
+    
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
