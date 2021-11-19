@@ -68,6 +68,14 @@ class DiscoverViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func fetchData() {

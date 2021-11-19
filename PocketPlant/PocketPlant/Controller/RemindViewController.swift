@@ -48,6 +48,8 @@ class RemindViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         floatingView.transform = CGAffineTransform(translationX: 0, y: floatingView.bounds.height)
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panOnFloatingView(_:)))

@@ -53,7 +53,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="plus" catalog="system"/>
                                         <connections>
-                                            <segue destination="5ce-AY-Dhb" kind="presentation" identifier="createPlant" id="eDb-fk-ScE"/>
+                                            <segue destination="5ce-AY-Dhb" kind="show" identifier="createPlant" id="eDb-fk-ScE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -178,7 +178,7 @@
                         <outlet property="searchBar" destination="oF9-CH-E7h" id="UKf-P4-rf1"/>
                         <outlet property="waterImageView" destination="Lac-jp-GEC" id="IJh-U3-Nun"/>
                         <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
-                        <segue destination="5ce-AY-Dhb" kind="presentation" identifier="editPlant" id="TN7-OC-vVQ"/>
+                        <segue destination="5ce-AY-Dhb" kind="show" identifier="editPlant" id="TN7-OC-vVQ"/>
                         <segue destination="CCe-xg-Goc" kind="show" identifier="deathPlant" id="Eu5-20-fqN"/>
                         <segue destination="8Wf-mD-jpZ" kind="show" identifier="shopList" id="936-na-uey"/>
                     </connections>
@@ -598,14 +598,14 @@
                                             </constraints>
                                         </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2qg-EV-p7G">
-                                            <rect key="frame" x="229" y="52.333333333333329" width="25" height="25.333333333333329"/>
-                                            <color key="backgroundColor" red="0.45098039215686275" green="0.53333333333333333" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="tintColor" red="0.94117647059999998" green="1" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="231" y="128" width="23" height="19"/>
+                                            <color key="backgroundColor" name="NavTabColor"/>
+                                            <color key="tintColor" name="DarkBlue"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="Jqv-h3-MV5"/>
-                                                <constraint firstAttribute="width" constant="25" id="WR8-O7-aUB"/>
+                                                <constraint firstAttribute="height" constant="25" id="Jqv-h3-MV5"/>
+                                                <constraint firstAttribute="width" constant="23" id="WR8-O7-aUB"/>
                                             </constraints>
-                                            <imageReference key="image" image="photo.circle.fill" catalog="system" symbolScale="small"/>
+                                            <imageReference key="image" image="photo" catalog="system" symbolScale="small"/>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1lU-qH-tVu">
                                             <rect key="frame" x="253.66666666666663" y="174.33333333333334" width="20" height="18.333333333333343"/>
@@ -631,7 +631,7 @@
                                         <constraint firstItem="1lU-qH-tVu" firstAttribute="leading" secondItem="FJh-am-JWe" secondAttribute="trailing" constant="3" id="BQb-7E-YfP"/>
                                         <constraint firstItem="fkM-at-tmM" firstAttribute="top" secondItem="n3l-db-hoi" secondAttribute="top" constant="50" id="Skw-wF-6s7"/>
                                         <constraint firstItem="fkM-at-tmM" firstAttribute="centerX" secondItem="n3l-db-hoi" secondAttribute="centerX" id="Was-tu-eVH"/>
-                                        <constraint firstItem="2qg-EV-p7G" firstAttribute="top" secondItem="SAE-cU-Dgs" secondAttribute="top" id="Y2R-jS-har"/>
+                                        <constraint firstItem="2qg-EV-p7G" firstAttribute="bottom" secondItem="SAE-cU-Dgs" secondAttribute="bottom" id="Y2R-jS-har"/>
                                         <constraint firstItem="FJh-am-JWe" firstAttribute="top" secondItem="fkM-at-tmM" secondAttribute="bottom" constant="10" id="crb-pz-wuG"/>
                                         <constraint firstItem="1lU-qH-tVu" firstAttribute="bottom" secondItem="FJh-am-JWe" secondAttribute="bottom" constant="-10" id="nOl-sm-u0l"/>
                                         <constraint firstItem="2qg-EV-p7G" firstAttribute="trailing" secondItem="SAE-cU-Dgs" secondAttribute="trailing" id="wbb-x8-sO1"/>
@@ -722,14 +722,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pn6-ul-n5f">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" name="BackgroundGreen"/>
-                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </navigationBarAppearance>
-                        <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -776,7 +768,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TN7-OC-vVQ"/>
+        <segue reference="eDb-fk-ScE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Calendar-normal" width="25" height="25"/>
@@ -788,14 +780,11 @@
         <image name="Profile-normal" width="25" height="25"/>
         <image name="Profile-select" width="25" height="25"/>
         <image name="icon" width="180" height="180"/>
-        <image name="photo.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="water" width="1024" height="1024"/>
-        <namedColor name="BackgroundGreen">
-            <color red="0.94099998474121094" green="1" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="DarkBlue">
             <color red="0.25900000333786011" green="0.29399999976158142" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

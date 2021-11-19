@@ -59,6 +59,18 @@ class CalendarPageViewController: UIViewController {
         fetchRecord(date: self.calendar.date)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     @IBAction func dateDidPick(_ sender: UIDatePicker) {
         
         let date = sender.date

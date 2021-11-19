@@ -59,6 +59,8 @@ class NewPlantPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hideKeyboardWhenTappedAround()
 
         tableView.registerCellWithNib(
             identifier: String(describing: InputPlantTableViewCell.self),
@@ -83,6 +85,8 @@ class NewPlantPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.isHidden = true
+        
         switch pageMode {
         case .edit(let editedPlant):
             
@@ -96,6 +100,12 @@ class NewPlantPageViewController: UIViewController {
             
             titleLabel.text = "新增植物"
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func uploadImageAction(_ sender: Any) {
