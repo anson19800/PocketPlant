@@ -38,12 +38,32 @@ class CommentTableViewCell: UITableViewCell {
         if isOwner {
             userLabel.text = "草主-\(user.name ?? "匿名")"
         } else {
-            userLabel.text = user.name
+            if user.name == "" {
+                userLabel.text = "未命名使用者"
+            } else {
+                userLabel.text = user.name
+            }
         }
         if let imageURL = user.userImageURL {
-            userImageView.kf.setImage(with: URL(string: imageURL))
+            
+            userImageView.kf.setImage(with: URL(string: imageURL)) { result in
+                switch result {
+                    
+                case .success(_):
+                    
+                    break
+                    
+                case .failure(_):
+                    
+                    self.userImageView.image = UIImage(systemName: "person.circle.fill")
+                    
+                }
+            }
+            
         } else {
+            
             userImageView.image = UIImage(systemName: "person.circle.fill")
+            
         }
     }
 }
