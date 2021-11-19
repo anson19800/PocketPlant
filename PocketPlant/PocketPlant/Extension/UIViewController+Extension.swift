@@ -25,4 +25,17 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func darkView() -> UIView {
+        
+        let maskView = UIView()
+        
+        maskView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        maskView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+
+        view.addSubview(maskView)
+        
+        return maskView
+    }
 }

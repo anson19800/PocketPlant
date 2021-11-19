@@ -166,20 +166,78 @@ class FirebaseManager {
         }
     }
     
-    func deletePlant(plant: Plant) {
+    func deletePlant(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
         
-        let documentRef = dataBase.collection("plant").document(plant.id)
+        let batch = dataBase.batch()
+        
+        let plantRef = dataBase.collection("plant").document(plant.id)
+        
+        let waterRecordRef = dataBase.collection("water").whereField("plantID", isEqualTo: plant.id)
+        
+        let commentRef = dataBase.collection("comment")
+            .whereField("commentType", isEqualTo: "plant")
+            .whereField("objectID", isEqualTo: plant.id)
+        
+        let group = DispatchGroup()
         
         guard let imageID = plant.imageID else { return }
         
         imageManager.deleteImage(imageID: imageID)
         
-        documentRef.delete()
+        group.enter()
+        
+        waterRecordRef.getDocuments { snapshot, _ in
+            
+            guard let snapshot = snapshot else { return }
+            
+            snapshot.documents.forEach { snapshot in
+                
+                batch.deleteDocument(snapshot.reference)
+            }
+            
+            group.leave()
+        }
+        
+        group.enter()
+        
+        commentRef.getDocuments { snapshot, _ in
+            
+            guard let snapshot = snapshot else { return }
+            
+            snapshot.documents.forEach { snapshot in
+                
+                batch.deleteDocument(snapshot.reference)
+            }
+            
+            group.leave()
+        }
+        
+        RemindManager.shared.deleteReminder(plantID: plant.id)
+        
+        batch.deleteDocument(plantRef)
+        
+        group.notify(queue: .main) {
+            
+            batch.commit { error in
+                
+                if error != nil {
+                    
+                    isSuccess(false)
+                    
+                } else {
+                    
+                    isSuccess(true)
+                    
+                }
+            }
+        }
     }
     
     func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
         
         let documentRef = dataBase.collection("plant").document(plant.id)
+        
+        RemindManager.shared.deleteReminder(plantID: plant.id)
         
         documentRef.getDocument { document, error in
             guard let document = document,

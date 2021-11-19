@@ -186,9 +186,13 @@ extension NewPlantPageViewController: InputPlantDelegate {
         
         guard let image = self.plantImageView.image else { return }
         
+        let maskView = darkView()
+        
         let animationView = loadAnimation(name: "78093-planting", loopMode: .autoReverse)
         
         animationView.play()
+        
+        self.view.isUserInteractionEnabled = false
         
         switch pageMode {
             
@@ -200,7 +204,7 @@ extension NewPlantPageViewController: InputPlantDelegate {
                 
                 if isSuccess {
                     
-                    guard let parentVC = self.parentVC,
+                    guard let parentVC = self.navigationController?.viewControllers.first,
                           let homePageVC = parentVC as? HomePageViewController else { return }
                     
                     homePageVC.updateMyPlants(withAnimation: true)
@@ -208,7 +212,20 @@ extension NewPlantPageViewController: InputPlantDelegate {
                     homePageVC.buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0),
                                                                animated: false, scrollPosition: .top)
                     
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.isUserInteractionEnabled = true
+                    
+                    maskView.removeFromSuperview()
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    
+                } else {
+                    
+                    self.view.isUserInteractionEnabled = true
+                    
+                    maskView.removeFromSuperview()
+                    
+                    self.showAlert(title: "新增錯誤", message: "好像出了點問題，請再試一次", buttonTitle: "確認")
+                    
                 }
                 
             }
@@ -225,9 +242,13 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
             imageManager.deleteImage(imageID: editPlant.imageID!)
             
+            let maskView = darkView()
+            
             let animationView = loadAnimation(name: "78093-planting", loopMode: .autoReverse)
             
             animationView.play()
+            
+            view.isUserInteractionEnabled = false
             
             imageManager.uploadImageToGetURL(image: image) { result in
                 
@@ -254,9 +275,19 @@ extension NewPlantPageViewController: InputPlantDelegate {
                                 animated: false,
                                 scrollPosition: .top)
                             
-                            self.dismiss(animated: true, completion: nil)
+                            self.view.isUserInteractionEnabled = true
+                            
+                            maskView.removeFromSuperview()
+                            
+                            self.navigationController?.popViewController(animated: true)
                             
                         case .failure(let error):
+                            
+                            self.view.isUserInteractionEnabled = true
+                            
+                            maskView.removeFromSuperview()
+                            
+                            self.showAlert(title: "編輯錯誤", message: "好像出了點問題，請再試一次", buttonTitle: "確認")
                             
                             print(error)
                             
@@ -264,6 +295,12 @@ extension NewPlantPageViewController: InputPlantDelegate {
                     }
                     
                 case .failure(let error):
+                    
+                    self.view.isUserInteractionEnabled = true
+                    
+                    maskView.removeFromSuperview()
+                    
+                    self.showAlert(title: "編輯錯誤", message: "好像出了點問題，請再試一次", buttonTitle: "確認")
                     
                     print(error)
                 }

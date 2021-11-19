@@ -350,9 +350,13 @@ class HomePageViewController: UIViewController {
         
         self.plants = plants
 
-        firebaseManager.deletePlant(plant: plant)
-        
-        plantCollectionView.deleteItems(at: [indexPath])
+        firebaseManager.deletePlant(plant: plant) { isSuccess in
+            if isSuccess {
+                self.plantCollectionView.deleteItems(at: [indexPath])
+            } else {
+                self.showAlert(title: "Oops", message: "刪除的過程出了點問題，請再試一次", buttonTitle: "確認")
+            }
+        }
     }
     
     func deleteSharePlant(sharePlants: [String]) {
@@ -396,18 +400,16 @@ class HomePageViewController: UIViewController {
             
         case "createPlant":
             
-            guard let destinationNVC = segue.destination as? UINavigationController,
-                  let destinationVC = destinationNVC.viewControllers.first,
-                  let newPlantVC = destinationVC as? NewPlantPageViewController else { return }
+            guard let destinationVC = segue.destination as? NewPlantPageViewController,
+                  let plant = sender as? Plant else { return }
             
-            newPlantVC.pageMode = .create
+            destinationVC.pageMode = .create
             
-            newPlantVC.parentVC = self
+            destinationVC.parentVC = self
             
         case "editPlant":
             
-            guard let destinationNVC = segue.destination as? UINavigationController,
-                  let destinationVC = destinationNVC.viewControllers.first as? NewPlantPageViewController,
+            guard let destinationVC = segue.destination as? NewPlantPageViewController,
                   let plant = sender as? Plant else { return }
             
             destinationVC.pageMode = .edit(editedPlant: plant)

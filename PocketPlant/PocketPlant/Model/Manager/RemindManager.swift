@@ -57,4 +57,11 @@ class RemindManager {
             }
         }
     }
+    
+    func deleteReminder(plantID: String) {
+        for reminderType in ReminderType.allCases {
+            center.removePendingNotificationRequests(
+                withIdentifiers: ["\(plantID): \(reminderType.rawValue)notification"])
+        }
+    }
 }
