@@ -35,6 +35,8 @@ class CalendarPageViewController: UIViewController {
     
     private var emptyAnimation: AnimationView?
     
+    private var blockView: VisitorBlockView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.locale = Locale(identifier: "zh_Hant_TW")
@@ -61,7 +63,26 @@ class CalendarPageViewController: UIViewController {
             
             self.waterRecords = []
             
+            self.infoTableView.reloadData()
+            
+            if blockView == nil {
+                
+                blockView = addblockView()
+                
+            }
+            
             return
+            
+        } else {
+            
+            if let blockView = blockView {
+                
+                blockView.removeFromSuperview()
+                
+                blockView.layoutIfNeeded()
+                
+                self.blockView = nil
+            }
         }
         
         fetchRecord(date: self.calendar.date)

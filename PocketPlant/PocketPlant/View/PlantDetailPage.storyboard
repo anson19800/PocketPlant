@@ -70,6 +70,9 @@
                                         <rect key="frame" x="67" y="515" width="291" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="beginEditingAction:" destination="Y6W-OH-hqX" eventType="editingDidBegin" id="J1f-tZ-Ecc"/>
+                                        </connections>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jNz-lT-zyN">
                                         <rect key="frame" x="20" y="512" width="42" height="40.666666666666686"/>

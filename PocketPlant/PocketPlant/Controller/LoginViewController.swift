@@ -156,7 +156,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func visitorEnterAction(_ sender: UIButton) {
         
-        self.performSegue(withIdentifier: "Login", sender: nil)
+        self.dismiss(animated: true)
         
     }
     
@@ -226,7 +226,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                             
                         case .success(_):
                             
-                            self.performSegue(withIdentifier: "Login", sender: nil)
+//                            self.performSegue(withIdentifier: "Login", sender: nil)
+                            self.dismiss(animated: true, completion: nil)
                             
                         case .failure(_):
                             

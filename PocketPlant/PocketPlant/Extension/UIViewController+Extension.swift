@@ -61,4 +61,31 @@ extension UIViewController {
         
         return maskView
     }
+    
+    func addblockView() -> VisitorBlockView {
+        
+        let blockView = VisitorBlockView()
+        
+        blockView.frame = self.view.frame
+        
+        blockView.delegate = self
+        
+        self.view.addSubview(blockView)
+        
+        return blockView
+    }
+}
+
+extension UIViewController: VisitorBlockViewDelegate {
+    
+    func loginAction() {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyBoard.instantiateViewController(
+            withIdentifier: String(describing: LoginViewController.self))
+        
+        loginVC.modalPresentationStyle = .fullScreen
+        
+        self.present(loginVC, animated: true, completion: nil)
+    }
 }

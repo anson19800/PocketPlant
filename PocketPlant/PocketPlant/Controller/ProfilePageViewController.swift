@@ -59,7 +59,9 @@ class ProfilePageViewController: UIViewController {
     
     @IBOutlet weak var updateNameButton: UIImageView!
     
-    var plantCount: Int?
+    private var plantCount: Int?
+    
+    private var blockView: VisitorBlockView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +84,27 @@ class ProfilePageViewController: UIViewController {
             
             self.userNameTextField.text = "訪客"
             
+            self.userImageView.image = UIImage(named: "plant")
+            
+            if blockView == nil {
+                
+                blockView = addblockView()
+                
+            }
+            
             return
+            
+        } else {
+            
+            if let blockView = blockView {
+                
+                blockView.removeFromSuperview()
+                
+                blockView.layoutIfNeeded()
+                
+                self.blockView = nil
+                
+            }
         }
         
         if let currentUser = UserManager.shared.currentUser {

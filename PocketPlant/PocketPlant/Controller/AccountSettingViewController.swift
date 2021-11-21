@@ -79,6 +79,14 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         let selection = AccountSetting.allCases[indexPath.row]
         
         switch selection {
