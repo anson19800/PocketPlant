@@ -22,19 +22,22 @@ class FirebaseManager {
     
     private let imageManager = ImageManager.shared
     
-    let userID: String = {
+    var userID: String {
         
-        if let user = Auth.auth().currentUser {
+        get {
             
-            return user.uid
-        
-        } else {
+            if let user = Auth.auth().currentUser {
+                
+                return user.uid
             
-            return "0"
+            } else {
+                
+                return "0"
+                
+            }
             
         }
-        
-    }()
+    }
     
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
@@ -166,20 +169,78 @@ class FirebaseManager {
         }
     }
     
-    func deletePlant(plant: Plant) {
+    func deletePlant(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
         
-        let documentRef = dataBase.collection("plant").document(plant.id)
+        let batch = dataBase.batch()
+        
+        let plantRef = dataBase.collection("plant").document(plant.id)
+        
+        let waterRecordRef = dataBase.collection("water").whereField("plantID", isEqualTo: plant.id)
+        
+        let commentRef = dataBase.collection("comment")
+            .whereField("commentType", isEqualTo: "plant")
+            .whereField("objectID", isEqualTo: plant.id)
+        
+        let group = DispatchGroup()
         
         guard let imageID = plant.imageID else { return }
         
         imageManager.deleteImage(imageID: imageID)
         
-        documentRef.delete()
+        group.enter()
+        
+        waterRecordRef.getDocuments { snapshot, _ in
+            
+            guard let snapshot = snapshot else { return }
+            
+            snapshot.documents.forEach { snapshot in
+                
+                batch.deleteDocument(snapshot.reference)
+            }
+            
+            group.leave()
+        }
+        
+        group.enter()
+        
+        commentRef.getDocuments { snapshot, _ in
+            
+            guard let snapshot = snapshot else { return }
+            
+            snapshot.documents.forEach { snapshot in
+                
+                batch.deleteDocument(snapshot.reference)
+            }
+            
+            group.leave()
+        }
+        
+        RemindManager.shared.deleteReminder(plantID: plant.id)
+        
+        batch.deleteDocument(plantRef)
+        
+        group.notify(queue: .main) {
+            
+            batch.commit { error in
+                
+                if error != nil {
+                    
+                    isSuccess(false)
+                    
+                } else {
+                    
+                    isSuccess(true)
+                    
+                }
+            }
+        }
     }
     
     func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
         
         let documentRef = dataBase.collection("plant").document(plant.id)
+        
+        RemindManager.shared.deleteReminder(plantID: plant.id)
         
         documentRef.getDocument { document, error in
             guard let document = document,
@@ -273,10 +334,16 @@ class FirebaseManager {
             
             let recordDay = waterRecord.compactMap { (record) -> WaterRecord? in
                 let recordDate = Date(timeIntervalSince1970: record.waterDate)
-                if recordDate.hasSame(.day, as: date) {
+                if recordDate.hasSame(.year, as: date)
+                    && recordDate.hasSame(.month, as: date)
+                    && recordDate.hasSame(.day, as: date) {
+                    
                     return record
+                    
                 } else {
+                    
                     return nil
+                    
                 }
             }
             completion(.success(recordDay))
@@ -372,23 +439,43 @@ class FirebaseManager {
         }
         
         guard let documentRef = documentRef else { return }
-
-        documentRef
-            .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
-            .getDocuments { snapshot, error in
-            if let error = error {
-                completion(nil, error)
-            }
+        
+        if Auth.auth().currentUser == nil {
             
-            guard let snapshot = snapshot else { return }
-            
-            let object = snapshot.documents.compactMap { snapshot in
+            documentRef
+                .getDocuments { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                }
                 
-                try? snapshot.data(as: T.self)
+                guard let snapshot = snapshot else { return }
+                
+                let object = snapshot.documents.compactMap { snapshot in
+                    
+                    try? snapshot.data(as: T.self)
+                }
+                
+                completion(object, nil)
             }
             
-            completion(object, nil)
+        } else {
             
+            documentRef
+                .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
+                .getDocuments { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                }
+                
+                guard let snapshot = snapshot else { return }
+                
+                let object = snapshot.documents.compactMap { snapshot in
+                    
+                    try? snapshot.data(as: T.self)
+                }
+                
+                completion(object, nil)
+            }
         }
     }
     

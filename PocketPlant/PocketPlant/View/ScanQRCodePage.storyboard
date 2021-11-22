@@ -53,7 +53,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="植物名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9e-Xz-hnH">
-                                        <rect key="frame" x="37.666666666666671" y="229" width="100.00000000000001" height="35"/>
+                                        <rect key="frame" x="37.666666666666671" y="234" width="100.00000000000001" height="35"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="種類" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wH-eh-M66" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                        <rect key="frame" x="37.666666666666671" y="266" width="32" height="21.666666666666686"/>
+                                        <rect key="frame" x="37.666666666666671" y="271" width="32" height="21.666666666666686"/>
                                         <color key="backgroundColor" red="0.27837682219999998" green="0.42264973960000002" blue="0.27091819779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,8 +118,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sot-9N-qqE" customClass="PaddingLabel" customModule="PocketPlant" customModuleProvider="target">
-                                        <rect key="frame" x="37.666666666666686" y="297.66666666666669" width="200" height="41"/>
-                                        <color key="backgroundColor" red="0.9640071483670607" green="1" blue="0.95544262405105929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="37.666666666666686" y="302.66666666666669" width="200" height="41"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
                                         <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -156,7 +156,7 @@
                                     <constraint firstItem="4wH-eh-M66" firstAttribute="top" secondItem="s9e-Xz-hnH" secondAttribute="bottom" constant="2" id="NRh-U5-ras"/>
                                     <constraint firstItem="JmQ-eN-rMw" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" id="UpF-x3-Rci"/>
                                     <constraint firstItem="V3S-Az-XKg" firstAttribute="centerX" secondItem="lid-lb-4f2" secondAttribute="centerX" constant="50" id="ZFx-VK-GQi"/>
-                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="top" secondItem="JmQ-eN-rMw" secondAttribute="bottom" constant="5" id="esO-nI-Xt6"/>
+                                    <constraint firstItem="s9e-Xz-hnH" firstAttribute="top" secondItem="JmQ-eN-rMw" secondAttribute="bottom" constant="10" id="esO-nI-Xt6"/>
                                     <constraint firstItem="V3S-Az-XKg" firstAttribute="top" secondItem="bxp-zT-Fa8" secondAttribute="top" id="i9r-qt-8MZ"/>
                                     <constraint firstItem="V3S-Az-XKg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sot-9N-qqE" secondAttribute="bottom" constant="20" id="jPC-9P-4Nb"/>
                                     <constraint firstItem="s9e-Xz-hnH" firstAttribute="leading" secondItem="iS3-AZ-Rfk" secondAttribute="leading" id="nT3-mz-ZY8"/>

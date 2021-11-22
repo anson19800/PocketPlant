@@ -12,8 +12,7 @@ import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
@@ -23,11 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UITabBar.appearance().tintColor = .DarkGreen
         
         UINavigationBar.appearance().tintColor = UIColor.darkGreen1
+        
         let backImage = UIImage(systemName: "chevron.backward.circle.fill")
+        
         UINavigationBar.appearance().backIndicatorImage = backImage
+        
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        UINavigationBar.appearance().shadowImage = UIImage()
+        
+        UINavigationBar.appearance().isTranslucent = true
+        
+        UINavigationBar.appearance().backgroundColor = .clear
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _ in
             if granted {
                 print("允許")
             } else {

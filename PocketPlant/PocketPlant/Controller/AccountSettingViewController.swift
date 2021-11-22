@@ -18,7 +18,7 @@ enum AccountSetting: String, CaseIterable {
     var iconImage: UIImage? {
         switch self {
         case .logOut:
-            return UIImage(systemName: "person.fill.xmark")
+            return UIImage(systemName: "clear.fill")
         case .blockedList:
             return UIImage(systemName: "person.fill.xmark")
         case .deleteAccount:
@@ -79,6 +79,14 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         let selection = AccountSetting.allCases[indexPath.row]
         
         switch selection {
@@ -96,7 +104,7 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
             
         case .deleteAccount:
             
-            break
+            showAlert(title: "刪除帳號", message: "如果您需要刪除帳號請來信\nanson19800@gmail.com\n感謝您！", buttonTitle: "確認")
             
         case .privacyPolicy:
             

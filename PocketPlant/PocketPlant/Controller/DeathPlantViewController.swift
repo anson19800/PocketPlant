@@ -41,6 +41,7 @@ class DeathPlantViewController: UIViewController {
         
         waterBarChart.noDataText = "沒有任何澆水紀錄"
         
+        
         firebaseManager.fetchWaterRecord(plantID: plant.id) { result in
             switch result {
 
@@ -75,6 +76,7 @@ class DeathPlantViewController: UIViewController {
         let buyDate = format.string(from: Date(timeIntervalSince1970: plant.buyTime))
         
         lifeTimeLabel.text = "\(buyDate) - \(todayDate)"
+        waterInfoLabel.text = "澆水紀錄 ｜ 總共澆了0次水"
     }
     
     func setChart(waterRecords: [WaterRecord]) {

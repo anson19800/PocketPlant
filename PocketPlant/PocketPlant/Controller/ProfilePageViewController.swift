@@ -14,7 +14,6 @@ import SafariServices
 enum SettingSelection: String, CaseIterable {
     case toolStock = "材料庫存"
     case gardeningShop = "園藝店收藏"
-    case sharePlants = "共享植物"
     case acountManagement = "帳號管理"
     
     var iconImage: UIImage? {
@@ -25,8 +24,6 @@ enum SettingSelection: String, CaseIterable {
             return UIImage(systemName: "house.fill")
         case .acountManagement:
             return UIImage(systemName: "gearshape")
-        case .sharePlants:
-            return UIImage(systemName: "leaf.fill")
         }
     }
 }
@@ -62,7 +59,9 @@ class ProfilePageViewController: UIViewController {
     
     @IBOutlet weak var updateNameButton: UIImageView!
     
-    var plantCount: Int?
+    private var plantCount: Int?
+    
+    private var blockView: VisitorBlockView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,13 +80,47 @@ class ProfilePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let currentUser = UserManager.shared.currentUser {
-            self.userNameTextField.text = currentUser.name
-            if let imageURL = currentUser.userImageURL {
-                self.userImageView.kf.setImage(with: URL(string: imageURL))
+        if Auth.auth().currentUser == nil {
+            
+            self.userNameTextField.text = "訪客"
+            
+            self.userImageView.image = UIImage(named: "plant")
+            
+            if blockView == nil {
+                
+                blockView = addblockView()
+                
             }
+            
+            return
+            
         } else {
+            
+            if let blockView = blockView {
+                
+                blockView.removeFromSuperview()
+                
+                blockView.layoutIfNeeded()
+                
+                self.blockView = nil
+                
+            }
+        }
+        
+        if let currentUser = UserManager.shared.currentUser {
+            
+            self.userNameTextField.text = currentUser.name
+            
+            if let imageURL = currentUser.userImageURL {
+                
+                self.userImageView.kf.setImage(with: URL(string: imageURL))
+                
+            }
+            
+        } else {
+            
             self.userNameTextField.text = "使用者"
+            
         }
         
         if let tabBarCon = self.tabBarController,
@@ -105,9 +138,25 @@ class ProfilePageViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+        
     @objc func selectUserPhoto() {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         let controller = UIAlertController(title: nil,
                                            message: nil,
                                            preferredStyle: .actionSheet)
@@ -156,7 +205,18 @@ class ProfilePageViewController: UIViewController {
         
         present(controller, animated: true, completion: nil)
     }
- 
+    @IBAction func beginRenameAction(_ sender: UITextField) {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            sender.endEditing(true)
+            
+        }
+        
+    }
+    
     @IBAction func endRenameAction(_ sender: UITextField) {
         guard let userName = sender.text else { return }
         UserManager.shared.updateUserInfo(userName: userName,
@@ -224,6 +284,14 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         guard indexPath.row > 0 else { return }
         
         let selectionType = SettingSelection.allCases[indexPath.row - 1]
@@ -260,19 +328,6 @@ extension ProfilePageViewController: UITableViewDelegate, UITableViewDataSource 
             
             self.navigationController?.pushViewController(gardeningShopVC, animated: true)
             
-        case .sharePlants:
-            
-            let storyBoard = UIStoryboard(name: "SharePlantPage", bundle: nil)
-            
-            let viewController = storyBoard.instantiateViewController(
-                withIdentifier: String(describing: SharePlantViewController.self))
-            
-            guard let sharePlantVC = viewController as? SharePlantViewController else { return }
-            
-            sharePlantVC.modalPresentationStyle = .fullScreen
-            
-            self.navigationController?.pushViewController(sharePlantVC, animated: true)
-            
         case .acountManagement:
             
             let storyBoard = UIStoryboard(name: "AccountSeetingPage", bundle: nil)
@@ -305,6 +360,7 @@ extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigati
                         }
                     }
                 case .failure(let error):
+                    
                     self.dismiss(animated: true, completion: nil)
                 }
             }

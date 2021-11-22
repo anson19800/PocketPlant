@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pAT-UV-nZa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rgc-dz-Wew">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -53,7 +53,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="plus" catalog="system"/>
                                         <connections>
-                                            <segue destination="5ce-AY-Dhb" kind="presentation" identifier="createPlant" id="eDb-fk-ScE"/>
+                                            <segue destination="5ce-AY-Dhb" kind="show" identifier="createPlant" id="eDb-fk-ScE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -69,7 +69,7 @@
                                     <constraint firstItem="06M-3v-eqW" firstAttribute="leading" secondItem="jdc-Vf-YSU" secondAttribute="leading" constant="33" id="rcP-ld-VYS"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
+                            <searchBar contentMode="redraw" placeholder="輸入植物名搜尋" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
                                 <rect key="frame" x="35" y="104.66666666666669" width="358" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -98,7 +98,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
-                                <rect key="frame" x="35" y="225.66666666666669" width="358" height="617.33333333333326"/>
+                                <rect key="frame" x="35" y="230.66666666666669" width="358" height="612.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -129,7 +129,7 @@
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-f4-YDy">
                                 <rect key="frame" x="114" y="423" width="200" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H0e-GN-ycd"/>
                                     <constraint firstAttribute="height" constant="200" id="Nba-k3-6H0"/>
@@ -150,7 +150,7 @@
                             <constraint firstItem="Naz-9Y-pLb" firstAttribute="top" secondItem="Eeb-f4-YDy" secondAttribute="bottom" id="Ckg-bc-fyT"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Dsf-G1-Lhx"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="EZ5-UU-E4B"/>
-                            <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="20" id="RvC-Ke-p1d"/>
+                            <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="25" id="RvC-Ke-p1d"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TET-yt-ZRc"/>
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="top" secondItem="oF9-CH-E7h" secondAttribute="bottom" constant="10" id="ZLO-YV-eId"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZyC-l0-P9K"/>
@@ -178,7 +178,7 @@
                         <outlet property="searchBar" destination="oF9-CH-E7h" id="UKf-P4-rf1"/>
                         <outlet property="waterImageView" destination="Lac-jp-GEC" id="IJh-U3-Nun"/>
                         <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
-                        <segue destination="5ce-AY-Dhb" kind="presentation" identifier="editPlant" id="TN7-OC-vVQ"/>
+                        <segue destination="5ce-AY-Dhb" kind="show" identifier="editPlant" id="TN7-OC-vVQ"/>
                         <segue destination="CCe-xg-Goc" kind="show" identifier="deathPlant" id="Eu5-20-fqN"/>
                         <segue destination="8Wf-mD-jpZ" kind="show" identifier="shopList" id="936-na-uey"/>
                     </connections>
@@ -311,25 +311,46 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpL-we-NxT">
+                                <rect key="frame" x="114" y="363" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="COh-LD-dGF"/>
+                                    <constraint firstAttribute="height" constant="200" id="vPB-KI-30f"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒有紀錄任何植物呢快去新增吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3k-nc-vFg">
+                                <rect key="frame" x="114" y="563" width="200" height="47.666666666666629"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4D7-Y7-qZC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QGH-hg-Qdl" firstAttribute="top" secondItem="4W7-Kd-5IS" secondAttribute="bottom" constant="20" id="6G0-7k-HCQ"/>
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="leading" secondItem="0OJ-cj-dQ4" secondAttribute="leading" id="6yj-eo-KnT"/>
+                            <constraint firstItem="U3k-nc-vFg" firstAttribute="leading" secondItem="fpL-we-NxT" secondAttribute="leading" id="9X8-OG-zTu"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="top" secondItem="QGH-hg-Qdl" secondAttribute="bottom" constant="10" id="EZ8-XD-hlj"/>
                             <constraint firstItem="4D7-Y7-qZC" firstAttribute="trailing" secondItem="QGH-hg-Qdl" secondAttribute="trailing" constant="33" id="IdX-K1-cXs"/>
+                            <constraint firstItem="U3k-nc-vFg" firstAttribute="trailing" secondItem="fpL-we-NxT" secondAttribute="trailing" id="NWf-Xz-NeT"/>
                             <constraint firstItem="4D7-Y7-qZC" firstAttribute="trailing" secondItem="4W7-Kd-5IS" secondAttribute="trailing" id="Noa-ne-jBO"/>
+                            <constraint firstItem="fpL-we-NxT" firstAttribute="centerX" secondItem="0OJ-cj-dQ4" secondAttribute="centerX" id="UFa-2F-4Rs"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="trailing" secondItem="QGH-hg-Qdl" secondAttribute="trailing" id="bVd-e5-O1T"/>
                             <constraint firstItem="3kz-0V-5tR" firstAttribute="leading" secondItem="QGH-hg-Qdl" secondAttribute="leading" id="cmP-UJ-DbC"/>
                             <constraint firstItem="QGH-hg-Qdl" firstAttribute="leading" secondItem="5Yv-KP-SKA" secondAttribute="leading" id="ft2-U3-UQx"/>
                             <constraint firstItem="4D7-Y7-qZC" firstAttribute="bottom" secondItem="3kz-0V-5tR" secondAttribute="bottom" constant="40" id="k9f-Q8-RXz"/>
                             <constraint firstItem="4W7-Kd-5IS" firstAttribute="top" secondItem="0OJ-cj-dQ4" secondAttribute="top" id="meE-vM-dSV"/>
+                            <constraint firstItem="fpL-we-NxT" firstAttribute="centerY" secondItem="0OJ-cj-dQ4" secondAttribute="centerY" id="nvd-19-LgQ"/>
+                            <constraint firstItem="U3k-nc-vFg" firstAttribute="top" secondItem="fpL-we-NxT" secondAttribute="bottom" id="nwW-gc-jFM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5l8-kM-pNH"/>
                     <connections>
+                        <outlet property="animationContainer" destination="fpL-we-NxT" id="hSs-KX-s9S"/>
                         <outlet property="discoverCollectionView" destination="3kz-0V-5tR" id="Kug-HE-QMh"/>
+                        <outlet property="emptyLabel" destination="U3k-nc-vFg" id="LAC-1w-lMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMi-wD-u6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -405,16 +426,29 @@
                                 <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZs-27-VLc">
+                                <rect key="frame" x="161.66666666666666" y="809" width="104.99999999999997" height="33"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="繼續以訪客瀏覽">
+                                    <color key="titleColor" name="DarkBlue"/>
+                                </state>
+                                <connections>
+                                    <action selector="visitorEnterAction:" destination="pAT-UV-nZa" eventType="touchUpInside" id="k9P-Pl-g0D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nqo-vu-7kp"/>
                         <color key="backgroundColor" red="0.66850255044519313" green="0.89540201826666665" blue="0.72244736095152118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Ds-gI-XIW" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="7KA-rM-T0G"/>
                             <constraint firstItem="P3v-b4-RKY" firstAttribute="top" secondItem="Nqo-vu-7kp" secondAttribute="top" constant="100" id="JzY-G8-fJw"/>
+                            <constraint firstItem="Nqo-vu-7kp" firstAttribute="bottom" secondItem="fZs-27-VLc" secondAttribute="bottom" constant="50" id="Kcr-Jh-D2I"/>
                             <constraint firstItem="6Ds-gI-XIW" firstAttribute="top" secondItem="Ckc-W9-2V2" secondAttribute="bottom" constant="10" id="RJ9-xD-VjU"/>
                             <constraint firstItem="Ckc-W9-2V2" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="Yih-6b-JCu"/>
                             <constraint firstItem="Ckc-W9-2V2" firstAttribute="top" secondItem="P3v-b4-RKY" secondAttribute="bottom" constant="30" id="apR-uk-Oav"/>
                             <constraint firstItem="P3v-b4-RKY" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="ciA-Ei-GJ2"/>
+                            <constraint firstItem="fZs-27-VLc" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="i99-04-NC0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -423,6 +457,7 @@
                         <outlet property="mainImageView" destination="Xpg-Sx-Db0" id="vPd-nt-lcf"/>
                         <outlet property="mainTitle" destination="Ckc-W9-2V2" id="iDJ-3o-Bye"/>
                         <outlet property="subTitle" destination="6Ds-gI-XIW" id="UiY-EX-URK"/>
+                        <outlet property="visitorButton" destination="fZs-27-VLc" id="Aq9-dM-HU4"/>
                         <segue destination="rgc-dz-Wew" kind="presentation" identifier="Login" modalPresentationStyle="fullScreen" id="IaU-M8-EKm"/>
                     </connections>
                 </viewController>
@@ -488,22 +523,44 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnf-Wx-xVx">
+                                <rect key="frame" x="114" y="499.33333333333326" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="16V-ZY-pqa"/>
+                                    <constraint firstAttribute="width" constant="200" id="PId-SB-xca"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="還沒有紀錄任何植物呢快去新增吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvw-sO-Xsf">
+                                <rect key="frame" x="114" y="699.33333333333337" width="200" height="47.666666666666629"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="17"/>
+                                <color key="textColor" name="DarkBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h1d-wb-U0g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="top" secondItem="tnf-Wx-xVx" secondAttribute="bottom" id="3D6-7v-zFr"/>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="trailing" secondItem="tnf-Wx-xVx" secondAttribute="trailing" id="MWt-2O-mpD"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="top" secondItem="Si2-w9-bBi" secondAttribute="bottom" id="Pss-KZ-nF0"/>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="centerX" secondItem="tnf-Wx-xVx" secondAttribute="centerX" id="SLf-FZ-bE1"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" constant="20" id="Vbh-Pw-FJ8"/>
                             <constraint firstItem="Si2-w9-bBi" firstAttribute="top" secondItem="7iF-Ub-Ypz" secondAttribute="top" constant="30" id="afc-v7-fsy"/>
+                            <constraint firstItem="tnf-Wx-xVx" firstAttribute="centerX" secondItem="JQD-0Y-b3B" secondAttribute="centerX" id="cHn-x5-OfS"/>
                             <constraint firstItem="h1d-wb-U0g" firstAttribute="bottom" secondItem="JQD-0Y-b3B" secondAttribute="bottom" id="gjl-ue-NJO"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="trailing" secondItem="Si2-w9-bBi" secondAttribute="trailing" id="h2K-uw-8jc"/>
                             <constraint firstItem="JQD-0Y-b3B" firstAttribute="leading" secondItem="Si2-w9-bBi" secondAttribute="leading" id="kk9-sO-zyD"/>
                             <constraint firstItem="Si2-w9-bBi" firstAttribute="leading" secondItem="h1d-wb-U0g" secondAttribute="leading" constant="20" id="mvt-LS-IoC"/>
+                            <constraint firstItem="tnf-Wx-xVx" firstAttribute="top" secondItem="Si2-w9-bBi" secondAttribute="bottom" constant="50" id="peY-Nw-1OB"/>
+                            <constraint firstItem="hvw-sO-Xsf" firstAttribute="leading" secondItem="tnf-Wx-xVx" secondAttribute="leading" id="qK6-U9-KXo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YGn-le-L5D"/>
                     <connections>
+                        <outlet property="animationContainer" destination="tnf-Wx-xVx" id="nSp-TN-1vt"/>
                         <outlet property="calendar" destination="Si2-w9-bBi" id="RJa-Wa-dS4"/>
+                        <outlet property="emptyLabel" destination="hvw-sO-Xsf" id="TqU-4J-aG9"/>
                         <outlet property="infoTableView" destination="JQD-0Y-b3B" id="6Wf-A9-YZB"/>
                         <segue destination="b9S-vk-yrJ" kind="show" identifier="showWater" id="xMt-Cc-G7M"/>
                     </connections>
@@ -555,14 +612,14 @@
                                             </constraints>
                                         </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2qg-EV-p7G">
-                                            <rect key="frame" x="229" y="52.333333333333329" width="25" height="25.333333333333329"/>
-                                            <color key="backgroundColor" red="0.45098039215686275" green="0.53333333333333333" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="tintColor" red="0.94117647059999998" green="1" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="231" y="128" width="23" height="19"/>
+                                            <color key="backgroundColor" name="NavTabColor"/>
+                                            <color key="tintColor" name="DarkBlue"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="Jqv-h3-MV5"/>
-                                                <constraint firstAttribute="width" constant="25" id="WR8-O7-aUB"/>
+                                                <constraint firstAttribute="height" constant="25" id="Jqv-h3-MV5"/>
+                                                <constraint firstAttribute="width" constant="23" id="WR8-O7-aUB"/>
                                             </constraints>
-                                            <imageReference key="image" image="photo.circle.fill" catalog="system" symbolScale="small"/>
+                                            <imageReference key="image" image="photo" catalog="system" symbolScale="small"/>
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1lU-qH-tVu">
                                             <rect key="frame" x="253.66666666666663" y="174.33333333333334" width="20" height="18.333333333333343"/>
@@ -578,6 +635,7 @@
                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="31"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
+                                                <action selector="beginRenameAction:" destination="RAh-oC-sao" eventType="editingDidBegin" id="RBQ-bj-b5g"/>
                                                 <action selector="endRenameAction:" destination="RAh-oC-sao" eventType="editingDidEnd" id="gnC-CX-bTv"/>
                                             </connections>
                                         </textField>
@@ -588,7 +646,7 @@
                                         <constraint firstItem="1lU-qH-tVu" firstAttribute="leading" secondItem="FJh-am-JWe" secondAttribute="trailing" constant="3" id="BQb-7E-YfP"/>
                                         <constraint firstItem="fkM-at-tmM" firstAttribute="top" secondItem="n3l-db-hoi" secondAttribute="top" constant="50" id="Skw-wF-6s7"/>
                                         <constraint firstItem="fkM-at-tmM" firstAttribute="centerX" secondItem="n3l-db-hoi" secondAttribute="centerX" id="Was-tu-eVH"/>
-                                        <constraint firstItem="2qg-EV-p7G" firstAttribute="top" secondItem="SAE-cU-Dgs" secondAttribute="top" id="Y2R-jS-har"/>
+                                        <constraint firstItem="2qg-EV-p7G" firstAttribute="bottom" secondItem="SAE-cU-Dgs" secondAttribute="bottom" id="Y2R-jS-har"/>
                                         <constraint firstItem="FJh-am-JWe" firstAttribute="top" secondItem="fkM-at-tmM" secondAttribute="bottom" constant="10" id="crb-pz-wuG"/>
                                         <constraint firstItem="1lU-qH-tVu" firstAttribute="bottom" secondItem="FJh-am-JWe" secondAttribute="bottom" constant="-10" id="nOl-sm-u0l"/>
                                         <constraint firstItem="2qg-EV-p7G" firstAttribute="trailing" secondItem="SAE-cU-Dgs" secondAttribute="trailing" id="wbb-x8-sO1"/>
@@ -679,14 +737,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pn6-ul-n5f">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" name="BackgroundGreen"/>
-                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </navigationBarAppearance>
-                        <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -733,7 +783,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TN7-OC-vVQ"/>
+        <segue reference="eDb-fk-ScE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Calendar-normal" width="25" height="25"/>
@@ -745,14 +795,11 @@
         <image name="Profile-normal" width="25" height="25"/>
         <image name="Profile-select" width="25" height="25"/>
         <image name="icon" width="180" height="180"/>
-        <image name="photo.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="qrcode.viewfinder" catalog="system" width="128" height="115"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="water" width="1024" height="1024"/>
-        <namedColor name="BackgroundGreen">
-            <color red="0.94099998474121094" green="1" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="DarkBlue">
             <color red="0.25900000333786011" green="0.29399999976158142" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

@@ -12,6 +12,7 @@ target 'PocketPlant' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Crashlytics'
   
   pod 'Kingfisher'
 

@@ -103,8 +103,8 @@ class PlantDetailTableViewCell: UITableViewCell {
         case .three:
             lightLabel.text = "大量日照"
             lightLevel1Image.tintColor = .orange
-            lightLevel1Image.tintColor = .orange
-            lightLevel1Image.tintColor = .orange
+            lightLevel2Image.tintColor = .orange
+            lightLevel3Image.tintColor = .orange
         }
         
     }

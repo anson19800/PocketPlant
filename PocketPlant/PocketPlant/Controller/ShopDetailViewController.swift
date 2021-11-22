@@ -31,7 +31,11 @@ class ShopDetailViewController: UIViewController {
             tableView.registerCellWithNib(identifier: String(describing: ImageCollectionVIewTableViewCell.self), bundle: nil)
         }
     }
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: UIImageView! {
+        didSet {
+            userImage.layer.cornerRadius = userImage.frame.width / 2
+        }
+    }
     @IBOutlet weak var commentTextField: UITextField!
     
     let commentManager = CommentManager.shared
@@ -44,6 +48,10 @@ class ShopDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let useImageURL = UserManager.shared.currentUser?.userImageURL {
+            userImage.kf.setImage(with: URL(string: useImageURL))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -75,6 +75,8 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    var blockView: VisitorBlockView?
+    
     var searchPlants: [Plant]?
     
     var searching: Bool = false
@@ -130,11 +132,51 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if Auth.auth().currentUser == nil {
+            
+            self.homeTitleLabel.text = "歡迎"
+            
+            self.plants = []
+            
+            self.plantCollectionView.reloadData()
+            
+            if blockView == nil {
+                
+                blockView = addblockView()
+                
+            }
+            
+            return
+            
+        } else {
+            
+            if let blockView = blockView {
+                
+                blockView.removeFromSuperview()
+                
+                blockView.layoutIfNeeded()
+                
+                self.blockView = nil
+                
+            }
+        }
+        
         if let currentUser = UserManager.shared.currentUser,
            let userName = currentUser.name {
-            self.homeTitleLabel.text = "歡迎回來 \(userName)"
+            self.homeTitleLabel.text = "歡迎\(userName)"
         } else {
-            self.homeTitleLabel.text = "口袋植物"
+            self.homeTitleLabel.text = "歡迎"
+        }
+        
+        if Auth.auth().currentUser == nil {
+            
+            self.homeTitleLabel.text = "歡迎"
+            
+            self.plants = []
+            
+            self.plantCollectionView.reloadData()
+            
+            return
         }
         
         switch isSelectedAt {
@@ -171,6 +213,8 @@ class HomePageViewController: UIViewController {
     
     func updateMyPlants(withAnimation: Bool) {
         
+        self.isSelectedAt = .myPlant
+        
         firebaseManager.fetchPlants { result in
             
             switch result {
@@ -200,6 +244,8 @@ class HomePageViewController: UIViewController {
     }
     
     func updateMyFavoritePlants(withAnimation: Bool) {
+        
+        self.isSelectedAt = .myFavorite
         
         firebaseManager.fetchFavoritePlants { result in
             
@@ -231,12 +277,18 @@ class HomePageViewController: UIViewController {
     
     func updateSharePlants(withAnimation: Bool) {
         
+        self.isSelectedAt = .sharePlants
+        
         guard let currentUser = UserManager.shared.currentUser,
-              let sharePlantsID = currentUser.sharePlants else { return }
+              let sharePlantsID = currentUser.sharePlants
+        else {
+            self.plants = []
+            return
+        }
         
         let group = DispatchGroup()
         
-        self.plants = nil
+        self.plants = []
         
         sharePlantsID.forEach { plantID in
             
@@ -344,9 +396,13 @@ class HomePageViewController: UIViewController {
         
         self.plants = plants
 
-        firebaseManager.deletePlant(plant: plant)
-        
-        plantCollectionView.deleteItems(at: [indexPath])
+        firebaseManager.deletePlant(plant: plant) { isSuccess in
+            if isSuccess {
+                self.plantCollectionView.deleteItems(at: [indexPath])
+            } else {
+                self.showAlert(title: "Oops", message: "刪除的過程出了點問題，請再試一次", buttonTitle: "確認")
+            }
+        }
     }
     
     func deleteSharePlant(sharePlants: [String]) {
@@ -379,6 +435,14 @@ class HomePageViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         switch segue.identifier {
             
         case "showPlantDetail":
@@ -390,18 +454,16 @@ class HomePageViewController: UIViewController {
             
         case "createPlant":
             
-            guard let destinationNVC = segue.destination as? UINavigationController,
-                  let destinationVC = destinationNVC.viewControllers.first,
-                  let newPlantVC = destinationVC as? NewPlantPageViewController else { return }
+            guard let destinationVC = segue.destination as? NewPlantPageViewController,
+                  let plant = sender as? Plant else { return }
             
-            newPlantVC.pageMode = .create
+            destinationVC.pageMode = .create
             
-            newPlantVC.parentVC = self
+            destinationVC.parentVC = self
             
         case "editPlant":
             
-            guard let destinationNVC = segue.destination as? UINavigationController,
-                  let destinationVC = destinationNVC.viewControllers.first as? NewPlantPageViewController,
+            guard let destinationVC = segue.destination as? NewPlantPageViewController,
                   let plant = sender as? Plant else { return }
             
             destinationVC.pageMode = .edit(editedPlant: plant)
@@ -414,10 +476,6 @@ class HomePageViewController: UIViewController {
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
-            
-        case "showShop":
-            
-            break
 
         default:
             
@@ -460,7 +518,6 @@ class HomePageViewController: UIViewController {
                 dropAnimation.removeFromSuperview()
             }
         }
-        
 //        showAlert(title: "全部澆水", message: "對畫面上所有植物澆水", buttonTitle: "確定")
     }
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
@@ -481,7 +538,7 @@ class HomePageViewController: UIViewController {
         if let indexPath = plantCollectionView.indexPathForItem(at: selectedPoint) {
             
             if let selectedCell = plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell,
-               let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell]{
+               let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
                 
                 cells.forEach { cell in
                     if cell == selectedCell {
@@ -688,6 +745,14 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         searchBar.endEditing(true)
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         if collectionView == plantCollectionView {
         
             guard let plants = self.plants else { return }
@@ -772,32 +837,33 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 return UIMenu(title: "", children: [deleteAction])
             }
-        }
-        
-        return UIContextMenuConfiguration(identifier: nil,
-                                          previewProvider: nil) { _ in
+        } else {
             
-            let deleteAction = UIAction(title: "刪除",
-                                        image: UIImage(systemName: "trash"),
-                                        attributes: .destructive) { _ in
+            return UIContextMenuConfiguration(identifier: nil,
+                                              previewProvider: nil) { _ in
                 
-                self.deletePlantAction(indexPath: indexPath)
+                let deleteAction = UIAction(title: "刪除",
+                                            image: UIImage(systemName: "trash"),
+                                            attributes: .destructive) { _ in
+                    
+                    self.deletePlantAction(indexPath: indexPath)
+                    
+                }
                 
+                let editAction = UIAction(title: "編輯", image: nil) { _ in
+                    
+                    self.editPlantAction(indexPath: indexPath)
+                    
+                }
+                
+                let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
+                    
+                    self.deathPlantAction(indexPath: indexPath)
+                    
+                }
+                
+                return UIMenu(title: "", children: [editAction, deathAction, deleteAction])
             }
-            
-            let editAction = UIAction(title: "編輯", image: nil) { _ in
-                
-                self.editPlantAction(indexPath: indexPath)
-                
-            }
-            
-            let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
-                
-                self.deathPlantAction(indexPath: indexPath)
-                
-            }
-            
-            return UIMenu(title: "", children: [editAction, deathAction, deleteAction])
         }
     }
 }

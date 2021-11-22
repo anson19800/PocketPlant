@@ -40,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         print(error)
                         
                         let rootVC = storyBoard.instantiateViewController(
-                            withIdentifier: String(describing: LoginViewController.self))
+                            withIdentifier: "HomePage")
                         
                         window.rootViewController = rootVC
                         
@@ -50,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             } else {
                 
                 let rootVC = storyBoard.instantiateViewController(
-                    withIdentifier: String(describing: LoginViewController.self))
+                    withIdentifier: "HomePage")
                 
                 window.rootViewController = rootVC
             }

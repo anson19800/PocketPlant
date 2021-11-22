@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 extension UIViewController {
     
@@ -16,6 +17,28 @@ extension UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
+    func showLoginAlert() {
+        
+        let controller = UIAlertController(title: "請先登入", message: "登入會員才能使用這個功能喔！", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "登入", style: .default) { _ in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyBoard.instantiateViewController(
+                withIdentifier: String(describing: LoginViewController.self))
+            
+            loginVC.modalPresentationStyle = .fullScreen
+            
+            self.present(loginVC, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "稍後再說", style: .cancel, handler: nil)
+        
+        controller.addAction(okAction)
+        controller.addAction(cancelAction)
+        
+        present(controller, animated: true, completion: nil)
+    }
+    
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -24,5 +47,45 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func darkView() -> UIView {
+        
+        let maskView = UIView()
+        
+        maskView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        maskView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+
+        view.addSubview(maskView)
+        
+        return maskView
+    }
+    
+    func addblockView() -> VisitorBlockView {
+        
+        let blockView = VisitorBlockView()
+        
+        blockView.frame = self.view.frame
+        
+        blockView.delegate = self
+        
+        self.view.addSubview(blockView)
+        
+        return blockView
+    }
+}
+
+extension UIViewController: VisitorBlockViewDelegate {
+    
+    func loginAction() {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let loginVC = storyBoard.instantiateViewController(
+            withIdentifier: String(describing: LoginViewController.self))
+        
+        loginVC.modalPresentationStyle = .fullScreen
+        
+        self.present(loginVC, animated: true, completion: nil)
     }
 }

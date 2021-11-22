@@ -48,6 +48,8 @@ class RemindViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
         floatingView.transform = CGAffineTransform(translationX: 0, y: floatingView.bounds.height)
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panOnFloatingView(_:)))
@@ -100,7 +102,7 @@ class RemindViewController: UIViewController {
         
         guard var plant = plant else { return }
         
-        var dict: [ReminderType: Int] = [:]
+        var dict: [ReminderType: (Int, Date?)] = [:]
         
         var reminds: [Remind] = []
         
@@ -109,26 +111,30 @@ class RemindViewController: UIViewController {
             guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)),
                   let remindCell = cell as? ReminderTableViewCell else { return }
             
-            if remindCell.imageIsSelectes {
+            if remindCell.dayTextField.text != "0" {
                 
                 guard let timesString = remindCell.dayTextField.text,
                       timesString != "",
                       let times = Int(timesString)
                 else {
-                    dict[ReminderType.allCases[index]] = 0
+                    dict[ReminderType.allCases[index]] = (0, nil)
                     continue
                 }
                 
-                dict[ReminderType.allCases[index]] = times
+                let time = remindCell.timePicker.date
+                let timeDate = time.timeIntervalSince1970
+                dict[ReminderType.allCases[index]] = (times, time)
                 
                 let remind = Remind(plantID: plant.id,
                                     type: ReminderType.allCases[index].rawValue,
-                                    times: times)
+                                    times: times,
+                                    time: timeDate)
+                
                 reminds.append(remind)
                 
             } else {
                 
-                dict[ReminderType.allCases[index]] = 0
+                dict[ReminderType.allCases[index]] = (0, nil)
                 
             }
         }

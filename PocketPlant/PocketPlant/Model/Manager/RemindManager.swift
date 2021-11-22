@@ -16,15 +16,25 @@ class RemindManager {
     
     private init() {}
     
-    func setRemind(_ plant: Plant, remindDict: [ReminderType: Int]) {
+    func setRemind(_ plant: Plant, remindDict: [ReminderType: (Int, Date?)]) {
         
         for (key, value) in remindDict {
-            if value == 0 { continue }
+            if value.0 == 0 {
+                center.removePendingNotificationRequests(withIdentifiers: ["\(plant.id): \(key.rawValue)notification"])
+                continue
+            }
+            
             let content = UNMutableNotificationContent()
+            
             content.title = "\(key.rawValue)提醒"
+            
             content.body = "\(plant.name)要\(key.rawValue)囉！"
             
-            let date = Date(timeIntervalSinceNow: TimeInterval(36000 * value))
+            guard let settingDate = value.1 else { continue }
+            
+            let date = settingDate.addingTimeInterval(TimeInterval(value.0 * 24 * 60 * 60))
+            
+//            let testDate = settingDate.addingTimeInterval(TimeInterval(5))
             
             let dailyTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
             
@@ -35,7 +45,7 @@ class RemindManager {
                                                 content: content,
                                                 trigger: trigger)
             
-            UNUserNotificationCenter.current().add(request) { error in
+            center.add(request) { error in
                 
                 guard let error = error
                 else {
@@ -45,6 +55,13 @@ class RemindManager {
                 
                 print(error)
             }
+        }
+    }
+    
+    func deleteReminder(plantID: String) {
+        for reminderType in ReminderType.allCases {
+            center.removePendingNotificationRequests(
+                withIdentifiers: ["\(plantID): \(reminderType.rawValue)notification"])
         }
     }
 }

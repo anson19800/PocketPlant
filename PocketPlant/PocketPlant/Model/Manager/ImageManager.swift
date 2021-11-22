@@ -24,7 +24,7 @@ class ImageManager {
         
         metadata.contentType = "image/png"
         
-        if let uploadData =  image.scale(newWidth: 100).pngData() {
+        if let uploadData =  image.pngData() {
             
             let uploadTask = storageRef.putData(uploadData, metadata: nil)
             
