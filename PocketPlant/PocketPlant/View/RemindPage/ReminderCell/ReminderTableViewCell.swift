@@ -34,13 +34,25 @@ class ReminderTableViewCell: UITableViewCell {
         
         switch type {
         case .water:
-            typeImageView.image = UIImage(systemName: "drop.circle.fill")
+            if #available(iOS 15, *) {
+                typeImageView.image = UIImage(systemName: "drop.circle.fill")
+            } else {
+                typeImageView.image = UIImage(systemName: "drop.fill")
+            }
             imageColor = UIColor.CloudBlue ?? .blue
         case .fertilizer:
-            typeImageView.image = UIImage(systemName: "leaf.circle.fill")
+            if #available(iOS 15, *) {
+                typeImageView.image = UIImage(systemName: "leaf.circle.fill")
+            } else {
+                typeImageView.image = UIImage(systemName: "leaf.fill")
+            }
             imageColor = UIColor.hexStringToUIColor(hex: "A2CDA2")
         case .soil:
-            typeImageView.image = UIImage(systemName: "globe.asia.australia.fill")
+            if #available(iOS 15, *) {
+                typeImageView.image = UIImage(systemName: "globe.asia.australia.fill")
+            } else {
+                typeImageView.image = UIImage(systemName: "hammer.fill")
+            }
             imageColor = UIColor.hexStringToUIColor(hex: "BC956F")
         }
         
