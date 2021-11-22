@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import FirebaseAuth
 
 class CalendarPageViewController: UIViewController {
     
@@ -34,6 +35,8 @@ class CalendarPageViewController: UIViewController {
     
     private var emptyAnimation: AnimationView?
     
+    private var blockView: VisitorBlockView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.locale = Locale(identifier: "zh_Hant_TW")
@@ -55,6 +58,32 @@ class CalendarPageViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.calendar.date = Date()
+        
+        if Auth.auth().currentUser == nil {
+            
+            self.waterRecords = []
+            
+            self.infoTableView.reloadData()
+            
+            if blockView == nil {
+                
+                blockView = addblockView()
+                
+            }
+            
+            return
+            
+        } else {
+            
+            if let blockView = blockView {
+                
+                blockView.removeFromSuperview()
+                
+                blockView.layoutIfNeeded()
+                
+                self.blockView = nil
+            }
+        }
         
         fetchRecord(date: self.calendar.date)
     }

@@ -22,19 +22,22 @@ class FirebaseManager {
     
     private let imageManager = ImageManager.shared
     
-    let userID: String = {
+    var userID: String {
         
-        if let user = Auth.auth().currentUser {
+        get {
             
-            return user.uid
-        
-        } else {
+            if let user = Auth.auth().currentUser {
+                
+                return user.uid
             
-            return "0"
+            } else {
+                
+                return "0"
+                
+            }
             
         }
-        
-    }()
+    }
     
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
@@ -436,23 +439,43 @@ class FirebaseManager {
         }
         
         guard let documentRef = documentRef else { return }
-
-        documentRef
-            .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
-            .getDocuments { snapshot, error in
-            if let error = error {
-                completion(nil, error)
-            }
+        
+        if Auth.auth().currentUser == nil {
             
-            guard let snapshot = snapshot else { return }
-            
-            let object = snapshot.documents.compactMap { snapshot in
+            documentRef
+                .getDocuments { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                }
                 
-                try? snapshot.data(as: T.self)
+                guard let snapshot = snapshot else { return }
+                
+                let object = snapshot.documents.compactMap { snapshot in
+                    
+                    try? snapshot.data(as: T.self)
+                }
+                
+                completion(object, nil)
             }
             
-            completion(object, nil)
+        } else {
             
+            documentRef
+                .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
+                .getDocuments { snapshot, error in
+                if let error = error {
+                    completion(nil, error)
+                }
+                
+                guard let snapshot = snapshot else { return }
+                
+                let object = snapshot.documents.compactMap { snapshot in
+                    
+                    try? snapshot.data(as: T.self)
+                }
+                
+                completion(object, nil)
+            }
         }
     }
     

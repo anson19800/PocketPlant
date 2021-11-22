@@ -39,7 +39,7 @@ class RemindManager {
             let dailyTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dailyTrigger,
-                                                        repeats: false)
+                                                        repeats: true)
             
             let request = UNNotificationRequest(identifier: "\(plant.id): \(key.rawValue)notification",
                                                 content: content,

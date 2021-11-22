@@ -75,6 +75,8 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    var blockView: VisitorBlockView?
+    
     var searchPlants: [Plant]?
     
     var searching: Bool = false
@@ -130,14 +132,52 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if let currentUser = UserManager.shared.currentUser,
-//           let userName = currentUser.name {
-//            self.homeTitleLabel.text = "植物清單"
-//        } else {
-//            self.homeTitleLabel.text = "植物清單"
-//        }
+        if Auth.auth().currentUser == nil {
+            
+            self.homeTitleLabel.text = "歡迎"
+            
+            self.plants = []
+            
+            self.plantCollectionView.reloadData()
+            
+            if blockView == nil {
+                
+                blockView = addblockView()
+                
+            }
+            
+            return
+            
+        } else {
+            
+            if let blockView = blockView {
+                
+                blockView.removeFromSuperview()
+                
+                blockView.layoutIfNeeded()
+                
+                self.blockView = nil
+                
+            }
+        }
         
-        self.homeTitleLabel.text = "植物清單"
+        if let currentUser = UserManager.shared.currentUser,
+           let userName = currentUser.name {
+            self.homeTitleLabel.text = "歡迎\(userName)"
+        } else {
+            self.homeTitleLabel.text = "歡迎"
+        }
+        
+        if Auth.auth().currentUser == nil {
+            
+            self.homeTitleLabel.text = "歡迎"
+            
+            self.plants = []
+            
+            self.plantCollectionView.reloadData()
+            
+            return
+        }
         
         switch isSelectedAt {
             
@@ -173,6 +213,8 @@ class HomePageViewController: UIViewController {
     
     func updateMyPlants(withAnimation: Bool) {
         
+        self.isSelectedAt = .myPlant
+        
         firebaseManager.fetchPlants { result in
             
             switch result {
@@ -203,6 +245,8 @@ class HomePageViewController: UIViewController {
     
     func updateMyFavoritePlants(withAnimation: Bool) {
         
+        self.isSelectedAt = .myFavorite
+        
         firebaseManager.fetchFavoritePlants { result in
             
             switch result {
@@ -232,6 +276,8 @@ class HomePageViewController: UIViewController {
     }
     
     func updateSharePlants(withAnimation: Bool) {
+        
+        self.isSelectedAt = .sharePlants
         
         guard let currentUser = UserManager.shared.currentUser,
               let sharePlantsID = currentUser.sharePlants
@@ -389,6 +435,14 @@ class HomePageViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         switch segue.identifier {
             
         case "showPlantDetail":
@@ -422,10 +476,6 @@ class HomePageViewController: UIViewController {
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
-            
-        case "showShop":
-            
-            break
 
         default:
             
@@ -695,6 +745,14 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         searchBar.endEditing(true)
         
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         if collectionView == plantCollectionView {
         
             guard let plants = self.plants else { return }
@@ -779,32 +837,33 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 return UIMenu(title: "", children: [deleteAction])
             }
-        }
-        
-        return UIContextMenuConfiguration(identifier: nil,
-                                          previewProvider: nil) { _ in
+        } else {
             
-            let deleteAction = UIAction(title: "刪除",
-                                        image: UIImage(systemName: "trash"),
-                                        attributes: .destructive) { _ in
+            return UIContextMenuConfiguration(identifier: nil,
+                                              previewProvider: nil) { _ in
                 
-                self.deletePlantAction(indexPath: indexPath)
+                let deleteAction = UIAction(title: "刪除",
+                                            image: UIImage(systemName: "trash"),
+                                            attributes: .destructive) { _ in
+                    
+                    self.deletePlantAction(indexPath: indexPath)
+                    
+                }
                 
+                let editAction = UIAction(title: "編輯", image: nil) { _ in
+                    
+                    self.editPlantAction(indexPath: indexPath)
+                    
+                }
+                
+                let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
+                    
+                    self.deathPlantAction(indexPath: indexPath)
+                    
+                }
+                
+                return UIMenu(title: "", children: [editAction, deathAction, deleteAction])
             }
-            
-            let editAction = UIAction(title: "編輯", image: nil) { _ in
-                
-                self.editPlantAction(indexPath: indexPath)
-                
-            }
-            
-            let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
-                
-                self.deathPlantAction(indexPath: indexPath)
-                
-            }
-            
-            return UIMenu(title: "", children: [editAction, deathAction, deleteAction])
         }
     }
 }

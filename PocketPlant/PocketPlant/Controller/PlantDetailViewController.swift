@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import FirebaseAuth
 
 class PlantDetailViewController: UIViewController {
     
@@ -109,6 +110,7 @@ class PlantDetailViewController: UIViewController {
         if plant.ownerID != UserManager.shared.userID {
             remindButton.isHidden = true
             favoriteButton.isHidden = true
+            qrcodeButton.isHidden = true
         }
         
         if let useImageURL = UserManager.shared.currentUser?.userImageURL {
@@ -228,6 +230,15 @@ class PlantDetailViewController: UIViewController {
     }
     
     @IBAction func publishAction(_ sender: UIButton) {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            return
+            
+        }
+        
         guard let plant = plant,
               let comment = commentTextField.text else { return }
         
@@ -259,6 +270,20 @@ class PlantDetailViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func beginEditingAction(_ sender: UITextField) {
+        
+        if Auth.auth().currentUser == nil {
+            
+            showLoginAlert()
+            
+            sender.endEditing(true)
+            
+            return
+            
+        }
+    }
+    
 }
 
 extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource {

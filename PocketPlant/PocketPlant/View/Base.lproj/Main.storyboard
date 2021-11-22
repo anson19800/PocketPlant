@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pAT-UV-nZa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rgc-dz-Wew">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -69,7 +69,7 @@
                                     <constraint firstItem="06M-3v-eqW" firstAttribute="leading" secondItem="jdc-Vf-YSU" secondAttribute="leading" constant="33" id="rcP-ld-VYS"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
+                            <searchBar contentMode="redraw" placeholder="輸入植物名搜尋" translatesAutoresizingMaskIntoConstraints="NO" id="oF9-CH-E7h">
                                 <rect key="frame" x="35" y="104.66666666666669" width="358" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -98,7 +98,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iFC-IX-pb8">
-                                <rect key="frame" x="35" y="225.66666666666669" width="358" height="617.33333333333326"/>
+                                <rect key="frame" x="35" y="230.66666666666669" width="358" height="612.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O0g-Qg-XYD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -150,7 +150,7 @@
                             <constraint firstItem="Naz-9Y-pLb" firstAttribute="top" secondItem="Eeb-f4-YDy" secondAttribute="bottom" id="Ckg-bc-fyT"/>
                             <constraint firstItem="iFC-IX-pb8" firstAttribute="leading" secondItem="oF9-CH-E7h" secondAttribute="leading" id="Dsf-G1-Lhx"/>
                             <constraint firstItem="oF9-CH-E7h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="EZ5-UU-E4B"/>
-                            <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="20" id="RvC-Ke-p1d"/>
+                            <constraint firstItem="iFC-IX-pb8" firstAttribute="top" secondItem="VoJ-oc-igC" secondAttribute="bottom" constant="25" id="RvC-Ke-p1d"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TET-yt-ZRc"/>
                             <constraint firstItem="VoJ-oc-igC" firstAttribute="top" secondItem="oF9-CH-E7h" secondAttribute="bottom" constant="10" id="ZLO-YV-eId"/>
                             <constraint firstItem="jdc-Vf-YSU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZyC-l0-P9K"/>
@@ -426,16 +426,29 @@
                                 <color key="textColor" red="0.25882352939999997" green="0.29411764709999999" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZs-27-VLc">
+                                <rect key="frame" x="161.66666666666666" y="809" width="104.99999999999997" height="33"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="繼續以訪客瀏覽">
+                                    <color key="titleColor" name="DarkBlue"/>
+                                </state>
+                                <connections>
+                                    <action selector="visitorEnterAction:" destination="pAT-UV-nZa" eventType="touchUpInside" id="k9P-Pl-g0D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nqo-vu-7kp"/>
                         <color key="backgroundColor" red="0.66850255044519313" green="0.89540201826666665" blue="0.72244736095152118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Ds-gI-XIW" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="7KA-rM-T0G"/>
                             <constraint firstItem="P3v-b4-RKY" firstAttribute="top" secondItem="Nqo-vu-7kp" secondAttribute="top" constant="100" id="JzY-G8-fJw"/>
+                            <constraint firstItem="Nqo-vu-7kp" firstAttribute="bottom" secondItem="fZs-27-VLc" secondAttribute="bottom" constant="50" id="Kcr-Jh-D2I"/>
                             <constraint firstItem="6Ds-gI-XIW" firstAttribute="top" secondItem="Ckc-W9-2V2" secondAttribute="bottom" constant="10" id="RJ9-xD-VjU"/>
                             <constraint firstItem="Ckc-W9-2V2" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="Yih-6b-JCu"/>
                             <constraint firstItem="Ckc-W9-2V2" firstAttribute="top" secondItem="P3v-b4-RKY" secondAttribute="bottom" constant="30" id="apR-uk-Oav"/>
                             <constraint firstItem="P3v-b4-RKY" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="ciA-Ei-GJ2"/>
+                            <constraint firstItem="fZs-27-VLc" firstAttribute="centerX" secondItem="KEO-gj-4qr" secondAttribute="centerX" id="i99-04-NC0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -444,6 +457,7 @@
                         <outlet property="mainImageView" destination="Xpg-Sx-Db0" id="vPd-nt-lcf"/>
                         <outlet property="mainTitle" destination="Ckc-W9-2V2" id="iDJ-3o-Bye"/>
                         <outlet property="subTitle" destination="6Ds-gI-XIW" id="UiY-EX-URK"/>
+                        <outlet property="visitorButton" destination="fZs-27-VLc" id="Aq9-dM-HU4"/>
                         <segue destination="rgc-dz-Wew" kind="presentation" identifier="Login" modalPresentationStyle="fullScreen" id="IaU-M8-EKm"/>
                     </connections>
                 </viewController>
@@ -621,6 +635,7 @@
                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="31"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
+                                                <action selector="beginRenameAction:" destination="RAh-oC-sao" eventType="editingDidBegin" id="RBQ-bj-b5g"/>
                                                 <action selector="endRenameAction:" destination="RAh-oC-sao" eventType="editingDidEnd" id="gnC-CX-bTv"/>
                                             </connections>
                                         </textField>
