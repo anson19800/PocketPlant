@@ -39,6 +39,7 @@ class HomePageViewController: UIViewController {
             searchBar.searchTextField.layer.shadowOffset = CGSize.zero
             searchBar.searchTextField.layer.shadowRadius = 4
             searchBar.searchTextField.layer.shadowOpacity = 0.1
+            searchBar.delegate = self
         }
     }
     
@@ -47,9 +48,26 @@ class HomePageViewController: UIViewController {
             headerBackground.layer.cornerRadius = 5
         }
     }
-    @IBOutlet weak var plantCollectionView: UICollectionView!
+    @IBOutlet weak var plantCollectionView: UICollectionView! {
+        didSet {
+            plantCollectionView.delegate = self
+            plantCollectionView.dataSource = self
+            plantCollectionView.registerCellWithNib(
+                identifier: String(describing: PlantCollectionViewCell.self),
+                bundle: nil)
+        }
+    }
     
-    @IBOutlet weak var buttonCollectionView: UICollectionView!
+    @IBOutlet weak var buttonCollectionView: UICollectionView! {
+        didSet {
+            buttonCollectionView.delegate = self
+            buttonCollectionView.dataSource = self
+            buttonCollectionView.layer.masksToBounds = false
+            buttonCollectionView.registerCellWithNib(
+                identifier: String(describing: ButtonCollectionViewCell.self),
+                bundle: nil)
+        }
+    }
     
     @IBOutlet weak var addButton: UIButton!
     
@@ -88,45 +106,27 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var waterImageView: UIImageView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "",
-                                                                style: .plain,
-                                                                target: nil,
-                                                                action: nil)
-        
-        plantCollectionView.delegate = self
-        plantCollectionView.dataSource = self
-        buttonCollectionView.delegate = self
-        buttonCollectionView.dataSource = self
-        searchBar.delegate = self
-        buttonCollectionView.layer.masksToBounds = false
-        
-        buttonCollectionView.registerCellWithNib(
-            identifier: String(describing: ButtonCollectionViewCell.self),
-            bundle: nil)
-        
-        plantCollectionView.registerCellWithNib(
-            identifier: String(describing: PlantCollectionViewCell.self),
-            bundle: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         buttonCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .top)
         
         updateMyPlants(withAnimation: false)
         
-        let viewWidth = view.bounds.width
-        let viewHeight = view.bounds.height
-        waterImageView.center = CGPoint(x: viewWidth - 50, y: viewHeight - 130)
+        waterImageView.center = CGPoint(x: view.bounds.width - 50, y: view.bounds.height - 130)
         
         emptyAnimation = loadAnimation(name: "33731-emptyPlant", loopMode: .loop)
+        
         if let emptyAnimation = emptyAnimation {
+            
             emptyAnimation.frame = animationContainer.bounds
             animationContainer.addSubview(emptyAnimation)
             emptyAnimation.play()
         }
         
         self.hideKeyboardWhenTappedAround()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,26 +157,17 @@ class HomePageViewController: UIViewController {
                 blockView.layoutIfNeeded()
                 
                 self.blockView = nil
-                
             }
         }
         
         if let currentUser = UserManager.shared.currentUser,
            let userName = currentUser.name {
+            
             self.homeTitleLabel.text = "歡迎\(userName)"
+            
         } else {
-            self.homeTitleLabel.text = "歡迎"
-        }
-        
-        if Auth.auth().currentUser == nil {
             
             self.homeTitleLabel.text = "歡迎"
-            
-            self.plants = []
-            
-            self.plantCollectionView.reloadData()
-            
-            return
         }
         
         switch isSelectedAt {
@@ -224,11 +215,8 @@ class HomePageViewController: UIViewController {
                 self.plants = plants
                 
                 if withAnimation {
-                
-                    self.plantCollectionView.performBatchUpdates({
-                        let indexSet = IndexSet(integersIn: 0...0)
-                        self.plantCollectionView.reloadSections(indexSet)
-                    }, completion: nil)
+                    
+                    self.reloadCollectionViewInSection(self.plantCollectionView)
                     
                 } else {
                     
@@ -257,15 +245,11 @@ class HomePageViewController: UIViewController {
                 
                 if withAnimation {
                     
-                    self.plantCollectionView.performBatchUpdates({
-                        let indexSet = IndexSet(integersIn: 0...0)
-                        self.plantCollectionView.reloadSections(indexSet)
-                    }, completion: nil)
+                    self.reloadCollectionViewInSection(self.plantCollectionView)
                     
                 } else {
                     
                     self.plantCollectionView.reloadData()
-                    
                 }
                 
             case .failure(let error):
@@ -295,7 +279,9 @@ class HomePageViewController: UIViewController {
             group.enter()
             
             firebaseManager.fetchPlants(plantID: plantID) { result in
+                
                 switch result {
+                    
                 case .success(let plant):
                     
                     if var plants = self.plants {
@@ -315,7 +301,9 @@ class HomePageViewController: UIViewController {
                     }
                     
                 case .failure(let error):
+                    
                     print(error)
+                    
                     group.leave()
                 }
             }
@@ -324,11 +312,8 @@ class HomePageViewController: UIViewController {
         group.notify(queue: .main) {
             
             if withAnimation {
-            
-                self.plantCollectionView.performBatchUpdates({
-                    let indexSet = IndexSet(integersIn: 0...0)
-                    self.plantCollectionView.reloadSections(indexSet)
-                }, completion: nil)
+                
+                self.reloadCollectionViewInSection(self.plantCollectionView)
                 
             } else {
                 
@@ -336,6 +321,17 @@ class HomePageViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func reloadCollectionViewInSection(_ collectionView: UICollectionView) {
+        
+        collectionView.performBatchUpdates({
+            
+            let indexSet = IndexSet(integersIn: 0...0)
+            
+            collectionView.reloadSections(indexSet)
+            
+        }, completion: nil)
     }
     
     func checkIsEmpty() {
@@ -454,8 +450,7 @@ class HomePageViewController: UIViewController {
             
         case "createPlant":
             
-            guard let destinationVC = segue.destination as? NewPlantPageViewController,
-                  let plant = sender as? Plant else { return }
+            guard let destinationVC = segue.destination as? NewPlantPageViewController else { return }
             
             destinationVC.pageMode = .create
             
@@ -487,20 +482,12 @@ class HomePageViewController: UIViewController {
         
         guard let plants = plants else { return }
         
-        if plants.count <= 0 {
-            showAlert(title: "沒有植物", message: "沒有植物可以澆水，快去新增吧！", buttonTitle: "確定")
-            return
-        }
-        
         let group = DispatchGroup()
+        
         plants.forEach({ plant in
             group.enter()
-            firebaseManager.updateWater(plant: plant) { isSuccess in
-                if isSuccess {
-                    group.leave()
-                } else {
-                    group.leave()
-                }
+            firebaseManager.updateWater(plant: plant) { _ in
+                group.leave()
             }
         })
         
@@ -537,27 +524,14 @@ class HomePageViewController: UIViewController {
         
         if let indexPath = plantCollectionView.indexPathForItem(at: selectedPoint) {
             
-            if let selectedCell = plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell,
-               let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
+            if let selectedCell = plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell {
                 
-                cells.forEach { cell in
-                    if cell == selectedCell {
-                        
-                        cell.isPanOnCell = true
-                        
-                    } else {
-                        
-                        cell.isPanOnCell = false
-                        
-                    }
-                }
+                cells.forEach { $0.isPanOnCell = ($0 == selectedCell) }
             }
+            
         } else {
-            if let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
-                cells.forEach { cell in
-                    cell.isPanOnCell = false
-                }
-            }
+            
+            cells.forEach { $0.isPanOnCell = false }
         }
         
         if sender.state == .ended {
@@ -588,9 +562,11 @@ class HomePageViewController: UIViewController {
             }, completion: nil)
             
             if let indexPath = plantCollectionView.indexPathForItem(at: point),
-               let plants = self.plants {
+               let plants = self.plants,
+               let cell = self.plantCollectionView.cellForItem(at: indexPath),
+               let plantCell = cell as? PlantCollectionViewCell {
                 
-                let plantName = plants[indexPath.row].name
+//                let plantName = plants[indexPath.row].name
                 
                 firebaseManager.updateWater(plant: plants[indexPath.row]) { isSuccess in
                     
@@ -598,26 +574,20 @@ class HomePageViewController: UIViewController {
                         
                         dropView.isUserInteractionEnabled = true
                         
-                        if let plantCell = self.plantCollectionView.cellForItem(at: indexPath) as? PlantCollectionViewCell {
-                            
-                            let dropAnimation = self.loadAnimation(name: "61313-waterDrop", loopMode: .playOnce)
-                            
-                            dropAnimation.frame = self.plantCollectionView.convert(plantCell.frame, to: self.view)
-                            
-                            dropAnimation.contentMode = .scaleToFill
-                            
-                            self.view.addSubview(dropAnimation)
-                            
-                            dropAnimation.bringSubviewToFront(plantCell)
-                            
-                            dropAnimation.play() { _ in
-                                dropAnimation.removeFromSuperview()
-                            }
-                            
-                        }
+                        let dropAnimation = self.loadAnimation(name: "61313-waterDrop", loopMode: .playOnce)
                         
+                        dropAnimation.frame = self.plantCollectionView.convert(plantCell.frame, to: self.view)
+                        
+                        dropAnimation.contentMode = .scaleToFill
+                        
+                        self.view.addSubview(dropAnimation)
+                        
+                        dropAnimation.play { _ in
+                            dropAnimation.removeFromSuperview()
+                        }
                     }
                 }
+                
             } else {
                 
                 dropView.shake()
@@ -631,11 +601,6 @@ class HomePageViewController: UIViewController {
 // MARK: - CollectionViewDelegate & CollectionViewDataSource
 extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDataSource,
                                   UICollectionViewDelegateFlowLayout {
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        searchBar.endEditing(true)
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -826,12 +791,11 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                                             image: UIImage(systemName: "trash"),
                                             attributes: .destructive) { _ in
                     if let currentUser = UserManager.shared.currentUser,
-                       var sharePlants = currentUser.sharePlants{
+                       var sharePlants = currentUser.sharePlants {
                         
                         sharePlants.remove(at: indexPath.row)
                         
                         self.deleteSharePlant(sharePlants: sharePlants)
-                        
                     }
                 }
                 
@@ -847,19 +811,16 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                                             attributes: .destructive) { _ in
                     
                     self.deletePlantAction(indexPath: indexPath)
-                    
                 }
                 
                 let editAction = UIAction(title: "編輯", image: nil) { _ in
                     
                     self.editPlantAction(indexPath: indexPath)
-                    
                 }
                 
                 let deathAction = UIAction(title: "澆水紀錄", image: nil) { _ in
                     
                     self.deathPlantAction(indexPath: indexPath)
-                    
                 }
                 
                 return UIMenu(title: "", children: [editAction, deathAction, deleteAction])
@@ -873,27 +834,14 @@ extension HomePageViewController: UISearchBarDelegate {
         
         guard let plants = plants else { return }
         
-        if searchText != "" {
+        searchPlants = plants.filter { plant -> Bool in
             
-            searchPlants = plants.filter { plant -> Bool in
-                
-                return plant.name.contains(searchText)
-                
-            }
-            
-            searching = true
-            
-        } else {
-            
-            searching = false
-            
+            return plant.name.contains(searchText)
         }
         
-        self.plantCollectionView.performBatchUpdates({
-            let indexSet = IndexSet(integersIn: 0...0)
-            self.plantCollectionView.reloadSections(indexSet)
-        }, completion: nil)
+        searching = (searchText != "")
         
+        reloadCollectionViewInSection(self.plantCollectionView)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
