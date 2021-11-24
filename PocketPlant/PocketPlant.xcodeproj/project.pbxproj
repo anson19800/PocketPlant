@@ -62,6 +62,7 @@
 		CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */; };
 		CB8A115F2737952700AAE6CA /* 9131-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8A115E2737952700AAE6CA /* 9131-loading.json */; };
 		CB8B3DAF2749507A001F44C6 /* VisitorBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B3DAE2749507A001F44C6 /* VisitorBlockView.swift */; };
+		CB8B3DB1274E3121001F44C6 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B3DB0274E3121001F44C6 /* SegueIdentifier.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -170,6 +171,7 @@
 		CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlantViewController.swift; sourceTree = "<group>"; };
 		CB8A115E2737952700AAE6CA /* 9131-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9131-loading.json"; sourceTree = "<group>"; };
 		CB8B3DAE2749507A001F44C6 /* VisitorBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorBlockView.swift; sourceTree = "<group>"; };
+		CB8B3DB0274E3121001F44C6 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				CB2241F0272ECCD000BAEE90 /* Comment.swift */,
 				CB8A113E27328C1E00AAE6CA /* User.swift */,
 				CB84621B273BAF6500283683 /* Tool.swift */,
+				CB8B3DB0274E3121001F44C6 /* SegueIdentifier.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				CB8B3DAF2749507A001F44C6 /* VisitorBlockView.swift in Sources */,
 				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
 				CB846220273FB4EE00283683 /* BlockedUserViewController.swift in Sources */,
+				CB8B3DB1274E3121001F44C6 /* SegueIdentifier.swift in Sources */,
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
 				CB84620A273A129100283683 /* EditProfileViewController.swift in Sources */,
 				CB8F2EFC272A9569005E1448 /* QRCodePlantDetailViewController.swift in Sources */,

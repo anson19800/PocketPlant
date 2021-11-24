@@ -124,13 +124,12 @@ class CalendarPageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showWater" {
+        if segue.identifier == SegueIdentifier.showWater {
             
             guard let plant = sender as? Plant,
                   let destinationVC = segue.destination as? DeathPlantViewController else { return }
             
             destinationVC.plant = plant
-            
         }
     }
     

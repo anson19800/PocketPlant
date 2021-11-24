@@ -430,7 +430,9 @@ class HomePageViewController: UIViewController {
         
         let plant = plants[indexPath.row]
         
-        performSegue(withIdentifier: "editPlant", sender: plant)
+        performSegue(
+            withIdentifier: SegueIdentifier.editPlant,
+            sender: plant)
         
     }
     
@@ -440,7 +442,7 @@ class HomePageViewController: UIViewController {
         
         let plant = plants[indexPath.row]
         
-        performSegue(withIdentifier: "deathPlant", sender: plant)
+        performSegue(withIdentifier: SegueIdentifier.deathPlant, sender: plant)
         
     }
     
@@ -456,14 +458,14 @@ class HomePageViewController: UIViewController {
         
         switch segue.identifier {
             
-        case "showPlantDetail":
+        case SegueIdentifier.showPlantDetail:
             
             guard let destinationVC = segue.destination as? PlantDetailViewController,
                   let plant = sender as? Plant else { return }
             
             destinationVC.plant = plant
             
-        case "createPlant":
+        case SegueIdentifier.createPlant:
             
             guard let destinationVC = segue.destination as? NewPlantPageViewController else { return }
             
@@ -471,7 +473,7 @@ class HomePageViewController: UIViewController {
             
             destinationVC.parentVC = self
             
-        case "editPlant":
+        case SegueIdentifier.editPlant:
             
             guard let destinationVC = segue.destination as? NewPlantPageViewController,
                   let plant = sender as? Plant else { return }
@@ -480,7 +482,7 @@ class HomePageViewController: UIViewController {
             
             destinationVC.parentVC = self
             
-        case "deathPlant":
+        case SegueIdentifier.deathPlant:
             
             guard let destinationVC = segue.destination as? DeathPlantViewController,
                   let plant = sender as? Plant else { return }
@@ -743,7 +745,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             tabBarController?.tabBar.isHidden = true
         
-            performSegue(withIdentifier: "showPlantDetail", sender: plant)
+            performSegue(
+                withIdentifier: SegueIdentifier.showPlantDetail,
+                sender: plant)
             
         } else if collectionView == buttonCollectionView {
             
