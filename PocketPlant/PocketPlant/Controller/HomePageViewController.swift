@@ -24,6 +24,17 @@ enum HomePageButton: String, CaseIterable {
             return UIImage(systemName: "leaf.arrow.triangle.circlepath")
         }
     }
+    
+    var emptyText: String {
+        switch self {
+        case .myPlant:
+            return "還沒有植物呢\n點擊畫面右上角＋新增！"
+        case .myFavorite:
+            return "還沒有最愛植物呢！"
+        case .sharePlants:
+            return "還沒有收藏植物呢\n快掃描朋友的植物QRCode!"
+        }
+    }
 }
 
 class HomePageViewController: UIViewController {
@@ -48,6 +59,7 @@ class HomePageViewController: UIViewController {
             headerBackground.layer.cornerRadius = 5
         }
     }
+    
     @IBOutlet weak var plantCollectionView: UICollectionView! {
         didSet {
             plantCollectionView.delegate = self
@@ -83,6 +95,8 @@ class HomePageViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var waterImageView: UIImageView!
+    
     var emptyAnimation: AnimationView?
     
     let firebaseManager = FirebaseManager.shared
@@ -95,15 +109,11 @@ class HomePageViewController: UIViewController {
     
     var blockView: VisitorBlockView?
     
-    var searchPlants: [Plant]?
+    var searchedPlants: [Plant]?
     
-    var searching: Bool = false
+    var isSearching: Bool = false
     
-    var isSelectedAt: HomePageButton = .myPlant
-    
-    var handle: AuthStateDidChangeListenerHandle?
-    
-    @IBOutlet weak var waterImageView: UIImageView!
+    var selectionType: HomePageButton = .myPlant
     
     override func viewDidLoad() {
         
@@ -170,7 +180,7 @@ class HomePageViewController: UIViewController {
             self.homeTitleLabel.text = "歡迎"
         }
         
-        switch isSelectedAt {
+        switch selectionType {
             
         case .myPlant:
             
@@ -204,7 +214,9 @@ class HomePageViewController: UIViewController {
     
     func updateMyPlants(withAnimation: Bool) {
         
-        self.isSelectedAt = .myPlant
+        self.selectionType = .myPlant
+        
+        self.buttonCollectionView.isUserInteractionEnabled = false
         
         firebaseManager.fetchPlants { result in
             
@@ -224,16 +236,22 @@ class HomePageViewController: UIViewController {
                     
                 }
                 
+                self.buttonCollectionView.isUserInteractionEnabled = true
+                
             case .failure(let error):
                 
                 print(error)
+                
+                self.buttonCollectionView.isUserInteractionEnabled = true
             }
         }
     }
     
     func updateMyFavoritePlants(withAnimation: Bool) {
         
-        self.isSelectedAt = .myFavorite
+        self.selectionType = .myFavorite
+        
+        self.buttonCollectionView.isUserInteractionEnabled = false
         
         firebaseManager.fetchFavoritePlants { result in
             
@@ -252,7 +270,11 @@ class HomePageViewController: UIViewController {
                     self.plantCollectionView.reloadData()
                 }
                 
+                self.buttonCollectionView.isUserInteractionEnabled = true
+                
             case .failure(let error):
+                
+                self.buttonCollectionView.isUserInteractionEnabled = true
                 
                 print(error)
             }
@@ -261,7 +283,9 @@ class HomePageViewController: UIViewController {
     
     func updateSharePlants(withAnimation: Bool) {
         
-        self.isSelectedAt = .sharePlants
+        self.selectionType = .sharePlants
+        
+        self.buttonCollectionView.isUserInteractionEnabled = false
         
         guard let currentUser = UserManager.shared.currentUser,
               let sharePlantsID = currentUser.sharePlants
@@ -320,6 +344,8 @@ class HomePageViewController: UIViewController {
                 self.plantCollectionView.reloadData()
                 
             }
+            
+            self.buttonCollectionView.isUserInteractionEnabled = true
         }
     }
     
@@ -336,50 +362,34 @@ class HomePageViewController: UIViewController {
     
     func checkIsEmpty() {
         if let plants = plants {
+            
+            animationContainer.isHidden = !(plants.count <= 0)
+            emptyPlantLabel.isHidden = !(plants.count <= 0)
+            waterImageView.isHidden = (plants.count <= 0)
+            
             if plants.count <= 0 {
-                animationContainer.isHidden = false
-                emptyPlantLabel.isHidden = false
-                waterImageView.isHidden = true
-                switch isSelectedAt {
-                case .myPlant:
-                    emptyPlantLabel.text = "還沒有植物呢\n點擊畫面右上角＋新增！"
-                case .myFavorite:
-                    emptyPlantLabel.text = "還沒有最愛植物呢！"
-                case .sharePlants:
-                    emptyPlantLabel.text = "還沒有收藏植物呢\n快掃描朋友的植物QRCode!"
-                }
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.play()
-                }
+                
+                emptyPlantLabel.text = selectionType.emptyText
+                
+                emptyAnimation?.play()
+                
             } else {
-                animationContainer.isHidden = true
-                emptyPlantLabel.isHidden = true
-                waterImageView.isHidden = false
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.stop()
-                }
+                
+                emptyAnimation?.stop()
             }
+            
         } else {
             
             animationContainer.isHidden = false
             emptyPlantLabel.isHidden = false
             waterImageView.isHidden = true
-            switch isSelectedAt {
-            case .myPlant:
-                emptyPlantLabel.text = "還沒有植物呢\n點擊畫面右上角＋新增！"
-            case .myFavorite:
-                emptyPlantLabel.text = "還沒有最愛植物呢！"
-            case .sharePlants:
-                emptyPlantLabel.text = "還沒有收藏植物呢\n快掃描朋友的植物QRCode!"
-            }
-            if let emptyAnimation = emptyAnimation {
-                emptyAnimation.play()
-            }
+            
+            emptyPlantLabel.text = selectionType.emptyText
+            
+            emptyAnimation?.play()
         }
         
-        if isSelectedAt == .sharePlants {
-            waterImageView.isHidden = true
-        }
+        waterImageView.isHidden = (selectionType == .sharePlants)
     }
     
     func deletePlantAction(indexPath: IndexPath) {
@@ -393,10 +403,15 @@ class HomePageViewController: UIViewController {
         self.plants = plants
 
         firebaseManager.deletePlant(plant: plant) { isSuccess in
+            
             if isSuccess {
+                
                 self.plantCollectionView.deleteItems(at: [indexPath])
+                
             } else {
+                
                 self.showAlert(title: "Oops", message: "刪除的過程出了點問題，請再試一次", buttonTitle: "確認")
+                
             }
         }
     }
@@ -501,15 +516,17 @@ class HomePageViewController: UIViewController {
             
             self.view.addSubview(dropAnimation)
             
-            dropAnimation.play() { _ in
+            dropAnimation.play { _ in
                 dropAnimation.removeFromSuperview()
             }
         }
-//        showAlert(title: "全部澆水", message: "對畫面上所有植物澆水", buttonTitle: "確定")
     }
+    
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer) {
         
-        guard let dropView = sender.view else { return }
+        guard let dropView = sender.view,
+              let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell]
+        else { return }
         
         UIView.animate(withDuration: 0.1) {() -> Void in
             dropView.transform = CGAffineTransform(scaleX: 2, y: 2)
@@ -610,9 +627,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
         } else {
             
-            if searching {
+            if isSearching {
                 
-                guard let searchPlants = self.searchPlants else { return 0 }
+                guard let searchPlants = self.searchedPlants else { return 0 }
                 
                 return searchPlants.count
                 
@@ -659,9 +676,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             
             guard let plantCell = cell as? PlantCollectionViewCell else { return cell }
             
-            if searching {
+            if isSearching {
                 
-                guard let searchPlants = self.searchPlants
+                guard let searchPlants = self.searchedPlants
                 else { return cell }
                 
                 let imageURL = searchPlants[indexPath.row].imageURL
@@ -692,11 +709,11 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let itemSpace: CGFloat = 10
-        let columCount: CGFloat = 3
+        let columnCount: CGFloat = 3
         
-        let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columCount - 1)) / columCount )
+        let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columnCount - 1)) / columnCount )
         
-        let buttonWidth = floor((buttonCollectionView.bounds.width - 35 * (columCount - 1)) / columCount )
+        let buttonWidth = floor((buttonCollectionView.bounds.width - 35 * (columnCount - 1)) / columnCount )
 
         if collectionView == plantCollectionView {
             return CGSize(width: plantWidth, height: plantWidth * 1.2)
@@ -736,7 +753,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             case .myPlant:
                 
-                if isSelectedAt == .myPlant {
+                if selectionType == .myPlant {
                     
                     break
                     
@@ -744,33 +761,33 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
                 updateMyPlants(withAnimation: true)
                 
-                self.isSelectedAt = .myPlant
+                self.selectionType = .myPlant
                 
             case .myFavorite:
                 
-                if isSelectedAt == .myFavorite {
+                if selectionType == .myFavorite {
                     
                     break
                     
                 }
                 
-                searching = false
+                isSearching = false
                 
                 updateMyFavoritePlants(withAnimation: true)
                 
-                isSelectedAt = .myFavorite
+                selectionType = .myFavorite
                 
             case .sharePlants:
                 
-                if isSelectedAt == .sharePlants {
+                if selectionType == .sharePlants {
                     
                     break
                     
                 }
                 
-                isSelectedAt = .sharePlants
+                selectionType = .sharePlants
                 
-                searching = false
+                isSearching = false
                 
                 updateSharePlants(withAnimation: true)
             }
@@ -783,7 +800,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
         
         guard collectionView == plantCollectionView else { return nil }
         
-        if isSelectedAt == .sharePlants {
+        if selectionType == .sharePlants {
             return UIContextMenuConfiguration(identifier: nil,
                                               previewProvider: nil) { _ in
                 
@@ -834,19 +851,19 @@ extension HomePageViewController: UISearchBarDelegate {
         
         guard let plants = plants else { return }
         
-        searchPlants = plants.filter { plant -> Bool in
+        searchedPlants = plants.filter { plant -> Bool in
             
             return plant.name.contains(searchText)
         }
         
-        searching = (searchText != "")
+        isSearching = (searchText != "")
         
         reloadCollectionViewInSection(self.plantCollectionView)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        searching = false
+        isSearching = false
         
         searchBar.endEditing(true)
     }

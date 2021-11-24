@@ -133,7 +133,7 @@ extension ScanQRCodePageViewController: SharePlantDetailDelegate {
         
         guard let homepageVC = parentVC as? HomePageViewController else { return }
         
-        homepageVC.isSelectedAt = .sharePlants
+        homepageVC.selectionType = .sharePlants
         
         homepageVC.buttonCollectionView.selectItem(at: IndexPath(row: 2, section: 0),
                                                    animated: false,
