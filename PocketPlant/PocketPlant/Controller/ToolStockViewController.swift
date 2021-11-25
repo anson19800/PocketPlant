@@ -96,10 +96,13 @@ extension ToolStockViewController: UITableViewDelegate, UITableViewDataSource {
         
         if editingStyle == .delete {
             let tool = toolList[indexPath.row]
-            FirebaseManager.shared.deleteTool(toolID: tool.id) { isSuccess in
-                if isSuccess {
+            FirebaseManager.shared.deleteData(.tool, dataID: tool.id) { result in
+                switch result {
+                case .success():
                     self.toolList.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
+                case .failure(let error):
+                    print(error)
                 }
             }
         }
