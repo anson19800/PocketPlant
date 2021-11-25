@@ -88,7 +88,7 @@ class ProfilePageViewController: UIViewController {
             
             if blockView == nil {
                 
-                blockView = addblockView()
+                blockView = addBlockView()
                 
             }
             

@@ -149,7 +149,7 @@ class HomePageViewController: UIViewController {
             
             self.plantCollectionView.reloadData()
             
-            if blockView == nil { blockView = addblockView() }
+            if blockView == nil { blockView = addBlockView() }
             
             return
             

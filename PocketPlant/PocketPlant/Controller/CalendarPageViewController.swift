@@ -67,7 +67,7 @@ class CalendarPageViewController: UIViewController {
             
             if blockView == nil {
                 
-                blockView = addblockView()
+                blockView = addBlockView()
                 
             }
             
