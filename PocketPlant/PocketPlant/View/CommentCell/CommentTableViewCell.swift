@@ -49,11 +49,11 @@ class CommentTableViewCell: UITableViewCell {
             userImageView.kf.setImage(with: URL(string: imageURL)) { result in
                 switch result {
                     
-                case .success(_):
+                case .success:
                     
                     break
                     
-                case .failure(_):
+                case .failure:
                     
                     self.userImageView.image = UIImage(systemName: "person.circle.fill")
                     

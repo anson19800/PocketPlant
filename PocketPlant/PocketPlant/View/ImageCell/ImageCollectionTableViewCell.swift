@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageCollectionVIewTableViewCell: UITableViewCell {
+class ImageCollectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     

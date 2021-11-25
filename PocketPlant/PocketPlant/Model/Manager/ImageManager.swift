@@ -14,7 +14,8 @@ class ImageManager {
     
     private init() {}
     
-    func uploadImageToGetURL(image: UIImage, completion: @escaping (Result<(uuid: String, url: String), Error>) -> Void) {
+    func uploadImageToGetURL(image: UIImage,
+                             completion: @escaping (Result<(uuid: String, url: String), Error>) -> Void) {
         
         let uniqueString = NSUUID().uuidString
         

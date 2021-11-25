@@ -146,7 +146,7 @@ class RemindViewController: UIViewController {
             
             switch result {
                 
-            case .success(_):
+            case .success:
                 
                 UIView.animate(withDuration: 0.3) {
                     

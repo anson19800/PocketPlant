@@ -30,7 +30,7 @@
 		CB2241F6272ECEAC00BAEE90 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */; };
 		CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */; };
 		CB2241FA272ED01800BAEE90 /* CommentTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */; };
-		CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */; };
+		CB2241FE272ED29900BAEE90 /* ImageCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241FC272ED29800BAEE90 /* ImageCollectionTableViewCell.swift */; };
 		CB2241FF272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */; };
 		CB224201272EE17400BAEE90 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224200272EE17400BAEE90 /* CommentManager.swift */; };
 		CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */; };
@@ -139,7 +139,7 @@
 		CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTitleTableViewCell.swift; sourceTree = "<group>"; };
 		CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTitleTableViewCell.xib; sourceTree = "<group>"; };
-		CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionVIewTableViewCell.swift; sourceTree = "<group>"; };
+		CB2241FC272ED29800BAEE90 /* ImageCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionVIewTableViewCell.xib; sourceTree = "<group>"; };
 		CB224200272EE17400BAEE90 /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -295,7 +295,7 @@
 		CB2241FB272ED27500BAEE90 /* ImageCell */ = {
 			isa = PBXGroup;
 			children = (
-				CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */,
+				CB2241FC272ED29800BAEE90 /* ImageCollectionTableViewCell.swift */,
 				CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */,
 				CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */,
 				CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */,
@@ -755,7 +755,7 @@
 				CB2241E7272D89B900BAEE90 /* ShopDetailViewController.swift in Sources */,
 				CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */,
 				CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */,
-				CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */,
+				CB2241FE272ED29900BAEE90 /* ImageCollectionTableViewCell.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
 				CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,

@@ -178,7 +178,7 @@ class PlantDetailViewController: UIViewController {
             
             switch result {
                 
-            case .success(_):
+            case .success:
                 
                 plant.favorite = !plant.favorite
                 
@@ -348,7 +348,9 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         
         guard indexPath.row > 1 else { return nil }
         

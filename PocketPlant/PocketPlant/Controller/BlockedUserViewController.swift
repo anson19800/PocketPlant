@@ -88,7 +88,9 @@ extension BlockedUserViewController: UITableViewDelegate, UITableViewDataSource 
         return userCell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             guard var blockedUsers = self.blockedUsers else { return }

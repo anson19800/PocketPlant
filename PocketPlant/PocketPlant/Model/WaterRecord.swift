@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RecordType: String{
+enum RecordType: String {
     case water = "澆水"
     case fertilizer = "施肥"
     case soil = "補土"

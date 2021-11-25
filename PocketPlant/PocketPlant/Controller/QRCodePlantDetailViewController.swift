@@ -159,7 +159,6 @@ class QRCodePlantDetailViewController: UIViewController {
                     delegate.goToSharePlantPage()
                 }
 
-                
             } else {
                 animationView.stop()
                 animationView.removeFromSuperview()

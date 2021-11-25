@@ -50,7 +50,9 @@ class ToolStockViewController: UIViewController {
     @IBAction func addNewTool(_ sender: UIButton) {
      
         guard let addPageVC = storyboard?.instantiateViewController(
-            withIdentifier: String(describing: AddToolStockViewController.self)) as? AddToolStockViewController else { return }
+            withIdentifier: String(describing: AddToolStockViewController.self))
+                as? AddToolStockViewController
+        else { return }
         
         addPageVC.modalTransitionStyle = .crossDissolve
         addPageVC.modalPresentationStyle = .overCurrentContext
@@ -98,7 +100,7 @@ extension ToolStockViewController: UITableViewDelegate, UITableViewDataSource {
             let tool = toolList[indexPath.row]
             FirebaseManager.shared.deleteData(.tool, dataID: tool.id) { result in
                 switch result {
-                case .success():
+                case .success:
                     self.toolList.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                 case .failure(let error):

@@ -214,7 +214,7 @@ extension NewShopViewController: PHPickerViewControllerDelegate {
         itemProviders.forEach { itemProvider in
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 
-                itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
                     DispatchQueue.main.async {
                         guard let image = image as? UIImage else { return }
                         images.append(image)
