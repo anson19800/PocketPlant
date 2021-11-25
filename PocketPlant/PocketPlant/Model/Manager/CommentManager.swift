@@ -20,7 +20,7 @@ class CommentManager {
     
     func publishComment(comment: Comment, isSuccess: (Bool) -> Void) {
         
-        let commentRef = dataBase.collection("comment")
+        let commentRef = dataBase.collection(FirebaseCollectionList.comment)
         
         let documentID = commentRef.document().documentID
         
@@ -44,7 +44,7 @@ class CommentManager {
                       objectID: String,
                       completion: @escaping (Result<[Comment], Error>) -> Void) {
         
-        dataBase.collection("comment")
+        dataBase.collection(FirebaseCollectionList.comment)
             .whereField("objectID", isEqualTo: objectID)
             .order(by: "createdTime", descending: true)
             .getDocuments { snapshot, error in

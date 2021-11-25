@@ -53,7 +53,7 @@ class UserManager {
                         sharePlants: nil,
                         favoriteShop: nil)
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         searchUserisExist(userID: userID ) { isExists in
             if !isExists {
@@ -79,7 +79,7 @@ class UserManager {
                         userImageURL: String?,
                         isSuccess: @escaping (Bool) -> Void) {
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         guard let currentUser = Auth.auth().currentUser else { return }
         
@@ -125,7 +125,7 @@ class UserManager {
     }
     
     func addBlockedUser(blockedID: String, isSuccess: @escaping (Bool) -> Void) {
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         userRef.document(self.userID).getDocument { document, error in
             
@@ -164,7 +164,7 @@ class UserManager {
     
     func searchUserisExist(userID: String, isExists: @escaping (Bool) -> Void) {
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         userRef.document(userID).getDocument { document, _ in
             if let document = document {
@@ -187,7 +187,7 @@ class UserManager {
     
     func fetchUserInfo(userID: String, completion: @escaping (Result<User, Error>) -> Void) {
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         userRef.document(userID).getDocument { document, error in
             if let error = error {
@@ -204,7 +204,7 @@ class UserManager {
     
     func fetchCurrentUserInfo(completion: @escaping (Result<User, Error>) -> Void) {
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         guard let currentUser = Auth.auth().currentUser else { return }
         
@@ -227,7 +227,7 @@ class UserManager {
     
     func addSharePlant(plantID: String, isSuccess: @escaping (Bool) -> Void) {
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         guard let currentUser = Auth.auth().currentUser else { return }
         
@@ -280,7 +280,7 @@ class UserManager {
         
         self.currentUser = currentUser
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         let userID = currentUser.userID
         
@@ -293,7 +293,6 @@ class UserManager {
         } catch {
             
             isSuccess(false)
-            
         }
     }
     
@@ -313,7 +312,7 @@ class UserManager {
         
         self.currentUser = currentUser
         
-        let userRef = dataBase.collection("User")
+        let userRef = dataBase.collection(FirebaseCollectionList.user)
         
         do {
         
@@ -324,7 +323,6 @@ class UserManager {
         } catch {
             
             isSuccess(false)
-            
         }
     }
 }

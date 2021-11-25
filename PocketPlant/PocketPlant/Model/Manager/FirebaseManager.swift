@@ -31,13 +31,9 @@ class FirebaseManager {
     var userID: String {
         
         if let user = Auth.auth().currentUser {
-            
             return user.uid
-            
         } else {
-            
             return "0"
-            
         }
     }
     
@@ -49,14 +45,14 @@ class FirebaseManager {
         case .myPlant:
             
             documentRef = dataBase
-                .collection("plant")
+                .collection(FirebaseCollectionList.plants)
                 .whereField("ownerID", isEqualTo: userID)
                 .order(by: "buyTime", descending: true)
             
         case .myFavorite:
             
             documentRef =  dataBase
-                .collection("plant")
+                .collection(FirebaseCollectionList.plants)
                 .whereField("ownerID", isEqualTo: userID)
                 .whereField("favorite", isEqualTo: true)
             
@@ -81,7 +77,7 @@ class FirebaseManager {
 
     func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
-        let plantRef = dataBase.collection("plant")
+        let plantRef = dataBase.collection(FirebaseCollectionList.plants)
         
         let documentID = plantRef.document().documentID
         
@@ -110,20 +106,18 @@ class FirebaseManager {
                 } catch {
                     
                     isSuccess(false)
-                    
                 }
                 
             case .failure(let error):
                 
                 print(error)
-                
             }
         }
     }
     
     func fetchPlants(plantID: String, completion: @escaping (Result<Plant, Error>) -> Void) {
     
-        dataBase.collection("plant").document(plantID).getDocument { document, error in
+        dataBase.collection(FirebaseCollectionList.plants).document(plantID).getDocument { document, error in
             
             if let error = error {
                 completion(Result.failure(error))
@@ -141,7 +135,7 @@ class FirebaseManager {
     
     func switchFavoritePlant(plantID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        let documentRef = dataBase.collection("plant").document(plantID)
+        let documentRef = dataBase.collection(FirebaseCollectionList.plants).document(plantID)
         
         documentRef.getDocument { document, error in
             
@@ -170,11 +164,13 @@ class FirebaseManager {
         
         let batch = dataBase.batch()
         
-        let plantRef = dataBase.collection("plant").document(plant.id)
+        let plantRef = dataBase.collection(FirebaseCollectionList.plants).document(plant.id)
         
-        let waterRecordRef = dataBase.collection("water").whereField("plantID", isEqualTo: plant.id)
+        let waterRecordRef = dataBase
+            .collection(FirebaseCollectionList.water)
+            .whereField("plantID", isEqualTo: plant.id)
         
-        let commentRef = dataBase.collection("comment")
+        let commentRef = dataBase.collection(FirebaseCollectionList.comment)
             .whereField("commentType", isEqualTo: "plant")
             .whereField("objectID", isEqualTo: plant.id)
         
@@ -227,7 +223,7 @@ class FirebaseManager {
     
     func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
         
-        let documentRef = dataBase.collection("plant").document(plant.id)
+        let documentRef = dataBase.collection(FirebaseCollectionList.plants).document(plant.id)
         
         RemindManager.shared.deleteReminder(plantID: plant.id)
         
@@ -250,7 +246,7 @@ class FirebaseManager {
     
     func updateWater(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
         
-        let waterRef = dataBase.collection("water")
+        let waterRef = dataBase.collection(FirebaseCollectionList.water)
         
         let documentID = waterRef.document().documentID
         
@@ -269,23 +265,18 @@ class FirebaseManager {
         } catch {
             
             isSuccess(false)
-            
         }
     }
     
     func fetchWaterRecord(plantID: String, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
         
-        let waterRef = dataBase.collection("water")
+        let waterRef = dataBase.collection(FirebaseCollectionList.water)
         
         waterRef
             .whereField("plantID", isEqualTo: plantID)
             .getDocuments { snapshot, error in
             
-            if let error = error {
-                
-                completion(Result.failure(error))
-                
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -300,16 +291,13 @@ class FirebaseManager {
     
     func fetchWaterRecord(date: Date, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
         
-        let waterRef = dataBase.collection("water")
+        let waterRef = dataBase.collection(FirebaseCollectionList.water)
         
         waterRef
             .whereField("userID", isEqualTo: userID)
             .getDocuments { snapshot, error in
             
-            if let error = error {
-                
-                completion(Result.failure(error))
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -320,17 +308,11 @@ class FirebaseManager {
             
             let recordDay = waterRecord.compactMap { (record) -> WaterRecord? in
                 let recordDate = Date(timeIntervalSince1970: record.waterDate)
-                if recordDate.hasSame(.year, as: date)
-                    && recordDate.hasSame(.month, as: date)
-                    && recordDate.hasSame(.day, as: date) {
-                    
-                    return record
-                    
-                } else {
-                    
-                    return nil
-                    
-                }
+                guard recordDate.hasSame(.year, as: date)
+                        && recordDate.hasSame(.month, as: date)
+                        && recordDate.hasSame(.day, as: date) else { return nil }
+                
+                return record
             }
             completion(.success(recordDay))
         }
@@ -338,7 +320,7 @@ class FirebaseManager {
     
     func addGardeningShop(shop: inout GardeningShop, isSuccess: @escaping (Bool) -> Void) {
         
-        let shopRef = dataBase.collection("shop")
+        let shopRef = dataBase.collection(FirebaseCollectionList.shop)
         
         let documentID = shopRef.document().documentID
         
@@ -357,8 +339,7 @@ class FirebaseManager {
     }
     
     func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
-        dataBase.collection("shop")
-            .whereField("ownerID", isEqualTo: userID)
+        dataBase.collection(FirebaseCollectionList.shop).whereField("ownerID", isEqualTo: userID)
             .getDocuments { snapshot, error in
             
             if let error = error { completion(Result.failure(error)) }
@@ -380,9 +361,9 @@ class FirebaseManager {
         
         switch type {
         case .plant:
-            documentRef = dataBase.collection("plant")
+            documentRef = dataBase.collection(FirebaseCollectionList.plants)
         case .shop:
-            documentRef = dataBase.collection("shop")
+            documentRef = dataBase.collection(FirebaseCollectionList.shop)
         }
         
         guard let documentRef = documentRef else { return }
@@ -391,9 +372,8 @@ class FirebaseManager {
             
             documentRef
                 .getDocuments { snapshot, error in
-                if let error = error {
-                    completion(nil, error)
-                }
+                    
+                if let error = error { completion(nil, error) }
                 
                 guard let snapshot = snapshot else { return }
                 
@@ -410,9 +390,7 @@ class FirebaseManager {
             documentRef
                 .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
                 .getDocuments { snapshot, error in
-                if let error = error {
-                    completion(nil, error)
-                }
+                if let error = error { completion(nil, error) }
                 
                 guard let snapshot = snapshot else { return }
                 
@@ -428,7 +406,9 @@ class FirebaseManager {
     
     func uploadTool(tool: Tool, isSuccess: (Bool) -> Void) {
         
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList")
+        let toolRef = dataBase.collection(FirebaseCollectionList.tools)
+            .document(self.userID)
+            .collection(FirebaseCollectionList.toolList)
         
         var documentID: String = ""
         
@@ -451,19 +431,18 @@ class FirebaseManager {
         } catch {
             
             isSuccess(false)
-            
         }
     }
     
     func fetchTool(completion: @escaping (Result<[Tool], Error>) -> Void) {
         
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList")
+        let toolRef = dataBase.collection(FirebaseCollectionList.tools)
+            .document(self.userID)
+            .collection(FirebaseCollectionList.toolList)
         
         toolRef.getDocuments { snapshot, error in
             
-            if let error = error {
-                completion(Result.failure(error))
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -478,7 +457,8 @@ class FirebaseManager {
     
     func updateTool(toolID: String, tool: Tool, isSuccess: (Bool) -> Void) {
         
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(toolID)
+        let toolRef = dataBase.collection(FirebaseCollectionList.tools).document(self.userID)
+            .collection(FirebaseCollectionList.toolList).document(toolID)
         
         do {
             
@@ -489,7 +469,6 @@ class FirebaseManager {
         } catch {
             
             isSuccess(false)
-            
         }
     }
     
@@ -499,11 +478,15 @@ class FirebaseManager {
         
         switch type {
         case .waterRecord:
-            documentRef = dataBase.collection("water").document(dataID)
+            documentRef = dataBase.collection(FirebaseCollectionList.water).document(dataID)
         case .shop:
-            documentRef = dataBase.collection("shop").document(dataID)
+            documentRef = dataBase.collection(FirebaseCollectionList.shop).document(dataID)
         case .tool:
-            documentRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(dataID)
+            documentRef = dataBase
+                .collection(FirebaseCollectionList.tools)
+                .document(self.userID)
+                .collection(FirebaseCollectionList.toolList)
+                .document(dataID)
         }
         
         documentRef?.delete(completion: { error in
