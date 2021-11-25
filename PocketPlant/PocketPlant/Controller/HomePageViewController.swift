@@ -41,16 +41,11 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
-            searchBar.autocapitalizationType = .none
-            searchBar.placeholder = "搜尋"
-            searchBar.backgroundImage = UIImage()
-            searchBar.searchTextField.backgroundColor = .white
-            searchBar.searchTextField.layer.cornerRadius = 15
-            searchBar.searchTextField.layer.shadowColor = UIColor.black.cgColor
-            searchBar.searchTextField.layer.shadowOffset = CGSize.zero
-            searchBar.searchTextField.layer.shadowRadius = 4
-            searchBar.searchTextField.layer.shadowOpacity = 0.1
             searchBar.delegate = self
+            searchBar.placeholder = "搜尋"
+            searchBar.setTextFieldShadow()
+            searchBar.backgroundImage = UIImage()
+            searchBar.autocapitalizationType = .none
         }
     }
     
@@ -154,11 +149,7 @@ class HomePageViewController: UIViewController {
             
             self.plantCollectionView.reloadData()
             
-            if blockView == nil {
-                
-                blockView = addblockView()
-                
-            }
+            if blockView == nil { blockView = addblockView() }
             
             return
             
@@ -222,7 +213,9 @@ class HomePageViewController: UIViewController {
         
         self.buttonCollectionView.isUserInteractionEnabled = false
         
-        firebaseManager.fetchPlants { result in
+        firebaseManager.fetchPlants { [weak self] result in
+            
+            guard let self = self else { return }
             
             switch result {
                 
@@ -257,7 +250,9 @@ class HomePageViewController: UIViewController {
         
         self.buttonCollectionView.isUserInteractionEnabled = false
         
-        firebaseManager.fetchFavoritePlants { result in
+        firebaseManager.fetchFavoritePlants { [weak self] result in
+            
+            guard let self = self else { return }
             
             switch result {
                 
@@ -306,17 +301,17 @@ class HomePageViewController: UIViewController {
             
             group.enter()
             
-            firebaseManager.fetchPlants(plantID: plantID) { result in
+            firebaseManager.fetchPlants(plantID: plantID) { [weak self] result in
+                
+                guard let self = self else { return }
                 
                 switch result {
                     
                 case .success(let plant):
                     
-                    if var plants = self.plants {
+                    if self.plants != nil {
                         
-                        plants.append(plant)
-                        
-                        self.plants = plants
+                        self.plants?.append(plant)
                         
                         group.leave()
                         
@@ -405,7 +400,9 @@ class HomePageViewController: UIViewController {
         
         self.plants = plants
 
-        firebaseManager.deletePlant(plant: plant) { isSuccess in
+        firebaseManager.deletePlant(plant: plant) { [weak self] isSuccess in
+            
+            guard let self = self else { return }
             
             if isSuccess {
                 
@@ -456,7 +453,6 @@ class HomePageViewController: UIViewController {
             showLoginAlert()
             
             return
-            
         }
         
         switch segue.identifier {
@@ -559,9 +555,7 @@ class HomePageViewController: UIViewController {
         if sender.state == .ended {
             
             if let cells = plantCollectionView.visibleCells as? [PlantCollectionViewCell] {
-                cells.forEach { cell in
-                    cell.isPanOnCell = false
-                }
+                cells.forEach { $0.isPanOnCell = false }
             }
             
             dropView.isUserInteractionEnabled = false
@@ -590,7 +584,9 @@ class HomePageViewController: UIViewController {
                 
 //                let plantName = plants[indexPath.row].name
                 
-                firebaseManager.updateWater(plant: plants[indexPath.row]) { isSuccess in
+                firebaseManager.updateWater(plant: plants[indexPath.row]) { [weak self] isSuccess in
+                    
+                    guard let self = self else { return }
                     
                     if isSuccess {
                         
@@ -667,7 +663,6 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             if let iconImage = buttonType.icon {
                 
                 buttonCell.layoutCell(image: iconImage, title: title)
-                
             }
             
             return buttonCell
@@ -714,6 +709,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let itemSpace: CGFloat = 10
+        
         let columnCount: CGFloat = 3
         
         let plantWidth = floor((plantCollectionView.bounds.width - itemSpace * (columnCount - 1)) / columnCount )
@@ -737,7 +733,6 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
             showLoginAlert()
             
             return
-            
         }
         
         if collectionView == plantCollectionView {
@@ -760,11 +755,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             case .myPlant:
                 
-                if selectionType == .myPlant {
-                    
-                    break
-                    
-                }
+                if selectionType == .myPlant { break }
                 
                 updateMyPlants(withAnimation: true)
                 
@@ -772,11 +763,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             case .myFavorite:
                 
-                if selectionType == .myFavorite {
-                    
-                    break
-                    
-                }
+                if selectionType == .myFavorite { break }
                 
                 isSearching = false
                 
@@ -786,11 +773,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 
             case .sharePlants:
                 
-                if selectionType == .sharePlants {
-                    
-                    break
-                    
-                }
+                if selectionType == .sharePlants { break }
                 
                 selectionType = .sharePlants
                 
