@@ -97,9 +97,11 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var waterImageView: UIImageView!
     
-    var emptyAnimation: AnimationView?
+    private var emptyAnimation: AnimationView?
     
-    let firebaseManager = FirebaseManager.shared
+    private let firebaseManager = FirebaseManager.shared
+    
+    private let userManager = UserManager.shared
     
     var plants: [Plant]? {
         didSet {
@@ -107,11 +109,11 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    var blockView: VisitorBlockView?
+    private var blockView: VisitorBlockView?
     
-    var searchedPlants: [Plant]?
+    private var searchedPlants: [Plant]?
     
-    var isSearching: Bool = false
+    private var isSearching: Bool = false
     
     var selectionType: HomePageButton = .myPlant
     
@@ -132,7 +134,9 @@ class HomePageViewController: UIViewController {
         if let emptyAnimation = emptyAnimation {
             
             emptyAnimation.frame = animationContainer.bounds
+            
             animationContainer.addSubview(emptyAnimation)
+            
             emptyAnimation.play()
         }
         
@@ -170,7 +174,7 @@ class HomePageViewController: UIViewController {
             }
         }
         
-        if let currentUser = UserManager.shared.currentUser,
+        if let currentUser = userManager.currentUser,
            let userName = currentUser.name {
             
             self.homeTitleLabel.text = "歡迎\(userName)"
@@ -247,7 +251,7 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    func updateMyFavoritePlants(withAnimation: Bool) {
+    private func updateMyFavoritePlants(withAnimation: Bool) {
         
         self.selectionType = .myFavorite
         
@@ -281,13 +285,13 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    func updateSharePlants(withAnimation: Bool) {
+    private func updateSharePlants(withAnimation: Bool) {
         
         self.selectionType = .sharePlants
         
         self.buttonCollectionView.isUserInteractionEnabled = false
         
-        guard let currentUser = UserManager.shared.currentUser,
+        guard let currentUser = userManager.currentUser,
               let sharePlantsID = currentUser.sharePlants
         else {
             self.plants = []
@@ -321,7 +325,6 @@ class HomePageViewController: UIViewController {
                         self.plants = [plant]
                         
                         group.leave()
-                        
                     }
                     
                 case .failure(let error):
@@ -349,7 +352,7 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    func reloadCollectionViewInSection(_ collectionView: UICollectionView) {
+    private func reloadCollectionViewInSection(_ collectionView: UICollectionView) {
         
         collectionView.performBatchUpdates({
             
@@ -360,7 +363,7 @@ class HomePageViewController: UIViewController {
         }, completion: nil)
     }
     
-    func checkIsEmpty() {
+    private func checkIsEmpty() {
         if let plants = plants {
             
             animationContainer.isHidden = !(plants.count <= 0)
@@ -392,7 +395,7 @@ class HomePageViewController: UIViewController {
         waterImageView.isHidden = (selectionType == .sharePlants)
     }
     
-    func deletePlantAction(indexPath: IndexPath) {
+    private func deletePlantAction(indexPath: IndexPath) {
         
         guard var plants = plants else { return }
         
@@ -416,15 +419,15 @@ class HomePageViewController: UIViewController {
         }
     }
     
-    func deleteSharePlant(sharePlants: [String]) {
-        UserManager.shared.deleteSharePlant(sharePlants: sharePlants) { isSuccess in
+    private func deleteSharePlant(sharePlants: [String]) {
+        userManager.deleteSharePlant(sharePlants: sharePlants) { isSuccess in
             if isSuccess {
                 self.updateSharePlants(withAnimation: true)
             }
         }
     }
     
-    func editPlantAction(indexPath: IndexPath) {
+    private func editPlantAction(indexPath: IndexPath) {
         
         guard let plants = plants else { return }
         
@@ -436,7 +439,7 @@ class HomePageViewController: UIViewController {
         
     }
     
-    func deathPlantAction(indexPath: IndexPath) {
+    private func deathPlantAction(indexPath: IndexPath) {
         
         guard let plants = plants else { return }
         
@@ -811,7 +814,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewData
                 let deleteAction = UIAction(title: "取消收藏",
                                             image: UIImage(systemName: "trash"),
                                             attributes: .destructive) { _ in
-                    if let currentUser = UserManager.shared.currentUser,
+                    if let currentUser = self.userManager.currentUser,
                        var sharePlants = currentUser.sharePlants {
                         
                         sharePlants.remove(at: indexPath.row)
