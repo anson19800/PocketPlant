@@ -77,7 +77,7 @@ class FirebaseManager {
         }
     }
 
-    func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (_ isSuccess: Bool) -> Void) {
+    func uploadPlant(plant: inout Plant, image: UIImage, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         guard let userID = userManager.currentUser?.userID else { return }
         
@@ -103,11 +103,11 @@ class FirebaseManager {
                     
                     try self.plantRef.document(documentID).setData(from: uploadPlant)
                     
-                    isSuccess(true)
+                    completion(true)
                     
                 } catch {
                     
-                    isSuccess(false)
+                    completion(false)
                 }
                 
             case .failure(let error):
@@ -162,7 +162,7 @@ class FirebaseManager {
         }
     }
     
-    func deletePlant(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
+    func deletePlant(plant: Plant, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let batch = dataBase.batch()
         
@@ -217,12 +217,12 @@ class FirebaseManager {
             
             batch.commit { error in
                 
-                isSuccess( error == nil )
+                completion( error == nil )
             }
         }
     }
     
-    func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
+    func updatePlant(plant: Plant, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         let documentRef = plantRef.document(plant.id)
         
@@ -235,14 +235,14 @@ class FirebaseManager {
             do {
                 try documentRef.setData(from: plant)
                 
-                isSuccess(Result.success(true))
+                completion(Result.success(true))
             } catch {
-                isSuccess(Result.failure(error))
+                completion(Result.failure(error))
             }
         }
     }
     
-    func updateWater(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
+    func updateWater(plant: Plant, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let documentID = waterRef.document().documentID
         
@@ -255,9 +255,9 @@ class FirebaseManager {
         do {
             try self.waterRef.document(documentID).setData(from: waterRecord)
             
-            isSuccess(true)
+            completion(true)
         } catch {
-            isSuccess(false)
+            completion(false)
         }
     }
     
@@ -308,7 +308,7 @@ class FirebaseManager {
         }
     }
     
-    func addGardeningShop(shop: inout GardeningShop, isSuccess: @escaping (Bool) -> Void) {
+    func addGardeningShop(shop: inout GardeningShop, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let documentID = shopRef.document().documentID
         
@@ -317,9 +317,9 @@ class FirebaseManager {
         do {
             try shopRef.document(documentID).setData(from: shop)
             
-            isSuccess(true)
+            completion(true)
         } catch {
-            isSuccess(false)
+            completion(false)
         }
     }
     
@@ -390,7 +390,7 @@ class FirebaseManager {
         }
     }
     
-    func uploadTool(tool: Tool, isSuccess: (Bool) -> Void) {
+    func uploadTool(tool: Tool, completion: (_ isSuccess: Bool) -> Void) {
         
         guard let userID = userManager.currentUser?.userID else { return }
         
@@ -413,9 +413,9 @@ class FirebaseManager {
         do {
             try toolRef.document(documentID).setData(from: tool)
             
-            isSuccess(true)
+            completion(true)
         } catch {
-            isSuccess(false)
+            completion(false)
         }
     }
     
@@ -442,7 +442,7 @@ class FirebaseManager {
         }
     }
     
-    func updateTool(toolID: String, tool: Tool, isSuccess: (Bool) -> Void) {
+    func updateTool(toolID: String, tool: Tool, completion: (_ isSuccess: Bool) -> Void) {
         
         guard let userID = userManager.currentUser?.userID else { return }
         
@@ -453,11 +453,11 @@ class FirebaseManager {
             
             try toolRef.setData(from: tool)
             
-            isSuccess(true)
+            completion(true)
             
         } catch {
             
-            isSuccess(false)
+            completion(false)
         }
     }
     
