@@ -28,7 +28,7 @@ class ShopDetailViewController: UIViewController {
             tableView.dataSource = self
             tableView.registerCellWithNib(identifier: String(describing: CommentTableViewCell.self), bundle: nil)
             tableView.registerCellWithNib(identifier: String(describing: CommentTitleTableViewCell.self), bundle: nil)
-            tableView.registerCellWithNib(identifier: String(describing: ImageCollectionTableViewCell.self), bundle: nil)
+            tableView.registerCellWithNib(identifier: String(describing: ImageCollectionViewTableViewCell.self), bundle: nil)
         }
     }
     @IBOutlet weak var userImage: UIImageView! {
@@ -189,10 +189,10 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: ImageCollectionTableViewCell.self),
+                withIdentifier: String(describing: ImageCollectionViewTableViewCell.self),
                 for: indexPath)
             
-            guard let imageCell = cell as? ImageCollectionTableViewCell else { return cell }
+            guard let imageCell = cell as? ImageCollectionViewTableViewCell else { return cell }
             
             imageCell.collectionView.delegate = self
             
@@ -250,7 +250,7 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: ImageCollectionViewCell.self),
+            withReuseIdentifier: String(describing: ImageCollectionViewTableViewCell.self),
             for: indexPath)
         
         guard let imageCell = cell as? ImageCollectionViewCell,
