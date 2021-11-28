@@ -127,9 +127,9 @@ class ProfilePageViewController: UIViewController {
            let viewControllers = tabBarCon.viewControllers,
            let firstPageNVC = viewControllers.first as? UINavigationController,
            let firstPageVC = firstPageNVC.viewControllers.first,
-           let homePageVC = firstPageVC as? HomePageViewController,
-           let plants = homePageVC.plants {
+           let homePageVC = firstPageVC as? HomePageViewController {
             
+            let plants = homePageVC.plants
             plantCount = plants.count
             self.tableView.reloadData()
         }

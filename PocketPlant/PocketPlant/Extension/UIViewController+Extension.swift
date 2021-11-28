@@ -21,7 +21,8 @@ extension UIViewController {
         
         let controller = UIAlertController(title: "請先登入", message: "登入會員才能使用這個功能喔！", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "登入", style: .default) { _ in
+        let okAction = UIAlertAction(title: "登入", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let loginVC = storyBoard.instantiateViewController(
                 withIdentifier: String(describing: LoginViewController.self))

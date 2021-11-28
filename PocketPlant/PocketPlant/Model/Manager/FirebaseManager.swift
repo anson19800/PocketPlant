@@ -38,7 +38,7 @@ class FirebaseManager {
     
     private let toolRef = Firestore.firestore().collection(FirebaseCollectionList.tools)
     
-    func fetchPlants(_ type: HomePageButton, completion: @escaping (Result<[Plant], Error>) -> Void) {
+    func fetchPlants(_ type: HomePagePlantType, completion: @escaping (Result<[Plant], Error>) -> Void) {
         
         guard let userID = userManager.currentUser?.userID else { return }
         
