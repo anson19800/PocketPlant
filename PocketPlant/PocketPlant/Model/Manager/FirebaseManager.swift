@@ -28,6 +28,8 @@ class FirebaseManager {
     
     private let imageManager = ImageManager.shared
     
+    private let userManager = UserManager.shared
+    
     private let plantRef = Firestore.firestore().collection(FirebaseCollectionList.plants)
     
     private let waterRef = Firestore.firestore().collection(FirebaseCollectionList.water)
@@ -36,16 +38,9 @@ class FirebaseManager {
     
     private let toolRef = Firestore.firestore().collection(FirebaseCollectionList.tools)
     
-    var userID: String {
-        
-        if let user = Auth.auth().currentUser {
-            return user.uid
-        } else {
-            return "0"
-        }
-    }
-    
     func fetchPlants(_ type: HomePageButton, completion: @escaping (Result<[Plant], Error>) -> Void) {
+        
+        guard let userID = userManager.currentUser?.userID else { return }
         
         let documentRef: Query?
         
@@ -58,11 +53,12 @@ class FirebaseManager {
             
         case .myFavorite:
             
-            documentRef =  plantRef
+            documentRef = plantRef
                 .whereField("ownerID", isEqualTo: userID)
                 .whereField("favorite", isEqualTo: true)
             
         case .sharePlants: return
+            
         }
         
         guard let documentRef = documentRef else { return }
@@ -81,7 +77,9 @@ class FirebaseManager {
         }
     }
 
-    func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
+    func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (_ isSuccess: Bool) -> Void) {
+        
+        guard let userID = userManager.currentUser?.userID else { return }
         
         let documentID = plantRef.document().documentID
         
@@ -235,13 +233,10 @@ class FirebaseManager {
                   document.exists else { return }
             
             do {
-                
                 try documentRef.setData(from: plant)
                 
                 isSuccess(Result.success(true))
-                
             } catch {
-                
                 isSuccess(Result.failure(error))
             }
         }
@@ -258,13 +253,10 @@ class FirebaseManager {
                                        waterDate: Date().timeIntervalSince1970)
         
         do {
-            
             try self.waterRef.document(documentID).setData(from: waterRecord)
             
             isSuccess(true)
-            
         } catch {
-            
             isSuccess(false)
         }
     }
@@ -283,12 +275,13 @@ class FirebaseManager {
                 
                 try? snapshot.data(as: WaterRecord.self)
             }
-            
             completion(Result.success(waterRecord))
         }
     }
     
     func fetchWaterRecord(date: Date, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
+        
+        guard let userID = userManager.currentUser?.userID else { return }
         
         waterRef
             .whereField("userID", isEqualTo: userID)
@@ -322,18 +315,18 @@ class FirebaseManager {
         shop.id = documentID
         
         do {
-            
             try shopRef.document(documentID).setData(from: shop)
             
             isSuccess(true)
-            
         } catch {
-            
             isSuccess(false)
         }
     }
     
     func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
+        
+        guard let userID = userManager.currentUser?.userID else { return }
+        
         shopRef.whereField("ownerID", isEqualTo: userID)
             .getDocuments { snapshot, error in
             
@@ -363,7 +356,7 @@ class FirebaseManager {
         
         guard let documentRef = documentRef else { return }
         
-        if Auth.auth().currentUser == nil {
+        if userManager.currentUser == nil {
             
             documentRef
                 .getDocuments { snapshot, error in
@@ -376,7 +369,6 @@ class FirebaseManager {
                     
                     try? snapshot.data(as: T.self)
                 }
-                
                 completion(object, nil)
             }
             
@@ -393,7 +385,6 @@ class FirebaseManager {
                     
                     try? snapshot.data(as: T.self)
                 }
-                
                 completion(object, nil)
             }
         }
@@ -401,8 +392,10 @@ class FirebaseManager {
     
     func uploadTool(tool: Tool, isSuccess: (Bool) -> Void) {
         
+        guard let userID = userManager.currentUser?.userID else { return }
+        
         let toolRef = toolRef
-            .document(self.userID)
+            .document(userID)
             .collection(FirebaseCollectionList.toolList)
         
         var documentID: String = ""
@@ -418,21 +411,20 @@ class FirebaseManager {
         tool.id = documentID
         
         do {
-            
             try toolRef.document(documentID).setData(from: tool)
             
             isSuccess(true)
-            
         } catch {
-            
             isSuccess(false)
         }
     }
     
     func fetchTool(completion: @escaping (Result<[Tool], Error>) -> Void) {
         
+        guard let userID = userManager.currentUser?.userID else { return }
+        
         let toolRef = toolRef
-            .document(self.userID)
+            .document(userID)
             .collection(FirebaseCollectionList.toolList)
         
         toolRef.getDocuments { snapshot, error in
@@ -452,7 +444,9 @@ class FirebaseManager {
     
     func updateTool(toolID: String, tool: Tool, isSuccess: (Bool) -> Void) {
         
-        let toolRef = toolRef.document(self.userID)
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        let toolRef = toolRef.document(userID)
             .collection(FirebaseCollectionList.toolList).document(toolID)
         
         do {
@@ -469,6 +463,8 @@ class FirebaseManager {
     
     func deleteData(_ type: DataType, dataID: String, completion: @escaping (Result<Void, Error>) -> Void) {
         
+        guard let userID = userManager.currentUser?.userID else { return }
+        
         let documentRef: DocumentReference?
         
         switch type {
@@ -478,7 +474,7 @@ class FirebaseManager {
             documentRef = shopRef.document(dataID)
         case .tool:
             documentRef = toolRef
-                .document(self.userID)
+                .document(userID)
                 .collection(FirebaseCollectionList.toolList)
                 .document(dataID)
         }
