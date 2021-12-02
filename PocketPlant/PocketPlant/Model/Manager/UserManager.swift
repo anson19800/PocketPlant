@@ -55,7 +55,7 @@ class UserManager {
         
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
-        searchUserisExist(userID: userID ) { isExists in
+        searchUserIsExist(userID: userID ) { isExists in
             if !isExists {
                 do {
                     
@@ -162,7 +162,7 @@ class UserManager {
         }
     }
     
-    func searchUserisExist(userID: String, isExists: @escaping (Bool) -> Void) {
+    func searchUserIsExist(userID: String, isExists: @escaping (Bool) -> Void) {
         
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         

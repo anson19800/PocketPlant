@@ -58,7 +58,9 @@ class NewShopViewController: UIViewController {
                 
                 let scaleImage = image.scale(newWidth: 100)
                 
-                ImageManager.shared.uploadImageToGetURL(image: scaleImage) { result in
+                ImageManager.shared.uploadImageToGetURL(image: scaleImage) { [weak self] result in
+                    guard let self = self else { return }
+                    
                     switch result {
                     case .success((let uuid, let url)):
                         imageURLList.append(url)
@@ -78,7 +80,9 @@ class NewShopViewController: UIViewController {
                 shop.images = imageURLList
                 shop.imagesID = imageIDList
                 
-                FirebaseManager.shared.addGardeningShop(shop: &shop) { isSuccess in
+                FirebaseManager.shared.addGardeningShop(shop: &shop) { [weak self] isSuccess in
+                    guard let self = self else { return }
+                    
                     if isSuccess {
                         print("upload success!")
                         self.navigationController?.popViewController(animated: true)

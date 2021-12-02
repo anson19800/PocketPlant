@@ -147,7 +147,9 @@ class QRCodePlantDetailViewController: UIViewController {
         
         guard let plant = plant else { return }
 
-        UserManager.shared.addSharePlant(plantID: plant.id) { isSuccess in
+        UserManager.shared.addSharePlant(plantID: plant.id) { [weak self] isSuccess in
+            guard let self = self else { return }
+            
             if isSuccess {
                 animationView.stop()
                 animationView.removeFromSuperview()

@@ -142,7 +142,8 @@ class RemindViewController: UIViewController {
        
         plant.reminder = reminds
         
-        FirebaseManager.shared.updatePlant(plant: plant) { result in
+        FirebaseManager.shared.updatePlant(plant: plant) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
                 

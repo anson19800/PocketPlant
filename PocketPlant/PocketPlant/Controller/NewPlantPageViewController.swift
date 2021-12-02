@@ -210,7 +210,9 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
             let scaleImage = image.scale(newWidth: 200)
             
-            self.firebaseManager.uploadPlant(plant: &plant, image: scaleImage) { isSuccess in
+            self.firebaseManager.uploadPlant(plant: &plant, image: scaleImage) { [weak self] isSuccess in
+                
+                guard let self = self else { return }
                 
                 if isSuccess {
                     
@@ -263,7 +265,9 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
             view.isUserInteractionEnabled = false
             
-            imageManager.uploadImageToGetURL(image: image) { result in
+            imageManager.uploadImageToGetURL(image: image) { [weak self] result in
+                
+                guard let self = self else { return }
                 
                 switch result {
                     
@@ -273,7 +277,9 @@ extension NewPlantPageViewController: InputPlantDelegate {
                     
                     newPlant.imageURL = url
                     
-                    self.firebaseManager.updatePlant(plant: newPlant) { result in
+                    self.firebaseManager.updatePlant(plant: newPlant) { [weak self] result in
+                        
+                        guard let self = self else { return }
                         
                         switch result {
                         case .success:

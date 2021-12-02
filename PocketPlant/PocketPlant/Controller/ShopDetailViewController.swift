@@ -100,7 +100,9 @@ class ShopDetailViewController: UIViewController {
         }
 
         commentManager.fetchComment(type: .shop,
-                                    objectID: shopID) { result in
+                                    objectID: shopID) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
                 
             case .success(let comments):
@@ -114,7 +116,9 @@ class ShopDetailViewController: UIViewController {
                     group.enter()
                     
                     if self.commentUser[comment.senderID] == nil {
-                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { [weak self] result in
+                            guard let self = self else { return }
+                            
                             switch result {
                             case .success(let user):
                                 self.commentUser[comment.senderID] = user
@@ -157,7 +161,9 @@ class ShopDetailViewController: UIViewController {
                                   objectID: shopID,
                                   content: comment,
                                   createdTime: Date().timeIntervalSince1970)
-            commentManager.publishComment(comment: comment) { isSuccess in
+            commentManager.publishComment(comment: comment) { [weak self] isSuccess in
+                guard let self = self else { return }
+                
                 if isSuccess {
                     
                     self.fetchComment()
@@ -250,7 +256,7 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: ImageCollectionViewTableViewCell.self),
+            withReuseIdentifier: String(describing: ImageCollectionViewCell.self),
             for: indexPath)
         
         guard let imageCell = cell as? ImageCollectionViewCell,
@@ -296,7 +302,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                 
                 let blockedUserID = comment.senderID
                 
-                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
+                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { [weak self] isSuccess in
+                    guard let self = self else { return }
+                    
                     if isSuccess {
                         self.fetchComment()
                         print("Success Blocked user \(blockedUserID)")

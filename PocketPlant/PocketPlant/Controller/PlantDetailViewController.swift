@@ -127,7 +127,9 @@ class PlantDetailViewController: UIViewController {
         guard let plant = plant else { return }
         
         commentManager.fetchComment(type: .plant,
-                                    objectID: plant.id) { result in
+                                    objectID: plant.id) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
                 
             case .success(let comments):
@@ -141,7 +143,9 @@ class PlantDetailViewController: UIViewController {
                     group.enter()
                     
                     if self.commentUser[comment.senderID] == nil {
-                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { [weak self] result in
+                            guard let self = self else { return }
+                            
                             switch result {
                             case .success(let user):
                                 self.commentUser[comment.senderID] = user
@@ -174,7 +178,8 @@ class PlantDetailViewController: UIViewController {
         
         guard var plant = plant else { return }
         
-        firebaseManager.switchFavoritePlant(plantID: plant.id) { result in
+        firebaseManager.switchFavoritePlant(plantID: plant.id) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
                 
@@ -248,7 +253,8 @@ class PlantDetailViewController: UIViewController {
                                   content: comment,
                                   createdTime: Date().timeIntervalSince1970)
             
-            commentManager.publishComment(comment: comment) { isSuccess in
+            commentManager.publishComment(comment: comment) { [weak self] isSuccess in
+                guard let self = self else { return }
                 
                 if isSuccess {
                     
@@ -379,7 +385,9 @@ extension PlantDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 
                 let blockedUserID = comment.senderID
                 
-                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
+                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { [weak self] isSuccess in
+                    guard let self = self else { return }
+                    
                     if isSuccess {
                         self.fetchComment()
                         print("Success Blocked user \(blockedUserID)")

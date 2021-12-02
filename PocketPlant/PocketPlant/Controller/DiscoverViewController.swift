@@ -85,7 +85,8 @@ class DiscoverViewController: UIViewController {
         case .plant:
             FirebaseManager.shared.fetchDiscoverObject(
                 discoverType,
-                completion: { (plants: [Plant]?, error: Error?) in
+                completion: { [weak self] (plants: [Plant]?, error: Error?) in
+                    guard let self = self else { return }
                 
                     if let error = error {
                         print(error)

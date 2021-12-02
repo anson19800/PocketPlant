@@ -109,7 +109,9 @@ class CalendarPageViewController: UIViewController {
     
     func fetchRecord(date: Date) {
         
-        FirebaseManager.shared.fetchWaterRecord(date: date) { result in
+        FirebaseManager.shared.fetchWaterRecord(date: date) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let waterRecords):
                 self.waterRecords = waterRecords
@@ -197,7 +199,9 @@ extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource
         
         let plantID = waterRecords[indexPath.row].plantID
         
-        FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+        FirebaseManager.shared.fetchPlants(plantID: plantID) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let plant):
                 self.performSegue(withIdentifier: "showWater", sender: plant)
@@ -222,7 +226,9 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
             
             let recordID = records[indexPath.row].id
             
-            FirebaseManager.shared.deleteData(.waterRecord, dataID: recordID) { result in
+            FirebaseManager.shared.deleteData(.waterRecord, dataID: recordID) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success(let successInfo):
                     print(successInfo)

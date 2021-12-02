@@ -391,7 +391,9 @@ class HomePageViewController: UIViewController {
     }
     
     private func deleteSharePlant(sharePlants: [String]) {
-        userManager.deleteSharePlant(sharePlants: sharePlants) { isSuccess in
+        userManager.deleteSharePlant(sharePlants: sharePlants) { [weak self] isSuccess in
+            guard let self = self else { return }
+            
             if isSuccess {
                 self.updateSharePlants(withAnimation: true)
             }

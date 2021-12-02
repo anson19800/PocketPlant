@@ -442,25 +442,6 @@ class FirebaseManager {
         }
     }
     
-    func updateTool(toolID: String, tool: Tool, completion: (_ isSuccess: Bool) -> Void) {
-        
-        guard let userID = userManager.currentUser?.userID else { return }
-        
-        let toolRef = toolRef.document(userID)
-            .collection(FirebaseCollectionList.toolList).document(toolID)
-        
-        do {
-            
-            try toolRef.setData(from: tool)
-            
-            completion(true)
-            
-        } catch {
-            
-            completion(false)
-        }
-    }
-    
     func deleteData(_ type: DataType, dataID: String, completion: @escaping (Result<Void, Error>) -> Void) {
         
         guard let userID = userManager.currentUser?.userID else { return }

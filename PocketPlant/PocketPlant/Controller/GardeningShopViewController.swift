@@ -33,7 +33,9 @@ class GardeningShopViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FirebaseManager.shared.fetchShops { result in
+        FirebaseManager.shared.fetchShops { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let shops):
                 self.shops = shops
@@ -87,7 +89,9 @@ extension GardeningShopViewController: UITableViewDelegate, UITableViewDataSourc
         if editingStyle == .delete {
             guard var shops = self.shops,
                   let shopID = shops[indexPath.row].id else { return }
-            FirebaseManager.shared.deleteData(.shop, dataID: shopID) { result in
+            FirebaseManager.shared.deleteData(.shop, dataID: shopID) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success:
                     shops.remove(at: indexPath.row)

@@ -39,7 +39,9 @@ class SharePlantViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserManager.shared.fetchCurrentUserInfo { result in
+        UserManager.shared.fetchCurrentUserInfo { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let user):
                 guard let plants = user.sharePlants else { return }
@@ -61,7 +63,8 @@ class SharePlantViewController: UIViewController {
 
         plantsID.forEach { plantID in
             group.enter()
-            FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+            FirebaseManager.shared.fetchPlants(plantID: plantID) { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let plant):
                     self.plants.append(plant)
