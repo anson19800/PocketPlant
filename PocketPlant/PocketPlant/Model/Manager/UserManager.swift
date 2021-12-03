@@ -14,33 +14,11 @@ class UserManager {
     
     static let shared = UserManager()
     
-    var userID: String {
-        if let user = Auth.auth().currentUser {
-            return user.uid
-        } else {
-            return "0"
-        }
-    }
-    
-    var currentUser: User? {
-        didSet {
-            if let currentUser = currentUser {
-                print(currentUser)
-            }
-        }
-    }
+    var currentUser: User?
     
     private init() {}
     
     private let dataBase = Firestore.firestore()
-    
-    func getUserID() -> String {
-        if let user = Auth.auth().currentUser {
-            return user.uid
-        } else {
-            return "0"
-        }
-    }
     
     func createUserInfo(name: String, imageURL: String?, imageID: String?, completion: @escaping (_ isSuccess: Bool) -> Void) {
         guard let currentUser = Auth.auth().currentUser else { return }
@@ -127,7 +105,9 @@ class UserManager {
     func addBlockedUser(blockedID: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
-        userRef.document(self.userID).getDocument { document, error in
+        guard let userID = currentUser?.userID else { return }
+        
+        userRef.document(userID).getDocument { document, error in
             
             if error != nil {
                 completion(false)
@@ -151,7 +131,7 @@ class UserManager {
                 
                 self.currentUser = user
                 
-                try userRef.document(self.userID).setData(from: user)
+                try userRef.document(user.userID).setData(from: user)
                 
                 completion(true)
                 

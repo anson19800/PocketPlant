@@ -374,8 +374,10 @@ class FirebaseManager {
             
         } else {
             
+            guard let userID = UserManager.shared.currentUser?.userID else { return }
+            
             documentRef
-                .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
+                .whereField("ownerID", isNotEqualTo: userID)
                 .getDocuments { snapshot, error in
                 if let error = error { completion(nil, error) }
                 

@@ -107,14 +107,16 @@ class PlantDetailViewController: UIViewController {
         
         plantPhotoImageView.kf.setImage(with: URL(string: imageUrl))
         
-        if plant.ownerID != UserManager.shared.userID {
+        if let useImageURL = UserManager.shared.currentUser?.userImageURL {
+            userImageView.kf.setImage(with: URL(string: useImageURL))
+        }
+        
+        guard let userID = UserManager.shared.currentUser?.userID else { return }
+        
+        if plant.ownerID != userID {
             remindButton.isHidden = true
             favoriteButton.isHidden = true
             qrcodeButton.isHidden = true
-        }
-        
-        if let useImageURL = UserManager.shared.currentUser?.userImageURL {
-            userImageView.kf.setImage(with: URL(string: useImageURL))
         }
     }
     

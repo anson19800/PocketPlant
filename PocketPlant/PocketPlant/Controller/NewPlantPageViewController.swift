@@ -244,13 +244,15 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
         case .edit(let editPlant):
             
+            guard let userID = UserManager.shared.currentUser?.userID else { return }
+            
             var newPlant = plant
             
             newPlant.id = editPlant.id
             
             newPlant.favorite = editPlant.favorite
             
-            newPlant.ownerID = UserManager.shared.userID
+            newPlant.ownerID = userID
             
             if let imageID = editPlant.imageID {
                 

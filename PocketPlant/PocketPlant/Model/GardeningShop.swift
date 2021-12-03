@@ -31,6 +31,6 @@ struct GardeningShop: Codable {
         self.description = description
         self.images = image
         self.imagesID = imageID
-        self.ownerID = UserManager.shared.userID
+        self.ownerID = UserManager.shared.currentUser?.userID ?? "0"
     }
 }
