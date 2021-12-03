@@ -7,7 +7,6 @@
 
 import UIKit
 import FirebaseAuth
-import Lottie
 
 enum HomePagePlantType: String, CaseIterable {
     case myPlant = "我的植物"
@@ -92,8 +91,6 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var waterImageView: UIImageView!
     
-    private var emptyAnimation: AnimationView?
-    
     private let firebaseManager = FirebaseManager.shared
     
     private let userManager = UserManager.shared
@@ -124,16 +121,7 @@ class HomePageViewController: UIViewController {
         
         waterImageView.center = CGPoint(x: view.bounds.width - 50, y: view.bounds.height - 130)
         
-        emptyAnimation = loadAnimation(name: "33731-emptyPlant", loopMode: .loop)//
-        
-        if let emptyAnimation = emptyAnimation {
-            
-            emptyAnimation.frame = animationContainer.bounds
-            
-            animationContainer.addSubview(emptyAnimation)
-            
-            emptyAnimation.play()
-        }
+        configureEmptyAnimation(containerView: animationContainer)
         
         self.hideKeyboardWhenTappedAround()
     }
@@ -354,16 +342,7 @@ class HomePageViewController: UIViewController {
         emptyPlantLabel.isHidden = !(plants.count <= 0)
         waterImageView.isHidden = (plants.count <= 0)
         
-        if plants.count <= 0 {
-            
-            emptyPlantLabel.text = selectionType.emptyText
-            
-            emptyAnimation?.play()
-            
-        } else {
-            
-            emptyAnimation?.stop()
-        }
+        emptyPlantLabel.text = plants.count <= 0 ? selectionType.emptyText : ""
      
         waterImageView.isHidden = (selectionType == .sharePlants)
     }

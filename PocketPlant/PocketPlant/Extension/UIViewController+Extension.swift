@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 extension UIViewController {
     
@@ -74,6 +75,16 @@ extension UIViewController {
         self.view.addSubview(blockView)
         
         return blockView
+    }
+    
+    func configureEmptyAnimation(containerView: UIView) {
+        let emptyAnimationView = loadAnimation(name: "33731-emptyPlant", loopMode: .loop)
+        
+        emptyAnimationView.frame = containerView.bounds
+        
+        containerView.addSubview(emptyAnimationView)
+        
+        emptyAnimationView.play()
     }
 }
 

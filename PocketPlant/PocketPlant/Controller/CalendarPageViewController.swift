@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 import FirebaseAuth
 
 class CalendarPageViewController: UIViewController {
@@ -25,15 +24,17 @@ class CalendarPageViewController: UIViewController {
     
     @IBOutlet weak var animationContainer: UIView!
     
-    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel! {
+        didSet {
+            emptyLabel.text = "這天沒有澆水紀錄"
+        }
+    }
     
     private var waterRecords: [WaterRecord]? {
         didSet {
             checkEmpty()
         }
     }
-    
-    private var emptyAnimation: AnimationView?
     
     private var blockView: VisitorBlockView?
     
@@ -46,12 +47,7 @@ class CalendarPageViewController: UIViewController {
                                                                 target: nil,
                                                                 action: nil)
         
-        emptyAnimation = loadAnimation(name: "70780-emptyResult", loopMode: .loop)
-        if let emptyAnimation = emptyAnimation {
-            emptyAnimation.frame = animationContainer.bounds
-            animationContainer.addSubview(emptyAnimation)
-            emptyAnimation.play()
-        }
+        configureEmptyAnimation(containerView: animationContainer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,32 +132,20 @@ class CalendarPageViewController: UIViewController {
     }
     
     private func checkEmpty() {
+        
         if let waterRecords = waterRecords {
-            if waterRecords.count <= 0 {
-                animationContainer.isHidden = false
-                emptyLabel.isHidden = false
-                emptyLabel.text = "這天沒有澆水紀錄"
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.play()
-                }
-            } else {
-                animationContainer.isHidden = true
-                emptyLabel.isHidden = true
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.stop()
-                }
-            }
+            
+            animationContainer.isHidden = !(waterRecords.count <= 0)
+            
+            emptyLabel.isHidden = !(waterRecords.count <= 0)
+            
         } else {
             
             animationContainer.isHidden = false
+            
             emptyLabel.isHidden = false
-            emptyLabel.text = "這天沒有澆水紀錄"
-            if let emptyAnimation = emptyAnimation {
-                emptyAnimation.play()
-            }
         }
     }
-    
 }
 
 extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource {

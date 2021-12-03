@@ -191,11 +191,6 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         configuration.filter = .images
         
-//        if let selectedImage = selectedImage {
-//            configuration.selectionLimit = 5 - selectedImage.count
-//        } else {
-//            configuration.selectionLimit = 5
-//        }
         configuration.selectionLimit = 5
         
         let picker = PHPickerViewController(configuration: configuration)

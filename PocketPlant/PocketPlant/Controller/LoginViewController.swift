@@ -244,7 +244,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
         self.showAlert(title: "登入失敗", message: "請重新登入", buttonTitle: "確認")
         print("Sign in with Apple errored: \(error)")
     }
