@@ -4,8 +4,8 @@
   <img width="150" height="150" src="./Screenshots/AppLogo.png">
 </p>
 
-##### <center>An APP that helps those who love planting to record and to share your plants.</center>
-##### <center>Check out others’ plants on PocketPlant and interact with each other.</center>
+<h5 align="center">An APP that helps those who love planting to record and to share your plants.</h5>
+<h5 align="center">Check out others’ plants on PocketPlant and interact with each other.</h5>
 
 <p align="center">
    <img src="https://img.shields.io/badge/platform-iOS-blue?style=flat-square"> 
