@@ -1,7 +1,7 @@
 # PocketPlant
 
 <p align="center">
-  <img width="150" height="150" src="./ScreenShots/AppLogo.png">
+  <img width="150" height="150" src="./Screenshots/AppLogo.png">
 </p>
 
 ##### <center>An APP that helps those who love planting to record and to share your plants.</center>
@@ -28,12 +28,12 @@
 #### - Watering record
 > Quick and easy watering record for daily routine and check out detail in calendar page.
 
-<img src="./ScreenShots/Watering.gif" width="162"/> <img src="./Screenshots/CalendarPage.png" width="150"/> <img src="./Screenshots/WaterRecordPage.png" width="150"/>
+<img src="./Screenshots/Watering.gif" width="162"/> <img src="./Screenshots/CalendarPage.png" width="150"/> <img src="./Screenshots/WaterRecordPage.png" width="150"/>
 
 #### - Share Plant
 > Use the plant's QRCode to share with your friends after scanning the QRCode you can store the plant into the share plants list.
 
-<img src="./Screenshots/QRCodePage.png" width="150"/> <img src="./ScreenShots/ScanQRCode.gif" width="162"/>
+<img src="./Screenshots/QRCodePage.png" width="150"/> <img src="./Screenshots/ScanQRCode.gif" width="162"/>
 
 #### - Discover
 > Explore other people's plants and favorite gardening shops. Don't forget to leave a comment on it.
