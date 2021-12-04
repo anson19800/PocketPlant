@@ -92,7 +92,7 @@ class DiscoverViewController: UIViewController {
                     
                     if let anyPlants = anyPlants,
                        let plants = anyPlants as? [Plant] {
-                        self.discoverObject = plants.shuffled()
+                        self.discoverObject = plants
                         self.discoverCollectionView.performBatchUpdates({
                             let indexSet = IndexSet(integersIn: 0...0)
                             self.discoverCollectionView.reloadSections(indexSet)

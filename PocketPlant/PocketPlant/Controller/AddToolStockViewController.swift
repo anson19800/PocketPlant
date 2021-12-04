@@ -163,8 +163,7 @@ class AddToolStockViewController: UIViewController {
         
         animationView.play()
         
-        FirebaseManager.shared.uploadTool(tool: tool) { [weak self] isSuccess in
-            guard let self = self else { return }
+        FirebaseManager.shared.uploadTool(tool: tool) { isSuccess in
             
             if isSuccess {
                 animationView.stop()

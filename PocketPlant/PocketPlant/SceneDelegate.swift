@@ -25,8 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let currentUser = Auth.auth().currentUser {
                 
                 let userID = currentUser.uid
-                UserManager.shared.fetchUserInfo(userID: userID) { [weak self] result in
-                    guard let self = self else { return }
+                UserManager.shared.fetchUserInfo(userID: userID) { result in
                     
                     switch result {
                     case .success(let user):
