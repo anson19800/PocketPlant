@@ -20,32 +20,32 @@
 </br></br>
 
 ## Features
-#### - Plant Record
+#### Plant record
 > Record plants information in detail and check it at any time.
 
 <img src="./Screenshots/NewPlantPage.png" width="150"/> <img src="./Screenshots/PlantDetailPage.png" width="150"/>
 
-#### - Watering record
+#### Daily watering record
 > Quick and easy watering record for daily routine and check out detail in calendar page.
 
 <img src="./Screenshots/Watering.gif" width="162"/> <img src="./Screenshots/CalendarPage.png" width="150"/> <img src="./Screenshots/WaterRecordPage.png" width="150"/>
 
-#### - Share Plant
+#### Share Plant with QRCode
 > Use the plant's QRCode to share with your friends after scanning the QRCode you can store the plant into the share plants list.
 
 <img src="./Screenshots/QRCodePage.png" width="150"/> <img src="./Screenshots/ScanQRCode.gif" width="162"/>
 
-#### - Discover
+#### Discover plants and gardening shops
 > Explore other people's plants and favorite gardening shops. Don't forget to leave a comment on it.
 
 <img src="./Screenshots/DiscoverPage.png" width="150"/> <img src="./Screenshots/Comment.png" width="150"/>
 
-#### - Tools stock
+#### Tools stock record
 > Tool material inventory record including where you bought and the stock number.
 
 <img src="./Screenshots/ToolStockPage.png" width="150"/> <img src="./Screenshots/NewTool.png" width="150"/>
 
-#### - Gardening shop list
+#### Favorite gardening shop list
 > List of favorite gardening shops and show the place on the map.
 
 <img src="./Screenshots/ShopListPage.png" width="150"/> <img src="./Screenshots/ShopDetailPage.png" width="150"/>
