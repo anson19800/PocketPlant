@@ -48,7 +48,7 @@
 #### - Gardening shop list
 > List of favorite gardening shops and show the place on the map.
 
-<img src="./Screenshots/ShopList.png" width="150"/><img src="./Screenshots/ShopDetail.png" width="150"/>
+<img src="./Screenshots/ShopListPage.png" width="150"/> <img src="./Screenshots/ShopDetailPage.png" width="150"/>
 
 ## Technical Highlights
 - Used **`MVC`** and **`OOP`** design patterns to achieve expandable, readable, and maintainable program structure.
