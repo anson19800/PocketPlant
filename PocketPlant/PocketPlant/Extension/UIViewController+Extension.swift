@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 extension UIViewController {
     
@@ -21,7 +22,8 @@ extension UIViewController {
         
         let controller = UIAlertController(title: "請先登入", message: "登入會員才能使用這個功能喔！", preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "登入", style: .default) { _ in
+        let okAction = UIAlertAction(title: "登入", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let loginVC = storyBoard.instantiateViewController(
                 withIdentifier: String(describing: LoginViewController.self))
@@ -73,6 +75,16 @@ extension UIViewController {
         self.view.addSubview(blockView)
         
         return blockView
+    }
+    
+    func configureEmptyAnimation(containerView: UIView) {
+        let emptyAnimationView = loadAnimation(name: "33731-emptyPlant", loopMode: .loop)
+        
+        emptyAnimationView.frame = containerView.bounds
+        
+        containerView.addSubview(emptyAnimationView)
+        
+        emptyAnimationView.play()
     }
 }
 

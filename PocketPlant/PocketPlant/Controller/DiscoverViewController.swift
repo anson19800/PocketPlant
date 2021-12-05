@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 
 enum DiscoverType: CaseIterable {
     case plant
@@ -35,7 +34,11 @@ class DiscoverViewController: UIViewController {
     }
     
     @IBOutlet weak var animationContainer: UIView!
-    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel! {
+        didSet {
+            emptyLabel.text = "Oops!現在好像沒東西，晚點再來看看吧！"
+        }
+    }
     
     var discoverObject: [Any]? {
         didSet {
@@ -45,17 +48,10 @@ class DiscoverViewController: UIViewController {
     
     var discoverType: DiscoverType = .plant
     
-    private var emptyAnimation: AnimationView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emptyAnimation = loadAnimation(name: "70780-emptyResult", loopMode: .loop)
-        if let emptyAnimation = emptyAnimation {
-            emptyAnimation.frame = animationContainer.bounds
-            animationContainer.addSubview(emptyAnimation)
-            emptyAnimation.play()
-        }
+        configureEmptyAnimation(containerView: animationContainer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +81,8 @@ class DiscoverViewController: UIViewController {
         case .plant:
             FirebaseManager.shared.fetchDiscoverObject(
                 discoverType,
-                completion: { (plants: [Plant]?, error: Error?) in
+                completion: { [weak self] (plants: [Plant]?, error: Error?) in
+                    guard let self = self else { return }
                 
                     if let error = error {
                         print(error)
@@ -95,7 +92,7 @@ class DiscoverViewController: UIViewController {
                     
                     if let anyPlants = anyPlants,
                        let plants = anyPlants as? [Plant] {
-                        self.discoverObject = plants.shuffled()
+                        self.discoverObject = plants
                         self.discoverCollectionView.performBatchUpdates({
                             let indexSet = IndexSet(integersIn: 0...0)
                             self.discoverCollectionView.reloadSections(indexSet)
@@ -184,28 +181,15 @@ class DiscoverViewController: UIViewController {
     }
     private func checkEmpty() {
         if let discoverObject = discoverObject {
-            if discoverObject.count <= 0 {
-                animationContainer.isHidden = false
-                emptyLabel.isHidden = false
-                emptyLabel.text = "Oops!現在好像沒東西，晚點再來看看吧！"
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.play()
-                }
-            } else {
-                animationContainer.isHidden = true
-                emptyLabel.isHidden = true
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.stop()
-                }
-            }
+            
+            animationContainer.isHidden = !(discoverObject.count <= 0)
+            
+            emptyLabel.isHidden = !(discoverObject.count <= 0)
+            
         } else {
             
             animationContainer.isHidden = false
             emptyLabel.isHidden = false
-            emptyLabel.text = "Oops!現在好像沒東西，晚點再來看看吧！"
-            if let emptyAnimation = emptyAnimation {
-                emptyAnimation.play()
-            }
         }
     }
 }

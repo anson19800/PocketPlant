@@ -30,16 +30,15 @@ class SharePlantViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<SharePlantSection, Plant>?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-//        configureCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserManager.shared.fetchCurrentUserInfo { result in
+        UserManager.shared.fetchCurrentUserInfo { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let user):
                 guard let plants = user.sharePlants else { return }
@@ -61,7 +60,8 @@ class SharePlantViewController: UIViewController {
 
         plantsID.forEach { plantID in
             group.enter()
-            FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+            FirebaseManager.shared.fetchPlants(plantID: plantID) { [weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success(let plant):
                     self.plants.append(plant)
@@ -74,48 +74,7 @@ class SharePlantViewController: UIViewController {
         }
         
         group.notify(queue: .main) {
-//            self.applySnapShot()
             self.collectionView.reloadData()
-        }
-    }
-    
-    func configureCollectionView() {
-        dataSource = UICollectionViewDiffableDataSource<SharePlantSection, Plant>(
-            collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, plant in
-                
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: PlantCollectionViewCell.self),
-                    for: indexPath)
-                
-                guard let plantCell = cell as? PlantCollectionViewCell else { return cell }
-                
-                if let imageURL = plant.imageURL {
-                    plantCell.layoutCell(imageURL: imageURL,
-                                     name: plant.name)
-                } else {
-                    plantCell.layoutCell(imageURL: "",
-                                     name: plant.name)
-                }
-                
-                return plantCell
-            })
-        
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-        
-        applySnapShot()
-    }
-    
-    func applySnapShot() {
-        var snapshot = NSDiffableDataSourceSnapshot<SharePlantSection, Plant>()
-        
-        snapshot.appendSections([.share])
-        
-        snapshot.appendItems(plants, toSection: .share)
-        
-        if let dataSource = dataSource {
-            dataSource.apply(snapshot, animatingDifferences: false)
         }
     }
 }
@@ -158,9 +117,4 @@ extension SharePlantViewController: UICollectionViewDataSource,
 
         return CGSize(width: width, height: width * 1.2)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Hi")
-    }
-    
 }

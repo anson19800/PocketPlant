@@ -34,8 +34,6 @@ class RemindManager {
             
             let date = settingDate.addingTimeInterval(TimeInterval(value.0 * 24 * 60 * 60))
             
-//            let testDate = settingDate.addingTimeInterval(TimeInterval(5))
-            
             let dailyTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: date)
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dailyTrigger,

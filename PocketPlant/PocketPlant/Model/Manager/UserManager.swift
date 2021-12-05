@@ -14,35 +14,13 @@ class UserManager {
     
     static let shared = UserManager()
     
-    var userID: String {
-        if let user = Auth.auth().currentUser {
-            return user.uid
-        } else {
-            return "0"
-        }
-    }
-    
-    var currentUser: User? {
-        didSet {
-            if let currentUser = currentUser {
-                print(currentUser)
-            }
-        }
-    }
+    var currentUser: User?
     
     private init() {}
     
     private let dataBase = Firestore.firestore()
     
-    func getUserID() -> String {
-        if let user = Auth.auth().currentUser {
-            return user.uid
-        } else {
-            return "0"
-        }
-    }
-    
-    func createUserInfo(name: String, imageURL: String?, imageID: String?, isSuccess: @escaping (Bool) -> Void) {
+    func createUserInfo(name: String, imageURL: String?, imageID: String?, completion: @escaping (_ isSuccess: Bool) -> Void) {
         guard let currentUser = Auth.auth().currentUser else { return }
         
         let userID = currentUser.uid
@@ -55,7 +33,7 @@ class UserManager {
         
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
-        searchUserisExist(userID: userID ) { isExists in
+        searchUserIsExist(userID: userID ) { isExists in
             if !isExists {
                 do {
                     
@@ -63,11 +41,11 @@ class UserManager {
                     
                     self.currentUser = user
                     
-                    isSuccess(true)
+                    completion(true)
                     
                 } catch {
                     
-                    isSuccess(false)
+                    completion(false)
                     print("Fail to create user.")
                 }
             }
@@ -77,7 +55,7 @@ class UserManager {
     func updateUserInfo(userName: String?,
                         userImageID: String?,
                         userImageURL: String?,
-                        isSuccess: @escaping (Bool) -> Void) {
+                        completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
@@ -87,7 +65,7 @@ class UserManager {
         
         userRef.document(userID).getDocument { document, error in
             if error != nil {
-                isSuccess(false)
+                completion(false)
             }
             
             guard let document = document,
@@ -115,22 +93,24 @@ class UserManager {
                 
                 try userRef.document(userID).setData(from: user)
                 
-                isSuccess(true)
+                completion(true)
                 
             } catch {
                 
-                isSuccess(false)
+                completion(false)
             }
         }
     }
     
-    func addBlockedUser(blockedID: String, isSuccess: @escaping (Bool) -> Void) {
+    func addBlockedUser(blockedID: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
-        userRef.document(self.userID).getDocument { document, error in
+        guard let userID = currentUser?.userID else { return }
+        
+        userRef.document(userID).getDocument { document, error in
             
             if error != nil {
-                isSuccess(false)
+                completion(false)
             }
             
             guard let document = document,
@@ -151,18 +131,18 @@ class UserManager {
                 
                 self.currentUser = user
                 
-                try userRef.document(self.userID).setData(from: user)
+                try userRef.document(user.userID).setData(from: user)
                 
-                isSuccess(true)
+                completion(true)
                 
             } catch {
                 
-                isSuccess(false)
+                completion(false)
             }
         }
     }
     
-    func searchUserisExist(userID: String, isExists: @escaping (Bool) -> Void) {
+    func searchUserIsExist(userID: String, completion: @escaping (_ isExist: Bool) -> Void) {
         
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
@@ -171,16 +151,16 @@ class UserManager {
                 
                 if document.exists {
                     
-                    isExists(true)
+                    completion(true)
                     
                 } else {
                     
-                    isExists(false)
+                    completion(false)
                 }
                 
             } else {
                 
-                isExists(false)
+                completion(false)
             }
         }
     }
@@ -225,7 +205,7 @@ class UserManager {
         }
     }
     
-    func addSharePlant(plantID: String, isSuccess: @escaping (Bool) -> Void) {
+    func addSharePlant(plantID: String, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let userRef = dataBase.collection(FirebaseCollectionList.user)
         
@@ -237,7 +217,7 @@ class UserManager {
             
             if error != nil {
                 
-                isSuccess(false)
+                completion(false)
                 
             } else if let document = document,
                       document.exists {
@@ -246,7 +226,7 @@ class UserManager {
                     
                     guard var user = try document.data(as: User.self)
                     else {
-                        isSuccess(false)
+                        completion(false)
                         return
                     }
                     
@@ -260,18 +240,18 @@ class UserManager {
                     self.currentUser = user
                     
                     try userRef.document(userID).setData(from: user)
-                    isSuccess(true)
+                    completion(true)
                 
                 } catch {
-                    isSuccess(false)
+                    completion(false)
                 }
             } else {
-                isSuccess(false)
+                completion(false)
             }
         }
     }
     
-    func deleteSharePlant(sharePlants: [String], isSuccess: (Bool) -> Void) {
+    func deleteSharePlant(sharePlants: [String], completion: (_ isSuccess: Bool) -> Void) {
         guard var currentUser = currentUser else {
             return
         }
@@ -288,19 +268,19 @@ class UserManager {
             
             try userRef.document(userID).setData(from: currentUser)
             
-            isSuccess(true)
+            completion(true)
             
         } catch {
             
-            isSuccess(false)
+            completion(false)
         }
     }
     
-    func deleteBlockedUser(blockedUserID: String, isSuccess: (Bool) -> Void) {
+    func deleteBlockedUser(blockedUserID: String, completion: (_ isSuccess: Bool) -> Void) {
         
         guard var blockedUsersID = self.currentUser?.blockedUserID,
               var currentUser = self.currentUser else {
-            isSuccess(false)
+            completion(false)
             return
         }
         
@@ -318,11 +298,11 @@ class UserManager {
         
             try userRef.document(currentUser.userID).setData(from: currentUser)
             
-            isSuccess(true)
+            completion(true)
             
         } catch {
             
-            isSuccess(false)
+            completion(false)
         }
     }
 }

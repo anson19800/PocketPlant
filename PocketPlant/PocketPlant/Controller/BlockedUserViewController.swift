@@ -40,7 +40,9 @@ class BlockedUserViewController: UIViewController {
         
         blockedUserID.forEach { userID in
             group.enter()
-            UserManager.shared.fetchUserInfo(userID: userID) { result in
+            UserManager.shared.fetchUserInfo(userID: userID) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success(let blockedUser):
                     if var blockedUsers = self.blockedUsers {
@@ -101,13 +103,13 @@ extension BlockedUserViewController: UITableViewDelegate, UITableViewDataSource 
             
             self.blockedUsers = blockedUsers
             
-            UserManager.shared.deleteBlockedUser( blockedUserID: blockedUserID) { isSuccess in
-                    
-                    if isSuccess {
-                        self.tableView.deleteRows(at: [indexPath], with: .fade)
-                    }
+            UserManager.shared.deleteBlockedUser( blockedUserID: blockedUserID) { [weak self] isSuccess in
+                guard let self = self else { return }
+                
+                if isSuccess {
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
                 }
+            }
         }
     }
-    
 }

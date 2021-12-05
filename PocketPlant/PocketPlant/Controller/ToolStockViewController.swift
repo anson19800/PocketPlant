@@ -36,7 +36,9 @@ class ToolStockViewController: UIViewController {
     }
     
     func reloadData() {
-        FirebaseManager.shared.fetchTool { result in
+        FirebaseManager.shared.fetchTool { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let tools):
                 self.toolList = tools
@@ -98,7 +100,9 @@ extension ToolStockViewController: UITableViewDelegate, UITableViewDataSource {
         
         if editingStyle == .delete {
             let tool = toolList[indexPath.row]
-            FirebaseManager.shared.deleteData(.tool, dataID: tool.id) { result in
+            FirebaseManager.shared.deleteData(.tool, dataID: tool.id) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success:
                     self.toolList.remove(at: indexPath.row)

@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
                 let userID = currentUser.uid
                 UserManager.shared.fetchUserInfo(userID: userID) { result in
+                    
                     switch result {
                     case .success(let user):
                         

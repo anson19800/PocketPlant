@@ -105,7 +105,8 @@ class EditProfileViewController: UIViewController {
             
             if let userPhoto = userPhotoImageView.image {
                 
-                ImageManager.shared.uploadImageToGetURL(image: userPhoto) { result in
+                ImageManager.shared.uploadImageToGetURL(image: userPhoto) { [weak self] result in
+                    guard let self = self else { return }
                     
                     switch result {
                         
@@ -113,15 +114,14 @@ class EditProfileViewController: UIViewController {
                         
                         UserManager.shared.updateUserInfo(userName: self.name ?? "使用者",
                                                           userImageID: uuid,
-                                                          userImageURL: url) { isSuccess in
+                                                          userImageURL: url) { [weak self] isSuccess in
+                            guard let self = self else { return }
                             
                             if !isSuccess {
                                 self.showAlert(title: "Oops", message: "建立的過程好像出了問題請重新試過", buttonTitle: "好的")
                                 return
                             }
                         }
-                        
-//                        UserManager.shared.createUserInfo(name: self.name ?? "使用者", imageURL: url, imageID: uuid)
                         
                     case .failure(let error):
                         

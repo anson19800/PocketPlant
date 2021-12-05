@@ -38,7 +38,7 @@ class FirebaseManager {
     
     private let toolRef = Firestore.firestore().collection(FirebaseCollectionList.tools)
     
-    func fetchPlants(_ type: HomePageButton, completion: @escaping (Result<[Plant], Error>) -> Void) {
+    func fetchPlants(_ type: HomePagePlantType, completion: @escaping (Result<[Plant], Error>) -> Void) {
         
         guard let userID = userManager.currentUser?.userID else { return }
         
@@ -374,8 +374,10 @@ class FirebaseManager {
             
         } else {
             
+            guard let userID = UserManager.shared.currentUser?.userID else { return }
+            
             documentRef
-                .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
+                .whereField("ownerID", isNotEqualTo: userID)
                 .getDocuments { snapshot, error in
                 if let error = error { completion(nil, error) }
                 
@@ -439,25 +441,6 @@ class FirebaseManager {
             }
             
             completion(Result.success(tools))
-        }
-    }
-    
-    func updateTool(toolID: String, tool: Tool, completion: (_ isSuccess: Bool) -> Void) {
-        
-        guard let userID = userManager.currentUser?.userID else { return }
-        
-        let toolRef = toolRef.document(userID)
-            .collection(FirebaseCollectionList.toolList).document(toolID)
-        
-        do {
-            
-            try toolRef.setData(from: tool)
-            
-            completion(true)
-            
-        } catch {
-            
-            completion(false)
         }
     }
     

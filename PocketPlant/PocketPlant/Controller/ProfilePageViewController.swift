@@ -127,9 +127,9 @@ class ProfilePageViewController: UIViewController {
            let viewControllers = tabBarCon.viewControllers,
            let firstPageNVC = viewControllers.first as? UINavigationController,
            let firstPageVC = firstPageNVC.viewControllers.first,
-           let homePageVC = firstPageVC as? HomePageViewController,
-           let plants = homePageVC.plants {
+           let homePageVC = firstPageVC as? HomePageViewController {
             
+            let plants = homePageVC.plants
             plantCount = plants.count
             self.tableView.reloadData()
         }
@@ -348,18 +348,22 @@ extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigati
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
-            ImageManager.shared.uploadImageToGetURL(image: image) { result in
+            ImageManager.shared.uploadImageToGetURL(image: image) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success((let uuid, let url)):
                     UserManager.shared.updateUserInfo(userName: nil,
                                                       userImageID: uuid,
-                                                      userImageURL: url) { isSuccess in
+                                                      userImageURL: url) { [weak self] isSuccess in
+                        guard let self = self else { return }
+                        
                         if isSuccess {
                             self.userImageView.image = image
                             self.dismiss(animated: true, completion: nil)
                         }
                     }
-                case .failure(let error):
+                case .failure:
                     
                     self.dismiss(animated: true, completion: nil)
                 }

@@ -197,7 +197,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 if let additionalUserInfo = authResult?.additionalUserInfo,
                    additionalUserInfo.isNewUser {
                     
-                    UserManager.shared.createUserInfo(name: "新的草主", imageURL: nil, imageID: nil) { isSuccess in
+                    UserManager.shared.createUserInfo(name: "新的草主", imageURL: nil, imageID: nil) { [weak self] isSuccess in
+                        guard let self = self else { return }
                         
                         if isSuccess {
                             
@@ -220,7 +221,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     
                 } else {
                     
-                    UserManager.shared.fetchCurrentUserInfo { result in
+                    UserManager.shared.fetchCurrentUserInfo { [weak self] result in
+                        guard let self = self else { return }
+                        
                         switch result {
                             
                         case .success:
@@ -241,7 +244,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
         self.showAlert(title: "登入失敗", message: "請重新登入", buttonTitle: "確認")
         print("Sign in with Apple errored: \(error)")
     }
