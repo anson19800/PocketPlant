@@ -278,7 +278,8 @@ extension DiscoverViewController: UICollectionViewDataSource,
             
             let storyboard = UIStoryboard(name: "PlantDetailPage", bundle: nil)
             
-            let plantDetailVC = storyboard.instantiateViewController(withIdentifier: String(describing: PlantDetailViewController.self))
+            let plantDetailVC = storyboard.instantiateViewController(
+                withIdentifier: String(describing: PlantDetailViewController.self))
             
             guard let plantDetailVC = plantDetailVC as? PlantDetailViewController else { return }
             

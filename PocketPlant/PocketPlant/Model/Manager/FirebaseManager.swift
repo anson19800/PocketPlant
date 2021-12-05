@@ -12,6 +12,12 @@ import FirebaseAuth
 
 typealias GenericCompletion<T: Decodable> = (([T]?, Error?) -> Void)
 
+enum DataType {
+    case waterRecord
+    case shop
+    case tool
+}
+
 class FirebaseManager {
     
     static let shared = FirebaseManager()
@@ -22,26 +28,58 @@ class FirebaseManager {
     
     private let imageManager = ImageManager.shared
     
-    var userID: String {
+    private let userManager = UserManager.shared
+    
+    private let plantRef = Firestore.firestore().collection(FirebaseCollectionList.plants)
+    
+    private let waterRef = Firestore.firestore().collection(FirebaseCollectionList.water)
+    
+    private let shopRef = Firestore.firestore().collection(FirebaseCollectionList.shop)
+    
+    private let toolRef = Firestore.firestore().collection(FirebaseCollectionList.tools)
+    
+    func fetchPlants(_ type: HomePageButton, completion: @escaping (Result<[Plant], Error>) -> Void) {
         
-        get {
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        let documentRef: Query?
+        
+        switch type {
+        case .myPlant:
             
-            if let user = Auth.auth().currentUser {
-                
-                return user.uid
+            documentRef = plantRef
+                .whereField("ownerID", isEqualTo: userID)
+                .order(by: "buyTime", descending: true)
             
-            } else {
-                
-                return "0"
-                
-            }
+        case .myFavorite:
+            
+            documentRef = plantRef
+                .whereField("ownerID", isEqualTo: userID)
+                .whereField("favorite", isEqualTo: true)
+            
+        case .sharePlants: return
             
         }
-    }
-    
-    func uploadPlant(plant: inout Plant, image: UIImage, isSuccess: @escaping (Bool) -> Void) {
         
-        let plantRef = dataBase.collection("plant")
+        guard let documentRef = documentRef else { return }
+        
+        documentRef.getDocuments { snapshot, error in
+            if let error = error { completion(Result.failure(error)) }
+            
+            guard let snapshot = snapshot else { return }
+            
+            let plants = snapshot.documents.compactMap { snapshot in
+                
+                try? snapshot.data(as: Plant.self)
+            }
+            
+            completion(Result.success(plants))
+        }
+    }
+
+    func uploadPlant(plant: inout Plant, image: UIImage, completion: @escaping (_ isSuccess: Bool) -> Void) {
+        
+        guard let userID = userManager.currentUser?.userID else { return }
         
         let documentID = plantRef.document().documentID
         
@@ -63,52 +101,31 @@ class FirebaseManager {
                 
                 do {
                     
-                    try plantRef.document(documentID).setData(from: uploadPlant)
+                    try self.plantRef.document(documentID).setData(from: uploadPlant)
                     
-                    isSuccess(true)
+                    completion(true)
                     
                 } catch {
                     
-                    isSuccess(false)
-                    
+                    completion(false)
                 }
                 
             case .failure(let error):
                 
                 print(error)
-                
             }
-        }
-                
-    }
-    
-    func fetchPlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
-    
-        dataBase.collection("plant")
-            .whereField("ownerID", isEqualTo: userID)
-            .order(by: "buyTime", descending: true)
-            .getDocuments { snapshot, error in
-            
-            if let error = error {
-                
-                completion(Result.failure(error))
-                
-            }
-            
-            guard let snapshot = snapshot else { return }
-            
-            let plant = snapshot.documents.compactMap { snapshot in
-                
-                try? snapshot.data(as: Plant.self)
-            }
-            
-            completion(Result.success(plant))
         }
     }
     
     func fetchPlants(plantID: String, completion: @escaping (Result<Plant, Error>) -> Void) {
     
-        dataBase.collection("plant").document(plantID).getDocument { document, error in
+        plantRef.document(plantID).getDocument { document, error in
+            
+            if let error = error {
+                completion(Result.failure(error))
+                return
+            }
+            
             guard let document = document,
                   document.exists,
                   let plant = try? document.data(as: Plant.self)
@@ -118,33 +135,9 @@ class FirebaseManager {
         }
     }
     
-    func fetchFavoritePlants(completion: @escaping (Result<[Plant], Error>) -> Void) {
-    
-        dataBase.collection("plant")
-            .whereField("ownerID", isEqualTo: userID)
-            .whereField("favorite", isEqualTo: true)
-            .getDocuments { snapshot, error in
-            
-            if let error = error {
-                
-                completion(Result.failure(error))
-                
-            }
-            
-            guard let snapshot = snapshot else { return }
-            
-            let plant = snapshot.documents.compactMap { snapshot in
-                
-                try? snapshot.data(as: Plant.self)
-            }
-            
-            completion(Result.success(plant))
-        }
-    }
-    
     func switchFavoritePlant(plantID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        let documentRef = dataBase.collection("plant").document(plantID)
+        let documentRef = plantRef.document(plantID)
         
         documentRef.getDocument { document, error in
             
@@ -169,15 +162,16 @@ class FirebaseManager {
         }
     }
     
-    func deletePlant(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
+    func deletePlant(plant: Plant, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let batch = dataBase.batch()
         
-        let plantRef = dataBase.collection("plant").document(plant.id)
+        let plantRef = plantRef.document(plant.id)
         
-        let waterRecordRef = dataBase.collection("water").whereField("plantID", isEqualTo: plant.id)
+        let waterRecordRef = waterRef
+            .whereField("plantID", isEqualTo: plant.id)
         
-        let commentRef = dataBase.collection("comment")
+        let commentRef = dataBase.collection(FirebaseCollectionList.comment)
             .whereField("commentType", isEqualTo: "plant")
             .whereField("objectID", isEqualTo: plant.id)
         
@@ -223,22 +217,14 @@ class FirebaseManager {
             
             batch.commit { error in
                 
-                if error != nil {
-                    
-                    isSuccess(false)
-                    
-                } else {
-                    
-                    isSuccess(true)
-                    
-                }
+                completion( error == nil )
             }
         }
     }
     
-    func updatePlant(plant: Plant, isSuccess: @escaping (Result<Bool, Error>) -> Void) {
+    func updatePlant(plant: Plant, completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        let documentRef = dataBase.collection("plant").document(plant.id)
+        let documentRef = plantRef.document(plant.id)
         
         RemindManager.shared.deleteReminder(plantID: plant.id)
         
@@ -247,24 +233,16 @@ class FirebaseManager {
                   document.exists else { return }
             
             do {
-                
                 try documentRef.setData(from: plant)
                 
-                isSuccess(Result.success(true))
-                
+                completion(Result.success(true))
             } catch {
-                
-                print(error)
-                
-                isSuccess(Result.failure(error))
-                
+                completion(Result.failure(error))
             }
         }
     }
     
-    func updateWater(plant: Plant, isSuccess: @escaping (Bool) -> Void) {
-        
-        let waterRef = dataBase.collection("water")
+    func updateWater(plant: Plant, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let documentID = waterRef.document().documentID
         
@@ -275,31 +253,21 @@ class FirebaseManager {
                                        waterDate: Date().timeIntervalSince1970)
         
         do {
+            try self.waterRef.document(documentID).setData(from: waterRecord)
             
-            try waterRef.document(documentID).setData(from: waterRecord)
-            
-            isSuccess(true)
-            
+            completion(true)
         } catch {
-            
-            isSuccess(false)
-            
+            completion(false)
         }
     }
     
     func fetchWaterRecord(plantID: String, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
         
-        let waterRef = dataBase.collection("water")
-        
         waterRef
             .whereField("plantID", isEqualTo: plantID)
             .getDocuments { snapshot, error in
             
-            if let error = error {
-                
-                completion(Result.failure(error))
-                
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -307,23 +275,19 @@ class FirebaseManager {
                 
                 try? snapshot.data(as: WaterRecord.self)
             }
-            
             completion(Result.success(waterRecord))
         }
     }
     
     func fetchWaterRecord(date: Date, completion: @escaping (Result<[WaterRecord], Error>) -> Void) {
         
-        let waterRef = dataBase.collection("water")
+        guard let userID = userManager.currentUser?.userID else { return }
         
         waterRef
             .whereField("userID", isEqualTo: userID)
             .getDocuments { snapshot, error in
             
-            if let error = error {
-                
-                completion(Result.failure(error))
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -334,78 +298,39 @@ class FirebaseManager {
             
             let recordDay = waterRecord.compactMap { (record) -> WaterRecord? in
                 let recordDate = Date(timeIntervalSince1970: record.waterDate)
-                if recordDate.hasSame(.year, as: date)
-                    && recordDate.hasSame(.month, as: date)
-                    && recordDate.hasSame(.day, as: date) {
-                    
-                    return record
-                    
-                } else {
-                    
-                    return nil
-                    
-                }
+                guard recordDate.hasSame(.year, as: date)
+                        && recordDate.hasSame(.month, as: date)
+                        && recordDate.hasSame(.day, as: date) else { return nil }
+                
+                return record
             }
             completion(.success(recordDay))
         }
     }
     
-    func deleteWaterRecord(recordID: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        let waterRef = dataBase.collection("water").document(recordID)
-        
-        waterRef.delete { error in
-            if let error = error {
-                completion(Result.failure(error))
-            } else {
-                completion(Result.success("Delete Success"))
-            }
-        }
-    }
-    
-    func deleteWaterRecord(plantID: String) {
-        
-        dataBase.collection("water")
-            .whereField("plantID", isEqualTo: plantID).getDocuments { snapshot, error in
-                
-                guard let snapshot = snapshot else { return }
-                
-                snapshot.documents.forEach { snapshot in
-                    snapshot.reference.delete()
-                }
-        }
-    }
-    
-    func addGardeningShop(shop: inout GardeningShop, isSuccess: @escaping (Bool) -> Void) {
-        
-        let shopRef = dataBase.collection("shop")
+    func addGardeningShop(shop: inout GardeningShop, completion: @escaping (_ isSuccess: Bool) -> Void) {
         
         let documentID = shopRef.document().documentID
         
         shop.id = documentID
         
         do {
-            
             try shopRef.document(documentID).setData(from: shop)
             
-            isSuccess(true)
-            
+            completion(true)
         } catch {
-            
-            isSuccess(false)
+            completion(false)
         }
     }
     
     func fetchShops(completion: @escaping (Result<[GardeningShop], Error>) -> Void) {
-        dataBase.collection("shop")
-            .whereField("ownerID", isEqualTo: userID)
+        
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        shopRef.whereField("ownerID", isEqualTo: userID)
             .getDocuments { snapshot, error in
             
-            if let error = error {
-                
-                completion(Result.failure(error))
-                
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -418,35 +343,25 @@ class FirebaseManager {
         }
     }
     
-    func deleteShop(shop: GardeningShop) {
-        
-        guard let id = shop.id else { return }
-        
-        let documentRef = dataBase.collection("shop").document(id)
-        
-        documentRef.delete()
-    }
-    
     func fetchDiscoverObject<T: Decodable>(_ type: DiscoverType, completion: @escaping GenericCompletion<T>) {
         
         let documentRef: CollectionReference?
         
         switch type {
         case .plant:
-            documentRef = dataBase.collection("plant")
+            documentRef = plantRef
         case .shop:
-            documentRef = dataBase.collection("shop")
+            documentRef = shopRef
         }
         
         guard let documentRef = documentRef else { return }
         
-        if Auth.auth().currentUser == nil {
+        if userManager.currentUser == nil {
             
             documentRef
                 .getDocuments { snapshot, error in
-                if let error = error {
-                    completion(nil, error)
-                }
+                    
+                if let error = error { completion(nil, error) }
                 
                 guard let snapshot = snapshot else { return }
                 
@@ -454,7 +369,6 @@ class FirebaseManager {
                     
                     try? snapshot.data(as: T.self)
                 }
-                
                 completion(object, nil)
             }
             
@@ -463,9 +377,7 @@ class FirebaseManager {
             documentRef
                 .whereField("ownerID", isNotEqualTo: UserManager.shared.userID)
                 .getDocuments { snapshot, error in
-                if let error = error {
-                    completion(nil, error)
-                }
+                if let error = error { completion(nil, error) }
                 
                 guard let snapshot = snapshot else { return }
                 
@@ -473,15 +385,18 @@ class FirebaseManager {
                     
                     try? snapshot.data(as: T.self)
                 }
-                
                 completion(object, nil)
             }
         }
     }
     
-    func uploadTool(tool: Tool, isSuccess: (Bool) -> Void) {
+    func uploadTool(tool: Tool, completion: (_ isSuccess: Bool) -> Void) {
         
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList")
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        let toolRef = toolRef
+            .document(userID)
+            .collection(FirebaseCollectionList.toolList)
         
         var documentID: String = ""
         
@@ -496,27 +411,25 @@ class FirebaseManager {
         tool.id = documentID
         
         do {
-            
             try toolRef.document(documentID).setData(from: tool)
             
-            isSuccess(true)
-            
+            completion(true)
         } catch {
-            
-            isSuccess(false)
-            
+            completion(false)
         }
     }
     
     func fetchTool(completion: @escaping (Result<[Tool], Error>) -> Void) {
         
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList")
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        let toolRef = toolRef
+            .document(userID)
+            .collection(FirebaseCollectionList.toolList)
         
         toolRef.getDocuments { snapshot, error in
             
-            if let error = error {
-                completion(Result.failure(error))
-            }
+            if let error = error { completion(Result.failure(error)) }
             
             guard let snapshot = snapshot else { return }
             
@@ -529,32 +442,49 @@ class FirebaseManager {
         }
     }
     
-    func updateTool(toolID: String, tool: Tool, isSuccess: (Bool) -> Void) {
+    func updateTool(toolID: String, tool: Tool, completion: (_ isSuccess: Bool) -> Void) {
         
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(toolID)
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        let toolRef = toolRef.document(userID)
+            .collection(FirebaseCollectionList.toolList).document(toolID)
         
         do {
             
             try toolRef.setData(from: tool)
             
-            isSuccess(true)
+            completion(true)
             
         } catch {
             
-            isSuccess(false)
-            
+            completion(false)
         }
     }
     
-    func deleteTool(toolID: String, isSuccess: @escaping (Bool) -> Void) {
-        let toolRef = dataBase.collection("Tools").document(self.userID).collection("toolList").document(toolID)
+    func deleteData(_ type: DataType, dataID: String, completion: @escaping (Result<Void, Error>) -> Void) {
         
-        toolRef.delete { error in
-            if let error = error {
-                isSuccess(false)
-            } else {
-                isSuccess(true)
-            }
+        guard let userID = userManager.currentUser?.userID else { return }
+        
+        let documentRef: DocumentReference?
+        
+        switch type {
+        case .waterRecord:
+            documentRef = waterRef.document(dataID)
+        case .shop:
+            documentRef = shopRef.document(dataID)
+        case .tool:
+            documentRef = toolRef
+                .document(userID)
+                .collection(FirebaseCollectionList.toolList)
+                .document(dataID)
         }
+        
+        documentRef?.delete(completion: { error in
+            if let error = error {
+                completion(Result.failure(error))
+            } else {
+                completion(Result.success(Void()))
+            }
+        })
     }
 }

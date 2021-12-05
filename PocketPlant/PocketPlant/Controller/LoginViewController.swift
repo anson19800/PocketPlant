@@ -41,7 +41,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var visitorButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(appleLogInButton)
@@ -224,12 +223,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     UserManager.shared.fetchCurrentUserInfo { result in
                         switch result {
                             
-                        case .success(_):
+                        case .success:
                             
-//                            self.performSegue(withIdentifier: "Login", sender: nil)
                             self.dismiss(animated: true, completion: nil)
                             
-                        case .failure(_):
+                        case .failure:
                             
                             self.showAlert(title: "登入失敗", message: "請重新登入", buttonTitle: "確認")
                             

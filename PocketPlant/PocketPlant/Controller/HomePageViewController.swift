@@ -149,7 +149,7 @@ class HomePageViewController: UIViewController {
             
             self.plantCollectionView.reloadData()
             
-            if blockView == nil { blockView = addblockView() }
+            if blockView == nil { blockView = addBlockView() }
             
             return
             
@@ -213,8 +213,7 @@ class HomePageViewController: UIViewController {
         
         self.buttonCollectionView.isUserInteractionEnabled = false
         
-        firebaseManager.fetchPlants { [weak self] result in
-            
+        firebaseManager.fetchPlants(.myPlant) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -250,7 +249,7 @@ class HomePageViewController: UIViewController {
         
         self.buttonCollectionView.isUserInteractionEnabled = false
         
-        firebaseManager.fetchFavoritePlants { [weak self] result in
+        firebaseManager.fetchPlants(.myFavorite) { [weak self] result in
             
             guard let self = self else { return }
             

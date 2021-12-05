@@ -28,7 +28,7 @@ class ShopDetailViewController: UIViewController {
             tableView.dataSource = self
             tableView.registerCellWithNib(identifier: String(describing: CommentTableViewCell.self), bundle: nil)
             tableView.registerCellWithNib(identifier: String(describing: CommentTitleTableViewCell.self), bundle: nil)
-            tableView.registerCellWithNib(identifier: String(describing: ImageCollectionVIewTableViewCell.self), bundle: nil)
+            tableView.registerCellWithNib(identifier: String(describing: ImageCollectionTableViewCell.self), bundle: nil)
         }
     }
     @IBOutlet weak var userImage: UIImageView! {
@@ -189,10 +189,10 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: ImageCollectionVIewTableViewCell.self),
+                withIdentifier: String(describing: ImageCollectionTableViewCell.self),
                 for: indexPath)
             
-            guard let imageCell = cell as? ImageCollectionVIewTableViewCell else { return cell }
+            guard let imageCell = cell as? ImageCollectionTableViewCell else { return cell }
             
             imageCell.collectionView.delegate = self
             
@@ -265,7 +265,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         return imageCell
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         
         guard indexPath.row > 1 else { return nil }
         

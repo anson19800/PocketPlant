@@ -67,7 +67,7 @@ class CalendarPageViewController: UIViewController {
             
             if blockView == nil {
                 
-                blockView = addblockView()
+                blockView = addBlockView()
                 
             }
             
@@ -222,7 +222,7 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
             
             let recordID = records[indexPath.row].id
             
-            FirebaseManager.shared.deleteWaterRecord(recordID: recordID) { result in
+            FirebaseManager.shared.deleteData(.waterRecord, dataID: recordID) { result in
                 switch result {
                 case .success(let successInfo):
                     print(successInfo)
@@ -230,7 +230,6 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
                     self.waterRecords = records
                     self.infoTableView.deleteRows(at: [indexPath], with: .left)
                     self.infoTableView.reloadData()
-//                    self.fetchRecord(date: self.calendar.date)
                 case .failure(let error):
                     print(error)
                 }

@@ -58,7 +58,7 @@ class DeathPlantViewController: UIViewController {
 
                 self.setChart(waterRecords: waterRecords)
 
-            case .failure(_):
+            case .failure:
 
                 self.noDataAlert(plant: plant, type: .water)
             }

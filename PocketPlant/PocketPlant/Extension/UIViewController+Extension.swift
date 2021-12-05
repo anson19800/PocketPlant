@@ -62,7 +62,7 @@ extension UIViewController {
         return maskView
     }
     
-    func addblockView() -> VisitorBlockView {
+    func addBlockView() -> VisitorBlockView {
         
         let blockView = VisitorBlockView()
         

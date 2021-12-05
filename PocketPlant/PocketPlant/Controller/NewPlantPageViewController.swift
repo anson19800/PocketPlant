@@ -250,7 +250,10 @@ extension NewPlantPageViewController: InputPlantDelegate {
             
             newPlant.ownerID = UserManager.shared.userID
             
-            imageManager.deleteImage(imageID: editPlant.imageID!)
+            if let imageID = editPlant.imageID {
+                
+                imageManager.deleteImage(imageID: imageID)
+            }
             
             let maskView = darkView()
             
