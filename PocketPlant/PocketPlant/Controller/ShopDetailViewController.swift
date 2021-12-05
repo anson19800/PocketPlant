@@ -28,7 +28,7 @@ class ShopDetailViewController: UIViewController {
             tableView.dataSource = self
             tableView.registerCellWithNib(identifier: String(describing: CommentTableViewCell.self), bundle: nil)
             tableView.registerCellWithNib(identifier: String(describing: CommentTitleTableViewCell.self), bundle: nil)
-            tableView.registerCellWithNib(identifier: String(describing: ImageCollectionVIewTableViewCell.self), bundle: nil)
+            tableView.registerCellWithNib(identifier: String(describing: ImageCollectionViewTableViewCell.self), bundle: nil)
         }
     }
     @IBOutlet weak var userImage: UIImageView! {
@@ -100,7 +100,9 @@ class ShopDetailViewController: UIViewController {
         }
 
         commentManager.fetchComment(type: .shop,
-                                    objectID: shopID) { result in
+                                    objectID: shopID) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
                 
             case .success(let comments):
@@ -114,7 +116,9 @@ class ShopDetailViewController: UIViewController {
                     group.enter()
                     
                     if self.commentUser[comment.senderID] == nil {
-                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { result in
+                        UserManager.shared.fetchUserInfo(userID: comment.senderID) { [weak self] result in
+                            guard let self = self else { return }
+                            
                             switch result {
                             case .success(let user):
                                 self.commentUser[comment.senderID] = user
@@ -157,7 +161,9 @@ class ShopDetailViewController: UIViewController {
                                   objectID: shopID,
                                   content: comment,
                                   createdTime: Date().timeIntervalSince1970)
-            commentManager.publishComment(comment: comment) { isSuccess in
+            commentManager.publishComment(comment: comment) { [weak self] isSuccess in
+                guard let self = self else { return }
+                
                 if isSuccess {
                     
                     self.fetchComment()
@@ -189,10 +195,10 @@ extension ShopDetailViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: ImageCollectionVIewTableViewCell.self),
+                withIdentifier: String(describing: ImageCollectionViewTableViewCell.self),
                 for: indexPath)
             
-            guard let imageCell = cell as? ImageCollectionVIewTableViewCell else { return cell }
+            guard let imageCell = cell as? ImageCollectionViewTableViewCell else { return cell }
             
             imageCell.collectionView.delegate = self
             
@@ -265,7 +271,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         return imageCell
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         
         guard indexPath.row > 1 else { return nil }
         
@@ -294,7 +302,9 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
                 
                 let blockedUserID = comment.senderID
                 
-                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { isSuccess in
+                UserManager.shared.addBlockedUser(blockedID: blockedUserID) { [weak self] isSuccess in
+                    guard let self = self else { return }
+                    
                     if isSuccess {
                         self.fetchComment()
                         print("Success Blocked user \(blockedUserID)")

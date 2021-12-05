@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08D02D598E92F268D4DD7AFE /* Pods_PocketPlantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C02F30AAE4F861308C3151B /* Pods_PocketPlantTests.framework */; };
 		CB07EDB6271EE5FF00406913 /* PlantDetailPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */; };
 		CB07EDB8271EE74100406913 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB7271EE74100406913 /* UILabel+Extension.swift */; };
 		CB07EDBA271EEBC100406913 /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */; };
@@ -30,12 +31,12 @@
 		CB2241F6272ECEAC00BAEE90 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */; };
 		CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */; };
 		CB2241FA272ED01800BAEE90 /* CommentTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */; };
-		CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */; };
-		CB2241FF272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */; };
+		CB2241FE272ED29900BAEE90 /* ImageCollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2241FC272ED29800BAEE90 /* ImageCollectionViewTableViewCell.swift */; };
 		CB224201272EE17400BAEE90 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224200272EE17400BAEE90 /* CommentManager.swift */; };
 		CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */; };
 		CB224206272EF69C00BAEE90 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */; };
 		CB224207272EF69C00BAEE90 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */; };
+		CB841BBA2753ED0600D84FAB /* ImageCollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB2241FD272ED29800BAEE90 /* ImageCollectionViewTableViewCell.xib */; };
 		CB846208273A11DB00283683 /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB846207273A11DB00283683 /* EditProfile.storyboard */; };
 		CB84620A273A129100283683 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB846209273A129100283683 /* EditProfileViewController.swift */; };
 		CB84620C273A158900283683 /* 9624-plantPeople.json in Resources */ = {isa = PBXBuildFile; fileRef = CB84620B273A158900283683 /* 9624-plantPeople.json */; };
@@ -62,6 +63,9 @@
 		CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */; };
 		CB8A115F2737952700AAE6CA /* 9131-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CB8A115E2737952700AAE6CA /* 9131-loading.json */; };
 		CB8B3DAF2749507A001F44C6 /* VisitorBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B3DAE2749507A001F44C6 /* VisitorBlockView.swift */; };
+		CB8B3DB1274E3121001F44C6 /* IdentifierList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B3DB0274E3121001F44C6 /* IdentifierList.swift */; };
+		CB8B3DB3274F1F36001F44C6 /* UISearchBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B3DB2274F1F36001F44C6 /* UISearchBar+Extension.swift */; };
+		CB8B3DD527506E89001F44C6 /* PocketPlantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8B3DD427506E89001F44C6 /* PocketPlantTests.swift */; };
 		CB8F2ED32726B8FB005E1448 /* RemindPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */; };
 		CB8F2ED527279E08005E1448 /* RemindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED427279E08005E1448 /* RemindViewController.swift */; };
 		CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */; };
@@ -110,10 +114,24 @@
 		E633471A87BF914363C32DA1 /* Pods_PocketPlant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CB8B3DD627506E89001F44C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBF7ABF7271C863E001E3C37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBF7ABFE271C863E001E3C37;
+			remoteInfo = PocketPlant;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketPlant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DC1914BF355BAB10DA5CC7C /* Pods-PocketPlant-PocketPlantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant-PocketPlantTests.release.xcconfig"; path = "Target Support Files/Pods-PocketPlant-PocketPlantTests/Pods-PocketPlant-PocketPlantTests.release.xcconfig"; sourceTree = "<group>"; };
+		3C02F30AAE4F861308C3151B /* Pods_PocketPlantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketPlantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE3D4B79374ED5EF6C29A96 /* Pods-PocketPlant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant.release.xcconfig"; path = "Target Support Files/Pods-PocketPlant/Pods-PocketPlant.release.xcconfig"; sourceTree = "<group>"; };
+		5F3A5BD4CAC7B920A714D327 /* Pods-PocketPlantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlantTests.release.xcconfig"; path = "Target Support Files/Pods-PocketPlantTests/Pods-PocketPlantTests.release.xcconfig"; sourceTree = "<group>"; };
 		5FC710C89D7C558D5AEEEB6A /* Pods-PocketPlant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant.debug.xcconfig"; path = "Target Support Files/Pods-PocketPlant/Pods-PocketPlant.debug.xcconfig"; sourceTree = "<group>"; };
+		7C294EA9B26A21B0F7976197 /* Pods-PocketPlant-PocketPlantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlant-PocketPlantTests.debug.xcconfig"; path = "Target Support Files/Pods-PocketPlant-PocketPlantTests/Pods-PocketPlant-PocketPlantTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB07EDB5271EE5FF00406913 /* PlantDetailPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantDetailPage.storyboard; sourceTree = "<group>"; };
 		CB07EDB7271EE74100406913 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		CB07EDB9271EEBC100406913 /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
@@ -137,8 +155,8 @@
 		CB2241F4272ECEAC00BAEE90 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		CB2241F7272ED01800BAEE90 /* CommentTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTitleTableViewCell.swift; sourceTree = "<group>"; };
 		CB2241F8272ED01800BAEE90 /* CommentTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTitleTableViewCell.xib; sourceTree = "<group>"; };
-		CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionVIewTableViewCell.swift; sourceTree = "<group>"; };
-		CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionVIewTableViewCell.xib; sourceTree = "<group>"; };
+		CB2241FC272ED29800BAEE90 /* ImageCollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		CB2241FD272ED29800BAEE90 /* ImageCollectionViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewTableViewCell.xib; sourceTree = "<group>"; };
 		CB224200272EE17400BAEE90 /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +188,10 @@
 		CB8A11582736EFBB00AAE6CA /* SharePlantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlantViewController.swift; sourceTree = "<group>"; };
 		CB8A115E2737952700AAE6CA /* 9131-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "9131-loading.json"; sourceTree = "<group>"; };
 		CB8B3DAE2749507A001F44C6 /* VisitorBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorBlockView.swift; sourceTree = "<group>"; };
+		CB8B3DB0274E3121001F44C6 /* IdentifierList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierList.swift; sourceTree = "<group>"; };
+		CB8B3DB2274F1F36001F44C6 /* UISearchBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extension.swift"; sourceTree = "<group>"; };
+		CB8B3DD227506E88001F44C6 /* PocketPlantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketPlantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB8B3DD427506E89001F44C6 /* PocketPlantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketPlantTests.swift; sourceTree = "<group>"; };
 		CB8F2ED22726B8FB005E1448 /* RemindPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RemindPage.storyboard; sourceTree = "<group>"; };
 		CB8F2ED427279E08005E1448 /* RemindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindViewController.swift; sourceTree = "<group>"; };
 		CB8F2ED82727AB8F005E1448 /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
@@ -217,9 +239,18 @@
 		CBF7AC3E271E8CF0001E3C37 /* InputPlantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputPlantTableViewCell.xib; sourceTree = "<group>"; };
 		CBF7AC41271E8D37001E3C37 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		CBF7AC45271E9559001E3C37 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		DA90EE74D026061B0675D1FF /* Pods-PocketPlantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketPlantTests.debug.xcconfig"; path = "Target Support Files/Pods-PocketPlantTests/Pods-PocketPlantTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CB8B3DCF27506E88001F44C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				08D02D598E92F268D4DD7AFE /* Pods_PocketPlantTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF7ABFC271C863E001E3C37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +268,10 @@
 			children = (
 				5FC710C89D7C558D5AEEEB6A /* Pods-PocketPlant.debug.xcconfig */,
 				5DE3D4B79374ED5EF6C29A96 /* Pods-PocketPlant.release.xcconfig */,
+				DA90EE74D026061B0675D1FF /* Pods-PocketPlantTests.debug.xcconfig */,
+				5F3A5BD4CAC7B920A714D327 /* Pods-PocketPlantTests.release.xcconfig */,
+				7C294EA9B26A21B0F7976197 /* Pods-PocketPlant-PocketPlantTests.debug.xcconfig */,
+				2DC1914BF355BAB10DA5CC7C /* Pods-PocketPlant-PocketPlantTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -246,6 +281,7 @@
 			children = (
 				CB2241EA272DA82700BAEE90 /* MapKit.framework */,
 				01E6FD85E8541818C8673E67 /* Pods_PocketPlant.framework */,
+				3C02F30AAE4F861308C3151B /* Pods_PocketPlantTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -291,8 +327,8 @@
 		CB2241FB272ED27500BAEE90 /* ImageCell */ = {
 			isa = PBXGroup;
 			children = (
-				CB2241FC272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.swift */,
-				CB2241FD272ED29800BAEE90 /* ImageCollectionVIewTableViewCell.xib */,
+				CB2241FC272ED29800BAEE90 /* ImageCollectionViewTableViewCell.swift */,
+				CB2241FD272ED29800BAEE90 /* ImageCollectionViewTableViewCell.xib */,
 				CB224204272EF69C00BAEE90 /* ImageCollectionViewCell.swift */,
 				CB224205272EF69C00BAEE90 /* ImageCollectionViewCell.xib */,
 			);
@@ -326,6 +362,14 @@
 				CB8A11482734DB7200AAE6CA /* HistoryTableViewCell.xib */,
 			);
 			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		CB8B3DD327506E89001F44C6 /* PocketPlantTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB8B3DD427506E89001F44C6 /* PocketPlantTests.swift */,
+			);
+			path = PocketPlantTests;
 			sourceTree = "<group>";
 		};
 		CB8F2ED12726B8DB005E1448 /* RemindPage */ = {
@@ -385,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				CBF7AC01271C863E001E3C37 /* PocketPlant */,
+				CB8B3DD327506E89001F44C6 /* PocketPlantTests */,
 				CBF7AC00271C863E001E3C37 /* Products */,
 				24D57E989B1EB73698FAB3C8 /* Pods */,
 				7C8AAA9A113F19F11F987B5A /* Frameworks */,
@@ -395,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				CBF7ABFF271C863E001E3C37 /* PocketPlant.app */,
+				CB8B3DD227506E88001F44C6 /* PocketPlantTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +476,7 @@
 				CB2241F0272ECCD000BAEE90 /* Comment.swift */,
 				CB8A113E27328C1E00AAE6CA /* User.swift */,
 				CB84621B273BAF6500283683 /* Tool.swift */,
+				CB8B3DB0274E3121001F44C6 /* IdentifierList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -523,6 +570,7 @@
 				CB8F2EF2272921A2005E1448 /* Date+Extension.swift */,
 				CB8F2EF4272943D8005E1448 /* UIImageView+Extension.swift */,
 				CB224202272EEDA100BAEE90 /* UIViewController+Extension.swift */,
+				CB8B3DB2274F1F36001F44C6 /* UISearchBar+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -547,6 +595,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CB8B3DD127506E88001F44C6 /* PocketPlantTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB8B3DD827506E89001F44C6 /* Build configuration list for PBXNativeTarget "PocketPlantTests" */;
+			buildPhases = (
+				F05F573CD86BA240850C0E6E /* [CP] Check Pods Manifest.lock */,
+				CB8B3DCE27506E88001F44C6 /* Sources */,
+				CB8B3DCF27506E88001F44C6 /* Frameworks */,
+				CB8B3DD027506E88001F44C6 /* Resources */,
+				DC280ABC30FAA94476A401CE /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB8B3DD727506E89001F44C6 /* PBXTargetDependency */,
+			);
+			name = PocketPlantTests;
+			productName = PocketPlantTests;
+			productReference = CB8B3DD227506E88001F44C6 /* PocketPlantTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CBF7ABFE271C863E001E3C37 /* PocketPlant */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBF7AC13271C8641001E3C37 /* Build configuration list for PBXNativeTarget "PocketPlant" */;
@@ -578,6 +646,10 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					CB8B3DD127506E88001F44C6 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = CBF7ABFE271C863E001E3C37;
+					};
 					CBF7ABFE271C863E001E3C37 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -597,16 +669,23 @@
 			projectRoot = "";
 			targets = (
 				CBF7ABFE271C863E001E3C37 /* PocketPlant */,
+				CB8B3DD127506E88001F44C6 /* PocketPlantTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CB8B3DD027506E88001F44C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF7ABFD271C863E001E3C37 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB2241FF272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.xib in Resources */,
 				CB8F2EF8272956CA005E1448 /* ScanQRCodePage.storyboard in Resources */,
 				CB2241FA272ED01800BAEE90 /* CommentTitleTableViewCell.xib in Resources */,
 				CBE9044B2744F9CA00B73CF8 /* 72610-plantGrowing.json in Resources */,
@@ -642,6 +721,7 @@
 				CBF7AC2D271D65C2001E3C37 /* GoogleService-Info.plist in Resources */,
 				CB2241E1272D353A00BAEE90 /* GardeningShopTableViewCell.xib in Resources */,
 				CB2241F6272ECEAC00BAEE90 /* CommentTableViewCell.xib in Resources */,
+				CB841BBA2753ED0600D84FAB /* ImageCollectionViewTableViewCell.xib in Resources */,
 				CBE904462741409F00B73CF8 /* 61313-waterDrop.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,9 +804,56 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" \n";
 		};
+		DC280ABC30FAA94476A401CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PocketPlantTests/Pods-PocketPlantTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PocketPlantTests/Pods-PocketPlantTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PocketPlantTests/Pods-PocketPlantTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F05F573CD86BA240850C0E6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PocketPlantTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CB8B3DCE27506E88001F44C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB8B3DD527506E89001F44C6 /* PocketPlantTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF7ABFB271C863E001E3C37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -749,7 +876,7 @@
 				CB2241E7272D89B900BAEE90 /* ShopDetailViewController.swift in Sources */,
 				CB8A113D273230DC00AAE6CA /* LoginViewController.swift in Sources */,
 				CB2241E0272D353A00BAEE90 /* GardeningShopTableViewCell.swift in Sources */,
-				CB2241FE272ED29900BAEE90 /* ImageCollectionVIewTableViewCell.swift in Sources */,
+				CB2241FE272ED29900BAEE90 /* ImageCollectionViewTableViewCell.swift in Sources */,
 				CBF7AC3B271E7629001E3C37 /* NewPlantPageViewController.swift in Sources */,
 				CB2241F9272ED01800BAEE90 /* CommentTitleTableViewCell.swift in Sources */,
 				CBF7AC26271D5D46001E3C37 /* PlantCollectionViewCell.swift in Sources */,
@@ -770,6 +897,7 @@
 				CB2241F5272ECEAC00BAEE90 /* CommentTableViewCell.swift in Sources */,
 				CB8A11592736EFBB00AAE6CA /* SharePlantViewController.swift in Sources */,
 				CB8A11412732931600AAE6CA /* UserManager.swift in Sources */,
+				CB8B3DB3274F1F36001F44C6 /* UISearchBar+Extension.swift in Sources */,
 				CB07EDC0271FFDF100406913 /* UIImage+Extension.swift in Sources */,
 				CB224203272EEDA100BAEE90 /* UIViewController+Extension.swift in Sources */,
 				CB2241EF272E735800BAEE90 /* NewShopViewController.swift in Sources */,
@@ -783,6 +911,7 @@
 				CB8B3DAF2749507A001F44C6 /* VisitorBlockView.swift in Sources */,
 				CB8F2EDA2727AB8F005E1448 /* ReminderTableViewCell.swift in Sources */,
 				CB846220273FB4EE00283683 /* BlockedUserViewController.swift in Sources */,
+				CB8B3DB1274E3121001F44C6 /* IdentifierList.swift in Sources */,
 				CB9A491B2724630A0095E5EE /* DeathPlantViewController.swift in Sources */,
 				CB84620A273A129100283683 /* EditProfileViewController.swift in Sources */,
 				CB8F2EFC272A9569005E1448 /* QRCodePlantDetailViewController.swift in Sources */,
@@ -797,6 +926,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB8B3DD727506E89001F44C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBF7ABFE271C863E001E3C37 /* PocketPlant */;
+			targetProxy = CB8B3DD627506E89001F44C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CBF7AC08271C863E001E3C37 /* Main.storyboard */ = {
@@ -818,6 +955,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CB8B3DD927506E89001F44C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA90EE74D026061B0675D1FF /* Pods-PocketPlantTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 849PT6PZ3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anson.PocketPlantTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketPlant.app/PocketPlant";
+			};
+			name = Debug;
+		};
+		CB8B3DDA27506E89001F44C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F3A5BD4CAC7B920A714D327 /* Pods-PocketPlantTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 849PT6PZ3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anson.PocketPlantTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketPlant.app/PocketPlant";
+			};
+			name = Release;
+		};
 		CBF7AC11271C8641001E3C37 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1012,6 +1199,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CB8B3DD827506E89001F44C6 /* Build configuration list for PBXNativeTarget "PocketPlantTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB8B3DD927506E89001F44C6 /* Debug */,
+				CB8B3DDA27506E89001F44C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CBF7ABFA271C863E001E3C37 /* Build configuration list for PBXProject "PocketPlant" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RecordType: String{
+enum RecordType: String {
     case water = "澆水"
     case fertilizer = "施肥"
     case soil = "補土"
@@ -33,6 +33,6 @@ struct WaterRecord: Codable {
         self.plantName = plantName
         self.plantImage = plantImage
         self.waterDate = waterDate
-        self.userID = UserManager.shared.userID
+        self.userID = UserManager.shared.currentUser?.userID ?? "0"
     }
 }

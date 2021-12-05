@@ -18,9 +18,9 @@ class CommentManager {
     
     private init() {}
     
-    func publishComment(comment: Comment, isSuccess: (Bool) -> Void) {
+    func publishComment(comment: Comment, completion: (_ isSuccess: Bool) -> Void) {
         
-        let commentRef = dataBase.collection("comment")
+        let commentRef = dataBase.collection(FirebaseCollectionList.comment)
         
         let documentID = commentRef.document().documentID
         
@@ -32,11 +32,11 @@ class CommentManager {
             
             try commentRef.document(documentID).setData(from: uploadComment)
             
-            isSuccess(true)
+            completion(true)
             
         } catch {
             
-            isSuccess(false)
+            completion(false)
         }
     }
     
@@ -44,7 +44,7 @@ class CommentManager {
                       objectID: String,
                       completion: @escaping (Result<[Comment], Error>) -> Void) {
         
-        dataBase.collection("comment")
+        dataBase.collection(FirebaseCollectionList.comment)
             .whereField("objectID", isEqualTo: objectID)
             .order(by: "createdTime", descending: true)
             .getDocuments { snapshot, error in

@@ -180,7 +180,6 @@
                         <segue destination="7Nc-8Y-JqE" kind="show" identifier="showPlantDetail" id="f84-Xx-oOZ"/>
                         <segue destination="5ce-AY-Dhb" kind="show" identifier="editPlant" id="TN7-OC-vVQ"/>
                         <segue destination="CCe-xg-Goc" kind="show" identifier="deathPlant" id="Eu5-20-fqN"/>
-                        <segue destination="8Wf-mD-jpZ" kind="show" identifier="shopList" id="936-na-uey"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -226,16 +225,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTO-l4-Wcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5154" y="69"/>
-        </scene>
-        <!--GardeningShopPage-->
-        <scene sceneID="tix-PQ-5Yb">
-            <objects>
-                <viewControllerPlaceholder storyboardName="GardeningShopPage" id="8Wf-mD-jpZ" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="zvI-cl-oos"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CaS-U0-dsJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5135" y="152"/>
         </scene>
         <!--ScanQRCodePage-->
         <scene sceneID="cRK-Jp-KMC">
@@ -300,16 +289,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UoM-MF-cJR">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="i7i-kC-fU7">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fpL-we-NxT">
                                 <rect key="frame" x="114" y="363" width="200" height="200"/>
@@ -783,7 +763,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eDb-fk-ScE"/>
+        <segue reference="TN7-OC-vVQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Calendar-normal" width="25" height="25"/>

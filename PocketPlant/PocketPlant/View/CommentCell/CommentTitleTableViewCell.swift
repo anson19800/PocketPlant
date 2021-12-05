@@ -9,7 +9,6 @@ import UIKit
 
 class CommentTitleTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     

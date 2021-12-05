@@ -33,7 +33,9 @@ class GardeningShopViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FirebaseManager.shared.fetchShops { result in
+        FirebaseManager.shared.fetchShops { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let shops):
                 self.shops = shops
@@ -85,11 +87,20 @@ extension GardeningShopViewController: UITableViewDelegate, UITableViewDataSourc
                    forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            guard var shops = self.shops else { return }
-            FirebaseManager.shared.deleteShop(shop: shops[indexPath.row])
-            shops.remove(at: indexPath.row)
-            self.shops = shops
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            guard var shops = self.shops,
+                  let shopID = shops[indexPath.row].id else { return }
+            FirebaseManager.shared.deleteData(.shop, dataID: shopID) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success:
+                    shops.remove(at: indexPath.row)
+                    self.shops = shops
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
 }

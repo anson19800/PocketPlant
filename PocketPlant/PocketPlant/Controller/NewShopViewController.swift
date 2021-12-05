@@ -59,6 +59,7 @@ class NewShopViewController: UIViewController {
                 let scaleImage = image.scale(newWidth: 100)
                 
                 ImageManager.shared.uploadImageToGetURL(image: scaleImage) { result in
+                    
                     switch result {
                     case .success((let uuid, let url)):
                         imageURLList.append(url)
@@ -78,7 +79,9 @@ class NewShopViewController: UIViewController {
                 shop.images = imageURLList
                 shop.imagesID = imageIDList
                 
-                FirebaseManager.shared.addGardeningShop(shop: &shop) { isSuccess in
+                FirebaseManager.shared.addGardeningShop(shop: &shop) { [weak self] isSuccess in
+                    guard let self = self else { return }
+                    
                     if isSuccess {
                         print("upload success!")
                         self.navigationController?.popViewController(animated: true)
@@ -187,11 +190,6 @@ extension NewShopViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         configuration.filter = .images
         
-//        if let selectedImage = selectedImage {
-//            configuration.selectionLimit = 5 - selectedImage.count
-//        } else {
-//            configuration.selectionLimit = 5
-//        }
         configuration.selectionLimit = 5
         
         let picker = PHPickerViewController(configuration: configuration)
@@ -214,7 +212,7 @@ extension NewShopViewController: PHPickerViewControllerDelegate {
         itemProviders.forEach { itemProvider in
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 
-                itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                itemProvider.loadObject(ofClass: UIImage.self) { image, _ in
                     DispatchQueue.main.async {
                         guard let image = image as? UIImage else { return }
                         images.append(image)

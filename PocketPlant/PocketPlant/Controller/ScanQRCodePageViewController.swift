@@ -94,7 +94,9 @@ extension ScanQRCodePageViewController: AVCaptureMetadataOutputObjectsDelegate {
                 if metadataObj.stringValue != nil,
                    let plantID = metadataObj.stringValue {
                     
-                    FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+                    FirebaseManager.shared.fetchPlants(plantID: plantID) { [weak self] result in
+                        guard let self = self else { return }
+                        
                         switch result {
                         case .success(let plant):
                             self.showSharePlant(plant: plant)
@@ -133,7 +135,7 @@ extension ScanQRCodePageViewController: SharePlantDetailDelegate {
         
         guard let homepageVC = parentVC as? HomePageViewController else { return }
         
-        homepageVC.isSelectedAt = .sharePlants
+        homepageVC.selectionType = .sharePlants
         
         homepageVC.buttonCollectionView.selectItem(at: IndexPath(row: 2, section: 0),
                                                    animated: false,

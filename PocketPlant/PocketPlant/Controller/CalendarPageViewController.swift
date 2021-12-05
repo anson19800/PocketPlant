@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Lottie
 import FirebaseAuth
 
 class CalendarPageViewController: UIViewController {
@@ -25,15 +24,17 @@ class CalendarPageViewController: UIViewController {
     
     @IBOutlet weak var animationContainer: UIView!
     
-    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel! {
+        didSet {
+            emptyLabel.text = "這天沒有澆水紀錄"
+        }
+    }
     
     private var waterRecords: [WaterRecord]? {
         didSet {
             checkEmpty()
         }
     }
-    
-    private var emptyAnimation: AnimationView?
     
     private var blockView: VisitorBlockView?
     
@@ -46,12 +47,7 @@ class CalendarPageViewController: UIViewController {
                                                                 target: nil,
                                                                 action: nil)
         
-        emptyAnimation = loadAnimation(name: "70780-emptyResult", loopMode: .loop)
-        if let emptyAnimation = emptyAnimation {
-            emptyAnimation.frame = animationContainer.bounds
-            animationContainer.addSubview(emptyAnimation)
-            emptyAnimation.play()
-        }
+        configureEmptyAnimation(containerView: animationContainer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +63,7 @@ class CalendarPageViewController: UIViewController {
             
             if blockView == nil {
                 
-                blockView = addblockView()
+                blockView = addBlockView()
                 
             }
             
@@ -109,7 +105,9 @@ class CalendarPageViewController: UIViewController {
     
     func fetchRecord(date: Date) {
         
-        FirebaseManager.shared.fetchWaterRecord(date: date) { result in
+        FirebaseManager.shared.fetchWaterRecord(date: date) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let waterRecords):
                 self.waterRecords = waterRecords
@@ -124,43 +122,30 @@ class CalendarPageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showWater" {
+        if segue.identifier == SegueIdentifier.showWater {
             
             guard let plant = sender as? Plant,
                   let destinationVC = segue.destination as? DeathPlantViewController else { return }
             
             destinationVC.plant = plant
-            
         }
     }
     
     private func checkEmpty() {
+        
         if let waterRecords = waterRecords {
-            if waterRecords.count <= 0 {
-                animationContainer.isHidden = false
-                emptyLabel.isHidden = false
-                emptyLabel.text = "這天沒有澆水紀錄"
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.play()
-                }
-            } else {
-                animationContainer.isHidden = true
-                emptyLabel.isHidden = true
-                if let emptyAnimation = emptyAnimation {
-                    emptyAnimation.stop()
-                }
-            }
+            
+            animationContainer.isHidden = !(waterRecords.count <= 0)
+            
+            emptyLabel.isHidden = !(waterRecords.count <= 0)
+            
         } else {
             
             animationContainer.isHidden = false
+            
             emptyLabel.isHidden = false
-            emptyLabel.text = "這天沒有澆水紀錄"
-            if let emptyAnimation = emptyAnimation {
-                emptyAnimation.play()
-            }
         }
     }
-    
 }
 
 extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -198,7 +183,9 @@ extension CalendarPageViewController: UITableViewDelegate, UITableViewDataSource
         
         let plantID = waterRecords[indexPath.row].plantID
         
-        FirebaseManager.shared.fetchPlants(plantID: plantID) { result in
+        FirebaseManager.shared.fetchPlants(plantID: plantID) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case .success(let plant):
                 self.performSegue(withIdentifier: "showWater", sender: plant)
@@ -223,7 +210,9 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
             
             let recordID = records[indexPath.row].id
             
-            FirebaseManager.shared.deleteWaterRecord(recordID: recordID) { result in
+            FirebaseManager.shared.deleteData(.waterRecord, dataID: recordID) { [weak self] result in
+                guard let self = self else { return }
+                
                 switch result {
                 case .success(let successInfo):
                     print(successInfo)
@@ -231,7 +220,6 @@ extension CalendarPageViewController: CalendarInfoTableViewCellDelegate {
                     self.waterRecords = records
                     self.infoTableView.deleteRows(at: [indexPath], with: .left)
                     self.infoTableView.reloadData()
-//                    self.fetchRecord(date: self.calendar.date)
                 case .failure(let error):
                     print(error)
                 }

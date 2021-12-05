@@ -42,7 +42,9 @@ class DeathPlantViewController: UIViewController {
         waterBarChart.noDataText = "沒有任何澆水紀錄"
         
         
-        firebaseManager.fetchWaterRecord(plantID: plant.id) { result in
+        firebaseManager.fetchWaterRecord(plantID: plant.id) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
 
             case .success(let waterRecords):
@@ -58,7 +60,7 @@ class DeathPlantViewController: UIViewController {
 
                 self.setChart(waterRecords: waterRecords)
 
-            case .failure(_):
+            case .failure:
 
                 self.noDataAlert(plant: plant, type: .water)
             }
